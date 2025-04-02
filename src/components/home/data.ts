@@ -140,7 +140,7 @@ export const sections2 = [
         id: 2,
         title: 'MEETINGS 2',
         description:
-          "2 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          "2 Text Ever Since The 1500s, When  Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy An Unknown",
         image: '/resort-7.1.jpg',
       },
     ],
