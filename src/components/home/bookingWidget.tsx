@@ -1,6 +1,6 @@
 const BookingWidget = () => {
   return (
-    <div className='absolute right-0 bottom-0 left-0 z-2 mx-auto max-w-[1360px] translate-y-1/2 transform px-4'>
+    <div className='absolute right-0 bottom-0 left-0 z-2 mx-auto max-w-[1360px] translate-y-1/2 transform'>
       <div className='min-h-[155px] bg-gray-100 shadow-xs'>
         <div className='grid min-h-[155px] grid-cols-1 md:grid-cols-4'>
           {/* Dates */}
@@ -46,7 +46,7 @@ const BookingWidget = () => {
 
           {/* Check Availability */}
           <div className='flex items-center justify-center p-5'>
-            <button className='min-h-12.5 w-full cursor-pointer rounded-[30px] bg-gray-800 px-6 py-3 font-semibold text-gray-50'>
+            <button className='min-h-12.5 w-60 cursor-pointer rounded-[30px] bg-gray-800 px-6 py-3 font-semibold text-gray-50'>
               Check Availability
             </button>
           </div>
