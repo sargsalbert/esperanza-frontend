@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className=''>
       <div className='bg-gray-100'>
-        <div className='columns-7xl px-5 py-12.5'>
+        <div className='w-full px-5 py-12.5'>
           <div className='mb-12.5 flex justify-center text-center text-gray-800'>
             {/* <p className='mb-1 text-lg font-medium'>a member of</p>
             <p className='text-2xl font-semibold tracking-wide'>
