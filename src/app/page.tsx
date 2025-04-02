@@ -1,110 +1,72 @@
+import SectionGrid from '@/components/home/sectionGrid';
+import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import Image from 'next/image';
-
-// import { fetchAPI } from "./api";
+import ResortOverview from '@/components/home/resortOverview';
+import BookingWidget from '@/components/home/bookingWidget';
+import { items, items2, sections, sections2 } from '@/components/home/data';
+import SectionHeader from '@/components/shared/SectionHeader';
 
 export default async function Home() {
-  //   const articles = await fetchAPI("home?populate=*");
-
-  // console.log(articles, "articles")
-
   return (
-    <div className='grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20'>
-      <main className='row-start-2 flex flex-col items-center gap-[32px] sm:items-start'>
-        <h1 style={{ fontSize: '32px' }}>Esperanza Resort & SPA</h1>
-        <Image
-          className='dark:invert'
-          src='/next.svg'
-          alt='Next.js logo'
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className='list-inside list-decimal text-center font-[family-name:var(--font-geist-mono)] text-sm/6 sm:text-left'>
-          <li className='mb-2 tracking-[-.01em]'>
-            Get started by editing{' '}
-            <code className='rounded bg-black/[.05] px-1 py-0.5 font-[family-name:var(--font-geist-mono)] font-semibold dark:bg-white/[.06]'>
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className='tracking-[-.01em]'>
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className='flex flex-col items-center gap-4 sm:flex-row'>
-          <a
-            className='bg-foreground text-background flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm font-medium transition-colors hover:bg-[#383838] sm:h-12 sm:w-auto sm:px-5 sm:text-base dark:hover:bg-[#ccc]'
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Image
-              className='dark:invert'
-              src='/vercel.svg'
-              alt='Vercel logomark'
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className='flex h-10 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm font-medium transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:w-auto sm:px-5 sm:text-base md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]'
-            href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Read our docs
-          </a>
+    <>
+      <div className='relative mb-39 flex h-[917px] w-full'>
+        {/* h-[calc(100vh-123px)] max-h-[917px] */}
+        <div className='relative flex h-full w-full items-end'>
+          <Image
+            src='/resort-00.jpg'
+            alt='Rooms & Suites'
+            layout='fill'
+            objectFit='cover'
+          />
+          <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[155px]'>
+            <h1 className='text-[40px] font-semibold text-gray-50'>
+              THE PRINTING AND TYPESETTING
+            </h1>
+          </div>
         </div>
-      </main>
-      <footer className='row-start-3 flex flex-wrap items-center justify-center gap-[24px]'>
-        <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/file.svg'
-            alt='File icon'
-            width={16}
-            height={16}
+        <BookingWidget />
+      </div>
+      <SectionHeader
+        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
+        title='RESORT OVERVIEW'
+        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      />
+      <ResortOverview />
+      {sections.map((section, index) => (
+        <div key={section.id} className='mb-20'>
+          <SectionHeader
+            title={section.title}
+            description={section.description}
           />
-          Learn
-        </a>
-        <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/window.svg'
-            alt='Window icon'
-            width={16}
-            height={16}
+          <ImageWithOverlayCard
+            features={section.features}
+            imageFirst={index % 2 !== 0}
           />
-          Examples
-        </a>
-        <a
-          className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/globe.svg'
-            alt='Globe icon'
-            width={16}
-            height={16}
+        </div>
+      ))}
+      <SectionGrid
+        title='SPA'
+        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        items={items}
+      />
+      {sections2.map((section, index) => (
+        <div key={section.id} className='mb-20'>
+          <SectionHeader
+            title={section.title}
+            description={section.description}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <ImageWithOverlayCard
+            features={section.features}
+            imageFirst={index % 2 !== 0}
+          />
+        </div>
+      ))}
+      <SectionGrid
+        title='EXPERIENCES'
+        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        items={items2}
+      />
+      <div className='h-12.5 w-full' />
+    </>
   );
 }
