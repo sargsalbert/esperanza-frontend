@@ -27,7 +27,7 @@ const ImageWithOverlayCard = ({
   // Check if we're on mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 641);
     };
 
     checkMobile();
@@ -82,27 +82,44 @@ const ImageWithOverlayCard = ({
   return (
     <div className='relative w-full overflow-hidden'>
       {isMobile ? (
-        // Mobile Layout with Embla Carousel
+        // Mobile Layout
         <div className='overflow-hidden' ref={emblaRef}>
           <div className='flex'>
             {features.map((feature) => (
               <div className='min-w-0 flex-[0_0_100%]' key={feature.id}>
-                <div className='relative h-[500px]'>
+                <div className='relative'>
                   <div className='relative h-[318px] w-full'>
-                    <img
+                    <Image
                       src={feature.image || '/placeholder.svg'}
-                      alt={feature.title}
-                      className='h-full w-full object-cover'
+                      alt='Rooms & Suites'
+                      layout='fill'
+                      objectFit='cover'
                     />
                   </div>
-                  <div className='absolute right-5 bottom-12.5 left-5 bg-[#f8f8f8] p-6 text-center'>
-                    <h2 className='mb-3 text-2xl font-medium text-[#362E25]'>
-                      {feature.title}
-                    </h2>
-                    <div className='mx-auto mb-5 h-[2px] w-[100px] bg-[#C9AA71]'></div>
-                    <p className='text-sm leading-relaxed text-[#362E25]'>
-                      {feature.description}
-                    </p>
+                  <div className='relative z-20 mx-auto -mt-[83px] max-w-[calc(100%-40px)]'>
+                    <div className='mb-3.5 flex justify-center'>
+                      {features.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
+                            index === currentIndex
+                              ? 'bg-gray-50'
+                              : 'bg-[#B8B8B899]'
+                          }`}
+                          onClick={() => emblaApi?.scrollTo(index)}
+                          aria-label={`Go to slide ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                    <div className='bg-gray-100 px-2.5 py-6 text-center shadow-xs'>
+                      <h2 className='mb-4 text-xl leading-6 font-semibold text-gray-800'>
+                        {feature.title}
+                      </h2>
+                      <div className='mx-auto mb-5 h-0.5 w-[305px] bg-yellow-500'></div>
+                      <p className='text-[13px] leading-6 text-gray-900'>
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -110,13 +127,12 @@ const ImageWithOverlayCard = ({
           </div>
         </div>
       ) : (
-        // Desktop Layout with simple transitions
+        // Desktop Layout
         <div
-          className={`flex h-[678px] ${imageFirst ? 'flex-row' : 'flex-row-reverse'}`}
+          className={`flex h-[562px] md:h-[678px] ${imageFirst ? 'flex-row' : 'flex-row-reverse'}`}
         >
-          {/* Text Content Side */}
           <div
-            className={`absolute z-[19] flex min-h-[318px] w-[642px] flex-col self-center bg-gray-100 px-10 pt-12 pb-5 shadow-xs ${imageFirst ? 'right-[60px]' : 'left-[60px]'}`}
+            className={`absolute z-[19] flex min-h-[260px] w-[582px] flex-col self-center bg-gray-100 px-5 pt-6 pb-2.5 shadow-xs md:min-h-[318px] md:w-[642px] md:px-10 md:pt-12 md:pb-5 ${imageFirst ? 'right-7.5 lg:right-15' : 'left-7.5 lg:left-15'}`}
           >
             <div className='relative flex flex-col justify-center'>
               {features.map((feature, index) => (
@@ -129,7 +145,7 @@ const ImageWithOverlayCard = ({
                   }`}
                 >
                   <div>
-                    <h2 className='mb-7.5 inline-block min-w-[325px] border-b-3 border-[#B5946E] pr-4 pb-7.5 text-[28px]/[28px] font-semibold text-gray-800'>
+                    <h2 className='mb-4 inline-block min-w-[325px] border-b-3 border-[#B5946E] pr-4 pb-4 text-[24px]/[24px] font-semibold text-gray-800 md:mb-7.5 md:pb-7.5 md:text-[28px]/[28px]'>
                       {feature.title}
                     </h2>
                   </div>
@@ -137,7 +153,6 @@ const ImageWithOverlayCard = ({
                 </div>
               ))}
             </div>
-
             <div className='relative z-20 mt-auto flex justify-end gap-5 pt-4'>
               <button
                 className='inline-flex cursor-pointer p-2.5'
@@ -177,9 +192,7 @@ const ImageWithOverlayCard = ({
               </button>
             </div>
           </div>
-
-          {/* Image Side */}
-          <div className='relative w-[calc(100%-533px)]'>
+          <div className='relative sm:w-[calc(100%-267px)] lg:w-[calc(100%-533px)]'>
             {features.map((feature, index) => (
               <div
                 key={feature.id}
@@ -196,39 +209,6 @@ const ImageWithOverlayCard = ({
               </div>
             ))}
           </div>
-        </div>
-      )}
-
-      {/* Mobile Navigation Buttons */}
-      {isMobile && (
-        // <div className='pointer-events-none absolute right-0 bottom-1/2 left-0 flex justify-between px-4'>
-        //   <button
-        //     className='pointer-events-auto flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-none bg-white/80 text-[#362E25] shadow-md transition-colors hover:bg-white'
-        //     onClick={scrollPrev}
-        //     aria-label='Previous slide'
-        //   >
-        //     L
-        //   </button>
-        //   <button
-        //     className='pointer-events-auto flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-none bg-white/80 text-[#362E25] shadow-md transition-colors hover:bg-white'
-        //     onClick={scrollNext}
-        //     aria-label='Next slide'
-        //   >
-        //     R
-        //   </button>
-        // </div>
-
-        <div className='absolute top-[243px] right-0 left-0 flex justify-center'>
-          {features.map((_, index) => (
-            <button
-              key={index}
-              className={`mx-1 h-1 w-7 transition-all duration-300 ${
-                index === currentIndex ? 'bg-[#FFFFFF]' : 'bg-[#B8B8B899]'
-              }`}
-              onClick={() => emblaApi?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
         </div>
       )}
     </div>

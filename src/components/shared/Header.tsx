@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <>
       <header className='z-9 w-full bg-gray-100 shadow-xs'>
-        <div className='mx-auto flex h-[123] items-center justify-between px-[60px] py-[22px]'>
+        <div className='mx-auto flex h-[123] items-center justify-between px-5 py-[22px] sm:px-10 lg:px-15'>
           <div className='flex items-center'>
             <button
               onClick={toggleMenu}
@@ -26,7 +26,9 @@ const Header = () => {
               <MenuIcon />
               <span className='sr-only'>Toggle menu</span>
             </button>
-            <LanguageSelector />
+            <div className='hidden md:inline-block'>
+              <LanguageSelector />
+            </div>
           </div>
 
           <div className='absolute left-1/2 -translate-x-1/2 transform'>
@@ -40,7 +42,7 @@ const Header = () => {
               />
             </Link>
           </div>
-          <div className='flex items-center'>
+          <div className='hidden items-center md:flex'>
             <button className='min-h-11 min-w-48 cursor-pointer rounded-4xl bg-gray-800 px-4 py-1.5 text-lg font-medium text-gray-50'>
               Book
             </button>

@@ -9,7 +9,7 @@ import SectionHeader from '@/components/shared/SectionHeader';
 export default async function Home() {
   return (
     <>
-      <div className='relative mb-39 flex h-[917px] w-full'>
+      <div className='relative mb-39 flex h-[468px] w-full sm:h-[641px] lg:h-[917px]'>
         {/* h-[calc(100vh-123px)] max-h-[917px] */}
         <div className='relative flex h-full w-full items-end'>
           <Image
@@ -18,8 +18,8 @@ export default async function Home() {
             layout='fill'
             objectFit='cover'
           />
-          <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[155px]'>
-            <h1 className='text-[40px] font-semibold text-gray-50'>
+          <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[72px] lg:pb-[155px]'>
+            <h1 className='px-5 text-center text-[22px] font-semibold text-gray-50 sm:px-7.5 sm:text-[30px] lg:px-15 lg:text-[40px]'>
               THE PRINTING AND TYPESETTING
             </h1>
           </div>
@@ -33,7 +33,7 @@ export default async function Home() {
       />
       <ResortOverview />
       {sections.map((section, index) => (
-        <div key={section.id} className='mb-20'>
+        <div key={section.id} className='mb-10 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
             description={section.description}
@@ -50,7 +50,7 @@ export default async function Home() {
         items={items}
       />
       {sections2.map((section, index) => (
-        <div key={section.id} className='mb-20'>
+        <div key={section.id} className='mb-10 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
             description={section.description}

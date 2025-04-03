@@ -22,7 +22,6 @@ const SectionGrid = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if we're on mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -74,28 +73,32 @@ const SectionGrid = ({
     <div className='mb-20'>
       <SectionHeader title={title} description={description} />
 
-      <div className='relative mx-15 overflow-hidden' ref={emblaRef}>
+      <div
+        className='relative overflow-hidden md:mx-7.5 lg:mx-15'
+        ref={emblaRef}
+      >
         <div className='flex'>
           {items.map((item, index) => (
             <div
               key={index}
-              className='mr-[14px] flex-[0_0_calc(100%-40px)] md:flex-[0_0_calc(((100%-28px)/3))]'
+              className='mr-[12px] flex-[0_0_calc(100%-48px)] md:mr-[14px] md:flex-[0_0_calc(((100%-28px)/3))]'
             >
-              <div className='overflow-hidden'>
+              <div className='relative h-[260px] w-full overflow-hidden sm:h-[349px] lg:h-[498px]'>
                 <Image
-                  width={500}
-                  height={498}
                   src={item.imageUrl}
                   alt='A beautiful view'
-                  className='h-[498px] w-full object-cover'
+                  layout='fill'
+                  objectFit='cover'
                 />
               </div>
-              <div className='flex h-full flex-1 flex-col bg-gray-100 px-7 pt-7.5 pb-10'>
-                <h2 className='text-[28px]/[28px] font-semibold text-gray-800'>
+              <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-6 text-center md:px-7 md:pt-7.5 md:pb-10 md:text-left'>
+                <h2 className='text-[20px]/[20px] font-semibold text-gray-800 sm:text-[24px]/[24px] md:text-[28px]/[28px]'>
                   {item.title}
                 </h2>
                 <Divider />
-                <div className='text-base leading-8'>{item.description}</div>
+                <div className='text-[13px]/[26px] sm:text-[16px]/[32px]'>
+                  {item.description}
+                </div>
               </div>
             </div>
           ))}
