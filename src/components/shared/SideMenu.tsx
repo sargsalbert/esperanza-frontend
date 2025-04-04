@@ -3,6 +3,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback } from 'react';
 import LanguageSelector from './LanguageSelector';
+import { CloseIcon } from '../icons/closeIcon';
+import { EmaiIcon } from '../icons/emaiIcon';
+import { MapIcon } from '../icons/mapIcon';
+import { PhoneIcon } from '../icons/phoneIcon';
 
 interface SideMenuProps {
   isOpen: boolean;
@@ -32,53 +36,29 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
       )}
 
       <div
-        className={`fixed top-0 left-0 z-30 flex h-full w-[673px] transform flex-col justify-between bg-gray-100 shadow-xs transition-transform duration-400 ease-in-out ${
+        className={`fixed top-0 left-0 z-30 flex h-full w-full transform flex-col justify-between bg-gray-100 shadow-xs transition-transform duration-400 ease-in-out sm:w-[430px] md:w-[538px] lg:w-[673px] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className='px-12.5 py-10'>
-          <div className='mb-16 flex items-center'>
+        <div className='px-6 py-8 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
+          <div className='mb-12 flex items-center justify-between sm:justify-start md:mb-16'>
             <button
               onClick={onClose}
-              className='mr-11 cursor-pointer p-2'
+              className='mr-11 cursor-pointer'
               aria-label='Close menu'
             >
-              <svg
-                width='24'
-                height='25'
-                viewBox='0 0 24 25'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <rect
-                  x='2.12305'
-                  y='0.83252'
-                  width='30'
-                  height='3'
-                  rx='1.5'
-                  transform='rotate(45 2.12305 0.83252)'
-                  fill='#362E25'
-                />
-                <rect
-                  y='22.0457'
-                  width='30'
-                  height='3'
-                  rx='1.5'
-                  transform='rotate(-45 0 22.0457)'
-                  fill='#362E25'
-                />
-              </svg>
+              <CloseIcon className='h-[14px] w-[14px] sm:h-[18px] sm:w-[18px] md:h-[24px] md:w-[24px]' />
             </button>
             <LanguageSelector />
           </div>
 
           <nav>
-            <ul className='space-y-5.5 pl-4.5'>
+            <ul className='space-y-4.5 sm:space-y-6 sm:pl-2.5 md:pl-3'>
               {menuItems.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`inline-block py-1 text-2xl text-gray-700 ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
+                    className={`inline-block py-1 text-base text-gray-700 sm:text-lg md:text-xl lg:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
                     onClick={onClose}
                   >
                     {label}
@@ -88,8 +68,24 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
             </ul>
           </nav>
         </div>
+        <div className='mx-6 mt-auto mb-12.5 flex sm:hidden'>
+          <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
+            Book
+          </button>
+        </div>
 
-        <div className='h-35 bg-gray-200' />
+        <div className='bg-gray-200 px-6 pt-7.5 pb-4 sm:px-7.5 md:px-10 lg:px-15'>
+          <div className='mb-7.5 flex items-center space-x-5 sm:mb-12.5 sm:space-x-6.5'>
+            <PhoneIcon />
+            <div className='h-5 w-px bg-[#9A9A9A]'></div>
+            <EmaiIcon />
+            <div className='h-5 w-px bg-[#9A9A9A]'></div>
+            <MapIcon />
+          </div>
+          <p className='text-center text-xs text-gray-700 sm:text-sm'>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          </p>
+        </div>
       </div>
     </>
   );

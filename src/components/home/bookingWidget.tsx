@@ -1,6 +1,6 @@
 const BookingWidget = () => {
   return (
-    <div className='absolute right-0 bottom-0 left-0 z-2 mx-auto hidden max-w-[1360px] translate-y-1/2 transform xl:block'>
+    <div className='absolute right-0 bottom-0 left-0 z-2 mx-auto block max-w-[1480px] translate-y-1/2 transform overflow-hidden px-5 sm:px-7.5 lg:px-15'>
       <div className='min-h-[155px] bg-gray-100 shadow-xs'>
         <div className='grid min-h-[155px] grid-cols-1 md:grid-cols-4'>
           {/* Dates */}
