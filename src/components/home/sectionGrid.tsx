@@ -70,7 +70,7 @@ const SectionGrid = ({
   }, [emblaApi, onSelect]);
 
   return (
-    <div className='mb-20'>
+    <div className='mb-10 sm:mb-15 lg:mb-20'>
       <SectionHeader title={title} description={description} />
 
       <div
@@ -83,7 +83,7 @@ const SectionGrid = ({
               key={index}
               className='mr-[12px] flex-[0_0_calc(100%-48px)] md:mr-[14px] md:flex-[0_0_calc(((100%-28px)/3))]'
             >
-              <div className='relative h-[260px] w-full overflow-hidden sm:h-[349px] lg:h-[498px]'>
+              <div className='relative h-[260px] w-full overflow-hidden md:h-[311px] lg:h-[389px] xl:h-[498px]'>
                 <Image
                   src={item.imageUrl}
                   alt='A beautiful view'
@@ -126,7 +126,7 @@ const SectionGrid = ({
               </svg>
             </button>
             <button
-              className='absolute top-[220px] right-[30px] z-10 flex h-[57px] w-[57px] cursor-pointer items-center justify-center rounded-full bg-gray-800/40'
+              className='absolute right-[30px] z-10 flex h-[57px] w-[57px] cursor-pointer items-center justify-center rounded-full bg-gray-800/40 md:top-[180px] lg:top-[220px]'
               onClick={scrollNext}
               aria-label='Next slide'
             >

@@ -9,7 +9,7 @@ import SectionHeader from '@/components/shared/SectionHeader';
 export default async function Home() {
   return (
     <>
-      <div className='relative mb-39 flex h-[468px] w-full sm:h-[641px] lg:h-[917px]'>
+      <div className='relative mb-17.5 flex h-[468px] w-full sm:h-[641px] md:mb-30 lg:mb-39 lg:h-[917px]'>
         {/* h-[calc(100vh-123px)] max-h-[917px] */}
         <div className='relative flex h-full w-full items-end'>
           <Image
@@ -66,7 +66,7 @@ export default async function Home() {
         description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
         items={items2}
       />
-      <div className='h-12.5 w-full' />
+      <div className='h-12.5' />
     </>
   );
 }
