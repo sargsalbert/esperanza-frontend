@@ -29,11 +29,11 @@ const LanguageSelector = ({
           e.preventDefault();
           handleLanguageChange('EN');
         }}
-        className={`cursor-pointer text-lg font-semibold transition-colors ${
+        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors sm:text-base md:text-lg ${
           activeLanguage === 'EN' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
-        EN
+        <span>EN</span>
         <span className='mr-[14px] ml-[12px] inline-flex h-3.5 w-0.5 bg-yellow-500' />
       </li>
       <li
@@ -41,11 +41,11 @@ const LanguageSelector = ({
           e.preventDefault();
           handleLanguageChange('LT');
         }}
-        className={`cursor-pointer text-lg font-semibold transition-colors ${
+        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors sm:text-base md:text-lg ${
           activeLanguage === 'LT' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
-        LT
+        <span>LT</span>
       </li>
     </ul>
   );

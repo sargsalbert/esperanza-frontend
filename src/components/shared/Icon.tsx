@@ -6,8 +6,8 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
 
 export function Icon({
   children,
-  width = 24,
-  height = 24,
+  width = '',
+  height = '',
   viewBox = '0 0 24 24',
   className = '',
   ...props
