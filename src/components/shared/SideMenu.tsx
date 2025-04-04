@@ -36,11 +36,11 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
       )}
 
       <div
-        className={`fixed top-0 bottom-0 left-0 z-30 flex h-full w-full transform flex-col justify-between bg-gray-100 shadow-xs transition-transform duration-400 ease-in-out sm:w-[430px] md:w-[538px] lg:w-[673px] ${
+        className={`fixed top-0 bottom-0 left-0 z-30 flex h-full w-full transform flex-col justify-between overflow-y-auto bg-gray-100 shadow-xs transition-transform duration-400 ease-in-out sm:w-[430px] md:w-[538px] lg:w-[673px] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className='px-6 py-8 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
+        <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
           <div className='mb-12 flex items-center justify-between sm:justify-start md:mb-16'>
             <button
               onClick={onClose}
