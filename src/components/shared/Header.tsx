@@ -1,6 +1,6 @@
 'use client';
 import { SideMenu } from './SideMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MenuIcon } from '../icons/menuIcon';
 import LanguageSelector from './LanguageSelector';
 import Link from 'next/link';
@@ -8,6 +8,18 @@ import { LogoIcon } from '../icons/logoIcon';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const body = document.body;
+
+    if (isMenuOpen) {
+      body.classList.add('overflow-hidden');
+    }
+
+    return () => {
+      body.classList.remove('overflow-hidden');
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

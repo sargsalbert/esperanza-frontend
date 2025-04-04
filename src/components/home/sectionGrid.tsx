@@ -126,7 +126,7 @@ const SectionGrid = ({
               </svg>
             </button>
             <button
-              className='absolute right-[30px] z-10 flex h-[57px] w-[57px] cursor-pointer items-center justify-center rounded-full bg-gray-800/40 md:top-[180px] lg:top-[220px]'
+              className='absolute top-[220px] right-[30px] z-10 flex h-[57px] w-[57px] cursor-pointer items-center justify-center rounded-full bg-gray-800/40'
               onClick={scrollNext}
               aria-label='Next slide'
             >
