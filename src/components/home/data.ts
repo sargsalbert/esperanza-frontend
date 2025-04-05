@@ -107,7 +107,7 @@ export const items: ItemProps[] = [
       '2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
   },
   {
-    imageUrl: '/resort-5.2.jpg',
+    imageUrl: '/resort-5.5.jpg',
     title: 'TREATMENT ROOM',
     description:
       '3 typesetting industry. Lorem Ipsum ha․ Lorem Ipsum is simply dummy text of the printing and',
