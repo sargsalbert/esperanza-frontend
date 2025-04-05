@@ -70,7 +70,7 @@ const SectionGrid = ({
   }, [emblaApi, onSelect]);
 
   return (
-    <div className='mb-10 sm:mb-15 lg:mb-20'>
+    <div className='mb-12.5 sm:mb-15 lg:mb-20'>
       <SectionHeader title={title} description={description} />
 
       <div

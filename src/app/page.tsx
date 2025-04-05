@@ -33,7 +33,7 @@ export default async function Home() {
       />
       <ResortOverview />
       {sections.map((section, index) => (
-        <div key={section.id} className='mb-10 sm:mb-15 lg:mb-20'>
+        <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
             description={section.description}
@@ -50,7 +50,7 @@ export default async function Home() {
         items={items}
       />
       {sections2.map((section, index) => (
-        <div key={section.id} className='mb-10 sm:mb-15 lg:mb-20'>
+        <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
             description={section.description}
