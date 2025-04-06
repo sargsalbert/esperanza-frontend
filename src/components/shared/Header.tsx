@@ -53,7 +53,7 @@ const Header = () => {
               <span
                 className={`block h-[2px] w-[12px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[20px] ${
                   isMenuOpen
-                    ? 'w-[24px] translate-y-[-10px] -rotate-45 sm:w-[40px]'
+                    ? 'w-[24px] translate-y-[-9.5px] -rotate-45 sm:w-[40px]'
                     : ''
                 }`}
               />
