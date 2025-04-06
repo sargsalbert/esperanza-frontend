@@ -16,8 +16,8 @@ const SectionHeader = ({
           {smallTitle}
         </p>
       )}
-      <div className='mb-5 sm:mb-7.5'>
-        <h2 className='inline-block min-w-[305px] border-b-2 border-yellow-500 px-10 pb-5 text-[20px]/[20px] font-semibold text-gray-800 sm:min-w-[483px] sm:border-b-3 sm:text-[24px]/[24px] md:pb-7.5 md:text-[28px]/[28px]'>
+      <div className='mb-5 flex justify-center sm:mb-7.5'>
+        <h2 className='inline-flex basis-[305px] justify-center border-b-2 border-yellow-500 px-10 pb-5 text-[20px]/[20px] font-semibold text-gray-800 sm:min-w-[483px] sm:border-b-3 sm:text-[24px]/[24px] md:pb-7.5 md:text-[28px]/[28px]'>
           {title}
         </h2>
       </div>
