@@ -2,8 +2,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback } from 'react';
-import LanguageSelector from './LanguageSelector';
-import { CloseIcon } from '../icons/closeIcon';
 import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
@@ -32,26 +30,18 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
   return (
     <>
       {isOpen && (
-        <div className='fixed inset-0 z-20 bg-black/30' onClick={onClose} />
+        <div
+          className='fixed inset-0 z-20 bg-[rgba(83,83,83,0.5)] backdrop-blur-[1px]'
+          onClick={onClose}
+        />
       )}
 
       <div
-        className={`fixed top-0 bottom-0 left-0 z-100 flex h-full w-full transform flex-col justify-between overflow-y-auto bg-gray-100 shadow-xs transition-transform duration-400 ease-in-out sm:w-[430px] md:w-[538px] lg:w-[673px] ${
+        className={`fixed top-auto bottom-0 left-0 z-100 flex h-[calc(100%_-_84px)] w-full transform flex-col justify-between overflow-y-auto bg-gray-100 transition-transform duration-400 ease-in-out sm:h-[calc(100%_-100px)] sm:w-[430px] md:h-[calc(100%_-_123px)] md:w-[538px] lg:w-[673px] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
-          <div className='mb-12 flex items-center justify-between sm:justify-start md:mb-16'>
-            <button
-              onClick={onClose}
-              className='mr-11 cursor-pointer'
-              aria-label='Close menu'
-            >
-              <CloseIcon className='h-[14px] w-[14px] sm:h-[18px] sm:w-[18px] md:h-[24px] md:w-[24px]' />
-            </button>
-            <LanguageSelector />
-          </div>
-
           <nav>
             <ul className='space-y-4.5 sm:space-y-6 sm:pl-2.5 md:pl-3'>
               {menuItems.map(({ href, label }) => (
