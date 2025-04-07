@@ -37,13 +37,13 @@ const Header = () => {
           >
             <button
               onClick={toggleMenu}
-              className='relative mr-5 flex h-[40px] w-[40px] cursor-pointer flex-col justify-center gap-[7px] sm:mr-7.5 md:mr-10'
+              className='relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[4.2px] sm:mr-7.5 sm:w-[40px] sm:gap-[7px] md:mr-10'
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <span
                 className={`block h-[2px] w-[24px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[40px] ${
                   isMenuOpen
-                    ? 'translate-y-[8.5px] rotate-45 sm:translate-y-[10px]'
+                    ? 'w-[18px] translate-y-[6px] rotate-45 sm:w-[24px] sm:translate-y-[10.5px]'
                     : ''
                 }`}
               />
@@ -53,7 +53,7 @@ const Header = () => {
               <span
                 className={`block h-[2px] w-[12px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[20px] ${
                   isMenuOpen
-                    ? 'w-[24px] translate-y-[-9.5px] -rotate-45 sm:w-[40px]'
+                    ? 'w-[24px] translate-y-[-6px] -rotate-45 sm:w-[40px] sm:translate-y-[-9.5px]'
                     : ''
                 }`}
               />
