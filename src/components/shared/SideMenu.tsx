@@ -37,6 +37,7 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
       )}
 
       <div
+        style={{ willChange: 'transform' }}
         className={`fixed top-auto bottom-0 left-0 z-100 flex h-[calc(100%_-_84px)] w-full transform flex-col justify-between overflow-y-auto bg-gray-100 transition-transform duration-400 ease-in-out sm:h-[calc(100%_-100px)] sm:w-[430px] md:h-[calc(100%_-_123px)] md:w-[538px] lg:w-[673px] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
