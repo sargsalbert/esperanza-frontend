@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default async function Gallery() {
   return (
     <>
-      <PageHeader />
+      <PageHeader imgUrl='/resort-2.jpg' title='THE PRINTING AND TYPESETTING' />
 
       <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
         <SectionHeader
@@ -72,7 +72,7 @@ export default async function Gallery() {
           </div>
           <div className='relative col-span-1 row-span-2 h-[268px] sm:col-span-6 sm:row-span-1 sm:h-[413.7px] lg:h-[591px]'>
             <Image
-              src='/resort-5.2.jpg'
+              src='/resort-5.4.jpg'
               alt=''
               layout='fill'
               objectFit='cover'
