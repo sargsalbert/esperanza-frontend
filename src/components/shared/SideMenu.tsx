@@ -37,7 +37,6 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
       )}
 
       <div
-        key={isOpen ? 'menu-open' : 'menu-closed'}
         style={{
           transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
           transition: 'transform 0.4s ease-in-out',
