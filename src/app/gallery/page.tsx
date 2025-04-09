@@ -61,7 +61,7 @@ export default async function Gallery() {
           </div>
         </div>
         <div className='mb-1.5 grid grid-cols-[60%_40%] gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-10 sm:gap-2 lg:mb-3 lg:gap-3'>
-          <div className='relative col-span-1 h-[131px] sm:col-span-5 sm:h-[413.7px] lg:h-[591px]'>
+          <div className='relative col-span-1 h-[131px] sm:col-span-6 sm:h-[413.7px] lg:h-[591px]'>
             <Image
               src='/resort-5.1.jpg'
               alt=''
@@ -70,7 +70,7 @@ export default async function Gallery() {
               className=''
             />
           </div>
-          <div className='relative col-span-1 row-span-2 h-[268px] sm:col-span-5 sm:row-span-1 sm:h-[413.7px] lg:h-[591px]'>
+          <div className='relative col-span-1 row-span-2 h-[268px] sm:col-span-4 sm:row-span-1 sm:h-[413.7px] lg:h-[591px]'>
             <Image
               src='/resort-5.4.jpg'
               alt=''
@@ -79,7 +79,7 @@ export default async function Gallery() {
               className=''
             />
           </div>
-          <div className='relative col-span-1 h-[131px] sm:col-span-5 sm:h-[526.4px] lg:h-[752px]'>
+          <div className='relative col-span-1 h-[131px] sm:col-span-4 sm:h-[526.4px] lg:h-[752px]'>
             <Image
               src='/resort-5.8.jpg'
               alt=''
@@ -88,7 +88,7 @@ export default async function Gallery() {
               className=''
             />
           </div>
-          <div className='relative col-span-2 h-[232px] sm:col-span-5 sm:h-[526.4px] lg:h-[752px]'>
+          <div className='relative col-span-2 h-[232px] sm:col-span-6 sm:h-[526.4px] lg:h-[752px]'>
             <Image
               src='/resort-5.9.jpg'
               alt=''
