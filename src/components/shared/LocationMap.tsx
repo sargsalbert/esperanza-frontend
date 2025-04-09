@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 
 export default function LocationMap() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const centerLocation = { lat: 54.605162428451145, lng: 24.74728891534038 };
 
   useEffect(() => {
     window.initMap = () => {
@@ -11,8 +12,8 @@ export default function LocationMap() {
       const google = window.google;
       if (!google || !google.maps) return;
 
-      new google.maps.Map(mapRef.current, {
-        center: { lat: 54.60534713902967, lng: 24.747201746021133 },
+      const map = new google.maps.Map(mapRef.current, {
+        center: centerLocation,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         cameraControl: false,
@@ -21,6 +22,17 @@ export default function LocationMap() {
         fullscreenControl: false,
         scrollwheel: false,
         zoomControl: true,
+      });
+
+      new google.maps.Marker({
+        position: centerLocation,
+        map: map,
+        // icon: {
+        //   url: '/logoMap.jpg', // Replace with your logo path
+        //   //   scaledSize: new google.maps.Size(40, 40), // Adjust size as needed
+        //   origin: new google.maps.Point(0, 0),
+        //   anchor: new google.maps.Point(60, 66), // Center the marker on the position
+        // },
       });
     };
 
@@ -65,6 +77,21 @@ declare global {
                 cameraControl?: boolean;
               },
             ) => unknown;
+
+            Marker: new (options: {
+              position: { lat: number; lng: number };
+              map: unknown;
+              icon?: {
+                url: string;
+                scaledSize?: unknown;
+                origin?: unknown;
+                anchor?: unknown;
+              };
+              title?: string;
+            }) => unknown;
+            Size: new (width: number, height: number) => unknown;
+            Point: new (x: number, y: number) => unknown;
+
             MapTypeId: {
               ROADMAP: unknown;
               SATELLITE: unknown;
