@@ -20,7 +20,7 @@ export default async function ResortOverview() {
             apiKey='AIzaSyBClg9cxA11EPVdMsa4Xad6AuSETnTd7Y4'
             height='100%'
             width='100%'
-            mode='place'
+            mode='view'
             center='54.60493742949877, 24.7470733550466'
             loading='lazy'
           />
