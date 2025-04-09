@@ -4,10 +4,12 @@ const SectionHeader = ({
   smallTitle,
   title,
   description,
+  showKnowMore = true,
 }: {
   smallTitle?: string;
   title: string;
   description: string;
+  showKnowMore?: boolean;
 }) => {
   return (
     <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:px-7.5 sm:pb-7.5 lg:px-15'>
@@ -21,18 +23,21 @@ const SectionHeader = ({
           {title}
         </h2>
       </div>
-      <p className='pb-3.5 text-[13px]/[26px] sm:pb-7.5 sm:text-[16px]/[32px]'>
+      <p
+        className={`text-[13px]/[26px] sm:text-[16px]/[32px] ${showKnowMore ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
+      >
         {description}
       </p>
-
-      <div className='flex justify-center'>
-        <button className='flex cursor-pointer items-center'>
-          <span className='gray-800 px-2.5 text-[13px]/[15px] font-semibold text-gray-800 sm:text-[16px]/[18px]'>
-            Know more
-          </span>
-          <MoreIcon className='h-3 w-3 sm:h-[16px] sm:w-[17px]' />
-        </button>
-      </div>
+      {showKnowMore && (
+        <div className='flex justify-center'>
+          <button className='flex cursor-pointer items-center'>
+            <span className='gray-800 px-2.5 text-[13px]/[15px] font-semibold text-gray-800 sm:text-[16px]/[18px]'>
+              Know more
+            </span>
+            <MoreIcon className='h-3 w-3 sm:h-[16px] sm:w-[17px]' />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
