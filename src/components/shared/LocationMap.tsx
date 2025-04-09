@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { mapStyles } from './map-styles';
 
 export default function LocationMap() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ export default function LocationMap() {
         fullscreenControl: false,
         scrollwheel: false,
         zoomControl: true,
+        styles: mapStyles,
       });
 
       new google.maps.Marker({
@@ -75,6 +77,7 @@ declare global {
                 zoomControl?: boolean;
                 scaleControl?: boolean;
                 cameraControl?: boolean;
+                styles?: unknown;
               },
             ) => unknown;
 
