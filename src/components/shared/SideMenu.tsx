@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
+import { MenuArrowIcon } from '../icons/menuArrowIcon';
 
 interface SideMenuProps {
   isOpen: boolean;
@@ -51,10 +52,15 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`inline-block py-1 text-base text-gray-700 sm:text-lg md:text-xl lg:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
+                    className={`inline-flex py-1 text-base text-gray-700 sm:text-lg md:text-xl lg:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
                     onClick={onClose}
                   >
-                    {label}
+                    <span>{label}</span>
+                    <span
+                      className={`ml-5.5 self-center sm:ml-7.5 md:ml-10 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+                    >
+                      <MenuArrowIcon className='h-2 w-1 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px]' />
+                    </span>
                   </Link>
                 </li>
               ))}
