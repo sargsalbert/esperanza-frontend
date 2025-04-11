@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.2.5",
-    "autoprefixer": "^10.4.21",
     "axios": "^1.8.2",
     "embla-carousel": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
@@ -24,6 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.2",
     "eslint-config-prettier": "^10.1.1",
