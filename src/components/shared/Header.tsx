@@ -37,24 +37,26 @@ const Header = () => {
           >
             <button
               onClick={toggleMenu}
-              className='relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[4.2px] sm:mr-7.5 sm:w-[40px] sm:gap-[7px] md:mr-10'
+              className={`relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[5px] sm:mr-7.5 sm:w-[40px] sm:gap-[8px] md:mr-10`}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <span
-                className={`block h-[2px] w-[24px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[40px] ${
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[18px] translate-y-[6px] rotate-45 sm:w-[24px] sm:translate-y-[10.5px]'
-                    : ''
+                    ? 'w-[24px] translate-y-[7px] rotate-45 sm:w-[40px] sm:translate-y-[11px]'
+                    : 'w-[24px] sm:w-[40px]'
                 }`}
               />
               <span
-                className={`block h-[2px] w-[18px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[30px] ${isMenuOpen ? 'opacity-0' : ''}`}
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
+                  isMenuOpen ? 'w-0 opacity-0' : 'w-[18px] sm:w-[30px]'
+                }`}
               />
               <span
-                className={`block h-[2px] w-[12px] origin-center bg-gray-800 transition-all duration-400 sm:h-[3px] sm:w-[20px] ${
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[24px] translate-y-[-6px] -rotate-45 sm:w-[40px] sm:translate-y-[-9.5px]'
-                    : ''
+                    ? 'w-[24px] -translate-y-[7px] -rotate-45 sm:w-[40px] sm:-translate-y-[11px]'
+                    : 'w-[12px] sm:w-[20px]'
                 }`}
               />
             </button>
