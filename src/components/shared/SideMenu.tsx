@@ -10,6 +10,7 @@ import { MenuArrowIcon } from '../icons/menuArrowIcon';
 interface SideMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  isScrolled: boolean;
 }
 
 const menuItems = [
@@ -23,7 +24,7 @@ const menuItems = [
   { href: '/gallery', label: 'Gallery' },
 ];
 
-export function SideMenu({ isOpen, onClose }: SideMenuProps) {
+export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
   const pathname = usePathname();
 
   const isActive = useCallback((path: string) => pathname === path, [pathname]);
@@ -43,7 +44,7 @@ export function SideMenu({ isOpen, onClose }: SideMenuProps) {
           transition: 'transform 0.4s ease-in-out',
           willChange: 'transform',
         }}
-        className='fixed top-auto bottom-0 left-0 z-100 flex h-[calc(100%_-_84px)] w-full flex-col justify-between overflow-y-auto bg-gray-100 sm:h-[calc(100%_-100px)] sm:w-[430px] md:h-[calc(100%_-_123px)] md:w-[538px] lg:w-[673px]'
+        className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] sm:h-[calc(100%_-_90px)]' : 'h-[calc(100%_-_84px)] sm:h-[calc(100%_-100px)] md:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 sm:w-[430px] md:w-[538px] lg:w-[673px]`}
       >
         <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
           <nav>

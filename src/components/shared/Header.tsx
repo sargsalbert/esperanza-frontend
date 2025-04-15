@@ -24,10 +24,23 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <header className='sticky top-0 right-0 left-0 z-90 w-full bg-gray-100 shadow-xs'>
-        <div className='mx-auto flex h-[84px] items-center justify-between px-5 py-2 sm:h-[100px] sm:px-7.5 md:h-[123px] md:px-10 lg:px-15'>
+        <div
+          className={`mx-auto flex h-[84px] items-center justify-between px-5 py-2 transition-all duration-300 sm:px-7.5 md:px-10 lg:px-15 ${isScrolled ? 'h-[84px] sm:h-[90px]' : 'h-[84px] sm:h-[100px] md:h-[123px]'} `}
+        >
           <div
             className={`flex items-center ${
               isMenuOpen
@@ -75,7 +88,9 @@ const Header = () => {
             }`}
           >
             <Link href='/'>
-              <LogoIcon className='h-[52px] w-[131px] sm:h-[63px] sm:w-[159px] md:h-[79px] md:w-[199px]' />
+              <LogoIcon
+                className={`w-[131px] transition-all duration-300 sm:w-[159px] md:w-[199px] ${isScrolled ? 'h-[63px]' : 'h-[52px] sm:h-[63px] md:h-[79px]'} `}
+              />
             </Link>
           </div>
           <div className='hidden items-center sm:flex'>
@@ -85,7 +100,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <SideMenu isOpen={isMenuOpen} onClose={toggleMenu} />
+      <SideMenu
+        isOpen={isMenuOpen}
+        onClose={toggleMenu}
+        isScrolled={isScrolled}
+      />
     </>
   );
 };
