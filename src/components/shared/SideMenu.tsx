@@ -14,11 +14,11 @@ interface SideMenuProps {
 
 const menuItems = [
   { href: '/resort-overview', label: 'Resort Overview' },
-  { href: '/rooms', label: 'Rooms & Suites' },
-  { href: '/about', label: 'Villas' },
-  { href: '/products', label: 'SPA' },
-  { href: '/contact', label: 'Dining' },
-  { href: '/events', label: 'Events' },
+  { href: '/rooms-suites', label: 'Rooms & Suites' },
+  { href: '/villas', label: 'Villas' },
+  { href: '/spa', label: 'SPA' },
+  { href: '/dining', label: 'Dining' },
+  { href: '/meetings-events', label: 'Events' },
   { href: '/experience', label: 'Experience' },
   { href: '/gallery', label: 'Gallery' },
 ];

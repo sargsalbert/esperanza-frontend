@@ -15,10 +15,12 @@ const SectionGrid = ({
   title,
   description,
   items,
+  showKnowMore,
 }: {
   title: string;
   description: string;
   items: ItemProps[];
+  showKnowMore?: boolean;
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -71,7 +73,11 @@ const SectionGrid = ({
 
   return (
     <div className='mb-12.5 sm:mb-15 lg:mb-20'>
-      <SectionHeader title={title} description={description} />
+      <SectionHeader
+        title={title}
+        description={description}
+        showKnowMore={showKnowMore}
+      />
 
       <div
         className='relative overflow-hidden md:mx-7.5 lg:mx-15'

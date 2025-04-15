@@ -249,3 +249,76 @@ export const items2: ItemProps[] = [
       '8 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
   },
 ];
+
+export const sectionsVillas = [
+  {
+    id: 1,
+    title: 'VILLAS',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: 'fdsfsdfsdf',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.6.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'VILLAS 2',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'overview 2',
+        tabContent: 'sdfsdafafafafasdfsd 2',
+      },
+      {
+        id: 2,
+        tabName: 'amenities 2',
+        tabContent: 'fdsfsdfsdf 2',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.9.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-6.1.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-6.2.jpg',
+      },
+      {
+        id: 6,
+        image: '/resort-6.jpg',
+      },
+    ],
+  },
+];
