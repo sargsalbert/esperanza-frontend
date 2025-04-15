@@ -2,7 +2,7 @@ import { items, sectionsVillas } from '@/components/home/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import ImageWithCard from '@/components/villas/imageWithCard';
+import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import Image from 'next/image';
 
 export default async function Villas() {

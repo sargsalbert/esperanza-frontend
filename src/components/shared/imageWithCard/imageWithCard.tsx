@@ -4,8 +4,11 @@ import Image from 'next/image';
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { SlideLeftIcon } from '../icons/slideLeftIcon';
-import { SlideRightIcon } from '../icons/slideRightIcon';
+import { SlideLeftIcon } from '../../icons/slideLeftIcon';
+import { SlideRightIcon } from '../../icons/slideRightIcon';
+import Tabs from './Tabs';
+import Thumbnail from './Thumbnail';
+import Actions from './Actions';
 
 export interface RoomFeature {
   id: number;
@@ -142,21 +145,15 @@ const ImageWithCard = ({
                 <div className='mx-auto mb-5 flex h-0.5 basis-[305px] bg-yellow-500 sm:h-[3px] sm:w-[325px]' />
               </div>
 
-              <div className='mb-4 flex justify-center space-x-4'>
-                {tabs?.map((tab, idx) => (
-                  <button
-                    key={idx}
-                    className={`px-3 py-1 text-sm transition-colors ${idx === activeTab ? 'font-medium text-gray-900' : 'text-gray-500'}`}
-                    onClick={() => setActiveTab(idx)}
-                  >
-                    {tab.tabName}
-                  </button>
-                ))}
-              </div>
-
-              <div className='text-[13px] leading-6 text-gray-900'>
-                {tabs && tabs.length > 0 ? tabs[activeTab]?.tabContent : ''}
-              </div>
+              <Tabs
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+              <Actions
+                secondaryButton={secondaryButton}
+                primaryButton={primaryButton}
+              />
             </div>
           </div>
         </div>
@@ -176,46 +173,16 @@ const ImageWithCard = ({
                   {title}
                 </h2>
               </div>
-
-              <div className='mb-6 flex'>
-                {tabs?.map((tab, idx) => (
-                  <div key={tab.id} className='flex items-center'>
-                    <button
-                      key={idx}
-                      className={`cursor-pointer text-lg font-semibold transition-colors ${idx === activeTab ? 'text-gray-900' : 'text-gray-700'}`}
-                      onClick={() => setActiveTab(idx)}
-                    >
-                      {tab.tabName}
-                    </button>
-                    {idx < tabs.length - 1 && (
-                      <div className='mx-4.5 h-3.5 w-0.5 bg-yellow-500' />
-                    )}
-                  </div>
-                ))}
-              </div>
-              <div className='mb-6 text-base leading-8'>
-                {tabs && tabs.length > 0 ? tabs[activeTab]?.tabContent : ''}
-              </div>
+              <Tabs
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
             </div>
-            <div
-              className={`flex ${secondaryButton ? 'justify-between' : 'justify-end'}`}
-            >
-              {secondaryButton && (
-                <button
-                  onClick={secondaryButton.onClick}
-                  className='h-12.5 w-[calc(50%-18px)] cursor-pointer rounded-full border-3 border-gray-800 px-4 text-base font-semibold text-gray-800'
-                >
-                  {secondaryButton.text}
-                </button>
-              )}
-
-              <button
-                onClick={primaryButton.onClick}
-                className='h-12.5 w-[calc(50%-18px)] cursor-pointer rounded-full bg-gray-800 px-4 text-base font-semibold text-gray-50'
-              >
-                {primaryButton.text}
-              </button>
-            </div>
+            <Actions
+              secondaryButton={secondaryButton}
+              primaryButton={primaryButton}
+            />
           </div>
 
           <div
@@ -237,7 +204,6 @@ const ImageWithCard = ({
                 </div>
               ))}
             </div>
-            {/* Navigation controls with thumbnails */}
             <div
               className={`absolute top-1/2 z-30 flex w-full -translate-y-1/2 justify-between ${imageFirst ? 'pr-[219px] pl-[50px]' : 'pr-[50px] pl-[219px]'}`}
             >
@@ -248,7 +214,6 @@ const ImageWithCard = ({
               >
                 <SlideLeftIcon />
               </button>
-
               <button
                 className='flex h-[57px] w-[57px] cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70'
                 onClick={scrollNext}
@@ -269,23 +234,13 @@ const ImageWithCard = ({
             className={`flex w-[calc(100%-702px)] space-x-[5px] ${imageFirst ? 'justify-end' : 'justify-start'} `}
           >
             {features?.map((feature, index) => (
-              <button
+              <Thumbnail
                 key={index}
-                className={`h-21 w-28 cursor-pointer overflow-hidden transition-all duration-300 ${
-                  index === currentIndex ? '' : 'opacity-50'
-                }`}
-                onClick={() => emblaApi?.scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                <div className='relative h-full w-full'>
-                  <Image
-                    src={feature.image || '/placeholder.svg'}
-                    alt={`Thumbnail ${index + 1}`}
-                    fill
-                    className='object-cover'
-                  />
-                </div>
-              </button>
+                src={feature.image}
+                index={index}
+                currentIndex={currentIndex}
+                emblaApi={emblaApi}
+              />
             ))}
           </div>
         </div>
