@@ -46,7 +46,7 @@ const Header = () => {
           <div
             className={`flex items-center ${
               isMenuOpen
-                ? 'w-full justify-between sm:w-auto sm:justify-start'
+                ? 'w-full justify-between md:w-auto md:justify-start'
                 : ''
             }`}
           >
@@ -88,7 +88,7 @@ const Header = () => {
 
           <div
             className={`absolute left-1/2 -translate-x-1/2 transform ${
-              isMenuOpen ? 'hidden sm:inline-block' : ''
+              isMenuOpen ? 'hidden md:inline-block' : ''
             }`}
           >
             <Link href='/'>

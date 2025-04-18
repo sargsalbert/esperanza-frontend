@@ -46,19 +46,19 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
         }}
         className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 md:w-[538px] lg:w-[673px]`}
       >
-        <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 2xl:px-15'>
+        <div className='px-6 py-6 md:px-10 md:py-10 2xl:px-15'>
           <nav>
-            <ul className='space-y-4.5 sm:space-y-6 sm:pl-2.5 md:pl-3'>
+            <ul className='space-y-4.5 md:space-y-5 md:pl-3 2xl:space-y-6'>
               {menuItems.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`inline-flex py-1 text-base text-gray-700 sm:text-lg md:text-xl lg:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
+                    className={`inline-flex py-1 text-base text-gray-700 sm:text-lg lg:text-xl 2xl:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
                     onClick={onClose}
                   >
                     <span>{label}</span>
                     <span
-                      className={`ml-5.5 self-center sm:ml-7.5 md:ml-10 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+                      className={`ml-5.5 self-center md:ml-7.5 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
                     >
                       <MenuArrowIcon className='h-2 w-1 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px]' />
                     </span>
@@ -74,15 +74,15 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
           </button>
         </div>
 
-        <div className='bg-gray-200 px-6 pt-7.5 pb-4 sm:px-7.5 md:px-10 lg:px-15'>
-          <div className='mb-7.5 flex items-center space-x-5 sm:mb-12.5 sm:space-x-6.5'>
+        <div className='bg-gray-200 px-6 pt-7.5 pb-4 md:px-10 lg:px-15'>
+          <div className='mb-7.5 flex items-center space-x-5 md:mb-12.5 md:space-x-6.5'>
             <PhoneIcon />
             <div className='h-5 w-px bg-[#9A9A9A]'></div>
             <EmaiIcon />
             <div className='h-5 w-px bg-[#9A9A9A]'></div>
             <MapIcon />
           </div>
-          <p className='text-center text-xs text-gray-700 sm:text-sm'>
+          <p className='text-center text-xs text-gray-700 md:text-sm'>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
           </p>
         </div>
