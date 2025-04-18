@@ -82,7 +82,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
                     >
                       <span>{label}</span>
                       <span
-                        className={`ml-5.5 self-center md:ml-7.5 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+                        className={`ml-5.5 self-center md:ml-7.5 lg:ml-10 2xl:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
                       >
                         <MenuArrowIcon
                           className={`h-2 w-1 transition-colors duration-300 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px] ${iconColor}`}
