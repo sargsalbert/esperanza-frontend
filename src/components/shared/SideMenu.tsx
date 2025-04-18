@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
@@ -28,6 +28,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
   const pathname = usePathname();
 
   const isActive = useCallback((path: string) => pathname === path, [pathname]);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
     <>
@@ -49,22 +50,48 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
         <div className='px-6 py-6 md:px-10 md:py-10 2xl:px-15'>
           <nav>
             <ul className='space-y-4.5 md:space-y-5 md:pl-3 2xl:space-y-6'>
-              {menuItems.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={`inline-flex py-1 text-base text-gray-700 sm:text-lg lg:text-xl 2xl:text-2xl ${isActive(href) ? 'font-medium text-gray-900' : ''}`}
-                    onClick={onClose}
-                  >
-                    <span>{label}</span>
-                    <span
-                      className={`ml-5.5 self-center md:ml-7.5 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+              {menuItems.map(({ href, label }) => {
+                const isHovered = hoveredItem === href;
+                const isAnyHovering = hoveredItem !== null;
+
+                // Set class logic
+                const linkClass = isHovered
+                  ? 'text-gray-900'
+                  : isAnyHovering
+                    ? 'text-gray-600'
+                    : isActive(href)
+                      ? 'text-gray-900'
+                      : 'text-gray-700';
+
+                const iconColor = isHovered
+                  ? 'text-gray-900'
+                  : isAnyHovering
+                    ? 'text-gray-600'
+                    : isActive(href)
+                      ? 'text-gray-900'
+                      : 'text-gray-700';
+
+                return (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      onClick={onClose}
+                      onMouseEnter={() => setHoveredItem(href)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      className={`inline-flex py-1 text-base transition-colors duration-300 sm:text-lg lg:text-xl 2xl:text-2xl ${linkClass}`}
                     >
-                      <MenuArrowIcon className='h-2 w-1 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px]' />
-                    </span>
-                  </Link>
-                </li>
-              ))}
+                      <span>{label}</span>
+                      <span
+                        className={`ml-5.5 self-center md:ml-7.5 lg:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+                      >
+                        <MenuArrowIcon
+                          className={`h-2 w-1 transition-colors duration-300 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px] ${iconColor}`}
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
