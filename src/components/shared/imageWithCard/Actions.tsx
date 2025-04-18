@@ -1,4 +1,4 @@
-import { ButtonConfig } from './imageWithCard';
+import { ButtonConfig } from './types';
 
 interface ActionsProps {
   primaryButton: ButtonConfig;
@@ -8,20 +8,19 @@ interface ActionsProps {
 const Actions = ({ secondaryButton, primaryButton }: ActionsProps) => {
   return (
     <div
-      className={`flex space-x-4 ${secondaryButton ? 'justify-center sm:justify-between' : 'justify-center sm:justify-end'}`}
+      className={`flex space-x-[14px] md:space-x-[36px] ${secondaryButton ? 'justify-center md:justify-between' : 'justify-center md:justify-end'}`}
     >
       {secondaryButton && (
         <button
           onClick={secondaryButton.onClick}
-          className='h-9 min-w-32 cursor-pointer rounded-full border-2 border-gray-800 px-4 text-sm font-semibold text-gray-800 sm:h-12.5 sm:w-[calc(50%-18px)] sm:border-3 sm:text-base'
+          className={`h-9 cursor-pointer rounded-full border-2 border-gray-800 bg-transparent px-5 py-1 text-sm font-semibold text-gray-800 md:h-10.5 md:text-base 2xl:h-12.5 2xl:border-3 2xl:text-lg ${secondaryButton ? 'min-w-[126px] md:w-[50%]' : 'min-w-63 md:min-w-38 2xl:min-w-60'} `}
         >
           {secondaryButton.text}
         </button>
       )}
-
       <button
         onClick={primaryButton.onClick}
-        className='h-9 min-w-32 cursor-pointer rounded-full bg-gray-800 px-4 text-sm font-semibold text-gray-50 sm:h-12.5 sm:w-[calc(50%-18px)] sm:text-base'
+        className={`h-9 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 md:h-10.5 md:text-base 2xl:h-12.5 2xl:border-3 2xl:text-lg ${secondaryButton ? 'min-w-[126px] md:w-[50%]' : 'min-w-63 md:min-w-38 2xl:min-w-60'} `}
       >
         {primaryButton.text}
       </button>

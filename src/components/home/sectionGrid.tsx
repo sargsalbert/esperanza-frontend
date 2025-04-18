@@ -12,13 +12,13 @@ export type ItemProps = {
 };
 
 const SectionGrid = ({
-  title,
-  description,
+  title = '',
+  description = '',
   items,
   showKnowMore,
 }: {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   items: ItemProps[];
   showKnowMore?: boolean;
 }) => {
@@ -26,7 +26,7 @@ const SectionGrid = ({
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();
@@ -73,14 +73,16 @@ const SectionGrid = ({
 
   return (
     <div className='mb-12.5 sm:mb-15 lg:mb-20'>
-      <SectionHeader
-        title={title}
-        description={description}
-        showKnowMore={showKnowMore}
-      />
+      {title && description && (
+        <SectionHeader
+          title={title}
+          description={description}
+          showKnowMore={showKnowMore}
+        />
+      )}
 
       <div
-        className='relative overflow-hidden md:mx-7.5 lg:mx-15'
+        className='relative overflow-hidden md:mx-10 2xl:mx-15'
         ref={emblaRef}
       >
         <div className='flex'>

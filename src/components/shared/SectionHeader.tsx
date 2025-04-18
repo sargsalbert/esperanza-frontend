@@ -12,7 +12,7 @@ const SectionHeader = ({
   showKnowMore?: boolean;
 }) => {
   return (
-    <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:px-7.5 sm:pb-7.5 lg:px-15'>
+    <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-10 2xl:px-15'>
       {smallTitle && (
         <p className='mb-7.5 text-[13px] text-gray-900 italic sm:mb-12.5 sm:text-base'>
           {smallTitle}

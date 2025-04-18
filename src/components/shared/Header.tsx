@@ -37,9 +37,11 @@ const Header = () => {
 
   return (
     <>
-      <header className='sticky top-0 right-0 left-0 z-90 w-full bg-gray-100 shadow-xs'>
+      <header
+        className={`sticky top-0 right-0 left-0 z-90 w-full bg-gray-100 ${isMenuOpen ? '' : 'shadow-xs'}`}
+      >
         <div
-          className={`mx-auto flex h-[84px] items-center justify-between px-5 py-2 transition-all duration-300 sm:px-7.5 md:px-10 lg:px-15 ${isScrolled ? 'h-[84px] sm:h-[90px]' : 'h-[84px] sm:h-[100px] md:h-[123px]'} `}
+          className={`mx-auto flex items-center justify-between px-5 py-2 transition-all duration-300 md:px-10 2xl:px-15 ${isScrolled ? 'h-[84px] md:h-[90px] 2xl:h-[98px]' : 'h-[84px] md:h-[110px] 2xl:h-[123px]'} `}
         >
           <div
             className={`flex items-center ${
@@ -50,32 +52,34 @@ const Header = () => {
           >
             <button
               onClick={toggleMenu}
-              className={`relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[5px] sm:mr-7.5 sm:w-[40px] sm:gap-[8px] md:mr-10`}
+              className={`relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[5px] md:mr-7.5 md:w-[32px] md:gap-[7px] 2xl:mr-10 2xl:w-[40px] 2xl:gap-[8px]`}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <span
-                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[24px] translate-y-[7px] rotate-45 sm:w-[40px] sm:translate-y-[11px]'
-                    : 'w-[24px] sm:w-[40px]'
+                    ? 'w-[24px] translate-y-[7px] rotate-45 md:w-[32px] md:translate-y-[9px] 2xl:w-[40px] 2xl:translate-y-[11px]'
+                    : 'w-[24px] md:w-[32px] 2xl:w-[40px]'
                 }`}
               />
               <span
-                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
-                  isMenuOpen ? 'w-0 opacity-0' : 'w-[18px] sm:w-[30px]'
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
+                  isMenuOpen
+                    ? 'w-0 opacity-0'
+                    : 'w-[18px] md:w-[24px] 2xl:w-[30px]'
                 }`}
               />
               <span
-                className={`block h-[2px] bg-gray-800 transition-all duration-300 sm:h-[3px] ${
+                className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[24px] -translate-y-[7px] -rotate-45 sm:w-[40px] sm:-translate-y-[11px]'
-                    : 'w-[12px] sm:w-[20px]'
+                    ? 'w-[24px] -translate-y-[7px] -rotate-45 md:w-[32px] md:-translate-y-[9px] 2xl:w-[40px] 2xl:-translate-y-[11px]'
+                    : 'w-[12px] md:w-[16px] 2xl:w-[20px]'
                 }`}
               />
             </button>
             <div
               className={`${
-                isMenuOpen ? 'inline-block' : 'hidden sm:inline-block'
+                isMenuOpen ? 'inline-block' : 'hidden md:inline-block'
               }`}
             >
               <LanguageSelector />
@@ -89,12 +93,12 @@ const Header = () => {
           >
             <Link href='/'>
               <LogoIcon
-                className={`w-[131px] transition-all duration-300 sm:w-[159px] md:w-[199px] ${isScrolled ? 'h-[63px]' : 'h-[52px] sm:h-[63px] md:h-[79px]'} `}
+                className={`transition-all duration-300 ${isScrolled ? 'h-[52px] w-[131px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
               />
             </Link>
           </div>
-          <div className='hidden items-center sm:flex'>
-            <button className='min-h-9 cursor-pointer rounded-4xl bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50 sm:min-w-30 sm:text-base md:min-h-11 md:min-w-38 md:text-lg lg:min-w-48'>
+          <div className='hidden items-center md:flex'>
+            <button className='min-h-9 cursor-pointer rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:min-h-10.5 md:min-w-38 md:text-base 2xl:min-h-11 2xl:min-w-48 2xl:text-lg'>
               Book
             </button>
           </div>

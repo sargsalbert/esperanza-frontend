@@ -322,3 +322,201 @@ export const sectionsVillas = [
     ],
   },
 ];
+
+export const sectionsDining = [
+  {
+    id: 1,
+    title: 'Restaurants',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent: 'fdsfsdfsdf',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.6.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Restaurants 2',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview 2',
+        tabContent: 'sdfsdafafafafasdfsd 2',
+      },
+      {
+        id: 2,
+        tabName: 'Details 2',
+        tabContent: 'fdsfsdfsdf 2',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.9.jpg',
+      },
+    ],
+  },
+];
+
+export const sectionsExperience = [
+  {
+    id: 1,
+    title: 'Treatments',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent: 'fdsfsdfsdf',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.6.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Day spa',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview 2',
+        tabContent: 'sdfsdafafafafasdfsd 2',
+      },
+      {
+        id: 2,
+        tabName: 'Details 2',
+        tabContent: 'fdsfsdfsdf 2',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.9.jpg',
+      },
+    ],
+  },
+];
+
+export const sectionsSpa = [
+  {
+    id: 1,
+    title: 'TREATMENTS',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent:
+          'typesetting industry. Lorem Ipsum has been the indust text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.6.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'DAY SPA',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr ndard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the i00s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the rd dumm',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.7.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.9.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-6.1.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-6.2.jpg',
+      },
+      {
+        id: 6,
+        image: '/resort-6.jpg',
+      },
+    ],
+  },
+];

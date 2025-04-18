@@ -1,4 +1,4 @@
-import { items, sectionsVillas } from '@/components/home/data';
+import { items, sectionsSpa } from '@/components/home/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
@@ -17,7 +17,7 @@ export default async function Villas() {
         showKnowMore={false}
       />
 
-      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 sm:px-7.5 lg:mb-20 lg:gap-3 lg:px-15'>
+      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
         <div className='relative col-span-1 row-span-2 h-[262px] sm:h-[679px] lg:h-[970px]'>
           <Image
             src='/resort-777.jpg'
@@ -56,7 +56,7 @@ export default async function Villas() {
         showKnowMore={false}
       />
 
-      {sectionsVillas.map((v, index) => (
+      {sectionsSpa.map((v, index) => (
         <div key={v.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <ImageWithCard
             title={v.title}

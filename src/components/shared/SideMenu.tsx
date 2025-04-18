@@ -44,9 +44,9 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
           transition: 'transform 0.4s ease-in-out',
           willChange: 'transform',
         }}
-        className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] sm:h-[calc(100%_-_90px)]' : 'h-[calc(100%_-_84px)] sm:h-[calc(100%_-100px)] md:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 sm:w-[430px] md:w-[538px] lg:w-[673px]`}
+        className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 md:w-[538px] lg:w-[673px]`}
       >
-        <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 lg:px-15'>
+        <div className='px-6 py-6 sm:px-7.5 sm:py-9 md:px-10 md:py-10 2xl:px-15'>
           <nav>
             <ul className='space-y-4.5 sm:space-y-6 sm:pl-2.5 md:pl-3'>
               {menuItems.map(({ href, label }) => (
@@ -68,7 +68,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
             </ul>
           </nav>
         </div>
-        <div className='mx-6 mt-auto mb-12.5 flex sm:hidden'>
+        <div className='mx-6 mt-auto mb-12.5 flex md:hidden'>
           <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
             Book
           </button>

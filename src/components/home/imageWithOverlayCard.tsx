@@ -27,7 +27,7 @@ const ImageWithOverlayCard = ({
   // Check if we're on mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 641);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();
@@ -134,7 +134,7 @@ const ImageWithOverlayCard = ({
           className={`flex h-[562px] md:h-[678px] ${imageFirst ? 'flex-row' : 'flex-row-reverse'}`}
         >
           <div
-            className={`absolute z-[19] flex min-h-[260px] w-[582px] flex-col self-center bg-gray-100 px-5 pt-6 pb-2.5 shadow-xs md:min-h-[318px] md:w-[642px] md:px-10 md:pt-12 md:pb-5 ${imageFirst ? 'right-7.5 lg:right-15' : 'left-7.5 lg:left-15'}`}
+            className={`absolute z-[19] flex min-h-[260px] w-[582px] flex-col self-center bg-gray-100 px-5 pt-6 pb-2.5 shadow-xs md:min-h-[318px] md:w-[642px] md:px-10 md:pt-12 md:pb-5 ${imageFirst ? 'right-7.5 md:right-10 2xl:right-15' : 'left-7.5 md:left-10 2xl:left-15'}`}
           >
             <div className='relative flex flex-col justify-center'>
               {features.map((feature, index) => (

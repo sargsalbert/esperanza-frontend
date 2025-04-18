@@ -29,7 +29,7 @@ const LanguageSelector = ({
           e.preventDefault();
           handleLanguageChange('EN');
         }}
-        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors sm:text-base md:text-lg ${
+        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'EN' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
@@ -41,7 +41,7 @@ const LanguageSelector = ({
           e.preventDefault();
           handleLanguageChange('LT');
         }}
-        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors sm:text-base md:text-lg ${
+        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'LT' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
