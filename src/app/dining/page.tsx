@@ -1,5 +1,6 @@
 import { sectionsDining } from '@/components/home/data';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
+import { TabsData } from '@/components/shared/imageWithCard/types';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 
@@ -20,7 +21,7 @@ export default async function Villas() {
           <ImageWithCard
             title={v.title}
             features={v.features}
-            tabs={v.tabs}
+            tabs={v.tabs as TabsData[]}
             imageFirst={index % 2 !== 0}
             primaryButton={{
               text: 'Reserve',

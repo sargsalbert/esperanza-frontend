@@ -1,12 +1,7 @@
-interface TabItem {
-  id: string | number;
-  tabName: string;
-  tabContent: string | string[] | [string, string][];
-  tabContentType?: 'bullet' | 'twoColumnLine';
-}
+import { TabsData } from './types';
 
 interface TabsProps {
-  tabs: TabItem[];
+  tabs: TabsData[];
   activeTab: number;
   setActiveTab: (index: number) => void;
 }

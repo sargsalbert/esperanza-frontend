@@ -4,6 +4,7 @@ import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import Image from 'next/image';
+import { TabsData } from '@/components/shared/imageWithCard/types';
 
 export default async function Villas() {
   return (
@@ -61,7 +62,7 @@ export default async function Villas() {
           <ImageWithCard
             title={v.title}
             features={v.features}
-            tabs={v.tabs}
+            tabs={v.tabs as TabsData[]}
             imageFirst={index % 2 !== 0}
             primaryButton={{
               text: 'Book',
