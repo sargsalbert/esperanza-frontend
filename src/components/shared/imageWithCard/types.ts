@@ -6,8 +6,8 @@ export interface RoomFeature {
 export interface TabsData {
   id: number;
   tabName: string;
-  tabContent: string;
-  tabContentType?: 'bullet' | 'standard' | 'twoColumnLine';
+  tabContent: string | string[] | [string, string][];
+  tabContentType?: 'bullet' | 'twoColumnLine';
 }
 
 export interface ButtonConfig {

@@ -1,8 +1,8 @@
 interface TabItem {
   id: string | number;
   tabName: string;
-  tabContent: React.ReactNode;
-  tabContentType?: 'bullet' | 'standard' | 'twoColumnLine';
+  tabContent: string | string[] | [string, string][];
+  tabContentType?: 'bullet' | 'twoColumnLine';
 }
 
 interface TabsProps {
