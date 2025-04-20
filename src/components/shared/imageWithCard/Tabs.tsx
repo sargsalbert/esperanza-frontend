@@ -24,7 +24,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
               {tab.tabName}
             </button>
             {idx < tabs.length - 1 && (
-              <div className='h-3.5 w-0.5 bg-yellow-500 md:mx-4.5' />
+              <div className='h-3.5 w-0.5 shrink-0 bg-yellow-500 md:mx-4.5' />
             )}
           </div>
         ))}
