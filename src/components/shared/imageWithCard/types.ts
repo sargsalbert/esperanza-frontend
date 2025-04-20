@@ -7,6 +7,7 @@ export interface TabsData {
   id: number;
   tabName: string;
   tabContent: string;
+  tabContentType?: 'bullet' | 'standard' | 'twoColumnLine';
 }
 
 export interface ButtonConfig {
