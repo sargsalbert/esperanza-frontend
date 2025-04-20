@@ -24,7 +24,7 @@ const TextBlock = ({
 }: TextBlockProps) => {
   return (
     <div
-      className={`z-10 flex w-[calc(100%-40px)] flex-col justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:min-h-[518px] md:w-[45%] md:p-10 ${imageFirst ? 'md:m-10 md:-ml-[10%] 2xl:m-15 2xl:-ml-[10%]' : 'md:m-10 md:-mr-[10%] 2xl:m-15 2xl:-mr-[10%]'}`}
+      className={`z-10 flex w-[calc(100%-40px)] shrink-0 flex-col justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:min-h-[518px] md:w-[40%] md:p-10 ${imageFirst ? 'md:m-10 md:-ml-[80px] 2xl:m-15 2xl:-ml-[120px]' : 'md:m-10 md:-mr-[80px] 2xl:m-15 2xl:-mr-[120px]'}`}
     >
       <div className='relative flex flex-col justify-center'>
         <div className='mb-0 text-center md:mb-4.5 md:text-left'>
@@ -43,14 +43,3 @@ const TextBlock = ({
 };
 
 export default TextBlock;
-
-{
-  /* <div className='bg-gray-100 px-2.5 py-6 text-center shadow-xs'>
-<h2 className='mb-4 text-xl leading-6 font-semibold text-gray-800'>
-  {title}
-</h2>
-<div className='flex'>
-  <div className='mx-auto mb-5 flex h-0.5 basis-[305px] bg-yellow-500 sm:h-[3px] sm:w-[325px]' />
-</div>
-</div> */
-}

@@ -16,22 +16,8 @@ const ImageWithCard = ({
   primaryButton,
   secondaryButton,
 }: ImageWithOverlayCardProps) => {
-  const [isMobile, setIsMobile] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -83,24 +69,22 @@ const ImageWithCard = ({
           secondaryButton={secondaryButton}
           primaryButton={primaryButton}
         />
-        {isMobile && (
-          <div className='relative z-20 mx-auto -mt-[83px] max-w-[calc(100%-40px)]'>
-            <div className='mb-3.5 flex justify-center'>
-              {features?.map((_, index) => (
-                <button
-                  key={index}
-                  className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
-                    index === currentIndex ? 'bg-gray-50' : 'bg-[#B8B8B899]'
-                  }`}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
+        <div className='relative z-20 mx-auto -mt-[83px] block max-w-[calc(100%-40px)] md:hidden'>
+          <div className='mb-3.5 flex justify-center'>
+            {features?.map((_, index) => (
+              <button
+                key={index}
+                className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
+                  index === currentIndex ? 'bg-gray-50' : 'bg-[#B8B8B899]'
+                }`}
+                onClick={() => emblaApi?.scrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
-        )}
+        </div>
         <div
-          className='relative h-[318px] overflow-hidden md:h-auto md:w-[calc(60%+40px)] 2xl:w-[calc(60%+60px)]'
+          className='relative h-[318px] shrink-0 overflow-hidden md:h-auto md:w-[calc(60%+40px)] 2xl:w-[calc(60%+60px)]'
           ref={emblaRef}
         >
           <div className='flex h-full w-full'>
@@ -119,34 +103,29 @@ const ImageWithCard = ({
             ))}
           </div>
         </div>
-        {!isMobile && (
-          <div
-            className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between md:flex md:w-[52%] md:px-[2%] 2xl:w-[52%] 2xl:px-[3%] ${imageFirst ? 'left-0' : 'right-0'}`}
-          >
-            <SlideButtons scrollPrev={scrollPrev} scrollNext={scrollNext} />
-          </div>
-        )}
-      </div>
-
-      {!isMobile && (
         <div
-          className={`mt-9.5 flex justify-end ${imageFirst ? 'flex-row-reverse' : 'flex-row'} `}
+          className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between md:flex md:w-[calc(60%-40px)] md:px-[40px] 2xl:w-[calc(60%-60px)] 2xl:px-[60px] ${imageFirst ? 'left-0' : 'right-0'}`}
         >
-          <div
-            className={`flex w-[63%] space-x-[5px] ${imageFirst ? 'justify-center' : 'justify-center'} `}
-          >
-            {features?.map((feature, index) => (
-              <Thumbnail
-                key={index}
-                src={feature.image}
-                index={index}
-                currentIndex={currentIndex}
-                emblaApi={emblaApi}
-              />
-            ))}
-          </div>
+          <SlideButtons scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>
-      )}
+      </div>
+      <div
+        className={`mt-9.5 hidden justify-end md:flex ${imageFirst ? 'flex-row-reverse' : 'flex-row'} `}
+      >
+        <div
+          className={`flex space-x-[5px] ${imageFirst ? 'justify-end md:w-[calc(60%-40px)] 2xl:w-[calc(60%-60px)]' : 'justify-start md:w-[calc(60%-40px)] 2xl:w-[calc(60%-60px)]'} `}
+        >
+          {features?.map((feature, index) => (
+            <Thumbnail
+              key={index}
+              src={feature.image}
+              index={index}
+              currentIndex={currentIndex}
+              emblaApi={emblaApi}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 };

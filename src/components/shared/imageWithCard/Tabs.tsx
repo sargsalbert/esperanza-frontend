@@ -2,6 +2,7 @@ interface TabItem {
   id: string | number;
   tabName: string;
   tabContent: React.ReactNode;
+  tabContentType?: 'bullet' | 'standard' | 'twoColumnLine';
 }
 
 interface TabsProps {
