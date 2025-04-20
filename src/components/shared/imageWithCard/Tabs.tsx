@@ -12,6 +12,45 @@ interface TabsProps {
 }
 
 const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
+  const tab = tabs[activeTab];
+
+  const renderContent = () => {
+    switch (tab.tabContentType) {
+      case 'bullet':
+        return (
+          <ul className='list-disc space-y-2 pl-5'>
+            {(tab.tabContent as string[]).map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        );
+      case 'twoColumnLine':
+        return (
+          <div className=''>
+            {(tab.tabContent as [string, string][]).map(([label, value], i) => (
+              <div
+                key={i}
+                className='flex items-center border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
+              >
+                <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
+                  {label}
+                </span>
+                <span className='overflow-hidden text-sm font-semibold text-gray-900 md:text-lg'>
+                  {value}
+                </span>
+              </div>
+            ))}
+          </div>
+        );
+      default:
+        return (
+          <div className='text-center text-base leading-6 text-gray-900 md:text-left md:text-base md:leading-8'>
+            {tab.tabContent}
+          </div>
+        );
+    }
+  };
+
   return (
     <>
       <div className='mx-auto flex w-[85%] justify-around md:mx-0 md:w-auto md:justify-start'>
@@ -30,9 +69,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
           </div>
         ))}
       </div>
-      <div className='mt-0 mb-6 text-center text-sm leading-8 md:mt-1 md:text-left md:text-base'>
-        {tabs && tabs.length > 0 ? tabs[activeTab]?.tabContent : ''}
-      </div>
+      <div className='mt-0 mb-6 md:mt-1'>{renderContent()}</div>
     </>
   );
 };

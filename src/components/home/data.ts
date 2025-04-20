@@ -264,7 +264,12 @@ export const sectionsVillas = [
       {
         id: 2,
         tabName: 'Amenities',
-        tabContent: 'fdsfsdfsdf',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
       },
     ],
 
@@ -286,12 +291,18 @@ export const sectionsVillas = [
       {
         id: 1,
         tabName: 'overview 2',
-        tabContent: 'sdfsdafafafafasdfsd 2',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
       },
       {
         id: 2,
         tabName: 'amenities 2',
-        tabContent: 'fdsfsdfsdf 2',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
       },
     ],
     features: [
@@ -337,7 +348,12 @@ export const sectionsDining = [
       {
         id: 2,
         tabName: 'Details',
-        tabContent: 'fdsfsdfsdf',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
 
@@ -359,12 +375,18 @@ export const sectionsDining = [
       {
         id: 1,
         tabName: 'Overview 2',
-        tabContent: 'sdfsdafafafafasdfsd 2',
+        tabContent:
+          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
       },
       {
         id: 2,
         tabName: 'Details 2',
-        tabContent: 'fdsfsdfsdf 2',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
     features: [
@@ -398,7 +420,12 @@ export const sectionsExperience = [
       {
         id: 2,
         tabName: 'Details',
-        tabContent: 'fdsfsdfsdf',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
 
@@ -425,7 +452,12 @@ export const sectionsExperience = [
       {
         id: 2,
         tabName: 'Details 2',
-        tabContent: 'fdsfsdfsdf 2',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
     features: [
@@ -459,8 +491,12 @@ export const sectionsSpa = [
       {
         id: 2,
         tabName: 'Details',
-        tabContent:
-          'typesetting industry. Lorem Ipsum has been the indust text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
 
@@ -488,8 +524,12 @@ export const sectionsSpa = [
       {
         id: 2,
         tabName: 'Details',
-        tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the rd dumm',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
       },
     ],
     features: [
