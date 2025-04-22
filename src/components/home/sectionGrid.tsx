@@ -100,7 +100,7 @@ const SectionGrid = ({
                 />
               </div>
               <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-6 text-center md:px-7 md:pt-7.5 md:pb-10 md:text-left'>
-                <h2 className='text-[20px]/[20px] font-semibold text-gray-800 sm:text-[24px]/[24px] md:text-[28px]/[28px]'>
+                <h2 className='text-[20px]/[20px] font-semibold text-gray-800 uppercase sm:text-[24px]/[24px] md:text-[28px]/[28px]'>
                   {item.title}
                 </h2>
                 <Divider />

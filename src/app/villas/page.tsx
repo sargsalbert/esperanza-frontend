@@ -7,12 +7,12 @@ import { sectionsVillas } from '@/components/api/data';
 export default async function Villas() {
   return (
     <>
-      <PageHeader imgUrl='/resort-7.jpg' title='THE PRINTING AND TYPESETTING' />
+      <PageHeader imgUrl='/resort-7.jpg' title='Villas' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='VILLAS'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='Exclusive private villas designed for complete immersion in nature'
+        title='Private Heavens in Nature'
+        description='For those seeking more space, more privacy, and a deeper sense of stillness, our villas offer an elevated escape experience. Thoughtfully designed and surrounded by nature, each one blends refined comfort with the beauty of the outdoors – ideal for longer stays and effortless living. Whether gathering with family and friends or retreating in quiet, the villas are a secluded extension of the Esperanza experience – calm, spacious, and deeply restorative.'
         showKnowMore={false}
       />
 

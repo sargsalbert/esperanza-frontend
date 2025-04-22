@@ -116,7 +116,7 @@ const ImageWithOverlayCard = ({
                         {feature.title}
                       </h2>
                       <div className='flex'>
-                        <div className='mx-auto mb-5 flex h-0.5 basis-[305px] bg-yellow-500 sm:h-[3px] sm:w-[325px]' />
+                        <div className='mx-auto mb-5 flex h-0.5 bg-yellow-500 sm:h-[3px] sm:w-[325px]' />
                       </div>
                       <p className='text-[13px] leading-6 text-gray-900'>
                         {feature.description}

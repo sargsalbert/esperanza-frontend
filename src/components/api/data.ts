@@ -226,21 +226,35 @@ export const itemExperiencesHome: ItemProps[] = [
 export const sectionsVillas = [
   {
     id: 1,
-    title: 'VILLAS',
+    title: 'Signature Two - Bedroom Villa',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+        tabContent: [
+          'Set just steps from the lake, each of these two-bedroom villas offers a generous and private setting with stunning lake and forest views. Inside, high ceilings, a cozy fireplace, and a spacious living area opens to a private terrace and garden, creating a seamless connection to the outdoors. With space to gather or retreat, it is a place to unwind together – at nature’s pace.',
+          '128 sqm – 2 bedrooms – 7 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace and garden',
+          'Private pier with sunbeds',
+          'Dining space',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway beds at 75.00 EUR per night',
+          '2 cribs permitted',
+          'Daily housekeeping service',
+          'Two-way private transfer',
         ],
         tabContentType: 'bullet',
       },
@@ -259,21 +273,35 @@ export const sectionsVillas = [
   },
   {
     id: 2,
-    title: 'VILLAS 2',
+    title: 'Owner’s Villa',
     tabs: [
       {
         id: 1,
-        tabName: 'overview 2',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabName: 'Overview',
+        tabContent: [
+          'Secluded and expansive, the Owner’s Villa is the resort’s most private retreat. With four bedrooms, panoramic lake and forest views, a spacious living area, a private terrace and garden, and its own spa, the villa offers a setting for true escape. Thoughtfully designed and naturally luxurious, it is ideal for families or gatherings seeking stillness, space, and complete privacy. Rooms can be booked individually upon request and subject to availability.',
+          '250 sqm – 4 bedrooms – 10 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
-        tabName: 'amenities 2',
+        tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace and garden',
+          'Private pier with sunbeds',
+          'Dining space',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          'Rollaway beds not permitted',
+          '2 cribs permitted',
+          'Daily housekeeping service',
+          'Two-way private transfer',
         ],
         tabContentType: 'bullet',
       },
@@ -686,7 +714,6 @@ export const sectionsRooms = [
         tabName: 'Overview',
         tabContent: [
           'Warm and intimate, the Loft Room overlooks the forest canopy, offering a quiet and grounding view. Thoughtfully designed with minimalism in mind and using natural materials such as wood and stone, this harmonious escape features a king-size bed or two twin beds.',
-          ,
           '29 sqm – 1 bedroom – 2 persons',
         ],
         tabContentType: 'paragraphs',
@@ -695,9 +722,15 @@ export const sectionsRooms = [
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          'Rollaway beds not permitted',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -728,21 +761,31 @@ export const sectionsRooms = [
   },
   {
     id: 2,
-    title: 'Loft Suite',
+    title: 'Loft Room with Terrace',
     tabs: [
       {
         id: 1,
-        tabName: 'overview 2',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabName: 'Overview',
+        tabContent: [
+          'The only room of its kind, this serene corner hideaway provides a quiet space to soak in nature from every angle. Thoughtfully designed with minimalism in mind and using natural materials such as wood and stone, this space offers a rare blend of luxury, nature, and exclusivity.  The room features a king-size bed, a private terrace, and panoramic views of both lake and forest.',
+          '29 sqm – 1 bedroom – 2 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
-        tabName: 'amenities 2',
+        tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          'Rollaway beds not permitted',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -777,21 +820,30 @@ export const sectionsRooms = [
 
   {
     id: 3,
-    title: 'Forest Suite',
+    title: 'Loft Suite',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabContent: [
+          'Designed for unhurried stays, the Loft Suite offers a spacious and harmonious retreat with a king-size bed and lake-facing views. A separate sitting area offers ample comfort and extra room to relax. Featuring warm wood accents, natural textiles, and soft lighting, it is a space to slow down and feel at home.',
+          '46 sqm – 1 bedroom – 3 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway bed at 75.00 EUR per night',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -814,21 +866,31 @@ export const sectionsRooms = [
 
   {
     id: 4,
-    title: 'Lakeview Suite',
+    title: 'Loft Suite with Terrace',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabContent: [
+          'The only suite of its kind, this spacious retreat features a private terrace and sweeping views of both the lake and forest. With a king-size bed, a dedicated seating area, and natural, understated design, it offers a deeply serene and elevated stay.',
+          '46 sqm – 1 bedroom – 3 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway bed at 75.00 EUR per night',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -836,15 +898,11 @@ export const sectionsRooms = [
     features: [
       {
         id: 1,
-        image: '/resort-5.222.jpg',
+        image: '/resort-5.1.jpg',
       },
       {
         id: 2,
-        image: '/resort-6.jpg',
-      },
-      {
-        id: 3,
-        image: '/resort-7.jpg',
+        image: '/resort-4.jpg',
       },
     ],
   },
@@ -856,16 +914,26 @@ export const sectionsRooms = [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabContent: [
+          'Set on the ground floor with direct access to the garden and lake, the Signature Lakefront Room offers an immersive connection to the landscape. Designed with equal consideration of natural materials and minimalist beauty, the room features a king-size bed, a private terrace, and stunning lake views, creating a restful space just steps from the water.',
+          '38 sqm – 1 bedroom – 2 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          'Rollaway beds not permitted',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -873,11 +941,109 @@ export const sectionsRooms = [
     features: [
       {
         id: 1,
-        image: '/resort-3.jpg',
+        image: '/resort-5.3.jpg',
       },
       {
         id: 2,
-        image: '/resort-6.jpg',
+        image: '/resort-5.4.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.6.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-5.7.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 6,
+    title: 'Forest Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent: [
+          'Spacious and secluded, the Forest Suite opens onto a private terrace at the edge of the forest. Framed by large windows and filled with natural light, it offers a quiet, grounding retreat immersed in greenery. The suite features a king-size bed and a cosy seating area that provides ample comfort and extra room to relax and soak in the view.',
+          '48 sqm – 1 bedroom – 3 persons',
+        ],
+        tabContentType: 'paragraphs',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway bed at 75.00 EUR per night',
+          '1 crib permitted',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.9.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.222.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 7,
+    title: 'Lakeview Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent: [
+          'Expansive and light-filled, the Lakeview Suite features a spacious private terrace and the best views across the Ungurys Lake. With a king-size bed, generous living area, and calming, nature-inspired design, it is a serene space to rest, reflect, and take in the landscape.',
+          '55 sqm – 1 bedroom – 3 persons',
+        ],
+        tabContentType: 'paragraphs',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway bed at 75.00 EUR per night',
+          '1 crib permitted',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-7.1.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-55.jpg',
       },
       {
         id: 3,
@@ -885,28 +1051,38 @@ export const sectionsRooms = [
       },
       {
         id: 4,
-        image: '/resort-3.jpg',
+        image: '/resort-6.jpg',
       },
     ],
   },
 
   {
-    id: 6,
+    id: 8,
     title: 'Signature Lakefront Suite',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+        tabContent: [
+          'Our largest suite, this lakeside sanctuary offers stunning lake views, an expansive private terrace, and direct access to the garden and lake. Inside, the suite showcases minimalist luxury and thoughtful design, featuring a king-size bed, a spacious sitting area, and a generous bathroom. Designed with natural warmth and quiet sophistication, it is an ideal space for those seeking both privacy and connection to nature.',
+          '71 sqm – 1 bedroom – 3 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
         tabName: 'Amenities',
         tabContent: [
-          'Lorem Ipsum is simply dummy text of the printing ',
-          'Ipsum has been the industrys standard dummy',
-          'mmy text ever',
+          'Private terrace',
+          'Bathroom amenities',
+          'Nespresso machine and tea set',
+          'TV',
+          'High-speed Wi-Fi',
+          'Air conditioning',
+          'Personal safe',
+          'Minibar',
+          '1 rollaway bed at 75.00 EUR per night',
+          '1 crib permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -914,15 +1090,11 @@ export const sectionsRooms = [
     features: [
       {
         id: 1,
-        image: '/resort-3.jpg',
+        image: '/resort-777.jpg',
       },
       {
         id: 2,
-        image: '/resort-4.4.jpg',
-      },
-      {
-        id: 3,
-        image: '/resort-5.9.jpg',
+        image: '/resort-999.jpg',
       },
     ],
   },

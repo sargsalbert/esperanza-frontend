@@ -26,7 +26,7 @@ const TextBlock = ({
 }: TextBlockProps) => {
   return (
     <div
-      className={`z-10 flex shrink-0 flex-col ${uiType === 'collapse' ? 'w-full md:w-[40%]' : 'w-[calc(100%-40px)] md:w-[40%]'} justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:min-h-[518px] md:p-10 ${imageFirst ? 'md:m-10 md:-ml-[80px] 2xl:m-15 2xl:-ml-[120px]' : 'md:m-10 md:-mr-[80px] 2xl:m-15 2xl:-mr-[120px]'}`}
+      className={`z-10 flex shrink-0 flex-col ${uiType === 'collapse' ? 'w-full md:w-[40%]' : 'w-[calc(100%-40px)] md:w-[40%]'} justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:min-h-[640px] md:p-10 ${imageFirst ? 'md:m-10 md:-ml-[80px] 2xl:m-15 2xl:-ml-[120px]' : 'md:m-10 md:-mr-[80px] 2xl:m-15 2xl:-mr-[120px]'}`}
     >
       <div className='relative flex flex-col justify-center'>
         <div
