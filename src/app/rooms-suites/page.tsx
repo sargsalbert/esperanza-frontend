@@ -10,9 +10,9 @@ export default async function RoomsSuites() {
       <PageHeader imgUrl='/resort-777.jpg' title='Rooms & Suites' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='Rooms & Suites'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='Shaped by nature, designed for your escape'
+        title='Spaces to Breathe'
+        description='Designed as restful sanctuaries, our 28 rooms and suites offer privacy while reflecting the stillness and beauty of the landscape beyond. Each space is thoughtfully composed to provide quiet comfort and visual clarity. Whether nestled among the trees or perched by the water, every room invites you to slow down, settle in, and simply be.'
         showKnowMore={false}
       />
 

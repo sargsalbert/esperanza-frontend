@@ -1,252 +1,225 @@
 import { ItemProps } from '../home/sectionGrid';
 
-export const sections = [
+export const sectionsRoomsSuites = [
   {
     id: 1,
     title: 'ROOMS & SUITES',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+      'Echoing the resort’s serene surroundings, our rooms and suites are designed to bring you closer to nature – through minimalist interiors, natural materials, soft lighting, and expansive views. Thoughtfully arranged and beautifully understated, each space invites a deep sense of calm and connection.',
     features: [
       {
         id: 1,
-        title: 'ROOMS & SUITES',
+        title: 'Loft Room',
         description:
-          "Lorem Ipsum Is Simply Dummy Text Lorem Ipsum Has Been The Industry's Of The Printing And Typesetting Industry. Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'A warm, forest-facing retreat with minimalist design and natural materials. Available with a king-size or twin beds.',
         image: '/resort-4.jpg',
       },
       {
         id: 2,
-        title: 'ROOMS & SUITES 2',
+        title: 'Loft Room with Terrace',
         description:
-          "2 Lorem ting Industry. Since The 1500s, Wh Ipsum Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Is Simply Dummy Text Of The Printing And Typeset en An Unknown",
+          'A one-of-a-kind retreat with a king-size bed, private terrace, and panoramic lake and forest views – where nature and quiet luxury meet.',
         image: '/resort-4.1.jpg',
       },
       {
         id: 3,
-        title: 'ROOMS & SUITES 3',
+        title: 'Loft Suite',
         description:
-          "3 Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry  1500s, When An Unknown",
+          'A spacious, lake-facing suite with a king-size bed and separate sitting area – designed for restful, unhurried stays.',
         image: '/resort-4.4.jpg',
       },
       {
         id: 4,
-        title: 'ROOMS 4',
+        title: 'Loft Suite with Terrace',
         description:
-          "4 mmy Text Ever Since Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry Lorem Ipsum Has Been The Industry's Standard Du 1500s, When An Unknown",
+          'A one-of-a-kind suite featuring a private terrace, king-size bed, and panoramic lake and forest views for a truly serene escape.',
         image: '/resort-4.5.jpg',
       },
 
       {
         id: 5,
-        title: 'ROOMS & SUITES 5',
+        title: 'Signature Lakefront Room',
         description:
-          "5 Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'A ground-floor retreat with a king-size bed, private terrace, and direct access to the lake and garden – designed for immersive, restful stays.',
         image: '/resort-4.6.jpg',
       },
 
       {
         id: 6,
-        title: 'ROOMS 6',
+        title: 'Forest Suite',
         description:
-          "6 Text Ever Since The 1500s, Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry Lorem Ipsum Has Been The Industry's Standard Dummy  When An Unknown",
+          'A spacious, light-filled suite with a king-size bed, sitting area, and private terrace – set at the edge of the forest for a deeply grounding stay.',
         image: '/resort-4.7.jpg',
       },
 
       {
         id: 7,
-        title: 'ROOMS & SUITES 7',
+        title: 'Lakeview Suite',
         description:
-          "7 Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'An expansive suite with a king-size bed, generous living area, and private terrace – offering the best views across Ungurys Lake.',
         image: '/resort-4.8.jpg',
       },
 
       {
         id: 8,
-        title: 'ROOMS & SUITES 8',
+        title: 'Signature Lakefront Suite',
         description:
-          "8 Text Ever Since The 1500s, When An Unknown Lorem Ipsum Is S.imply Dummy Text Of The Printing And Typesetting Industry Lorem Ipsum Has Been The Industry's Standard Dummy",
+          'Our largest suite, with a king-size bed, spacious sitting area, private terrace, and direct lake access – offering refined comfort and total privacy by the water.',
         image: '/resort-4.9.jpg',
       },
     ],
   },
   {
     id: 2,
-    title: 'VILLAS',
+    title: 'Villas',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      'Set along the lake’s edge and embraced by the surrounding forest, our villas offer an intimate stay with space to unwind. With generous space and uninterrupted views, each villa is designed for those seeking slower pace, deeper rest, and a closer connection to nature.',
     features: [
       {
         id: 1,
-        title: 'VILLAS',
+        title: 'Signature Two-Bedroom Villa',
         description:
-          "1 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'Designed with quiet elegance and natural warmth, these spacious two-bedroom residences offer privacy, comfort, and connection to nature for up to 6 people.',
         image: '/resort-4.2.jpg',
       },
       {
         id: 2,
-        title: 'VILLAS 2',
+        title: 'Owner’s Villa',
         description:
-          "2 Industry's Standard The Printing orem  And Typesetting Dummy Text Ever Since The 1500s, When An Unknown Lorem Ipsum Is Simply Dummy Text Of Industry. L Ipsum Has Been The",
+          'Set in a secluded corner of the lakefront, the Owner’s Villa features a private spa, extensive living space, and views of the water at every turn, offering luxurious retreat for up to 8 guests.',
         image: '/resort-4.3.jpg',
       },
     ],
   },
 ];
 
-export const items: ItemProps[] = [
+export const sectionsWellnessHome: ItemProps[] = [
   {
     imageUrl: '/resort-5.jpg',
-    title: 'SAUNA',
+    title: 'Thermal Rituals',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Release tension and restore balance in our sauna and hammam – two distinct heat experiences that soothe the body and quiet the mind.',
   },
   {
     imageUrl: '/resort-5.1.jpg',
-    title: 'POOL',
+    title: 'Water & Wellness',
     description:
-      '2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Unwind in the calm of our indoor pool and whirlpool, designed for slow swims and deep relaxation.',
   },
   {
     imageUrl: '/resort-5.5.jpg',
-    title: 'TREATMENT ROOM',
+    title: 'Sensory Experiences',
     description:
-      '3 typesetting industry. Lorem Ipsum ha․ Lorem Ipsum is simply dummy text of the printing and',
+      'From the refreshing ocean mist of our experience shower to the grounding warmth of the infrared chair, each element supports inner stillness.',
   },
   {
     imageUrl: '/resort-5.3.jpg',
-    title: 'TREATMENT ROOM 4',
+    title: 'Treatment Rooms',
     description:
-      '4 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Private sanctuaries where personalized therapies meet intentional care.',
   },
   {
     imageUrl: '/resort-5.4.jpg',
-    title: 'TREATMENT ROOM 5',
+    title: 'Movement & Breath',
     description:
-      '5 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Our fitness room and yoga studio offer space for movement, balance, and quiet focus – surrounded by nature and natural light.',
   },
   {
     imageUrl: '/resort-5.5.jpg',
-    title: 'TREATMENT ROOM 6',
+    title: 'Day Spa',
     description:
-      '6 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
-  },
-  {
-    imageUrl: '/resort-5.6.jpg',
-    title: 'TREATMENT ROOM 7',
-    description:
-      '7 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
-  },
-  {
-    imageUrl: '/resort-5.7.jpg',
-    title: 'TREATMENT ROOM 8',
-    description:
-      '8 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Whether visiting for a few hours or the full day, the spa welcomes non-staying guests to enjoy treatments, facilities, and a moment of pause.',
   },
 ];
 
-export const sections2 = [
+export const diningMeeting = [
   {
     id: 1,
     title: 'DINING',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+      'Rooted in the land and shaped by the seasons, dining at Esperanza blends thoughtful preparation with a sense of place. Two distinct restaurants invite you to slow down and savour – each with its own rhythm, flavour, and setting.',
     features: [
       {
         id: 1,
-        title: 'DINING',
+        title: 'Olea',
         description:
-          "Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'Our main restaurant, offering contemporary Greek cuisine inspired by sun, sea, and simplicity.',
         image: '/resort-6.jpg',
       },
       {
         id: 2,
-        title: 'DINING 2',
+        title: 'Mizu Beach by Heji',
         description:
-          "2 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'A relaxed lakeside setting serving Japanese-inspired dishes – fresh, balanced, and elemental.',
         image: '/resort-6.1.jpg',
       },
     ],
   },
   {
     id: 2,
-    title: 'MEETINGS & EVENTS',
+    title: 'Meetings & Events',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      'Whether hosting a celebration, retreat, or corporate gathering, Esperanza offers refined spaces surrounded by nature. Each venue is designed for focus, connection, and memorable moments – enhanced by stillness, beauty, and attentive care.',
     features: [
       {
         id: 1,
-        title: 'MEETINGS & EVENTS',
+        title: 'Ballroom',
         description:
-          "2 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'A spacious, light-filled setting for up to 140 guests. Ideal for weddings and large events.',
         image: '/resort-7.jpg',
       },
       {
         id: 2,
-        title: 'MEETINGS 2',
+        title: 'Banquet Room',
         description:
-          "2 Text Ever Since The 1500s, When  Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy An Unknown",
+          'An intimate room for private gathering or celebrations, seating up to 40 guests.',
         image: '/resort-7.1.jpg',
       },
       {
         id: 3,
-        title: 'MEETINGS 3',
+        title: 'Conference Room',
         description:
-          "3 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown",
+          'A flexible space for meetings and presentations, accommodating up to 120 guests.',
         image: '/resort-6.2.jpg',
       },
     ],
   },
 ];
 
-export const items2: ItemProps[] = [
+export const itemExperiencesHome: ItemProps[] = [
   {
     imageUrl: '/resort-5.jpg',
-    title: 'ITEM 1',
-    description:
-      '1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+    title: 'The Lake & Beach (1 test)',
+    description: 'Swim, sunbathe, or simply pause by the water’s edge.',
   },
   {
     imageUrl: '/resort-5.1.jpg',
-    title: 'ITEM 2',
+    title: 'Water Activities',
     description:
-      '2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Glide across the lake on a paddleboard or enjoy slow, peaceful moments with a fishing rod in hand.',
   },
   {
     imageUrl: '/resort-5.222.jpg',
-    title: 'ITEM 3',
+    title: 'Paddle Tennis',
     description:
-      '3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Enjoy a match lakeside, where the view competes with the game.',
   },
   {
     imageUrl: '/resort-5.3.jpg',
-    title: 'ITEM 4',
-    description:
-      '4 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+    title: 'Animal Refuge',
+    description: 'A peaceful space to meet and observe furry friends.',
   },
   {
     imageUrl: '/resort-5.4.jpg',
-    title: 'ITEM 5',
+    title: 'Nature Trails',
     description:
-      '5 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+      'Explore the landscape on foot or by bike – through forest paths, meadows, and quiet, scenic routes.',
   },
 
   {
     imageUrl: '/resort-5.5.jpg',
-    title: 'ITEM 6',
-    description:
-      '6 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
-  },
-  {
-    imageUrl: '/resort-5.6.jpg',
-    title: 'ITEM 7',
-    description:
-      '7 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
-  },
-  {
-    imageUrl: '/resort-5.7.jpg',
-    title: 'ITEM 8',
-    description:
-      '8 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha․',
+    title: 'Kids Room and Playground',
+    description: 'A playful, welcoming space designed for younger guests.',
   },
 ];
 
@@ -337,13 +310,13 @@ export const sectionsVillas = [
 export const sectionsDining = [
   {
     id: 1,
-    title: 'Restaurants',
+    title: 'Olea',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+          'Savor the flavours of Greece and the Mediterranean, reimagined with our chef’s creativity and inspiration. Begin your day with a delightful breakfast featuring freshly pressed juices and an exclusive à la carte menu designed to awaken your senses. As the sun sets, enjoy an elegant dinner experience with authentic Greek favourites and Mediterranean classics, crafted with the finest ingredients and a modern touch.',
       },
       {
         id: 2,
@@ -370,17 +343,17 @@ export const sectionsDining = [
   },
   {
     id: 2,
-    title: 'Restaurants 2',
+    title: 'Mizu Beach by Heji',
     tabs: [
       {
         id: 1,
-        tabName: 'Overview 2',
+        tabName: 'Overview',
         tabContent:
-          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
+          'A fusion of modern Japanese cuisine and the signature touch of Heji Restaurant, set against the serene backdrop of Esperanza’s lakeside. Indulge in vibrant summer-inspired dishes, expertly prepared over an open Robata grill, alongside delicate cuts of the freshest sashimi. From day to night enjoy signature cocktails, curated wines, and laid-back music in a relaxed, waterfront setting.',
       },
       {
         id: 2,
-        tabName: 'Details 2',
+        tabName: 'Details',
         tabContent: [
           ['Phone', '+370 698 78378'],
           ['Email', 'info@esperanzaresort.lt'],
@@ -409,13 +382,13 @@ export const sectionsDining = [
 export const sectionsExperience = [
   {
     id: 1,
-    title: 'Treatments',
+    title: 'The Lake & Beach',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+          'Ungurys Lake is the heart of the Esperanza experience. Calm, clear, and surrounded by forest, it offers a quiet place to swim, float, or simply pause beside the water. Our private beach invites unhurried moments – whether stretched out on a sunbed, reading in the shade, or stepping barefoot into the shallows. A limited number of beach spots are available for non-resident guests, by reservation.',
       },
       {
         id: 2,
@@ -442,16 +415,17 @@ export const sectionsExperience = [
   },
   {
     id: 2,
-    title: 'Day spa',
+    title: 'Paddle Tennis',
     tabs: [
       {
         id: 1,
-        tabName: 'Overview 2',
-        tabContent: 'sdfsdafafafafasdfsd 2',
+        tabName: 'Overview',
+        tabContent:
+          'Set beside the lake and surrounded by trees, our three paddle tennis courts offer a dynamic way to move while staying close to nature. Whether you are playing a friendly match or working on your skills, the setting adds a sense of ease and clarity to every game. Courts are available to both resort guests and non-resident visitors with prior reservation. Rackets and balls are provided upon request.',
       },
       {
         id: 2,
-        tabName: 'Details 2',
+        tabName: 'Details',
         tabContent: [
           ['Phone', '+370 698 78378'],
           ['Email', 'info@esperanzaresort.lt'],
@@ -480,13 +454,13 @@ export const sectionsExperience = [
 export const sectionsWellness = [
   {
     id: 1,
-    title: 'TREATMENTS',
+    title: 'Treatments',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+          'Inspired by nature’s rhythm and guided by care, our treatments are thoughtfully designed to restore balance – both physical and emotional. Using natural oils, warm stones, and time-honored techniques, each ritual is a quiet journey inward. Treatments are further enhanced with high-quality care products from Nelly De Vuyst and Piroche Cosmétiques, while advanced technologies, ranging from Geneo+ and JetPeel to the Nuvola floating bed and the HEOQi Harmony Spa capsule – bring innovation into harmony with nature.',
       },
       {
         id: 2,
@@ -513,13 +487,13 @@ export const sectionsWellness = [
   },
   {
     id: 2,
-    title: 'DAY SPA',
+    title: 'Day Spa',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr ndard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the i00s, when an unknown',
+          'The spa at Esperanza is open to both resort guests and day visitors. Whether you come for a single treatment or a full day of rest, the experience is immersive, unhurried, and deeply renewing. Day guests enjoy access to our full range of facilities, including thermal and hydrotherapy zones, relaxation areas, and select wellness experiences – with prior reservation. Visitors who book a 90-minute treatment receive a complimentary one-hour access to the spa facilities.',
       },
       {
         id: 2,
@@ -564,23 +538,23 @@ export const sectionsWellness = [
 export const sectionsMeetingsEvents = [
   {
     id: 1,
-    title: 'Meetings & Events',
+    title: 'Ballroom',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+          'Immersed with natural light and stunning lake views, the Ballroom offers a refined setting for larger gatherings of up to 140 guests. With high ceilings, neutral tones, and a flexible layout, it’s ideal for weddings, galas, receptions, or full-scale retreats. The space opens onto a spacious private terrace – perfect for breaks, cocktails, or simply stepping outside into the stillness of nature.',
       },
       {
         id: 2,
         tabName: 'Details',
         tabContent: [
-          ['Phone', '+370 698 78378'],
-          ['Email', 'info@esperanzaresort.lt'],
-          ['Opening Hours', '00:00 - 00:00'],
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
         ],
-        tabContentType: 'twoColumnLine',
+        tabContentType: 'bullet',
       },
     ],
 
@@ -625,23 +599,23 @@ export const sectionsMeetingsEvents = [
   },
   {
     id: 2,
-    title: 'Meetings & Events 2',
+    title: 'Banquet Room',
     tabs: [
       {
         id: 1,
-        tabName: 'Overview 2',
+        tabName: 'Overview',
         tabContent:
-          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
+          'Warm and welcoming, the Banquet Room is designed for smaller-scale events of up to 40 guests. Its intimate ambiance and elegant furnishings make it ideal for business meetings, private dinners, wine tastings, or family celebrations. Panoramic views of the surrounding landscape create a sense of openness and light, while the room’s proximity to the kitchen allows for seamless, attentive service.',
       },
       {
         id: 2,
-        tabName: 'Details 2',
+        tabName: 'Details',
         tabContent: [
-          ['Phone', '+370 698 78378'],
-          ['Email', 'info@esperanzaresort.lt'],
-          ['Opening Hours', '00:00 - 00:00'],
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
         ],
-        tabContentType: 'twoColumnLine',
+        tabContentType: 'bullet',
       },
     ],
     features: [
@@ -670,23 +644,23 @@ export const sectionsMeetingsEvents = [
 
   {
     id: 3,
-    title: 'Meetings & Events 3',
+    title: 'Conference Room',
     tabs: [
       {
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
+          'A versatile space for up to 120 guests, the Conference Room is suited to board meetings, presentations, seminars, and corporate retreats. Floor-to-ceiling windows offer panoramic views of the forest and lake, bringing calm and clarity into every gathering. Designed with natural materials and full AV capabilities, it strikes a quiet balance between functionality and comfort.',
       },
       {
         id: 2,
         tabName: 'Details',
         tabContent: [
-          ['Phone', '+370 698 78378'],
-          ['Email', 'info@esperanzaresort.lt'],
-          ['Opening Hours', '00:00 - 00:00'],
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
         ],
-        tabContentType: 'twoColumnLine',
+        tabContentType: 'bullet',
       },
     ],
     features: [
@@ -710,8 +684,12 @@ export const sectionsRooms = [
       {
         id: 1,
         tabName: 'Overview',
-        tabContent:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+        tabContent: [
+          'Warm and intimate, the Loft Room overlooks the forest canopy, offering a quiet and grounding view. Thoughtfully designed with minimalism in mind and using natural materials such as wood and stone, this harmonious escape features a king-size bed or two twin beds.',
+          ,
+          '29 sqm – 1 bedroom – 2 persons',
+        ],
+        tabContentType: 'paragraphs',
       },
       {
         id: 2,
@@ -947,5 +925,111 @@ export const sectionsRooms = [
         image: '/resort-5.9.jpg',
       },
     ],
+  },
+];
+
+export const itemExperiences: ItemProps[] = [
+  {
+    imageUrl: '/resort-5.jpg',
+    title: 'Stand-Up Paddle',
+    description: 'Glide across the lake at sunrise or sunset.',
+  },
+  {
+    imageUrl: '/resort-5.1.jpg',
+    title: 'Recreational Fishing',
+    description: 'Slow moments by the water, rod in hand, peace all around.',
+  },
+  {
+    imageUrl: '/resort-5.222.jpg',
+    title: 'Animal Refuge',
+    description: 'A peaceful space to meet and observe furry friends.',
+  },
+  {
+    imageUrl: '/resort-5.3.jpg',
+    title: 'Cycling',
+    description: 'Explore forest paths and scenic routes on two wheels.',
+  },
+  {
+    imageUrl: '/resort-5.4.jpg',
+    title: 'Nature Walks',
+    description: 'Slow, grounding walks through the surrounding woods.',
+  },
+
+  {
+    imageUrl: '/resort-5.5.jpg',
+    title: 'Cinema Nights',
+    description: 'Films under the stars, wrapped in stillness.',
+  },
+
+  {
+    imageUrl: '/resort-5.5.jpg',
+    title: 'Kids Room and Playground',
+    description: 'A playful, welcoming space designed for younger guests.',
+  },
+];
+
+export const sectionsGridWellness: ItemProps[] = [
+  {
+    imageUrl: '/resort-5.jpg',
+    title: 'Sauna',
+    description:
+      'A warm, wood-scented space with calming lake views – designed to release tension and restore balance.',
+  },
+  {
+    imageUrl: '/resort-5.1.jpg',
+    title: 'Hammam',
+    description:
+      'A gentle steam ritual inspired by tradition and deep relaxation.',
+  },
+  {
+    imageUrl: '/resort-5.5.jpg',
+    title: 'Pool',
+    description:
+      'A tranquil indoor pool with views of the lake – perfect for slow swims and quiet reflection.',
+  },
+  {
+    imageUrl: '/resort-5.3.jpg',
+    title: 'Whirlpool',
+    description:
+      'Heated waters and soothing bubbles, with serene lake views to unwind the body and mind.',
+  },
+  {
+    imageUrl: '/resort-5.4.jpg',
+    title: 'Experience shower',
+    description:
+      'Immerse yourself in alternating water sensations, from a refreshing ocean breeze to a warm tropical rain.',
+  },
+  {
+    imageUrl: '/resort-5.5.jpg',
+    title: 'Infrared Chair ',
+    description:
+      'Targeted warmth that eases muscle tension and promotes deep relaxation.',
+  },
+
+  {
+    imageUrl: '/resort-4.1.jpg',
+    title: 'Salt Room',
+    description:
+      'A calming space to cleanse, soothe, and support wellbeing – enhanced with a collagen lamp.',
+  },
+
+  {
+    imageUrl: '/resort-4.4.jpg',
+    title: 'Relaxation Zone',
+    description:
+      'A quiet space to rest between experiences – ideal for reading, breathing, or simply being.',
+  },
+
+  {
+    imageUrl: '/resort-4.6.jpg',
+    title: 'Fitness Room',
+    description: 'A minimalist, light-filled space for movement and focus.',
+  },
+
+  {
+    imageUrl: '/resort-4.7.jpg',
+    title: 'Yoga Studio',
+    description:
+      'Surrounded by nature, designed for breath, balance, and stillness.',
   },
 ];

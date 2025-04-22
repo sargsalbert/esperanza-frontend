@@ -1,4 +1,4 @@
-import { items2, sectionsExperience } from '@/components/api/data';
+import { itemExperiences, sectionsExperience } from '@/components/api/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { TabsData } from '@/components/shared/imageWithCard/types';
@@ -11,9 +11,9 @@ export default async function Experiences() {
       <PageHeader imgUrl='/resort-5.jpg' title='Experiences' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='Experiences'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='The rhythm of nature, the luxury of time'
+        title='Explore Esperanza'
+        description='Time moves differently here. Whether active or unhurried, each experience at Esperanza Lake Resort is an invitation to reconnect – with the elements, with yourself, and with the quiet simplicity of being present. From lakefront moments and forest trails to gentle movement and open-air cinema nights, the pace is set by nature – and the rhythm is entirely your own.'
         showKnowMore={false}
       />
 
@@ -34,7 +34,7 @@ export default async function Experiences() {
         </div>
       ))}
 
-      <SectionGrid items={items2} />
+      <SectionGrid items={itemExperiences} />
 
       <div className='h-12.5' />
     </>

@@ -12,9 +12,9 @@ export default async function MeetingsEvents() {
       <PageHeader imgUrl='/resort-7.jpg' title='Meetings & Events' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='Meetings & Events'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='Intimate gatherings in nature'
+        title='Timeless Moments'
+        description='Whether it is a lakeside celebration, an intimate retreat, or a thoughtful business meeting, events at Esperanza Lake Resort are shaped by natural surroundings, understated elegance, and quiet attention to detail. With 28 rooms and suites, three villas, two restaurants, three dedicated indoor spaces, modern spa, and eleven hectares of outdoor grounds – we allow each event to be tailored, intimate, and truly unforgettable.'
         showKnowMore={false}
       />
       {sectionsMeetingsEvents.map((v, index) => (
@@ -32,19 +32,17 @@ export default async function MeetingsEvents() {
       ))}
 
       <SectionHeader
-        title='CONTACT US'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        title='Contact Us'
+        description='Whether you are planning an intimate gathering or a full-scale celebration, our team is here to help shape every detail. From choosing the right space to crafting bespoke menus and experiences, we will work with you to bring your vision to life – quietly, thoughtfully, and with care.'
         showKnowMore={false}
       />
 
       <div className='mx-auto max-w-4xl px-[25px] py-7.5 md:py-15'>
-        <Input placeholder='Name' />
-        <Input placeholder='Surname' />
-        <Input placeholder='Email' />
+        <Input placeholder='First Name' />
+        <Input placeholder='Last Name' />
         <Input placeholder='Phone' />
-
-        <Input placeholder='Date' type='date' />
-
+        <Input placeholder='Email' />
+        <Input placeholder='Dates' type='date' />
         <Input placeholder='Number of Guests' type='number' />
         <TextArea placeholder='Message' />
         <div className='mt-12.5 flex justify-center md:justify-end'>

@@ -9,9 +9,9 @@ export default async function Destination() {
       <PageHeader imgUrl='/resort-5.3.jpg' title='Destination' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh '
-        title='Destination'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='A secluded hideaway between forest and water'
+        title='Tucked Away, Yet Within Reach'
+        description="Nestled on the shores of Ungurys lake, Esperanza Lake Resort lies in the heart of Aukštaitija National Park – one of Lithuania’s most protected and untouched natural sanctuaries. Encircled by verdant forests and pristine waters, the resort spans eleven hectares of private land, providing guests with uninterrupted access to nature's serenity. Undisturbed and immersive, it is a destination defined by nature – tranquil, timeless, and deeply grounding."
         showKnowMore={false}
       />
 

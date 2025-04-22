@@ -2,7 +2,12 @@ import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import Image from 'next/image';
 import BookingWidget from '@/components/home/bookingWidget';
-import { items, items2, sections, sections2 } from '@/components/api/data';
+import {
+  itemExperiencesHome,
+  diningMeeting,
+  sectionsRoomsSuites,
+  sectionsWellnessHome,
+} from '@/components/api/data';
 import SectionHeader from '@/components/shared/SectionHeader';
 import Destination from '@/components/home/destination';
 
@@ -27,12 +32,11 @@ export default async function Home() {
         <BookingWidget />
       </div>
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
         title='Destination'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+        description='Tucked away on the tranquil shores of Ungurys Lake, Esperanza Lake Resort is a secluded hideaway between forest and water, where nature, wellness, and comfort come together. The resort’s architecture blends seamlessly into the landscape, with natural materials and wabi-sabi-inspired design creating a quiet elegance.'
       />
       <Destination />
-      {sections.map((section, index) => (
+      {sectionsRoomsSuites.map((section, index) => (
         <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
@@ -44,12 +48,14 @@ export default async function Home() {
           />
         </div>
       ))}
+
       <SectionGrid
         title='Wellness'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-        items={items}
+        description='Immersed in the rhythms of nature, The Spa Esperanza is a space of stillness and renewal. Infused with natural elements, it invites you to slow down, restore, and return to yourself – through rituals that nurture both body and mind.'
+        items={sectionsWellnessHome}
       />
-      {sections2.map((section, index) => (
+
+      {diningMeeting.map((section, index) => (
         <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader
             title={section.title}
@@ -63,8 +69,8 @@ export default async function Home() {
       ))}
       <SectionGrid
         title='EXPERIENCES'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-        items={items2}
+        description='At Esperanza, time unfolds at its own pace. Whether active or restful, each experience is designed to connect you with the elements, the landscape, and a simpler rhythm of life.'
+        items={itemExperiencesHome}
       />
       <div className='h-12.5' />
     </>

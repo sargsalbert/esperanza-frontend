@@ -10,9 +10,9 @@ export default async function Villas() {
       <PageHeader imgUrl='/resort-4.jpg' title='Dining' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='Dining'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='A culinary experience rooted in nature '
+        title='Beyond the Table'
+        description='At Esperanza Lake Resort, dining is guided by the seasons and defined by simplicity. Across two distinct restaurants, the focus is on pure ingredients, clean flavours, and thoughtful preparation – served in settings that invite you to pause and savour. More than a meal, each experience is designed to take you on a journey beyond – through place, memory, and quiet discovery.'
         showKnowMore={false}
       />
 

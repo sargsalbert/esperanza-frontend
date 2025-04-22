@@ -1,4 +1,4 @@
-import { items, sectionsWellness } from '@/components/api/data';
+import { sectionsGridWellness, sectionsWellness } from '@/components/api/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
@@ -12,9 +12,9 @@ export default async function Wellness() {
       <PageHeader imgUrl='/resort-55.jpg' title='Wellness' />
 
       <SectionHeader
-        smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='Wellness'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        smallTitle='Elemental therapies and timeless rituals designed to reconnect body and mind'
+        title='A Ritual of Renewal'
+        description='A place of quiet renewal, The Spa Esperanza invites you to pause, breathe, and return to yourself. Inspired by the surrounding forest and lake, each element – from thermal rituals to tailored treatments – is designed to restore balance and deepen your connection to the present moment. Whether you come for a few hours or a full day, the experience is unhurried, natural, and deeply restorative.'
         showKnowMore={false}
       />
 
@@ -51,9 +51,9 @@ export default async function Wellness() {
       </div>
 
       <SectionGrid
-        title='Wellness'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-        items={items}
+        title='Facilities'
+        description='Rooted in the natural elements of heat, air, water, and earth, our spa facilities are designed to restore balance and ease. From thermal rituals and calming hydrotherapy to light-filled spaces for movement and breath, each area invites quiet renewal. Whether you seek rest, release, or reconnection, the spa offers a gentle rhythm for body and mind.'
+        items={sectionsGridWellness}
         showKnowMore={false}
       />
 
