@@ -15,9 +15,16 @@ const ImageWithCard = ({
   tabs,
   primaryButton,
   secondaryButton,
+  uiType,
 }: ImageWithOverlayCardProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [collapseType, setCollapseType] = useState(true);
+
+  const handleCollapse = () => {
+    setCollapseType(!collapseType);
+  };
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -57,8 +64,16 @@ const ImageWithCard = ({
 
   return (
     <>
+      {uiType === 'collapse' && (
+        <div onClick={handleCollapse} className='bg-gray-100 px-8'>
+          <h2 className='cursor-pointer border-b-2 border-gray-200 py-4 text-center text-[20px]/[24px] font-semibold text-gray-800 uppercase md:hidden'>
+            {title}
+          </h2>
+        </div>
+      )}
+
       <div
-        className={`relative flex w-full flex-col-reverse overflow-hidden ${imageFirst ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+        className={`relative flex w-full ${uiType === 'collapse' && collapseType ? 'hidden md:flex' : 'flex'} flex-col-reverse overflow-hidden ${imageFirst ? 'md:flex-row-reverse' : 'md:flex-row'}`}
       >
         <TextBlock
           imageFirst={imageFirst}
@@ -68,8 +83,11 @@ const ImageWithCard = ({
           setActiveTab={setActiveTab}
           secondaryButton={secondaryButton}
           primaryButton={primaryButton}
+          uiType={uiType}
         />
-        <div className='relative z-20 mx-auto -mt-[83px] block max-w-[calc(100%-40px)] md:hidden'>
+        <div
+          className={`relative z-20 mx-auto -mt-[83px] block max-w-[calc(100%-40px)] ${uiType === 'collapse' ? 'hidden' : 'md:hidden'}`}
+        >
           <div className='mb-3.5 flex justify-center'>
             {features?.map((_, index) => (
               <button

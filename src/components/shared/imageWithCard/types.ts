@@ -24,4 +24,5 @@ export interface ImageWithOverlayCardProps {
   title: string;
   primaryButton: ButtonConfig;
   secondaryButton?: ButtonConfig;
+  uiType?: 'collapse';
 }

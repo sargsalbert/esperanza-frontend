@@ -17,7 +17,7 @@ export default async function RoomsSuites() {
       />
 
       {sectionsRooms.map((v, index) => (
-        <div key={v.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
+        <div key={v.id} className='md:mb-12.5 lg:mb-20'>
           <ImageWithCard
             title={v.title}
             features={v.features}
@@ -26,6 +26,7 @@ export default async function RoomsSuites() {
             primaryButton={{
               text: 'Check Availability',
             }}
+            uiType='collapse'
           />
         </div>
       ))}
