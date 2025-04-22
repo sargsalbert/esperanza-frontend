@@ -3,7 +3,7 @@ import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import Image from 'next/image';
 import ResortOverview from '@/components/home/resortOverview';
 import BookingWidget from '@/components/home/bookingWidget';
-import { items, items2, sections, sections2 } from '@/components/home/data';
+import { items, items2, sections, sections2 } from '@/components/api/data';
 import SectionHeader from '@/components/shared/SectionHeader';
 
 export default async function Home() {

@@ -1,4 +1,4 @@
-import { items2, sectionsExperience } from '@/components/home/data';
+import { items2, sectionsExperience } from '@/components/api/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { TabsData } from '@/components/shared/imageWithCard/types';

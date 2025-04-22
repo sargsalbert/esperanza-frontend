@@ -1,8 +1,8 @@
-import { sectionsVillas } from '@/components/home/data';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { TabsData } from '@/components/shared/imageWithCard/types';
+import { sectionsVillas } from '@/components/api/data';
 
 export default async function Villas() {
   return (

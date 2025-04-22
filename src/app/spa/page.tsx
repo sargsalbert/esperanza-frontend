@@ -1,4 +1,4 @@
-import { items, sectionsSpa } from '@/components/home/data';
+import { items, sectionsSpa } from '@/components/api/data';
 import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';

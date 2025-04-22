@@ -1,4 +1,4 @@
-import { ItemProps } from './sectionGrid';
+import { ItemProps } from '../home/sectionGrid';
 
 export const sections = [
   {
@@ -556,6 +556,147 @@ export const sectionsSpa = [
       {
         id: 6,
         image: '/resort-6.jpg',
+      },
+    ],
+  },
+];
+
+export const sectionsMeetingsEvents = [
+  {
+    id: 1,
+    title: 'Meetings & Events',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-0.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-00.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-1.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-2.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-3.jpg',
+      },
+      {
+        id: 6,
+        image: '/resort-4.1.jpg',
+      },
+      {
+        id: 7,
+        image: '/resort-4.2.jpg',
+      },
+      {
+        id: 8,
+        image: '/resort-4.3.jpg',
+      },
+      {
+        id: 9,
+        image: '/resort-4.4.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Meetings & Events 2',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview 2',
+        tabContent:
+          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
+      },
+      {
+        id: 2,
+        tabName: 'Details 2',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.5.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.6.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-4.7.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-4.8.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-4.9.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    title: 'Meetings & Events 3',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'psum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsu',
+      },
+      {
+        id: 2,
+        tabName: 'Details',
+        tabContent: [
+          ['Phone', '+370 698 78378'],
+          ['Email', 'info@esperanzaresort.lt'],
+          ['Opening Hours', '00:00 - 00:00'],
+        ],
+        tabContentType: 'twoColumnLine',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-4.5.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.9.jpg',
       },
     ],
   },

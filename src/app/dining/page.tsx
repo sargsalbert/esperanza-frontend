@@ -1,4 +1,4 @@
-import { sectionsDining } from '@/components/home/data';
+import { sectionsDining } from '@/components/api/data';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { TabsData } from '@/components/shared/imageWithCard/types';
 import PageHeader from '@/components/shared/pageHeader';
