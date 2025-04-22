@@ -28,7 +28,7 @@ const TextBlock = ({
     >
       <div className='relative flex flex-col justify-center'>
         <div className='mb-0 text-center md:mb-4.5 md:text-left'>
-          <h2 className='inline-flex w-[85%] justify-center border-b-2 border-yellow-500 pb-5 text-[20px]/[24px] font-semibold text-gray-800 sm:border-b-3 sm:text-[24px]/[30px] md:w-[75%] md:justify-start md:pb-7.5 md:text-[28px]/[34px]'>
+          <h2 className='inline-flex w-[85%] justify-center border-b-2 border-yellow-500 pb-5 text-[20px]/[24px] font-semibold text-gray-800 uppercase sm:border-b-3 sm:text-[24px]/[30px] md:w-[75%] md:justify-start md:pb-7.5 md:text-[28px]/[34px]'>
             {title}
           </h2>
         </div>

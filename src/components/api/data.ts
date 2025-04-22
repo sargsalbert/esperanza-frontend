@@ -701,3 +701,251 @@ export const sectionsMeetingsEvents = [
     ],
   },
 ];
+
+export const sectionsRooms = [
+  {
+    id: 1,
+    title: 'Loft Room',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever since the 1500s, when an unknown',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.1.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-6.2.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.6.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-5.4.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-6.jpg',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Loft Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'overview 2',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+      },
+      {
+        id: 2,
+        tabName: 'amenities 2',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-3.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-5.8.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-6.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-6.1.jpg',
+      },
+      {
+        id: 5,
+        image: '/resort-4.9.jpg',
+      },
+      {
+        id: 6,
+        image: '/resort-6.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    title: 'Forest Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-3.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-7.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-4.3.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    title: 'Lakeview Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-5.222.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-6.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-7.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    title: 'Signature Lakefront Room',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-3.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-6.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-7.jpg',
+      },
+      {
+        id: 4,
+        image: '/resort-3.jpg',
+      },
+    ],
+  },
+
+  {
+    id: 6,
+    title: 'Signature Lakefront Suite',
+    tabs: [
+      {
+        id: 1,
+        tabName: 'Overview',
+        tabContent:
+          'ng and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown standard dummy text ever si',
+      },
+      {
+        id: 2,
+        tabName: 'Amenities',
+        tabContent: [
+          'Lorem Ipsum is simply dummy text of the printing ',
+          'Ipsum has been the industrys standard dummy',
+          'mmy text ever',
+        ],
+        tabContentType: 'bullet',
+      },
+    ],
+    features: [
+      {
+        id: 1,
+        image: '/resort-3.jpg',
+      },
+      {
+        id: 2,
+        image: '/resort-4.4.jpg',
+      },
+      {
+        id: 3,
+        image: '/resort-5.9.jpg',
+      },
+    ],
+  },
+];
