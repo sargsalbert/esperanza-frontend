@@ -112,7 +112,7 @@ const ImageWithOverlayCard = ({
                       ))}
                     </div>
                     <div className='bg-gray-100 px-2.5 py-6 text-center shadow-xs'>
-                      <h2 className='mb-4 text-xl leading-6 font-semibold text-gray-800'>
+                      <h2 className='mb-4 text-xl leading-6 font-semibold text-gray-800 uppercase'>
                         {feature.title}
                       </h2>
                       <div className='flex'>
@@ -147,7 +147,7 @@ const ImageWithOverlayCard = ({
                   }`}
                 >
                   <div>
-                    <h2 className='mb-4 inline-block min-w-[325px] border-b-3 border-[#B5946E] pr-4 pb-4 text-[24px]/[24px] font-semibold text-gray-800 md:mb-7.5 md:pb-7.5 md:text-[28px]/[28px]'>
+                    <h2 className='mb-4 inline-block min-w-[325px] border-b-3 border-[#B5946E] pr-4 pb-4 text-[24px]/[24px] font-semibold text-gray-800 uppercase md:mb-7.5 md:pb-7.5 md:text-[28px]/[28px]'>
                       {feature.title}
                     </h2>
                   </div>

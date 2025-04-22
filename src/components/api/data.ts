@@ -189,7 +189,7 @@ export const diningMeeting = [
 export const itemExperiencesHome: ItemProps[] = [
   {
     imageUrl: '/resort-5.jpg',
-    title: 'The Lake & Beach (1 test)',
+    title: 'The Lake & Beach',
     description: 'Swim, sunbathe, or simply pause by the water’s edge.',
   },
   {
