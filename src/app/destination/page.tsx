@@ -22,8 +22,8 @@ export default async function Destination() {
       </div>
 
       <SectionHeader
-        title='Destination'
-        description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+        title='Architecture & Design'
+        description='Built from centuries-old Canadian cedar logs, the resort’s architecture is both grounding and timeless – rooted in nature, and crafted to last. The warm textures, earthy tones, and natural materials create a harmony between structure and setting. Inside, design follows the wabi-sabi philosophy: minimalist, understated, and deeply connected to the land. Every space invites stillness through organic form soft light, and purposeful simplicity.'
         showKnowMore={false}
       />
       <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
