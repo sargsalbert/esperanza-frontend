@@ -1,10 +1,10 @@
 import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import Image from 'next/image';
-import ResortOverview from '@/components/home/resortOverview';
 import BookingWidget from '@/components/home/bookingWidget';
 import { items, items2, sections, sections2 } from '@/components/api/data';
 import SectionHeader from '@/components/shared/SectionHeader';
+import Destination from '@/components/home/destination';
 
 export default async function Home() {
   return (
@@ -28,10 +28,10 @@ export default async function Home() {
       </div>
       <SectionHeader
         smallTitle='Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh'
-        title='RESORT OVERVIEW'
+        title='Destination'
         description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
       />
-      <ResortOverview />
+      <Destination />
       {sections.map((section, index) => (
         <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader
@@ -45,7 +45,7 @@ export default async function Home() {
         </div>
       ))}
       <SectionGrid
-        title='SPA'
+        title='Wellness'
         description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
         items={items}
       />

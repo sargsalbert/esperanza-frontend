@@ -5,7 +5,7 @@ import { TabsData } from '@/components/shared/imageWithCard/types';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 
-export default async function Experience() {
+export default async function Experiences() {
   return (
     <>
       <PageHeader imgUrl='/resort-5.jpg' title='Experiences' />

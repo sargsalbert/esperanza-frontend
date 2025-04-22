@@ -477,7 +477,7 @@ export const sectionsExperience = [
   },
 ];
 
-export const sectionsSpa = [
+export const sectionsWellness = [
   {
     id: 1,
     title: 'TREATMENTS',
