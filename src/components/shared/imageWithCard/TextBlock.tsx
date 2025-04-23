@@ -39,8 +39,8 @@ const TextBlock = ({
         <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
       {!secondaryButton && tabs[activeTab].tabContentType === 'paragraphs' ? (
-        <div className='flex items-center justify-between'>
-          <p className='text-base leading-6 font-medium text-gray-900 md:text-base md:leading-8'>
+        <div className='flex flex-col items-center justify-between md:flex-row'>
+          <p className='mb-6 text-base leading-6 font-medium text-gray-900 md:mb-0 md:text-base md:leading-8'>
             {tabs[activeTab].tabContent[1]}
           </p>
           <Actions
