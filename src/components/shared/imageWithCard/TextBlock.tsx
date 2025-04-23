@@ -38,10 +38,22 @@ const TextBlock = ({
         </div>
         <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
-      <Actions
-        secondaryButton={secondaryButton}
-        primaryButton={primaryButton}
-      />
+      {!secondaryButton && tabs[activeTab].tabContentType === 'paragraphs' ? (
+        <div className='flex items-center justify-between'>
+          <p className='text-base leading-6 font-medium text-gray-900 md:text-base md:leading-8'>
+            {tabs[activeTab].tabContent[1]}
+          </p>
+          <Actions
+            secondaryButton={secondaryButton}
+            primaryButton={primaryButton}
+          />
+        </div>
+      ) : (
+        <Actions
+          secondaryButton={secondaryButton}
+          primaryButton={primaryButton}
+        />
+      )}
     </div>
   );
 };

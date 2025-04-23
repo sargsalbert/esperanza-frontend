@@ -40,14 +40,9 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
       case 'paragraphs':
         return (
           <div>
-            {(tab.tabContent as string[]).map((item, i) => (
-              <div
-                key={i}
-                className='mb-2.5 text-center text-base leading-6 text-gray-900 md:text-left md:text-base md:leading-8'
-              >
-                {item}
-              </div>
-            ))}
+            <div className='mb-2.5 text-center text-base leading-6 text-gray-900 md:text-left md:text-base md:leading-8'>
+              {tab.tabContent[0]}
+            </div>
           </div>
         );
       default:

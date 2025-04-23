@@ -8,7 +8,7 @@ interface ActionsProps {
 const Actions = ({ secondaryButton, primaryButton }: ActionsProps) => {
   return (
     <div
-      className={`flex space-x-[14px] md:space-x-[36px] ${secondaryButton ? 'justify-center md:justify-between' : 'justify-center md:justify-end'}`}
+      className={`flex shrink-0 space-x-[14px] md:space-x-[36px] ${secondaryButton ? 'justify-center md:justify-between' : 'justify-center md:justify-end'}`}
     >
       {secondaryButton && (
         <button
