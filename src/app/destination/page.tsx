@@ -15,10 +15,21 @@ export default async function Destination() {
         showKnowMore={false}
       />
 
-      <div className='mx-auto mb-12.5 max-w-[1480px] overflow-hidden px-5 sm:mb-15 sm:gap-2 sm:px-7.5 lg:mb-20 lg:px-15'>
+      <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:px-7.5 sm:pb-7.5 lg:px-15'>
         <div className='h-[267px] w-full sm:h-[450px] md:h-[653px] lg:h-[856px]'>
           <LocationMap />
         </div>
+      </div>
+
+      <div className='mx-auto mb-12.5 max-w-[1480px] px-5 sm:mb-15 sm:px-7.5 lg:mb-20 lg:px-15'>
+        <p className='text-center text-[13px]/[26px] sm:text-[16px]/[32px]'>
+          Though immersed in nature, Esperanza Lake Resort is easily within
+          reach. Located just 40 km from Vilnius, the resort is accessible by
+          car, while a direct train offers a quick connection to the nearby town
+          of Trakai. Expect a scenic and convenient journey through the
+          countryside and quiet forest roads – setting the tone for the retreat
+          ahead. Transfers and Directions available upon request.
+        </p>
       </div>
 
       <SectionHeader
