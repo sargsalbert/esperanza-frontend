@@ -25,7 +25,7 @@ export default async function Home() {
           />
           <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[72px] lg:pb-[155px]'>
             <h1 className='px-5 text-center text-[22px] font-semibold text-gray-50 sm:px-7.5 sm:text-[30px] lg:px-15 lg:text-[40px]'>
-              THE PRINTING AND TYPESETTING
+              {/* THE PRINTING AND TYPESETTING */}
             </h1>
           </div>
         </div>
