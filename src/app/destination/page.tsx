@@ -22,7 +22,7 @@ export default async function Destination() {
       </div>
 
       <div className='mx-auto mb-12.5 max-w-[1480px] px-5 sm:mb-15 sm:px-7.5 lg:mb-20 lg:px-15'>
-        <p className='text-center text-[13px]/[26px] sm:text-[16px]/[32px]'>
+        <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
           Though immersed in nature, Esperanza Lake Resort is easily within
           reach. Located just 40 km from Vilnius, the resort is accessible by
           car, while a direct train offers a quick connection to the nearby town

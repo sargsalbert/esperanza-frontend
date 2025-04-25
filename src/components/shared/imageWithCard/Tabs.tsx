@@ -34,7 +34,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
     switch (tab.tabContentType) {
       case 'bullet':
         return (
-          <ul className='grid list-disc gap-y-[.7em] pl-5 text-[15px] md:grid-cols-2 md:gap-x-8 xl:gap-x-12 xl:text-base'>
+          <ul className='grid list-disc gap-y-[.7em] pl-5 text-[14px] sm:text-[15px] md:grid-cols-2 md:gap-x-8 xl:gap-x-12 xl:text-base'>
             {(tab.tabContent as string[]).map((item, i) => (
               <li key={i}>{item}</li>
             ))}
@@ -51,7 +51,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                 <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
                   {label}
                 </span>
-                <span className='overflow-hidden text-sm font-semibold text-gray-900 md:text-base'>
+                <span className='text-[14px] font-semibold break-all text-gray-900 sm:text-[15px] md:text-base md:break-words'>
                   {value}
                 </span>
               </div>
@@ -60,13 +60,13 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
         );
       case 'paragraphs':
         return (
-          <div className='text-center text-[15px] leading-[2em] text-gray-900 lg:text-left lg:leading-8 xl:text-base'>
+          <div className='text-center text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:text-left lg:leading-8 xl:text-base'>
             {tab.tabContent[0]}
           </div>
         );
       default:
         return (
-          <div className='text-center text-[15px] leading-[2em] text-gray-900 lg:text-left lg:leading-8 xl:text-base'>
+          <div className='text-center text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:text-left lg:leading-8 xl:text-base'>
             {tab.tabContent}
           </div>
         );
@@ -76,7 +76,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
   return (
     <>
       {/* Tab buttons */}
-      <div className='mx-auto mb-3 flex w-[85%] justify-around md:w-[70%] lg:mx-0 lg:mb-4 lg:w-auto lg:justify-start xl:mb-5'>
+      <div className='mx-auto mb-3 flex w-full justify-around sm:w-[85%] md:w-[70%] lg:mx-0 lg:mb-4 lg:w-auto lg:justify-start xl:mb-5'>
         {tabs?.map((tab, idx) => (
           <div key={tab.id} className='flex w-[50%] items-center lg:w-auto'>
             <button

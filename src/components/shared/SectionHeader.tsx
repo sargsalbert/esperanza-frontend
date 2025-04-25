@@ -25,7 +25,7 @@ const SectionHeader = ({
       </div>
 
       <p
-        className={`text-[13px]/[26px] sm:text-[16px]/[32px] ${showKnowMore ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
+        className={`text-[14px]/[26px] sm:text-[16px]/[32px] ${showKnowMore ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
       >
         {description}
       </p>
