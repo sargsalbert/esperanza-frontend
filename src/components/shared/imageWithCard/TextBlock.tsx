@@ -30,7 +30,7 @@ const TextBlock = ({
         uiType === 'collapse'
           ? 'w-full lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
           : 'w-[calc(100%-40px)] md:w-[calc(100%-80px)] lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
-      } justify-between self-center bg-gray-100 p-3 shadow-xs md:p-6 lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
+      } justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:p-6 lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
         imageFirst
           ? 'lg:my-15 lg:mr-10 lg:-ml-30 2xl:my-22.5 2xl:mr-15 2xl:-ml-45'
           : 'lg:my-15 lg:-mr-30 lg:ml-10 2xl:my-22.5 2xl:-mr-45 2xl:ml-15'
