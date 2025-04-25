@@ -1,12 +1,11 @@
 'use client';
-
-import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Thumbnail from './Thumbnail';
 import SlideButtons from './SlideButtons';
 import { ImageWithOverlayCardProps } from './types';
 import TextBlock from './TextBlock';
+import BlockImage from './BlockImage';
 
 const ImageWithCard = ({
   features,
@@ -66,14 +65,14 @@ const ImageWithCard = ({
     <>
       {uiType === 'collapse' && (
         <div onClick={handleCollapse} className='bg-gray-100 px-8'>
-          <h2 className='cursor-pointer border-b-2 border-gray-200 py-4 text-center text-[20px]/[24px] font-semibold text-gray-800 uppercase md:hidden'>
+          <h2 className='cursor-pointer border-b-2 border-gray-200 py-4 text-center text-[20px]/[24px] font-semibold text-gray-800 uppercase lg:hidden'>
             {title}
           </h2>
         </div>
       )}
 
       <div
-        className={`relative flex w-full ${uiType === 'collapse' && collapseType ? 'hidden md:flex' : 'flex'} flex-col-reverse overflow-hidden ${imageFirst ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+        className={`relative flex w-full ${uiType === 'collapse' && collapseType ? 'hidden lg:flex' : 'flex'} flex-col-reverse overflow-hidden ${imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
       >
         <TextBlock
           imageFirst={imageFirst}
@@ -86,7 +85,7 @@ const ImageWithCard = ({
           uiType={uiType}
         />
         <div
-          className={`relative z-20 mx-auto -mt-[83px] block max-w-[calc(100%-40px)] ${uiType === 'collapse' ? 'hidden' : 'md:hidden'}`}
+          className={`relative z-20 mx-auto -mt-[83px] block max-w-[calc(100%-40px)] ${uiType === 'collapse' ? 'hidden' : 'lg:hidden'}`}
         >
           <div className='mb-3.5 flex justify-center'>
             {features?.map((_, index) => (
@@ -101,37 +100,22 @@ const ImageWithCard = ({
             ))}
           </div>
         </div>
+        <BlockImage emblaRef={emblaRef} features={features} />
         <div
-          className='relative h-[318px] shrink-0 overflow-hidden md:h-auto md:w-[calc(60%+40px)] 2xl:w-[calc(60%+60px)]'
-          ref={emblaRef}
-        >
-          <div className='flex h-full w-full'>
-            {features?.map((feature) => (
-              <div
-                key={feature.id}
-                className='relative h-full min-w-0 flex-[0_0_100%]'
-              >
-                <Image
-                  src={feature.image || '/placeholder.svg'}
-                  alt={`${title} image`}
-                  fill
-                  className='object-cover'
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div
-          className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between md:flex md:w-[calc(60%-40px)] md:px-[40px] 2xl:w-[calc(60%-60px)] 2xl:px-[60px] ${imageFirst ? 'left-0' : 'right-0'}`}
+          className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between lg:flex lg:w-[calc(50%-40px)] lg:px-10 xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)] 2xl:px-15 ${imageFirst ? 'left-0' : 'right-0'}`}
         >
           <SlideButtons scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>
       </div>
       <div
-        className={`mt-9.5 hidden justify-end md:flex ${imageFirst ? 'flex-row-reverse' : 'flex-row'} `}
+        className={`hidden justify-end lg:mt-4 lg:flex xl:mt-6 2xl:mt-8 ${imageFirst ? 'flex-row-reverse' : 'flex-row'} `}
       >
         <div
-          className={`flex space-x-[5px] ${imageFirst ? 'justify-end md:w-[calc(60%-40px)] 2xl:w-[calc(60%-60px)]' : 'justify-start md:w-[calc(60%-40px)] 2xl:w-[calc(60%-60px)]'} `}
+          className={`grid grid-cols-9 lg:gap-[3px] xl:gap-[4px] 2xl:gap-[5px] ${
+            imageFirst
+              ? '[direction:rtl] lg:w-[calc(50%-40px)] xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)]'
+              : 'lg:w-[calc(50%-40px)] xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)]'
+          } `}
         >
           {features?.map((feature, index) => (
             <Thumbnail

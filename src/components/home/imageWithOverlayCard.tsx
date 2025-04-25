@@ -88,7 +88,7 @@ const ImageWithOverlayCard = ({
             {features.map((feature) => (
               <div className='min-w-0 flex-[0_0_100%]' key={feature.id}>
                 <div className='relative'>
-                  <div className='relative h-[318px] w-full'>
+                  <div className='relative aspect-4/3 w-full'>
                     <Image
                       src={feature.image || '/placeholder.svg'}
                       alt='Rooms & Suites'
@@ -116,7 +116,7 @@ const ImageWithOverlayCard = ({
                         {feature.title}
                       </h2>
                       <div className='flex'>
-                        <div className='mx-auto mb-5 flex h-0.5 w-full bg-yellow-500 sm:h-[3px] sm:w-[325px]' />
+                        <div className='mx-auto mb-5 flex h-0.5 w-full bg-yellow-500 sm:h-[3px] lg:w-[325px]' />
                       </div>
                       <p className='text-[13px] leading-6 text-gray-900'>
                         {feature.description}

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { TabsData } from './types';
 
 interface TabsProps {
@@ -7,13 +8,33 @@ interface TabsProps {
 }
 
 const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
-  const tab = tabs[activeTab];
+  const [maxHeight, setMaxHeight] = useState<number | null>(null);
+  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const renderContent = () => {
+  useEffect(() => {
+    const calculateHeights = () => {
+      if (window.innerWidth >= 1024 && tabRefs.current.length) {
+        const heights = tabRefs.current.map((el) => el?.offsetHeight || 0);
+        setMaxHeight(Math.max(...heights));
+      } else {
+        setMaxHeight(0);
+      }
+    };
+
+    calculateHeights(); // Initial calculation
+
+    window.addEventListener('resize', calculateHeights);
+
+    return () => {
+      window.removeEventListener('resize', calculateHeights);
+    };
+  }, [tabs]);
+
+  const renderContent = (tab: TabsData) => {
     switch (tab.tabContentType) {
       case 'bullet':
         return (
-          <ul className='list-disc space-y-2 pl-5'>
+          <ul className='grid list-disc gap-y-[.7em] pl-5 text-[15px] md:grid-cols-2 md:gap-x-8 xl:gap-x-12 xl:text-base'>
             {(tab.tabContent as string[]).map((item, i) => (
               <li key={i}>{item}</li>
             ))}
@@ -21,7 +42,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
         );
       case 'twoColumnLine':
         return (
-          <div className=''>
+          <div className='my-7 lg:my-0'>
             {(tab.tabContent as [string, string][]).map(([label, value], i) => (
               <div
                 key={i}
@@ -30,7 +51,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                 <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
                   {label}
                 </span>
-                <span className='overflow-hidden text-sm font-semibold text-gray-900 md:text-lg'>
+                <span className='overflow-hidden text-sm font-semibold text-gray-900 md:text-base'>
                   {value}
                 </span>
               </div>
@@ -39,15 +60,13 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
         );
       case 'paragraphs':
         return (
-          <div>
-            <div className='mb-2.5 text-center text-base leading-6 text-gray-900 md:text-left md:text-base md:leading-8'>
-              {tab.tabContent[0]}
-            </div>
+          <div className='text-center text-[15px] leading-[2em] text-gray-900 lg:text-left lg:leading-8 xl:text-base'>
+            {tab.tabContent[0]}
           </div>
         );
       default:
         return (
-          <div className='text-center text-base leading-6 text-gray-900 md:text-left md:text-base md:leading-8'>
+          <div className='text-center text-[15px] leading-[2em] text-gray-900 lg:text-left lg:leading-8 xl:text-base'>
             {tab.tabContent}
           </div>
         );
@@ -56,12 +75,14 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
 
   return (
     <>
-      <div className='mx-auto flex w-[85%] justify-around md:mx-0 md:w-auto md:justify-start'>
+      {/* Tab buttons */}
+      <div className='mx-auto mb-3 flex w-[85%] justify-around md:w-[70%] lg:mx-0 lg:mb-4 lg:w-auto lg:justify-start xl:mb-5'>
         {tabs?.map((tab, idx) => (
-          <div key={tab.id} className='flex w-[50%] items-center md:w-auto'>
+          <div key={tab.id} className='flex w-[50%] items-center lg:w-auto'>
             <button
-              key={idx}
-              className={`w-full cursor-pointer p-3 text-base font-semibold transition-colors md:px-0 md:text-lg ${idx === activeTab ? 'text-gray-900' : 'text-gray-700'}`}
+              className={`w-full cursor-pointer py-[2.5%] text-[16px] font-semibold transition-colors xl:text-[17px] ${
+                idx === activeTab ? 'text-gray-900' : 'text-gray-700'
+              }`}
               onClick={() => setActiveTab(idx)}
             >
               {tab.tabName}
@@ -72,7 +93,32 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
           </div>
         ))}
       </div>
-      <div className='mt-0 mb-6 md:mt-1'>{renderContent()}</div>
+
+      {/* Content container with dynamic height */}
+      <div
+        style={maxHeight ? { height: maxHeight } : undefined}
+        className='relative transition-all duration-500'
+      >
+        {tabs.map((tab, idx) => (
+          <div
+            key={tab.id}
+            ref={(el) => {
+              tabRefs.current[idx] = el;
+            }}
+            className={`${
+              idx === activeTab
+                ? 'relative opacity-100'
+                : 'pointer-events-none absolute opacity-0'
+            } ${
+              tab.tabContentType === 'twoColumnLine'
+                ? 'flex h-full flex-col justify-center'
+                : ''
+            }`}
+          >
+            {renderContent(tab)}
+          </div>
+        ))}
+      </div>
     </>
   );
 };

@@ -56,11 +56,11 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
 
                 // Set class logic
                 const linkClass = isHovered
-                  ? 'text-gray-900'
+                  ? 'text-gray-900 font-medium'
                   : isAnyHovering
                     ? 'text-gray-600'
                     : isActive(href)
-                      ? 'text-gray-900'
+                      ? 'text-gray-900 font-medium'
                       : 'text-gray-700';
 
                 const iconColor = isHovered

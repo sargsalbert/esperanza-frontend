@@ -26,21 +26,29 @@ const TextBlock = ({
 }: TextBlockProps) => {
   return (
     <div
-      className={`z-10 flex shrink-0 flex-col ${uiType === 'collapse' ? 'w-full md:w-[40%]' : 'w-[calc(100%-40px)] md:w-[40%]'} justify-between self-center bg-gray-100 px-2.5 py-5 shadow-xs md:min-h-[640px] md:p-10 ${imageFirst ? 'md:m-10 md:-ml-[80px] 2xl:m-15 2xl:-ml-[120px]' : 'md:m-10 md:-mr-[80px] 2xl:m-15 2xl:-mr-[120px]'}`}
+      className={`z-10 flex shrink-0 flex-col ${
+        uiType === 'collapse'
+          ? 'w-full lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
+          : 'w-[calc(100%-40px)] md:w-[calc(100%-80px)] lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
+      } justify-between self-center bg-gray-100 p-6 shadow-xs lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
+        imageFirst
+          ? 'lg:my-15 lg:mr-10 lg:-ml-30 2xl:my-22.5 2xl:mr-15 2xl:-ml-45'
+          : 'lg:my-15 lg:-mr-30 lg:ml-10 2xl:my-22.5 2xl:-mr-45 2xl:ml-15'
+      }`}
     >
-      <div className='relative flex flex-col justify-center'>
+      <div className='relative mb-6 flex flex-col justify-center xl:mb-8'>
         <div
-          className={`mb-0 text-center md:mb-4.5 md:text-left ${uiType === 'collapse' ? 'hidden md:block' : 'block'}`}
+          className={`text-center lg:text-left ${uiType === 'collapse' ? 'hidden lg:block' : 'block'}`}
         >
-          <h2 className='inline-flex w-[85%] justify-center border-b-2 border-yellow-500 pb-5 text-[20px]/[24px] font-semibold text-gray-800 uppercase sm:border-b-3 sm:text-[24px]/[30px] md:w-[75%] md:justify-start md:pb-7.5 md:text-[28px]/[34px]'>
+          <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[60%] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
             {title}
           </h2>
         </div>
         <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
       {!secondaryButton && tabs[activeTab].tabContentType === 'paragraphs' ? (
-        <div className='flex flex-col items-center justify-between md:flex-row'>
-          <p className='mb-6 text-base leading-6 font-medium text-gray-900 md:mb-0 md:text-base md:leading-8'>
+        <div className='flex flex-col items-center justify-between lg:flex-row'>
+          <p className='mb-6 text-[15px] font-medium text-gray-900 lg:mb-0 xl:text-base'>
             {tabs[activeTab].tabContent[1]}
           </p>
           <Actions
