@@ -32,6 +32,7 @@ export default async function RoomsSuites() {
               text: 'Check Availability',
             }}
             uiType='collapse'
+            isLast={index === sectionsRooms.length - 1}
           />
         </div>
       ))}
