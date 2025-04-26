@@ -123,7 +123,7 @@ const SectionGrid = ({
         </div>
 
         <div
-          style={{ top: imageHeight ? `${imageHeight / 2}px` : '50%' }}
+          style={{ top: imageHeight ? `${imageHeight / 2}px` : '28%' }}
           className='absolute z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'
         >
           <button
