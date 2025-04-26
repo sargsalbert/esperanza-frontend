@@ -1,6 +1,6 @@
 'use client';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import SectionHeader from '../shared/SectionHeader';
 import { SlideRightIcon } from '../icons/slideRightIcon';
@@ -57,6 +57,27 @@ const SectionGrid = ({
     };
   }, [emblaApi, onSelect]);
 
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
+  const [imageHeight, setImageHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const updateImageHeight = () => {
+      if (window.innerWidth > 1023 && imageWrapperRef.current) {
+        setImageHeight(imageWrapperRef.current.offsetHeight);
+      } else {
+        setImageHeight(null);
+      }
+    };
+
+    updateImageHeight();
+
+    window.addEventListener('resize', updateImageHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateImageHeight);
+    };
+  }, []);
+
   return (
     <div className='mb-12.5 sm:mb-15 lg:mb-20'>
       {title && description && (
@@ -77,7 +98,10 @@ const SectionGrid = ({
               key={index}
               className='mr-[12px] flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]'
             >
-              <div className='relative aspect-3/2 w-full overflow-hidden lg:aspect-5/4'>
+              <div
+                ref={index === 0 ? imageWrapperRef : null}
+                className='relative aspect-5/4 w-full overflow-hidden sm:aspect-4/2 lg:aspect-5/4'
+              >
                 <Image
                   src={item.imageUrl}
                   alt='A beautiful view'
@@ -86,7 +110,7 @@ const SectionGrid = ({
                 />
               </div>
               <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-7 lg:text-left xl:p-8'>
-                <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[28px]'>
+                <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
                   {item.title}
                 </h2>
 
@@ -98,7 +122,10 @@ const SectionGrid = ({
           ))}
         </div>
 
-        <div className='absolute top-[30%] z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'>
+        <div
+          style={{ top: imageHeight ? `${imageHeight / 2}px` : '50%' }}
+          className='absolute z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'
+        >
           <button
             className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
             onClick={scrollPrev}

@@ -18,35 +18,18 @@ export default async function Wellness() {
         showKnowMore={false}
       />
 
-      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
-        <div className='relative col-span-1 row-span-2 h-[262px] sm:h-[679px] lg:h-[970px]'>
-          <Image
-            src='/resort-777.jpg'
-            alt=''
-            layout='fill'
-            objectFit='cover'
-            className=''
-          />
+      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
+        <div className='relative h-full w-full lg:aspect-7/10'>
+          <Image src='/resort-777.jpg' alt='' layout='fill' objectFit='cover' />
         </div>
 
-        <div className='relative col-span-1 h-[128px] sm:h-[335.3px] lg:h-[479px]'>
-          <Image
-            src='/resort-999.jpg'
-            alt=''
-            layout='fill'
-            objectFit='cover'
-            className=''
-          />
-        </div>
-
-        <div className='relative col-span-1 h-[128px] sm:h-[335.3px] lg:h-[479px]'>
-          <Image
-            src='/resort-3.jpg'
-            alt=''
-            layout='fill'
-            objectFit='cover'
-            className=''
-          />
+        <div className='flex flex-col gap-1.5 sm:gap-2 lg:gap-3'>
+          <div className='relative aspect-7/5 h-1/2 w-full'>
+            <Image src='/resort-999.jpg' alt='' fill objectFit='cover' />
+          </div>
+          <div className='relative aspect-7/5 h-1/2 w-full'>
+            <Image src='/resort-3.jpg' alt='' fill objectFit='cover' />
+          </div>
         </div>
       </div>
 
