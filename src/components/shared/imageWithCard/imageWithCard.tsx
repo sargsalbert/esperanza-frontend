@@ -64,9 +64,12 @@ const ImageWithCard = ({
   return (
     <>
       {uiType === 'collapse' && (
-        <div onClick={handleCollapse} className='bg-gray-100 px-8'>
+        <div
+          onClick={handleCollapse}
+          className='bg-gray-100 px-5 sm:px-7.5 md:px-10'
+        >
           <h2
-            className={`cursor-pointer ${collapseType ? 'border-b-2' : 'border-b-0'} border-gray-200 py-4 text-center text-[18px]/[22px] font-semibold text-gray-800 uppercase md:text-[20px]/[24px] lg:hidden`}
+            className={`cursor-pointer ${collapseType ? 'border-b-2' : 'border-b-0'} flex items-center justify-center border-gray-200 py-4 text-center text-[18px]/[22px] font-semibold text-gray-800 uppercase md:text-[20px]/[24px] lg:hidden`}
           >
             {title}
           </h2>

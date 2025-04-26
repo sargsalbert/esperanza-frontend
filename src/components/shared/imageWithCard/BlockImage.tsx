@@ -17,7 +17,7 @@ const BlockImage = ({ emblaRef, features }: BlockImageProps) => {
         {features?.map((feature) => (
           <div
             key={feature.id}
-            className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-5/3'
+            className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-4/2 lg:aspect-5/3'
           >
             <Image
               src={feature.image || '/placeholder.svg'}
