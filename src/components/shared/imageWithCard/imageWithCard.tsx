@@ -91,7 +91,7 @@ const ImageWithCard = ({
           uiType={uiType}
         />
         <div
-          className={`relative z-20 mx-auto -mt-[72px] block max-w-[calc(100%-40px)] md:-mt-[82px] ${uiType === 'collapse' ? 'hidden' : 'lg:hidden'}`}
+          className={`relative z-20 mx-auto -mt-[79px] block max-w-[calc(100%-40px)] sm:-mt-[80px] md:-mt-[84px] ${uiType === 'collapse' ? 'hidden' : 'lg:hidden'}`}
         >
           <div className='mb-3.5 flex justify-center'>
             {features?.map((_, index) => (

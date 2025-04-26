@@ -37,7 +37,7 @@ export default async function RoomsSuites() {
         </div>
       ))}
 
-      <div className='h-12.5' />
+      <div className='h-22.5 lg:h-12.5' />
     </>
   );
 }
