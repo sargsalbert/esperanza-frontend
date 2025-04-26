@@ -33,7 +33,7 @@ export default async function Home() {
       </div>
       <SectionHeader
         title='Destination'
-        description='Tucked away on the tranquil shores of Ungurys Lake, Esperanza Lake Resort is a secluded hideaway between forest and water, where nature, wellness, and comfort come together. The resort’s architecture blends seamlessly into the landscape, with natural materials and wabi-sabi-inspired design creating a quiet elegance.'
+        description='Tucked away on the tranquil shores of Ungurys Lake, Esperanza Lake Resort is a secluded hideaway between forest and water, where nature, wellness, and comfort come together. The resort’s architecture blends seamlessly into the landscape, with nature-inspired minimalism creating a quiet luxury.'
       />
       <Destination />
       {sectionsRoomsSuites.map((section, index) => (
@@ -69,7 +69,7 @@ export default async function Home() {
       ))}
       <SectionGrid
         title='EXPERIENCES'
-        description='At Esperanza, time unfolds at its own pace. Whether active or restful, each experience is designed to connect you with the elements, the landscape, and a simpler rhythm of life.'
+        description='At Esperanza Lake Resort, time unfolds at its own pace. Whether active or restful, each experience is designed to connect you with the elements, the landscape, and a simpler rhythm of life.'
         items={itemExperiencesHome}
       />
       <div className='h-12.5' />

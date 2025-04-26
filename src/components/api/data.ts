@@ -5,7 +5,7 @@ export const sectionsRoomsSuites = [
     id: 1,
     title: 'ROOMS & SUITES',
     description:
-      'Echoing the resort’s serene surroundings, our rooms and suites are designed to bring you closer to nature – through minimalist interiors, natural materials, soft lighting, and expansive views. Thoughtfully arranged and beautifully understated, each space invites a deep sense of calm and connection.',
+      'Echoing the resort’s serene surroundings, our rooms and suites are designed to bring you closer to nature – through minimalist interiors, natural materials, muted tones, and expansive views. Thoughtfully arranged and beautifully understated, each space invites a deep sense of calm and connection.',
     features: [
       {
         id: 1,
@@ -48,7 +48,7 @@ export const sectionsRoomsSuites = [
         id: 6,
         title: 'Forest Suite',
         description:
-          'A spacious, light-filled suite with a king-size bed, sitting area, and private terrace – set at the edge of the forest for a deeply grounding stay.',
+          'A spacious, light-filled suite with a king-size bed, lounge area, and private terrace – set at the edge of the forest for a deeply grounding stay.',
         image: '/resort-4.7.jpg',
       },
 
@@ -98,7 +98,7 @@ export const sectionsWellnessHome: ItemProps[] = [
     imageUrl: '/resort-5.jpg',
     title: 'Thermal Rituals',
     description:
-      'Release tension and restore balance in our sauna and hammam – two distinct heat experiences that soothe the body and quiet the mind.',
+      'Release tension and restore balance in our sauna and steam room – two distinct heat experiences that soothe the body and quiet the mind.',
   },
   {
     imageUrl: '/resort-5.1.jpg',
@@ -137,7 +137,7 @@ export const diningMeeting = [
     id: 1,
     title: 'DINING',
     description:
-      'Rooted in the land and shaped by the seasons, dining at Esperanza blends thoughtful preparation with a sense of place. Two distinct restaurants invite you to slow down and savour – each with its own rhythm, flavour, and setting.',
+      'Rooted in the land and shaped by the seasons, dining at Esperanza Lake Resort blends thoughtful preparation with a sense of place. Two distinct restaurants invite you to slow down and savour – each with its own rhythm, flavour, and setting.',
     features: [
       {
         id: 1,
@@ -159,7 +159,7 @@ export const diningMeeting = [
     id: 2,
     title: 'Meetings & Events',
     description:
-      'Whether hosting a celebration, retreat, or corporate gathering, Esperanza offers refined spaces surrounded by nature. Each venue is designed for focus, connection, and memorable moments – enhanced by stillness, beauty, and attentive care.',
+      'Whether hosting a celebration, retreat, or corporate gathering, Esperanza Lake Resort offers refined spaces surrounded by nature. Each venue is designed for focus, connection, and memorable moments – enhanced by stillness, beauty, and attentive care.',
     features: [
       {
         id: 1,
@@ -189,7 +189,7 @@ export const diningMeeting = [
 export const itemExperiencesHome: ItemProps[] = [
   {
     imageUrl: '/resort-5.jpg',
-    title: 'The Lake & Beach',
+    title: 'Lake & Beach',
     description: 'Swim, sunbathe, or simply pause by the water’s edge.',
   },
   {
@@ -219,7 +219,7 @@ export const itemExperiencesHome: ItemProps[] = [
   {
     imageUrl: '/resort-5.5.jpg',
     title: 'Kids Room and Playground',
-    description: 'A playful, welcoming space designed for younger guests.',
+    description: 'A playful, welcoming space for younger guests.',
   },
 ];
 
@@ -242,7 +242,7 @@ export const sectionsVillas = [
         tabName: 'Amenities',
         tabContent: [
           'Private terrace and garden',
-          'Private pier with sunbeds',
+          'Private pier with sun beds',
           'Dining space',
           'Bathroom amenities',
           'Nespresso machine and tea set',
@@ -251,10 +251,9 @@ export const sectionsVillas = [
           'Air conditioning',
           'Personal safe',
           'Minibar',
-          '1 rollaway beds at 75.00 EUR per night',
+          '1 rollaway bed at 75.00 EUR per night',
           '2 cribs permitted',
-          'Daily housekeeping service',
-          'Two-way private transfer',
+          '2 cribs permitted',
         ],
         tabContentType: 'bullet',
       },
@@ -290,6 +289,7 @@ export const sectionsVillas = [
         tabContent: [
           'Private terrace and garden',
           'Private pier with sunbeds',
+          'Private spa',
           'Dining space',
           'Bathroom amenities',
           'Nespresso machine and tea set',
@@ -300,7 +300,6 @@ export const sectionsVillas = [
           'Minibar',
           'Rollaway beds not permitted',
           '2 cribs permitted',
-          'Daily housekeeping service',
           'Two-way private transfer',
         ],
         tabContentType: 'bullet',
@@ -410,7 +409,7 @@ export const sectionsDining = [
 export const sectionsExperience = [
   {
     id: 1,
-    title: 'The Lake & Beach',
+    title: 'Lake & Beach',
     tabs: [
       {
         id: 1,
@@ -449,7 +448,7 @@ export const sectionsExperience = [
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Set beside the lake and surrounded by trees, our three paddle tennis courts offer a dynamic way to move while staying close to nature. Whether you are playing a friendly match or working on your skills, the setting adds a sense of ease and clarity to every game. Courts are available to both resort guests and non-resident visitors with prior reservation. Rackets and balls are provided upon request.',
+          'Set beside the lake and surrounded by trees, our three paddle tennis courts offer a dynamic way to move while staying close to nature. Whether you are playing a friendly match or working on your skills, the setting adds a sense of ease and clarity to every game. Prior reservation is required for both resort guests and non-resident visitors. Rackets and balls are provided upon request.',
       },
       {
         id: 2,
@@ -488,7 +487,7 @@ export const sectionsWellness = [
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'Inspired by nature’s rhythm and guided by care, our treatments are thoughtfully designed to restore balance – both physical and emotional. Using natural oils, warm stones, and time-honored techniques, each ritual is a quiet journey inward. Treatments are further enhanced with high-quality care products from Nelly De Vuyst and Piroche Cosmétiques, while advanced technologies, ranging from Geneo+ and JetPeel to the Nuvola floating bed and the HEOQi Harmony Spa capsule – bring innovation into harmony with nature.',
+          'Inspired by nature’s rhythm and guided by care, our treatments are thoughtfully designed to restore balance – both physical and emotional. Using natural oils, warm stones, and time-honored techniques, each ritual is a quiet journey inward. Treatments are further enhanced with high-quality care products from Nelly De Vuyst and Piroche Cosmétiques, while advanced technologies – ranging from Geneo+ and JetPeel to the Nuvola floating bed and the HEOQi Harmony Spa capsule – bring innovation into harmony with nature.',
       },
       {
         id: 2,
@@ -521,7 +520,7 @@ export const sectionsWellness = [
         id: 1,
         tabName: 'Overview',
         tabContent:
-          'The spa at Esperanza is open to both resort guests and day visitors. Whether you come for a single treatment or a full day of rest, the experience is immersive, unhurried, and deeply renewing. Day guests enjoy access to our full range of facilities, including thermal and hydrotherapy zones, relaxation areas, and select wellness experiences – with prior reservation. Visitors who book a 90-minute treatment receive a complimentary one-hour access to the spa facilities.',
+          'The Spa Esperanza is open to both resort guests and day visitors. Whether you come for a single treatment or a full day of rest, the experience is immersive, unhurried, and deeply renewing. Day guests enjoy access to our full range of facilities, including thermal and hydrotherapy zones, relaxation areas, and select wellness experiences – with prior reservation. Visitors who book a 90-minute treatment receive a complimentary one-hour access to the spa facilities.',
       },
       {
         id: 2,
@@ -723,6 +722,7 @@ export const sectionsRooms = [
         tabName: 'Amenities',
         tabContent: [
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -778,6 +778,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -826,7 +827,7 @@ export const sectionsRooms = [
         id: 1,
         tabName: 'Overview',
         tabContent: [
-          'Designed for unhurried stays, the Loft Suite offers a spacious and harmonious retreat with a king-size bed and lake-facing views. A separate sitting area offers ample comfort and extra room to relax. Featuring warm wood accents, natural textiles, and soft lighting, it is a space to slow down and feel at home.',
+          'Designed for unhurried stays, the Loft Suite offers a spacious and harmonious retreat with a king-size bed and lake-facing views. A cosy lounge area offers ample comfort and extra room to relax. Featuring warm wood accents, natural materials, and soft tones, it is a space to slow down and feel at home.',
           '46 sqm – 1 bedroom – 3 persons',
         ],
         tabContentType: 'paragraphs',
@@ -836,6 +837,7 @@ export const sectionsRooms = [
         tabName: 'Amenities',
         tabContent: [
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -872,7 +874,7 @@ export const sectionsRooms = [
         id: 1,
         tabName: 'Overview',
         tabContent: [
-          'The only suite of its kind, this spacious retreat features a private terrace and sweeping views of both the lake and forest. With a king-size bed, a dedicated seating area, and natural, understated design, it offers a deeply serene and elevated stay.',
+          'The only suite of its kind, this spacious retreat features a private terrace and sweeping views of both the lake and forest. With a king-size bed, a dedicated sitting area, and natural, understated design, it offers a deeply serene and elevated stay.',
           '46 sqm – 1 bedroom – 3 persons',
         ],
         tabContentType: 'paragraphs',
@@ -883,6 +885,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -926,6 +929,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -966,7 +970,7 @@ export const sectionsRooms = [
         id: 1,
         tabName: 'Overview',
         tabContent: [
-          'Spacious and secluded, the Forest Suite opens onto a private terrace at the edge of the forest. Framed by large windows and filled with natural light, it offers a quiet, grounding retreat immersed in greenery. The suite features a king-size bed and a cosy seating area that provides ample comfort and extra room to relax and soak in the view.',
+          'Spacious and secluded, the Forest Suite opens onto a private terrace at the edge of the forest. Framed by large windows and filled with natural light, it offers a quiet, grounding retreat immersed in greenery. The suite features a king-size bed and a relaxed lounge area that provides ample comfort and extra room to relax and soak in the view.',
           '48 sqm – 1 bedroom – 3 persons',
         ],
         tabContentType: 'paragraphs',
@@ -977,6 +981,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -1024,6 +1029,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -1064,7 +1070,7 @@ export const sectionsRooms = [
         id: 1,
         tabName: 'Overview',
         tabContent: [
-          'Our largest suite, this lakeside sanctuary offers stunning lake views, an expansive private terrace, and direct access to the garden and lake. Inside, the suite showcases minimalist luxury and thoughtful design, featuring a king-size bed, a spacious sitting area, and a generous bathroom. Designed with natural warmth and quiet sophistication, it is an ideal space for those seeking both privacy and connection to nature.',
+          'Our largest suite, this lakeside sanctuary offers stunning lake views, an expansive private terrace, and direct access to the garden and lake. Inside, the suite showcases minimalist luxury and thoughtful design, featuring a king-size bed, a spacious livnig area, and a generous bathroom. Designed with natural warmth and quiet sophistication, it is an ideal space for those seeking both privacy and connection to nature.',
           '71 sqm – 1 bedroom – 3 persons',
         ],
         tabContentType: 'paragraphs',
@@ -1075,6 +1081,7 @@ export const sectionsRooms = [
         tabContent: [
           'Private terrace',
           'Bathroom amenities',
+          'Walk-in shower',
           'Nespresso machine and tea set',
           'TV',
           'High-speed Wi-Fi',
@@ -1083,6 +1090,7 @@ export const sectionsRooms = [
           'Minibar',
           '1 rollaway bed at 75.00 EUR per night',
           '1 crib permitted',
+          'Two-way private transfer',
         ],
         tabContentType: 'bullet',
       },
@@ -1149,7 +1157,7 @@ export const sectionsGridWellness: ItemProps[] = [
   },
   {
     imageUrl: '/resort-5.1.jpg',
-    title: 'Hammam',
+    title: 'Steam Room',
     description:
       'A gentle steam ritual inspired by tradition and deep relaxation.',
   },
@@ -1167,7 +1175,7 @@ export const sectionsGridWellness: ItemProps[] = [
   },
   {
     imageUrl: '/resort-5.4.jpg',
-    title: 'Experience shower',
+    title: 'Experience Shower',
     description:
       'Immerse yourself in alternating water sensations, from a refreshing ocean breeze to a warm tropical rain.',
   },

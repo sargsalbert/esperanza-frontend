@@ -14,7 +14,7 @@ export default async function Wellness() {
       <SectionHeader
         smallTitle='Elemental therapies and timeless rituals designed to reconnect body and mind'
         title='A Ritual of Renewal'
-        description='A place of quiet renewal, The Spa Esperanza invites you to pause, breathe, and return to yourself. Inspired by the surrounding forest and lake, each element – from thermal rituals to tailored treatments – is designed to restore balance and deepen your connection to the present moment. Whether you come for a few hours or a full day, the experience is unhurried, natural, and deeply restorative.'
+        description='A place of quiet renewal, The Spa Esperanza – spanning 1000 square metres, invites you to pause, breathe, and return to yourself. Inspired by the surrounding forest and lake, each element – from thermal rituals to tailored treatments – is intended to restore balance and deepen your connection to the present moment. Whether you come for a few hours or a full day, the experience is unhurried, natural, and deeply restorative.'
         showKnowMore={false}
       />
 

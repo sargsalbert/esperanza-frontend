@@ -14,7 +14,7 @@ export default async function MeetingsEvents() {
       <SectionHeader
         smallTitle='Intimate gatherings in nature'
         title='Timeless Moments'
-        description='Whether it is a lakeside celebration, an intimate retreat, or a thoughtful business meeting, events at Esperanza Lake Resort are shaped by natural surroundings, understated elegance, and quiet attention to detail. With 28 rooms and suites, three villas, two restaurants, three dedicated indoor spaces, modern spa, and eleven hectares of outdoor grounds – we allow each event to be tailored, intimate, and truly unforgettable.'
+        description='Whether it is a lakeside celebration, an intimate retreat, or a thoughtful business meeting, events at Esperanza Lake Resort are shaped by natural surroundings, understated elegance, and quiet attention to detail. With 28 rooms and suites, three villas, two restaurants, three dedicated indoor spaces, modern spa, and eleven hectares of outdoor grounds –each event can be tailored, intimate, and truly unforgettable.'
         showKnowMore={false}
       />
       {sectionsMeetingsEvents.map((v, index) => (

@@ -9,8 +9,8 @@ export default async function Destination() {
       <PageHeader imgUrl='/resort-5.3.jpg' title='Destination' />
 
       <SectionHeader
-        smallTitle='A secluded hideaway between forest and water'
-        title='Tucked Away, Yet Within Reach'
+        smallTitle='Tucked away, yet within reach '
+        title='Location'
         description="Nestled on the shores of Ungurys lake, Esperanza Lake Resort lies in the heart of Aukštaitija National Park – one of Lithuania’s most protected and untouched natural sanctuaries. Encircled by verdant forests and pristine waters, the resort spans eleven hectares of private land, providing guests with uninterrupted access to nature's serenity. Undisturbed and immersive, it is a destination defined by nature – tranquil, timeless, and deeply grounding."
         showKnowMore={false}
       />
@@ -28,13 +28,13 @@ export default async function Destination() {
           car, while a direct train offers a quick connection to the nearby town
           of Trakai. Expect a scenic and convenient journey through the
           countryside and quiet forest roads – setting the tone for the retreat
-          ahead. Transfers and Directions available upon request.
+          ahead. Transfers and directions available upon request.
         </p>
       </div>
 
       <SectionHeader
         title='Architecture & Design'
-        description='Built from centuries-old Canadian cedar logs, the resort’s architecture is both grounding and timeless – rooted in nature, and crafted to last. The warm textures, earthy tones, and natural materials create a harmony between structure and setting. Inside, design follows the wabi-sabi philosophy: minimalist, understated, and deeply connected to the land. Every space invites stillness through organic form soft light, and purposeful simplicity.'
+        description='Built from centuries-old Canadian cedar logs, the resort’s architecture is both grounding and timeless – rooted in nature and crafted to last. The warm textures, earthy tones, and natural materials create a harmony between structure and setting. Inside, design follows the wabi-sabi-inspired philosophy: minimalist, understated, and deeply connected to the land. Every space invites stillness through organic form, soft light, and purposeful simplicity.'
         showKnowMore={false}
       />
       <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
