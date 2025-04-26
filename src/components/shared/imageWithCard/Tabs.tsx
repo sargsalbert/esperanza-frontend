@@ -76,9 +76,9 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
   return (
     <>
       {/* Tab buttons */}
-      <div className='mx-auto mb-3 flex w-full justify-around sm:w-[85%] md:w-[70%] lg:mx-0 lg:mb-4 lg:w-auto lg:justify-start xl:mb-5'>
+      <div className='mx-auto mb-3 flex w-full justify-around sm:w-auto lg:mx-0 lg:mb-4 lg:justify-start xl:mb-5'>
         {tabs?.map((tab, idx) => (
-          <div key={tab.id} className='flex w-[50%] items-center lg:w-auto'>
+          <div key={tab.id} className='flex w-[50%] items-center sm:w-auto'>
             <button
               className={`w-full cursor-pointer py-[2.5%] text-[16px] font-semibold transition-colors xl:text-[17px] ${
                 idx === activeTab ? 'text-gray-900' : 'text-gray-700'
@@ -88,7 +88,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
               {tab.tabName}
             </button>
             {idx < tabs.length - 1 && (
-              <div className='h-3.5 w-0.5 shrink-0 bg-yellow-500 md:mx-4.5' />
+              <div className='h-3.5 w-0.5 shrink-0 bg-yellow-500 sm:mx-4.5' />
             )}
           </div>
         ))}
