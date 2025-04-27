@@ -22,6 +22,7 @@ const menuItems = [
   { href: '/meetings-events', label: 'Meetings & Events' },
   { href: '/experiences', label: 'Experiences' },
   { href: '/gallery', label: 'Gallery' },
+  { href: '/gift-cards', label: 'Gift Cards' },
 ];
 
 export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
@@ -47,7 +48,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
         }}
         className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 md:w-[538px] lg:w-[673px]`}
       >
-        <div className='px-6 py-6 md:px-10 md:py-10 2xl:px-15'>
+        <div className='px-6 py-6 md:px-10 md:py-7.5 2xl:px-15'>
           <nav>
             <ul className='space-y-4.5 md:space-y-5 md:pl-3 2xl:space-y-6'>
               {menuItems.map(({ href, label }) => {
