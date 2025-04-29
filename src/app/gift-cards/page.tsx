@@ -1,14 +1,46 @@
+'use client';
 import Input from '@/components/shared/Input';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import Select from '@/components/shared/Select';
 import TextArea from '@/components/shared/TextArea';
+import { useState } from 'react';
 
-export default async function GiftCards() {
+interface FormData {
+  voucherType: string;
+}
+
+// Define event type for onChange
+interface CustomChangeEvent {
+  target: {
+    name: string;
+    value: string;
+    type: string;
+  };
+  preventDefault: () => void;
+}
+
+export default function GiftCards() {
   const options = [
     { value: 'Print', label: 'Print' },
     { value: 'Online', label: 'Online' },
   ];
+
+  const [formData, setFormData] = useState<FormData>({
+    voucherType: '',
+  });
+
+  // Handle form input changes
+  const handleChange = (
+    e: CustomChangeEvent | React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    // console.log(`${name} changed to: ${value}`);
+  };
 
   return (
     <>
@@ -28,9 +60,16 @@ export default async function GiftCards() {
           <Input placeholder='Email (buyer)' />
           <Input placeholder='Amount (minimum 100 Eur)' />
 
-          <Select placeholder='Voucher type' options={options} />
-
-          <TextArea placeholder='Message ' />
+          <Select
+            name='voucherType'
+            placeholder='Voucher type'
+            options={options}
+            value={formData.voucherType}
+            onChange={handleChange}
+          />
+          {formData.voucherType === 'Online' && (
+            <TextArea placeholder='Message ' />
+          )}
         </div>
         <div className='flex justify-center md:justify-end'>
           <button
