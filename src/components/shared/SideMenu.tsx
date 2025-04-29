@@ -46,7 +46,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
           transition: 'transform 0.4s ease-in-out',
           willChange: 'transform',
         }}
-        className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_84px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 md:w-[538px] lg:w-[673px]`}
+        className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_64px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 lg:w-[673px]`}
       >
         <div className='px-6 py-6 md:px-10 md:py-7.5 2xl:px-15'>
           <nav>
@@ -96,7 +96,7 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
             </ul>
           </nav>
         </div>
-        <div className='mx-6 mt-auto mb-12.5 flex md:hidden'>
+        <div className='mx-6 mt-auto mb-12.5 flex lg:hidden'>
           <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
             Book
           </button>

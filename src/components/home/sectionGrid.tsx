@@ -131,14 +131,14 @@ const SectionGrid = ({
             onClick={scrollPrev}
             aria-label='Previous slide'
           >
-            <SlideLeftIcon className='lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+            <SlideLeftIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
           </button>
           <button
             className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
             onClick={scrollNext}
             aria-label='Next slide'
           >
-            <SlideRightIcon className='lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+            <SlideRightIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
           </button>
         </div>
       </div>

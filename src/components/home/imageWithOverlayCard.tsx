@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { SlideLeftIcon } from '../icons/slideLeftIcon';
+import { SlideRightIcon } from '../icons/slideRightIcon';
 
 export interface RoomFeature {
   id: number;
@@ -161,36 +163,14 @@ const ImageWithOverlayCard = ({
                 onClick={scrollPrev}
                 aria-label='Previous slide'
               >
-                <svg
-                  width='11'
-                  height='21'
-                  viewBox='0 0 11 21'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M0.344951 9.38571L6.9974 0.46256C7.4572 -0.154187 8.20071 -0.154187 8.65562 0.46256L9.76111 1.94538C10.2209 2.56213 10.2209 3.55942 9.76111 4.16961L5.04569 10.4945L9.76111 16.8195C10.2209 17.4362 10.2209 18.4335 9.76111 19.0437L8.65563 20.5265C8.19582 21.1433 7.45231 21.1433 6.9974 20.5265L0.344951 11.6034C-0.114851 10.9998 -0.114851 10.0025 0.344951 9.38571Z'
-                    fill='#362E25'
-                  />
-                </svg>
+                <SlideLeftIcon className='text-gray-800 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
               </button>
               <button
                 className='inline-flex cursor-pointer p-2.5'
                 onClick={scrollNext}
                 aria-label='Next slide'
               >
-                <svg
-                  width='11'
-                  height='21'
-                  viewBox='0 0 11 21'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M10.5584 11.6035L3.90592 20.5267C3.44612 21.1434 2.70261 21.1434 2.2477 20.5267L1.14221 19.0439C0.682412 18.4271 0.682412 17.4298 1.14221 16.8197L5.85763 10.4947L1.14221 4.16977C0.682409 3.55303 0.682409 2.55573 1.14221 1.94555L2.24769 0.462728C2.70749 -0.154019 3.451 -0.154019 3.90591 0.462728L10.5584 9.38588C11.0182 9.9895 11.0182 10.9868 10.5584 11.6035Z'
-                    fill='#362E25'
-                  />
-                </svg>
+                <SlideRightIcon className='text-gray-800 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
               </button>
             </div>
           </div>
