@@ -40,7 +40,7 @@ export default async function MeetingsEvents() {
       />
 
       <div className='mx-auto max-w-5xl px-5 pb-12.5 sm:pb-15 md:px-10 lg:pb-20 2xl:px-15'>
-        <div className='mt-2.5 mb-7.5 sm:mt-5 sm:mb-12.5'>
+        <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
           <Input placeholder='First Name' />
           <Input placeholder='Last Name' />
           <Input placeholder='Phone' />
