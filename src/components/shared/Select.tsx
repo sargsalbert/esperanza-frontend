@@ -19,7 +19,7 @@ interface CustomChangeEvent {
 }
 
 interface SelectProps {
-  options: Option[];
+  options?: Option[];
   placeholder?: string;
   value?: string;
   name: string;

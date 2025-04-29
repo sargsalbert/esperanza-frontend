@@ -4,6 +4,7 @@ import { TabsData } from '@/components/shared/imageWithCard/types';
 import Input from '@/components/shared/Input';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
+import Select from '@/components/shared/Select';
 import TextArea from '@/components/shared/TextArea';
 
 export default async function MeetingsEvents() {
@@ -44,14 +45,21 @@ export default async function MeetingsEvents() {
           <Input placeholder='Last Name' />
           <Input placeholder='Phone' />
           <Input placeholder='Email' />
-          <Input placeholder='Dates' type='date' />
+          <Select
+            name='date'
+            placeholder='Dates'
+            // options={options}
+            // value={formData.voucherType}
+            // onChange={handleChange}
+          />
+
           <Input placeholder='Number of Guests' type='number' />
           <TextArea placeholder='Message' />
         </div>
-        <div className='flex justify-center md:justify-end'>
+        <div className='flex justify-center lg:justify-end'>
           <button
             // onClick={primaryButton.onClick}
-            className={`h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 md:h-10.5 md:min-w-38 md:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg`}
+            className={`h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 lg:h-10.5 lg:min-w-38 lg:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg`}
           >
             Send
           </button>
