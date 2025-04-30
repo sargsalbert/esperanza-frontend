@@ -23,11 +23,16 @@ const ImageWithOverlayCard = ({
 }: ImageWithOverlayCardProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Single embla carousel instance for images
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     slidesToScroll: 1,
   });
+
+  // Handle touch start position
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchStartY, setTouchStartY] = useState(0);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -55,6 +60,38 @@ const ImageWithOverlayCard = ({
     };
   }, [emblaApi, onSelect]);
 
+  // Custom touch handlers for text area
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0].clientX);
+    setTouchStartY(e.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStartX || !touchStartY) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    // Calculate horizontal and vertical distance
+    const xDiff = touchStartX - touchEndX;
+    const yDiff = touchStartY - touchEndY;
+
+    // Only trigger if horizontal swipe is greater than vertical swipe (to avoid scrolling conflicts)
+    if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 30) {
+      if (xDiff > 0) {
+        // Swiped left, go next
+        scrollNext();
+      } else {
+        // Swiped right, go previous
+        scrollPrev();
+      }
+    }
+
+    // Reset touch positions
+    setTouchStartX(0);
+    setTouchStartY(0);
+  };
+
   if (!features || features.length === 0) {
     return <div className='p-4 text-center'>No images to display</div>;
   }
@@ -69,6 +106,8 @@ const ImageWithOverlayCard = ({
             ? 'lg:my-[10%] lg:mr-10 lg:-ml-30 2xl:mr-15 2xl:-ml-45'
             : 'lg:my-[10%] lg:-mr-30 lg:ml-10 2xl:-mr-45 2xl:ml-15'
         }`}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <div className='relative flex flex-col justify-center'>
           <div className='block text-center lg:text-left'>
@@ -81,7 +120,7 @@ const ImageWithOverlayCard = ({
                     : 'pointer-events-none absolute top-0 left-0 w-full opacity-0'
                 }`}
               >
-                <div onTouchStart={scrollNext} className='lg:min-h-[12rem]'>
+                <div className='lg:min-h-[12rem]'>
                   <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[60%] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
                     {feature.title}
                   </h2>
