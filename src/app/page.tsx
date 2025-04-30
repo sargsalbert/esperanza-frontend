@@ -14,8 +14,7 @@ import Destination from '@/components/home/destination';
 export default async function Home() {
   return (
     <>
-      <div className='relative mb-17.5 flex h-[468px] w-full sm:h-[641px] md:mb-30 lg:mb-39 lg:h-[917px]'>
-        {/* h-[calc(100vh-123px)] max-h-[917px] */}
+      <div className='relative mb-17.5 flex h-[100vh] w-full md:mb-30 lg:mb-39'>
         <div className='relative flex h-full w-full items-end'>
           <Image
             src='/resort-00.jpg'
@@ -36,6 +35,7 @@ export default async function Home() {
         description='Tucked away on the tranquil shores of Ungurys Lake, Esperanza Lake Resort is a secluded hideaway between forest and water, where nature, wellness, and comfort come together. The resort’s architecture blends seamlessly into the landscape, with nature-inspired minimalism creating a quiet luxury.'
       />
       <Destination />
+
       {sectionsRoomsSuites.map((section, index) => (
         <div key={section.id} className='mb-12.5 sm:mb-15 lg:mb-20'>
           <SectionHeader

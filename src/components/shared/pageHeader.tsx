@@ -7,7 +7,7 @@ interface PageHeaderProps {
 
 const PageHeader = ({ imgUrl, title }: PageHeaderProps) => {
   return (
-    <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full sm:h-[calc(100vh-100px)] md:h-[calc(100vh-123px)] lg:mb-10 xl:mb-15'>
+    <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full md:h-[calc(100vh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100vh-123px)]'>
       <div className='relative flex h-full w-full'>
         <Image
           src={imgUrl}

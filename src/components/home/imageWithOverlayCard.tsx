@@ -1,7 +1,5 @@
 'use client';
-
 import Image from 'next/image';
-
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
@@ -23,24 +21,8 @@ const ImageWithOverlayCard = ({
   features,
   imageFirst = false,
 }: ImageWithOverlayCardProps) => {
-  const [isMobile, setIsMobile] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Check if we're on mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
-  // Initialize Embla Carousel for mobile only
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
@@ -48,151 +30,123 @@ const ImageWithOverlayCard = ({
   });
 
   const scrollPrev = useCallback(() => {
-    if (isMobile) {
-      if (emblaApi) emblaApi.scrollPrev();
-    } else {
-      setCurrentIndex((prev) => (prev - 1 + features.length) % features.length);
-    }
-  }, [emblaApi, isMobile, features.length]);
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (isMobile) {
-      if (emblaApi) emblaApi.scrollNext();
-    } else {
-      setCurrentIndex((prev) => (prev + 1) % features.length);
-    }
-  }, [emblaApi, isMobile, features.length]);
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
-  const onMobileSelect = useCallback(() => {
-    if (!emblaApi || !isMobile) return;
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
     setCurrentIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi, isMobile]);
+  }, [emblaApi]);
 
   useEffect(() => {
-    if (!emblaApi || !isMobile) return;
+    if (!emblaApi) return;
 
-    emblaApi.on('select', onMobileSelect);
-    emblaApi.on('reInit', onMobileSelect);
-    onMobileSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+    onSelect();
 
     return () => {
-      emblaApi.off('select', onMobileSelect);
-      emblaApi.off('reInit', onMobileSelect);
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
     };
-  }, [emblaApi, onMobileSelect, isMobile]);
+  }, [emblaApi, onSelect]);
+
+  if (!features || features.length === 0) {
+    return <div className='p-4 text-center'>No images to display</div>;
+  }
 
   return (
-    <div className='relative w-full overflow-hidden'>
-      {isMobile ? (
-        // Mobile Layout
-        <div className='overflow-hidden' ref={emblaRef}>
-          <div className='flex'>
-            {features.map((feature) => (
-              <div className='min-w-0 flex-[0_0_100%]' key={feature.id}>
-                <div className='relative'>
-                  <div className='relative aspect-4/3 w-full'>
-                    <Image
-                      src={feature.image || '/placeholder.svg'}
-                      alt='Rooms & Suites'
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  </div>
-                  <div className='relative z-20 mx-auto -mt-[83px] max-w-[calc(100%-40px)]'>
-                    <div className='mb-3.5 flex justify-center'>
-                      {features.map((_, index) => (
-                        <button
-                          key={index}
-                          className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
-                            index === currentIndex
-                              ? 'bg-gray-50'
-                              : 'bg-[#B8B8B899]'
-                          }`}
-                          onClick={() => emblaApi?.scrollTo(index)}
-                          aria-label={`Go to slide ${index + 1}`}
-                        />
-                      ))}
-                    </div>
-                    <div className='bg-gray-100 px-2.5 py-6 text-center shadow-xs'>
-                      <h2 className='mb-4 text-xl leading-6 font-semibold text-gray-800 uppercase'>
-                        {feature.title}
-                      </h2>
-                      <div className='flex'>
-                        <div className='mx-auto mb-5 flex h-0.5 w-full bg-yellow-500 sm:h-[3px] lg:w-[325px]' />
-                      </div>
-                      <p className='text-[13px] leading-6 text-gray-900'>
-                        {feature.description}
-                      </p>
-                    </div>
+    <div
+      className={`relative flex w-full flex-col-reverse overflow-hidden ${imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
+    >
+      <div
+        className={`z-10 flex shrink-0 flex-col ${'w-[calc(100%-40px)] md:w-[calc(100%-80px)] lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'} justify-between self-center bg-gray-100 px-2.5 pt-4 pb-5 shadow-xs md:p-6 lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
+          imageFirst
+            ? 'lg:my-[10%] lg:mr-10 lg:-ml-30 2xl:mr-15 2xl:-ml-45'
+            : 'lg:my-[10%] lg:-mr-30 lg:ml-10 2xl:-mr-45 2xl:ml-15'
+        }`}
+      >
+        <div className='relative flex flex-col justify-center'>
+          <div className='block text-center lg:text-left'>
+            {features.map((feature, index) => (
+              <div
+                key={feature.id}
+                className={`flex flex-col justify-start transition-opacity duration-500 ease-in-out ${
+                  index === currentIndex
+                    ? 'pointer-events-auto opacity-100'
+                    : 'pointer-events-none absolute top-0 left-0 w-full opacity-0'
+                }`}
+              >
+                <div onTouchStart={scrollNext} className='lg:min-h-[12rem]'>
+                  <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[60%] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
+                    {feature.title}
+                  </h2>
+
+                  <div className='text-center text-[14px] leading-[2em] text-gray-900 sm:text-base lg:text-left'>
+                    {feature.description}
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      ) : (
-        // Desktop Layout
-        <div
-          className={`flex h-[562px] md:h-[678px] ${imageFirst ? 'flex-row' : 'flex-row-reverse'}`}
-        >
-          <div
-            className={`absolute z-[19] flex min-h-[260px] w-[582px] flex-col self-center bg-gray-100 px-5 pt-6 pb-2.5 shadow-xs md:min-h-[318px] md:w-[642px] md:px-10 md:pt-12 md:pb-5 ${imageFirst ? 'right-7.5 md:right-10 2xl:right-15' : 'left-7.5 md:left-10 2xl:left-15'}`}
-          >
-            <div className='relative flex flex-col justify-center'>
-              {features.map((feature, index) => (
-                <div
-                  key={feature.id}
-                  className={`absolute inset-0 flex flex-col justify-start transition-opacity duration-500 ease-in-out ${
-                    index === currentIndex
-                      ? 'z-10 opacity-100'
-                      : 'z-0 opacity-0'
-                  }`}
-                >
-                  <div>
-                    <h2 className='mb-4 inline-block min-w-[325px] border-b-3 border-[#B5946E] pr-4 pb-4 text-[24px]/[24px] font-semibold text-gray-800 uppercase md:mb-7.5 md:pb-7.5 md:text-[28px]/[28px]'>
-                      {feature.title}
-                    </h2>
-                  </div>
-                  <p className='text-base leading-8'>{feature.description}</p>
-                </div>
-              ))}
-            </div>
-            <div className='relative z-20 mt-auto flex justify-end gap-5 pt-4'>
+            <div className='relative z-20 mt-auto -mb-[12px] hidden justify-end pt-4 lg:flex lg:gap-3 xl:gap-4 2xl:gap-5'>
               <button
                 className='inline-flex cursor-pointer p-2.5'
-                onClick={scrollPrev}
                 aria-label='Previous slide'
+                onClick={scrollPrev}
               >
-                <SlideLeftIcon className='text-gray-800 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+                <SlideLeftIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
               </button>
               <button
                 className='inline-flex cursor-pointer p-2.5'
                 onClick={scrollNext}
                 aria-label='Next slide'
               >
-                <SlideRightIcon className='text-gray-800 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+                <SlideRightIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
               </button>
             </div>
           </div>
-          <div className='relative sm:w-[calc(100%-267px)] lg:w-[calc(100%-533px)]'>
-            {features.map((feature, index) => (
-              <div
-                key={feature.id}
-                className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                  index === currentIndex ? 'z-10 opacity-100' : 'z-0 opacity-0'
-                }`}
-              >
-                <Image
-                  src={feature.image || '/placeholder.svg'}
-                  alt='Rooms & Suites'
-                  layout='fill'
-                  objectFit='cover'
-                />
-              </div>
-            ))}
-          </div>
         </div>
-      )}
+      </div>
+      <div
+        className={`relative z-20 mx-auto -mt-[76px] block max-w-[calc(100%-40px)] md:-mt-[84px] lg:hidden`}
+      >
+        <div className='mb-3.5 flex justify-center'>
+          {features?.map((_, index) => (
+            <button
+              key={index}
+              className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
+                index === currentIndex ? 'bg-gray-50' : 'bg-[#B8B8B899]'
+              }`}
+              onClick={() => emblaApi?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      <div
+        className='relative shrink-0 overflow-hidden lg:h-auto lg:w-[calc(50%+80px)] xl:w-[calc(55%+80px)] 2xl:w-[calc(60%+120px)]'
+        ref={emblaRef}
+      >
+        <div className='flex h-full w-full'>
+          {features?.map((feature) => (
+            <div
+              key={feature.id}
+              className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-4/2 lg:aspect-5/3'
+            >
+              <Image
+                src={feature.image || '/placeholder.svg'}
+                alt={`image`}
+                fill
+                className='object-cover'
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
