@@ -41,7 +41,7 @@ const Header = () => {
         className={`sticky top-0 right-0 left-0 z-90 w-full bg-gray-100 ${isMenuOpen ? '' : 'shadow-xs'}`}
       >
         <div
-          className={`mx-auto flex items-center justify-between px-5 py-2 transition-all duration-300 md:px-10 2xl:px-15 ${isScrolled ? 'h-[64px] md:h-[90px] 2xl:h-[98px]' : 'h-[84px] md:h-[110px] 2xl:h-[123px]'} `}
+          className={`mx-auto flex items-center justify-between px-5 py-2 transition-all duration-300 md:px-7.5 lg:px-10 2xl:px-15 ${isScrolled ? 'h-[64px] md:h-[90px] 2xl:h-[98px]' : 'h-[84px] md:h-[110px] 2xl:h-[123px]'} `}
         >
           <div
             className={`flex items-center ${
@@ -52,28 +52,28 @@ const Header = () => {
           >
             <button
               onClick={toggleMenu}
-              className={`relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[5px] md:mr-7.5 md:w-[32px] md:gap-[7px] 2xl:mr-10 2xl:w-[40px] 2xl:gap-[8px]`}
+              className={`relative mr-5 flex h-[40px] w-[24px] cursor-pointer flex-col justify-center gap-[5px] md:mr-7.5 lg:w-[32px] lg:gap-[7px] 2xl:mr-10 2xl:w-[40px] 2xl:gap-[8px]`}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               <span
                 className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[24px] translate-y-[7px] rotate-45 md:w-[32px] md:translate-y-[9px] 2xl:w-[40px] 2xl:translate-y-[11px]'
-                    : 'w-[24px] md:w-[32px] 2xl:w-[40px]'
+                    ? 'w-[24px] translate-y-[7px] rotate-45 lg:w-[32px] lg:translate-y-[9px] 2xl:w-[40px] 2xl:translate-y-[11px]'
+                    : 'w-[24px] lg:w-[32px] 2xl:w-[40px]'
                 }`}
               />
               <span
                 className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
                   isMenuOpen
                     ? 'w-0 opacity-0'
-                    : 'w-[18px] md:w-[24px] 2xl:w-[30px]'
+                    : 'w-[18px] lg:w-[24px] 2xl:w-[30px]'
                 }`}
               />
               <span
                 className={`block h-[2px] bg-gray-800 transition-all duration-300 2xl:h-[3px] ${
                   isMenuOpen
-                    ? 'w-[24px] -translate-y-[7px] -rotate-45 md:w-[32px] md:-translate-y-[9px] 2xl:w-[40px] 2xl:-translate-y-[11px]'
-                    : 'w-[12px] md:w-[16px] 2xl:w-[20px]'
+                    ? 'w-[24px] -translate-y-[7px] -rotate-45 lg:w-[32px] lg:-translate-y-[9px] 2xl:w-[40px] 2xl:-translate-y-[11px]'
+                    : 'w-[12px] lg:w-[16px] 2xl:w-[20px]'
                 }`}
               />
             </button>

@@ -48,9 +48,9 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
         }}
         className={`fixed top-auto bottom-0 ${isScrolled ? 'h-[calc(100%_-_64px)] md:h-[calc(100%_-_90px)] 2xl:h-[calc(100%_-_98px)]' : 'h-[calc(100%_-_84px)] md:h-[calc(100%_-110px)] 2xl:h-[calc(100%_-_123px)]'} left-0 z-100 flex w-full flex-col justify-between overflow-y-auto bg-gray-100 lg:w-[673px]`}
       >
-        <div className='px-6 py-6 md:px-10 md:py-7.5 2xl:px-15'>
+        <div className='px-5 py-6 md:px-7.5 md:py-7.5 lg:px-10 2xl:px-15'>
           <nav>
-            <ul className='space-y-4.5 md:space-y-5 md:pl-3 2xl:space-y-6'>
+            <ul className='space-y-[4%]'>
               {menuItems.map(({ href, label }) => {
                 const isHovered = hoveredItem === href;
                 const isAnyHovering = hoveredItem !== null;
@@ -96,14 +96,14 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
             </ul>
           </nav>
         </div>
-        <div className='mx-6 mt-auto mb-12.5 flex lg:hidden'>
+        <div className='mt-auto mb-[9%] flex px-5 md:px-7.5 lg:hidden lg:px-10 2xl:px-15'>
           <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
             Book
           </button>
         </div>
 
-        <div className='bg-gray-200 px-6 pt-7.5 pb-4 md:px-10 lg:px-15'>
-          <div className='mb-7.5 flex items-center space-x-5 md:mb-12.5 md:space-x-6.5'>
+        <div className='bg-gray-200 px-5 pt-7.5 pb-4 md:px-7.5 lg:px-10 2xl:px-15'>
+          <div className='mb-[6%] flex items-center space-x-5 md:space-x-6.5'>
             <PhoneIcon />
             <div className='h-5 w-px bg-[#9A9A9A]'></div>
             <EmaiIcon />
