@@ -14,8 +14,8 @@ import Destination from '@/components/home/destination';
 export default async function Home() {
   return (
     <>
-      <div className='relative mb-17.5 flex h-[100vh] w-full md:mb-30 lg:mb-39'>
-        <div className='relative flex h-full w-full items-end'>
+      <div className='relative mb-17.5 flex max-h-[100vh] w-full md:mb-30 lg:mb-39'>
+        <div className='relative flex aspect-[16/9] w-full items-end'>
           <Image
             src='/resort-00.jpg'
             alt='Rooms & Suites'

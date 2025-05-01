@@ -19,15 +19,15 @@ export default async function Wellness() {
       />
 
       <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
-        <div className='relative h-full w-full lg:aspect-7/10'>
+        <div className='relative aspect-[3/4] h-full w-full'>
           <Image src='/resort-777.jpg' alt='' layout='fill' objectFit='cover' />
         </div>
 
         <div className='flex flex-col gap-1.5 sm:gap-2 lg:gap-3'>
-          <div className='relative aspect-7/5 h-1/2 w-full'>
+          <div className='relative aspect-[3/2] h-1/2 w-full'>
             <Image src='/resort-999.jpg' alt='' fill objectFit='cover' />
           </div>
-          <div className='relative aspect-7/5 h-1/2 w-full'>
+          <div className='relative aspect-[3/2] h-1/2 w-full'>
             <Image src='/resort-3.jpg' alt='' fill objectFit='cover' />
           </div>
         </div>

@@ -1,10 +1,112 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { mapStyles } from './map-styles';
+import Image from 'next/image';
 
 export default function LocationMap() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const infoWindowRef = useRef<HTMLDivElement>(null);
+  const markerRef = useRef<any>(null);
+  const mapInstanceRef = useRef<any>(null);
   const centerLocation = { lat: 54.605162428451145, lng: 24.74728891534038 };
+  const locationName = 'ESPERANZA'; // You can customize this name
+  const [showInfoWindow, setShowInfoWindow] = useState(false);
+  const [markerPosition, setMarkerPosition] = useState({ x: 0, y: 0 });
+
+  // Function to calculate and update the marker position
+  const updateMarkerPosition = () => {
+    if (
+      showInfoWindow &&
+      mapInstanceRef.current &&
+      markerRef.current &&
+      mapRef.current &&
+      window.google
+    ) {
+      const map = mapInstanceRef.current;
+      const marker = markerRef.current;
+
+      // Convert to pixel position
+      const scale = Math.pow(2, map.getZoom());
+      const projection = map.getProjection();
+
+      // Check if projection is available (sometimes not ready immediately)
+      if (!projection) return;
+
+      const bounds = map.getBounds();
+      // Check if bounds is available (sometimes not ready immediately)
+      if (!bounds) return;
+
+      const nw = new window.google.maps.LatLng(
+        bounds.getNorthEast().lat(),
+        bounds.getSouthWest().lng(),
+      );
+
+      const worldCoordNW = projection.fromLatLngToPoint(nw);
+      const worldCoord = projection.fromLatLngToPoint(marker.getPosition());
+
+      // Calculate pixel offset
+      const pixelOffset = new window.google.maps.Point(
+        Math.floor((worldCoord.x - worldCoordNW.x) * scale),
+        Math.floor((worldCoord.y - worldCoordNW.y) * scale),
+      ) as { x: number; y: number };
+
+      // Update position state
+      setMarkerPosition({
+        x: pixelOffset.x,
+        y: pixelOffset.y,
+      });
+    }
+  };
+
+  // Handle outside clicks
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        infoWindowRef.current &&
+        !infoWindowRef.current.contains(event.target as Node) &&
+        showInfoWindow
+      ) {
+        setShowInfoWindow(false);
+      }
+    }
+
+    // Add event listener when the info window is shown
+    if (showInfoWindow) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showInfoWindow]);
+
+  // Update position when info window is shown
+  useEffect(() => {
+    if (showInfoWindow) {
+      // Small delay to ensure map has rendered properly
+      setTimeout(updateMarkerPosition, 10);
+    }
+  }, [showInfoWindow]);
+
+  // Set up window resize handler
+  useEffect(() => {
+    // Function to handle resize events
+    const handleResize = () => {
+      if (showInfoWindow) {
+        updateMarkerPosition();
+      }
+    };
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [showInfoWindow]);
 
   useEffect(() => {
     window.initMap = () => {
@@ -13,9 +115,12 @@ export default function LocationMap() {
       const google = window.google;
       if (!google || !google.maps) return;
 
+      // Setup the map
       const map = new google.maps.Map(mapRef.current, {
         center: centerLocation,
-        zoom: 15,
+        zoom: 7,
+        minZoom: 2, // Set minimum zoom level (maximum zoom out)
+        maxZoom: 18, // Optional: Set maximum zoom level (maximum zoom in)
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         cameraControl: false,
         streetViewControl: false,
@@ -26,16 +131,52 @@ export default function LocationMap() {
         styles: mapStyles,
       });
 
-      new google.maps.Marker({
+      // Store map instance in ref for position calculations
+      mapInstanceRef.current = map;
+
+      // Add marker
+      const marker = new google.maps.Marker({
         position: centerLocation,
         map: map,
-        // icon: {
-        //   url: '/logoMap.jpg', // Replace with your logo path
-        //   //   scaledSize: new google.maps.Size(40, 40), // Adjust size as needed
-        //   origin: new google.maps.Point(0, 0),
-        //   anchor: new google.maps.Point(60, 66), // Center the marker on the position
-        // },
+        title: locationName,
+        icon: {
+          url: '/AA.png', // Replace with your actual logo path
+          scaledSize: new google.maps.Size(58, 72), // Updated size to match your AA.png dimensions
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(29, 36), // Updated anchor point to center the marker (half of width and height)
+        },
       });
+
+      // Store marker in ref for position calculations
+      markerRef.current = marker;
+
+      // Make marker clickable and show info window
+      marker.addListener('click', (e: { stop?: () => void } | undefined) => {
+        // Stop event propagation to prevent map click from closing the info window immediately
+        if (e && typeof e.stop === 'function') {
+          e.stop();
+        }
+        setShowInfoWindow(true);
+      });
+
+      // Add click listener to map to close info window when clicking anywhere on the map
+      map.addListener('click', () => {
+        if (showInfoWindow) {
+          setShowInfoWindow(false);
+        }
+      });
+
+      // Listen for zoom changes
+      map.addListener('zoom_changed', updateMarkerPosition);
+
+      // Listen for center changes (panning)
+      map.addListener('center_changed', updateMarkerPosition);
+
+      // Listen for bounds changes (includes both zoom and pan)
+      map.addListener('bounds_changed', updateMarkerPosition);
+
+      // Listen for idle (when map stops moving)
+      map.addListener('idle', updateMarkerPosition);
     };
 
     if (!window.google) {
@@ -45,7 +186,7 @@ export default function LocationMap() {
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
-    } else {
+    } else if (window.google && window.google.maps) {
       window.initMap();
     }
 
@@ -54,7 +195,46 @@ export default function LocationMap() {
     };
   }, []);
 
-  return <div ref={mapRef} className='h-full w-full overflow-hidden' />;
+  return (
+    <div className='relative h-full w-full'>
+      <div ref={mapRef} className='h-full w-full overflow-hidden' />
+
+      {showInfoWindow && (
+        <div
+          ref={infoWindowRef}
+          className='absolute cursor-pointer overflow-hidden bg-white'
+          style={{
+            width: '240px',
+            height: '180px',
+            position: 'absolute',
+            left: `${markerPosition.x - 120}px`, // Center horizontally relative to marker
+            top: `${markerPosition.y - 155}px`, // Position above the marker (adjust for infoWindow height)
+            zIndex: 100,
+          }}
+          onClick={() => {
+            // Open Google Maps with the location
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${centerLocation.lat},${centerLocation.lng}`;
+            window.open(googleMapsUrl, '_blank');
+            setShowInfoWindow(false);
+          }}
+        >
+          <div className='flex flex-col'>
+            <div className='relative h-[130px] w-full'>
+              <Image
+                src='/forMap.jpg'
+                alt={locationName}
+                fill
+                className='object-cover'
+              />
+            </div>
+            <h2 className='flex h-[50px] items-center justify-center bg-gray-700 text-center text-xl text-gray-50'>
+              {locationName}
+            </h2>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 // Properly type the Google Maps API
@@ -69,6 +249,8 @@ declare global {
               options: {
                 center: { lat: number; lng: number };
                 zoom: number;
+                minZoom?: number;
+                maxZoom?: number;
                 mapTypeId?: unknown;
                 streetViewControl?: boolean;
                 mapTypeControl?: boolean;
@@ -79,7 +261,23 @@ declare global {
                 cameraControl?: boolean;
                 styles?: unknown;
               },
-            ) => unknown;
+            ) => {
+              addListener: (
+                event: string,
+                callback: (...args: any[]) => void,
+              ) => void;
+              getZoom: () => number;
+              getProjection: () => {
+                fromLatLngToPoint: (latLng: unknown) => {
+                  x: number;
+                  y: number;
+                };
+              };
+              getBounds: () => {
+                getNorthEast: () => { lat: () => number; lng: () => number };
+                getSouthWest: () => { lat: () => number; lng: () => number };
+              };
+            };
 
             Marker: new (options: {
               position: { lat: number; lng: number };
@@ -91,9 +289,16 @@ declare global {
                 anchor?: unknown;
               };
               title?: string;
-            }) => unknown;
+            }) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              addListener: (event: string, callback: (e?: any) => void) => void;
+              getPosition: () => unknown;
+            };
             Size: new (width: number, height: number) => unknown;
             Point: new (x: number, y: number) => unknown;
+            LatLng: new (lat: number, lng: number) => unknown;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            InfoWindow: new (options?: any) => unknown;
 
             MapTypeId: {
               ROADMAP: unknown;

@@ -12,14 +12,14 @@ const SectionHeader = ({
   showKnowMore?: boolean;
 }) => {
   return (
-    <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-10 2xl:px-15'>
+    <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
       {smallTitle && (
         <p className='mb-7.5 text-[13px] text-gray-900 italic sm:text-base lg:mb-10 xl:mb-15'>
           {smallTitle}
         </p>
       )}
       <div className='flex justify-center'>
-        <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase md:px-10 lg:mb-4 lg:min-w-[483px] lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[28px] 2xl:px-15'>
+        <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase sm:min-w-[60%] md:px-10 lg:mb-4 lg:min-w-[483px] lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[28px] 2xl:px-15'>
           {title}
         </h2>
       </div>

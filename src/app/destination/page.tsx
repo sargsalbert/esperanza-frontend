@@ -15,13 +15,13 @@ export default async function Destination() {
         showKnowMore={false}
       />
 
-      <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:px-7.5 sm:pb-7.5 lg:px-15'>
-        <div className='h-[267px] w-full sm:h-[450px] md:h-[653px] lg:h-[856px]'>
+      <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
+        <div className='aspect-3/2 w-full lg:aspect-16/9'>
           <LocationMap />
         </div>
       </div>
 
-      <div className='mx-auto mb-12.5 max-w-[1480px] px-5 sm:mb-15 sm:px-7.5 lg:mb-20 lg:px-15'>
+      <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>
         <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
           Though immersed in nature, Esperanza Lake Resort is easily within
           reach. Located just 40 km from Vilnius, the resort is accessible by
@@ -37,8 +37,8 @@ export default async function Destination() {
         description='Built from centuries-old Canadian cedar logs, the resort’s architecture is both grounding and timeless – rooted in nature and crafted to last. The warm textures, earthy tones, and natural materials create a harmony between structure and setting. Inside, design follows the wabi-sabi-inspired philosophy: minimalist, understated, and deeply connected to the land. Every space invites stillness through organic form, soft light, and purposeful simplicity.'
         showKnowMore={false}
       />
-      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
-        <div className='relative col-span-1 h-[131px] sm:h-[229.6px] lg:h-[328px]'>
+      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>
+        <div className='relative col-span-1 aspect-[3/2] w-full'>
           <Image
             src='/resort-999.jpg'
             alt=''
@@ -48,7 +48,7 @@ export default async function Destination() {
           />
         </div>
 
-        <div className='relative col-span-1 row-span-2 h-[268px] sm:h-[467.6px] lg:h-[668px]'>
+        <div className='relative col-span-1 row-span-2 aspect-[3/4] h-full w-full'>
           <Image
             src='/resort-3.jpg'
             alt=''
@@ -57,7 +57,7 @@ export default async function Destination() {
             className=''
           />
         </div>
-        <div className='relative col-span-1 h-[131px] sm:h-[229.6px] lg:h-[328px]'>
+        <div className='relative col-span-1 aspect-[3/2] w-full'>
           <Image
             src='/resort-2.jpg'
             alt=''
@@ -67,7 +67,7 @@ export default async function Destination() {
           />
         </div>
 
-        <div className='relative col-span-2 h-[204px] sm:h-[356.3px] lg:h-[509px]'>
+        <div className='relative col-span-2 aspect-[8/4] w-full'>
           <Image
             src='/resort-777.jpg'
             alt=''
