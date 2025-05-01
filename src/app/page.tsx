@@ -14,10 +14,10 @@ import Destination from '@/components/home/destination';
 export default async function Home() {
   return (
     <>
-      <div className='relative mb-17.5 flex max-h-[100vh] w-full md:mb-30 lg:mb-39'>
-        <div className='relative flex aspect-[16/9] w-full items-end'>
+      <div className='relative mb-17.5 flex h-[calc(100vh-84px-59px)] w-full md:mb-30 md:h-[calc(100vh-110px+39px)] lg:mb-39 lg:h-[calc(100vh-110px+75px)] 2xl:h-[calc(100vh-123px+75px)]'>
+        <div className='relative flex h-full w-full items-end'>
           <Image
-            src='/resort-00.jpg'
+            src='/resort-5.3.jpg'
             alt='Rooms & Suites'
             layout='fill'
             objectFit='cover'
