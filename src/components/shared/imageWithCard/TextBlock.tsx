@@ -69,7 +69,7 @@ const TextBlock = ({
           <div
             className={`flex shrink-0 space-x-[14px] lg:space-x-[36px] ${
               actionButton.length === 1
-                ? 'w-full justify-center lg:justify-end'
+                ? 'w-auto justify-center lg:justify-end'
                 : 'w-[100%] justify-center lg:justify-between'
             }`}
           >
