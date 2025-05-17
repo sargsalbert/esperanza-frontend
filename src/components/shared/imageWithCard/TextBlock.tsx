@@ -48,11 +48,9 @@ const TextBlock = ({
       </div>
 
       <div className='flex flex-col items-center justify-between lg:flex-row'>
-        {!!infoLineText && (
-          <p className='mb-6 text-[14px] font-medium text-gray-900 sm:text-[15px] lg:mb-0 xl:text-base'>
-            {infoLineText}
-          </p>
-        )}
+        <p className='mb-6 text-[14px] font-medium text-gray-900 sm:text-[15px] lg:mb-0 xl:text-base'>
+          {infoLineText}
+        </p>
 
         {/* {actionButton?.length &&
           actionButton.length > 0 &&
