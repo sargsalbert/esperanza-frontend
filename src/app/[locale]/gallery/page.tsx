@@ -1,10 +1,21 @@
 import PageHeader from '@/components/shared/pageHeader';
+import { GalleryQuery } from '@/gql/graphql';
+import { fetchData } from '@/lib/apolloClient';
+import { GALLERY_QUERY } from '@/lib/graphql/queries';
 import Image from 'next/image';
+import { LocalePageProps } from '../destination/page';
 
-export default async function Gallery() {
+export default async function Gallery({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  const data = await fetchData<GalleryQuery>(GALLERY_QUERY, { locale });
+
   return (
     <>
-      <PageHeader imgUrl='/resort-2.jpg' title='GALLERY' />
+      <PageHeader
+        imgUrl={data.gallery?.heroSection?.heroImage?.url}
+        title={data.gallery?.heroSection?.heroText}
+      />
 
       <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
         <div className='mb-1.5 grid grid-cols-10 gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-4 sm:gap-2 lg:mb-3 lg:gap-3'>

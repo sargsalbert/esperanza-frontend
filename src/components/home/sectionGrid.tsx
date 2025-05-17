@@ -2,27 +2,15 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import SectionHeader from '../shared/SectionHeader';
 import { SlideRightIcon } from '../icons/slideRightIcon';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
+import { ComponentSharedSectionGridSlider } from '@/gql/graphql';
 
-export type ItemProps = {
-  imageUrl: string;
-  title: string;
-  description: string;
+type SectionGridProps = {
+  sectionGridSlider?: (ComponentSharedSectionGridSlider | null)[] | null;
 };
 
-const SectionGrid = ({
-  title = '',
-  description = '',
-  items,
-  showKnowMore,
-}: {
-  title?: string;
-  description?: string;
-  items: ItemProps[];
-  showKnowMore?: boolean;
-}) => {
+const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
   // Initialize Embla Carousel with options
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -80,20 +68,12 @@ const SectionGrid = ({
 
   return (
     <div className='mb-12.5 sm:mb-15 lg:mb-20'>
-      {title && description && (
-        <SectionHeader
-          title={title}
-          description={description}
-          showKnowMore={showKnowMore}
-        />
-      )}
-
       <div
         className='relative overflow-hidden lg:mx-10 2xl:mx-15'
         ref={emblaRef}
       >
         <div className='flex'>
-          {items.map((item, index) => (
+          {sectionGridSlider?.map((item, index) => (
             <div
               key={index}
               className='mr-[12px] flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]'
@@ -103,7 +83,7 @@ const SectionGrid = ({
                 className='relative aspect-5/4 w-full overflow-hidden sm:aspect-4/2 lg:aspect-5/4'
               >
                 <Image
-                  src={item.imageUrl}
+                  src={item?.image?.url || ''}
                   alt='A beautiful view'
                   layout='fill'
                   objectFit='cover'
@@ -111,11 +91,11 @@ const SectionGrid = ({
               </div>
               <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-7 lg:text-left xl:p-8'>
                 <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
-                  {item.title}
+                  {item?.title}
                 </h2>
 
                 <div className='text-[14px]/[28px] md:text-[16px]/[32px]'>
-                  {item.description}
+                  {item?.description}
                 </div>
               </div>
             </div>

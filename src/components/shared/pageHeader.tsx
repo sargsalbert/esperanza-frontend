@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 interface PageHeaderProps {
-  imgUrl: string;
-  title: string;
+  imgUrl?: string;
+  title?: string | null;
 }
 
 const PageHeader = ({ imgUrl, title }: PageHeaderProps) => {
@@ -10,7 +10,7 @@ const PageHeader = ({ imgUrl, title }: PageHeaderProps) => {
     <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full md:h-[calc(100vh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100vh-123px)]'>
       <div className='relative flex h-full w-full'>
         <Image
-          src={imgUrl}
+          src={imgUrl || ''}
           alt='Rooms & Suites'
           layout='fill'
           objectFit='cover'

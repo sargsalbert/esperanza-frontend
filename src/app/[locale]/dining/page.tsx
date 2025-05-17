@@ -1,0 +1,51 @@
+import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
+import PageHeader from '@/components/shared/pageHeader';
+import SectionHeader from '@/components/shared/SectionHeader';
+import { DiningQuery } from '@/gql/graphql';
+import { fetchData } from '@/lib/apolloClient';
+import { DINING_QUERY } from '@/lib/graphql/queries';
+import { LocalePageProps } from '../destination/page';
+
+export default async function Villas({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  const data = await fetchData<DiningQuery>(DINING_QUERY, { locale });
+
+  return (
+    <>
+      <PageHeader
+        imgUrl={data.dining?.heroSection?.heroImage?.url}
+        title={data.dining?.heroSection?.heroText}
+      />
+
+      <SectionHeader
+        subtitle={data.dining?.beyondTableText?.subtitle}
+        title={data.dining?.beyondTableText?.title}
+        description={data.dining?.beyondTableText?.description}
+        showKnowMore={false}
+        id=''
+      />
+
+      {data.dining?.tabbedSliderBlock?.length &&
+        data.dining?.tabbedSliderBlock?.map((d, index) => (
+          <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
+            <ImageWithCard
+              title={d?.title}
+              tabItem={d?.tabItem}
+              actionButton={d?.actionButton}
+              images={d?.images ?? []}
+              imageFirst={index % 2 !== 0}
+              isLast={
+                index ===
+                (data.dining?.tabbedSliderBlock?.length &&
+                  data.dining?.tabbedSliderBlock?.length - 1)
+              }
+              id={''}
+            />
+          </div>
+        ))}
+
+      <div className='h-12.5' />
+    </>
+  );
+}

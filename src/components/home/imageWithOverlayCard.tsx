@@ -4,16 +4,17 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
 import { SlideRightIcon } from '../icons/slideRightIcon';
+import { ComponentSharedTextImageSliderBlock } from '@/gql/graphql';
 
 export interface RoomFeature {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: { url: string };
 }
 
-interface ImageWithOverlayCardProps {
-  features: RoomFeature[];
+export interface ImageWithOverlayCardProps {
+  features?: (ComponentSharedTextImageSliderBlock | null)[] | null;
   imageFirst?: boolean;
 }
 
@@ -22,7 +23,6 @@ const ImageWithOverlayCard = ({
   imageFirst = false,
 }: ImageWithOverlayCardProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   // Single embla carousel instance for images
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -113,7 +113,7 @@ const ImageWithOverlayCard = ({
           <div className='block text-center lg:text-left'>
             {features.map((feature, index) => (
               <div
-                key={feature.id}
+                key={index}
                 className={`flex flex-col justify-start transition-opacity duration-500 ease-in-out ${
                   index === currentIndex
                     ? 'pointer-events-auto opacity-100'
@@ -122,11 +122,11 @@ const ImageWithOverlayCard = ({
               >
                 <div className='lg:min-h-[12rem]'>
                   <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[60%] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
-                    {feature.title}
+                    {feature?.title}
                   </h2>
 
                   <div className='text-center text-[14px] leading-[2em] text-gray-900 sm:text-base lg:text-left'>
-                    {feature.description}
+                    {feature?.description}
                   </div>
                 </div>
               </div>
@@ -171,13 +171,13 @@ const ImageWithOverlayCard = ({
         ref={emblaRef}
       >
         <div className='flex h-full w-full'>
-          {features?.map((feature) => (
+          {features?.map((feature, i) => (
             <div
-              key={feature.id}
+              key={i}
               className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-4/2 lg:aspect-5/3'
             >
               <Image
-                src={feature.image || '/placeholder.svg'}
+                src={feature?.image?.url || '/placeholder.svg'}
                 alt={`image`}
                 fill
                 className='object-cover'

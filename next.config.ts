@@ -2,6 +2,25 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    // remotePatterns: [
+    //   {
+    //     protocol: 'http',
+    //     hostname: 'localhost',
+    //     port: '1337',
+    //     pathname: '/uploads/**',
+    //   },
+    //   {
+    //     protocol: 'https',
+    //     hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
+    //   },
+    // ],
+
+    domains: [
+      'localhost',
+      'esperanza-media-storage.fra1.digitaloceanspaces.com',
+    ], // or your production Strapi domain like 'cms.mywebsite.com'
+  },
 };
 
 export default nextConfig;

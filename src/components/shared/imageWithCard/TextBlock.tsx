@@ -1,28 +1,24 @@
 import Tabs from './Tabs';
 import Actions from './Actions';
-import { ButtonConfig, TabsData } from './types';
 import { Dispatch, SetStateAction } from 'react';
+import { ComponentSharedTabbedSliderBlock } from '@/gql/graphql';
 
-interface TextBlockProps {
+type TextBlockProps = ComponentSharedTabbedSliderBlock & {
   imageFirst: boolean;
-  title: string;
-  tabs: TabsData[];
   activeTab: number;
   setActiveTab: Dispatch<SetStateAction<number>>;
-  primaryButton: ButtonConfig;
-  secondaryButton?: ButtonConfig;
-  uiType?: 'collapse';
-}
+  uiType?: string;
+};
 
 const TextBlock = ({
   imageFirst,
   title,
-  tabs,
+  tabItem,
+  infoLineText,
   activeTab,
   setActiveTab,
-  secondaryButton,
-  primaryButton,
   uiType,
+  actionButton,
 }: TextBlockProps) => {
   return (
     <div
@@ -44,24 +40,50 @@ const TextBlock = ({
             {title}
           </h2>
         </div>
-        <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-      </div>
-      {!secondaryButton && tabs[activeTab].tabContentType === 'paragraphs' ? (
-        <div className='flex flex-col items-center justify-between lg:flex-row'>
-          <p className='mb-6 text-[14px] font-medium text-gray-900 sm:text-[15px] lg:mb-0 xl:text-base'>
-            {tabs[activeTab].tabContent[1]}
-          </p>
-          <Actions
-            secondaryButton={secondaryButton}
-            primaryButton={primaryButton}
-          />
-        </div>
-      ) : (
-        <Actions
-          secondaryButton={secondaryButton}
-          primaryButton={primaryButton}
+        <Tabs
+          tabs={tabItem ?? []}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
         />
-      )}
+      </div>
+
+      <div className='flex flex-col items-center justify-between lg:flex-row'>
+        {!!infoLineText && (
+          <p className='mb-6 text-[14px] font-medium text-gray-900 sm:text-[15px] lg:mb-0 xl:text-base'>
+            {infoLineText}
+          </p>
+        )}
+
+        {/* {actionButton?.length &&
+          actionButton.length > 0 &&
+          actionButton.map((button, index) => (
+            <Actions
+              key={index}
+              button={button}
+              single={actionButton.length === 1}
+              index={index}
+            />
+          ))} */}
+
+        {Array.isArray(actionButton) && actionButton.length > 0 && (
+          <div
+            className={`flex shrink-0 space-x-[14px] lg:space-x-[36px] ${
+              actionButton.length === 1
+                ? 'w-full justify-center lg:justify-end'
+                : 'w-[100%] justify-center lg:justify-between'
+            }`}
+          >
+            {actionButton.map((button, index) => (
+              <Actions
+                key={index}
+                button={button}
+                single={actionButton.length === 1}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

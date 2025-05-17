@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { mapStyles } from './map-styles';
 import Image from 'next/image';
 
 export default function LocationMap() {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const infoWindowRef = useRef<HTMLDivElement>(null);
-  const markerRef = useRef<any>(null);
-  const mapInstanceRef = useRef<any>(null);
+  const mapRef = useRef();
+  const infoWindowRef = useRef();
+  const markerRef = useRef();
+  const mapInstanceRef = useRef();
   const centerLocation = { lat: 54.605162428451145, lng: 24.74728891534038 };
   const locationName = 'ESPERANZA'; // You can customize this name
   const [showInfoWindow, setShowInfoWindow] = useState(false);
@@ -49,7 +48,7 @@ export default function LocationMap() {
       const pixelOffset = new window.google.maps.Point(
         Math.floor((worldCoord.x - worldCoordNW.x) * scale),
         Math.floor((worldCoord.y - worldCoordNW.y) * scale),
-      ) as { x: number; y: number };
+      );
 
       // Update position state
       setMarkerPosition({
@@ -61,10 +60,10 @@ export default function LocationMap() {
 
   // Handle outside clicks
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event) {
       if (
         infoWindowRef.current &&
-        !infoWindowRef.current.contains(event.target as Node) &&
+        !infoWindowRef.current.contains(event.target) &&
         showInfoWindow
       ) {
         setShowInfoWindow(false);
@@ -140,7 +139,7 @@ export default function LocationMap() {
         map: map,
         title: locationName,
         icon: {
-          url: '/AA.png', // Replace with your actual logo path
+          url: `${window.location.origin}/AA.png`,
           scaledSize: new google.maps.Size(58, 72), // Updated size to match your AA.png dimensions
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(29, 36), // Updated anchor point to center the marker (half of width and height)
@@ -151,7 +150,7 @@ export default function LocationMap() {
       markerRef.current = marker;
 
       // Make marker clickable and show info window
-      marker.addListener('click', (e: { stop?: () => void } | undefined) => {
+      marker.addListener('click', (e) => {
         // Stop event propagation to prevent map click from closing the info window immediately
         if (e && typeof e.stop === 'function') {
           e.stop();
@@ -191,7 +190,7 @@ export default function LocationMap() {
     }
 
     return () => {
-      window.initMap = undefined as never;
+      window.initMap = undefined;
     };
   }, []);
 
@@ -235,79 +234,4 @@ export default function LocationMap() {
       )}
     </div>
   );
-}
-
-// Properly type the Google Maps API
-declare global {
-  interface Window {
-    initMap: (() => void) | undefined;
-    google:
-      | {
-          maps: {
-            Map: new (
-              element: HTMLElement,
-              options: {
-                center: { lat: number; lng: number };
-                zoom: number;
-                minZoom?: number;
-                maxZoom?: number;
-                mapTypeId?: unknown;
-                streetViewControl?: boolean;
-                mapTypeControl?: boolean;
-                fullscreenControl?: boolean;
-                scrollwheel?: boolean;
-                zoomControl?: boolean;
-                scaleControl?: boolean;
-                cameraControl?: boolean;
-                styles?: unknown;
-              },
-            ) => {
-              addListener: (
-                event: string,
-                callback: (...args: any[]) => void,
-              ) => void;
-              getZoom: () => number;
-              getProjection: () => {
-                fromLatLngToPoint: (latLng: unknown) => {
-                  x: number;
-                  y: number;
-                };
-              };
-              getBounds: () => {
-                getNorthEast: () => { lat: () => number; lng: () => number };
-                getSouthWest: () => { lat: () => number; lng: () => number };
-              };
-            };
-
-            Marker: new (options: {
-              position: { lat: number; lng: number };
-              map: unknown;
-              icon?: {
-                url: string;
-                scaledSize?: unknown;
-                origin?: unknown;
-                anchor?: unknown;
-              };
-              title?: string;
-            }) => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              addListener: (event: string, callback: (e?: any) => void) => void;
-              getPosition: () => unknown;
-            };
-            Size: new (width: number, height: number) => unknown;
-            Point: new (x: number, y: number) => unknown;
-            LatLng: new (lat: number, lng: number) => unknown;
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            InfoWindow: new (options?: any) => unknown;
-
-            MapTypeId: {
-              ROADMAP: unknown;
-              SATELLITE: unknown;
-              HYBRID: unknown;
-              TERRAIN: unknown;
-            };
-          };
-        }
-      | undefined;
-  }
 }

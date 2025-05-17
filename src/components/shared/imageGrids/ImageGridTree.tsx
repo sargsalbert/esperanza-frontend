@@ -5,7 +5,11 @@ type ImageGridTreeProps = {
   images: UploadFile[];
 };
 
-const imageStyles = ['col-span-2 aspect-8/3', 'aspect-[3/4]', 'aspect-[3/4]'];
+const imageStyles = [
+  'col-span-1 row-span-2 aspect-[3/4] h-full',
+  'col-span-1 aspect-[3/2]',
+  'col-span-1 aspect-[3/2]',
+];
 
 const ImageGridTree = ({ images }: ImageGridTreeProps) => {
   if (!images || images.length === 0) return null;
@@ -28,7 +32,6 @@ const ImageGridTree = ({ images }: ImageGridTreeProps) => {
               alt={image.alternativeText || 'Resort image'}
               fill
               className='object-cover'
-              sizes='(max-width: 768px) 100vw, 50vw'
             />
           </div>
         );

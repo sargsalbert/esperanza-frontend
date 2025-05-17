@@ -28,7 +28,13 @@ const menuItems = [
 export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
   const pathname = usePathname();
 
-  const isActive = useCallback((path: string) => pathname === path, [pathname]);
+  const stripLocale = (path: string) => path.replace(/^\/[a-z]{2}(\/|$)/, '/');
+
+  const isActive = useCallback(
+    (path: string) => stripLocale(pathname) === path,
+    [pathname],
+  );
+
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (

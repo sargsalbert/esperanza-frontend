@@ -3,20 +3,26 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Thumbnail from './Thumbnail';
 import SlideButtons from './SlideButtons';
-import { ImageWithOverlayCardProps } from './types';
 import TextBlock from './TextBlock';
 import BlockImage from './BlockImage';
+import { ComponentSharedTabbedSliderBlock } from '@/gql/graphql';
+
+type ImageWithCardProps = ComponentSharedTabbedSliderBlock & {
+  imageFirst?: boolean;
+  uiType?: string;
+  isLast?: boolean;
+};
 
 const ImageWithCard = ({
-  features,
-  imageFirst = false,
   title,
-  tabs,
-  primaryButton,
-  secondaryButton,
+  tabItem,
+  infoLineText,
+  actionButton,
+  images,
+  imageFirst = false,
   uiType,
   isLast,
-}: ImageWithOverlayCardProps) => {
+}: ImageWithCardProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -58,10 +64,9 @@ const ImageWithCard = ({
     };
   }, [emblaApi, onSelect]);
 
-  if (!features || features.length === 0) {
-    return <div className='p-4 text-center'>No images to display</div>;
-  }
-
+  // if (!features || features.length === 0) {
+  //   return <div className='p-4 text-center'>No images to display</div>;
+  // }
   return (
     <>
       {uiType === 'collapse' && (
@@ -82,19 +87,21 @@ const ImageWithCard = ({
       >
         <TextBlock
           imageFirst={imageFirst}
-          title={title}
-          tabs={tabs}
+          title={title ?? ''}
+          tabItem={tabItem ?? []}
+          infoLineText={infoLineText}
+          actionButton={actionButton}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          secondaryButton={secondaryButton}
-          primaryButton={primaryButton}
           uiType={uiType}
+          id={''}
+          images={[]}
         />
         <div
           className={`relative z-20 mx-auto -mt-[76px] block max-w-[calc(100%-40px)] md:-mt-[84px] ${uiType === 'collapse' ? 'hidden' : 'lg:hidden'}`}
         >
           <div className='mb-3.5 flex justify-center'>
-            {features?.map((_, index) => (
+            {images?.map((_, index) => (
               <button
                 key={index}
                 className={`mx-2 h-[3px] w-7 transition-all duration-300 ${
@@ -106,7 +113,7 @@ const ImageWithCard = ({
             ))}
           </div>
         </div>
-        <BlockImage emblaRef={emblaRef} features={features} />
+        <BlockImage emblaRef={emblaRef} images={images} />
         <div
           className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between lg:flex lg:w-[calc(50%-40px)] lg:px-10 xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)] 2xl:px-15 ${imageFirst ? 'left-0' : 'right-0'}`}
         >
@@ -123,10 +130,10 @@ const ImageWithCard = ({
               : 'lg:w-[calc(50%-40px)] xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)]'
           } `}
         >
-          {features?.map((feature, index) => (
+          {images?.map((image, index) => (
             <Thumbnail
               key={index}
-              src={feature.image}
+              src={image?.url || ''}
               index={index}
               currentIndex={currentIndex}
               emblaApi={emblaApi}

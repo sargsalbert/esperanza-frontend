@@ -1,6 +1,6 @@
 export interface RoomFeature {
   id: number;
-  image: string;
+  images: string;
 }
 
 export interface TabsData {
@@ -26,4 +26,5 @@ export interface ImageWithOverlayCardProps {
   secondaryButton?: ButtonConfig;
   uiType?: 'collapse';
   isLast?: boolean;
+  images?: string[];
 }
