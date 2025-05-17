@@ -22,7 +22,7 @@ export default async function Villas({ params }: LocalePageProps) {
         subtitle={data.dining?.beyondTableText?.subtitle}
         title={data.dining?.beyondTableText?.title}
         description={data.dining?.beyondTableText?.description}
-        showKnowMore={false}
+        buttonText={data.dining?.beyondTableText?.buttonText}
         id=''
       />
 

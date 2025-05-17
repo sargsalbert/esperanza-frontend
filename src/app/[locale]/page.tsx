@@ -36,6 +36,7 @@ export default async function Home({ params }: LocalePageProps) {
         subtitle={data.home?.destinationText?.subtitle}
         title={data.home?.destinationText?.title}
         description={data.home?.destinationText?.description}
+        buttonText={data.home?.destinationText?.buttonText}
         id=''
       />
 
@@ -56,6 +57,7 @@ export default async function Home({ params }: LocalePageProps) {
               subtitle={d?.sectionText?.subtitle}
               title={d?.sectionText?.title}
               description={d?.sectionText?.description}
+              buttonText={d?.sectionText?.buttonText}
               id=''
             />
             <ImageWithOverlayCard
@@ -69,6 +71,7 @@ export default async function Home({ params }: LocalePageProps) {
         subtitle={data.home?.wellnessText?.subtitle}
         title={data.home?.wellnessText?.title}
         description={data.home?.wellnessText?.description}
+        buttonText={data?.home?.wellnessText?.buttonText}
         id=''
       />
 
@@ -81,6 +84,7 @@ export default async function Home({ params }: LocalePageProps) {
               subtitle={d?.sectionText?.subtitle}
               title={d?.sectionText?.title}
               description={d?.sectionText?.description}
+              buttonText={d?.sectionText?.buttonText}
               id=''
             />
             <ImageWithOverlayCard
@@ -94,6 +98,7 @@ export default async function Home({ params }: LocalePageProps) {
         subtitle={data.home?.experiencesText?.subtitle}
         title={data.home?.experiencesText?.title}
         description={data.home?.experiencesText?.description}
+        buttonText={data.home?.experiencesText?.buttonText}
         id=''
       />
       <SectionGrid sectionGridSlider={data.home?.experiencesGridSlider ?? []} />

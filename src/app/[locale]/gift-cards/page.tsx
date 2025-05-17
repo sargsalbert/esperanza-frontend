@@ -23,7 +23,7 @@ export default async function GiftCards({ params }: LocalePageProps) {
         subtitle={data.giftCard?.quietLuxuryText?.subtitle}
         title={data.giftCard?.quietLuxuryText?.title}
         description={data.giftCard?.quietLuxuryText?.description}
-        showKnowMore={false}
+        buttonText={data.giftCard?.quietLuxuryText?.buttonText}
         id=''
       />
 

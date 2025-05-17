@@ -24,7 +24,7 @@ export default async function Wellness({ params }: LocalePageProps) {
         subtitle={data.wellness?.ritualRenewalText?.subtitle}
         title={data.wellness?.ritualRenewalText?.title}
         description={data.wellness?.ritualRenewalText?.description}
-        showKnowMore={false}
+        buttonText={data.wellness?.ritualRenewalText?.buttonText}
         id=''
       />
 
@@ -42,7 +42,7 @@ export default async function Wellness({ params }: LocalePageProps) {
         subtitle={data.wellness?.facilitiesText?.subtitle}
         title={data.wellness?.facilitiesText?.title}
         description={data.wellness?.facilitiesText?.description}
-        showKnowMore={false}
+        buttonText={data.wellness?.facilitiesText?.buttonText}
         id=''
       />
 

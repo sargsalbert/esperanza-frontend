@@ -22,7 +22,7 @@ export default async function VillaPage({ params }: LocalePageProps) {
         subtitle={data.villa?.privateHeavensText?.subtitle}
         title={data.villa?.privateHeavensText?.title}
         description={data.villa?.privateHeavensText?.description}
-        showKnowMore={false}
+        buttonText={data.villa?.privateHeavensText?.buttonText}
         id=''
       />
 

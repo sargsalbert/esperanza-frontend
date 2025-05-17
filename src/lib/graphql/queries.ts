@@ -14,6 +14,7 @@ export const HOME_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       destinationImages {
         multipleImages {
@@ -26,6 +27,7 @@ export const HOME_QUERY = gql`
           subtitle
           title
           description
+          buttonText
         }
         textImageSliderBlock {
           id
@@ -47,6 +49,7 @@ export const HOME_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       wellnessGridSlider {
         id
@@ -68,6 +71,7 @@ export const HOME_QUERY = gql`
           subtitle
           title
           description
+          buttonText
         }
         textImageSliderBlock {
           id
@@ -89,6 +93,7 @@ export const HOME_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       experiencesGridSlider {
         id
@@ -123,12 +128,14 @@ export const DESTINATION_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       afterMapText
       architectureDesignText {
         subtitle
         title
         description
+        buttonText
       }
       architectureDesignImages {
         multipleImages {
@@ -164,6 +171,7 @@ export const ROOMS_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       tabbedSliderBlock {
         title
@@ -217,6 +225,7 @@ export const VILLA_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       tabbedSliderBlock {
         title
@@ -270,6 +279,7 @@ export const WELLNESS_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       ritualRenewalImages {
         multipleImages {
@@ -287,6 +297,7 @@ export const WELLNESS_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       sectionGridSlider {
         id
@@ -356,6 +367,7 @@ export const DINING_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       tabbedSliderBlock {
         title
@@ -409,6 +421,7 @@ export const MEETINGS_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       tabbedSliderBlock {
         title
@@ -455,6 +468,7 @@ export const MEETINGS_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       seo {
         metaTitle
@@ -482,6 +496,7 @@ export const EXPERIENCE_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       tabbedSliderBlock {
         title
@@ -572,6 +587,7 @@ export const GIFTCARD_QUERY = gql`
         subtitle
         title
         description
+        buttonText
       }
       formBottomNote
       seo {

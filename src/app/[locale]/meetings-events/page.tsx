@@ -28,7 +28,7 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
         subtitle={data.meetingsAndEvent?.timelessMomentstext?.subtitle}
         title={data.meetingsAndEvent?.timelessMomentstext?.title}
         description={data.meetingsAndEvent?.timelessMomentstext?.description}
-        showKnowMore={false}
+        buttonText={data.meetingsAndEvent?.timelessMomentstext?.buttonText}
         id=''
       />
 
@@ -61,7 +61,7 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
       <SectionHeader
         title={data.meetingsAndEvent?.contactUsText?.title}
         description={data.meetingsAndEvent?.contactUsText?.description}
-        showKnowMore={false}
+        buttonText={data.meetingsAndEvent?.contactUsText?.buttonText}
         id=''
       />
 

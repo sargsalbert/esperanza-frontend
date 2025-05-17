@@ -27,7 +27,7 @@ export default async function Destination({ params }: LocalePageProps) {
         subtitle={data.destination?.beforeMapText?.subtitle}
         title={data.destination?.beforeMapText?.title}
         description={data.destination?.beforeMapText?.description}
-        showKnowMore={false}
+        buttonText={data.destination?.beforeMapText?.buttonText}
         id=''
       />
       <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
@@ -46,7 +46,7 @@ export default async function Destination({ params }: LocalePageProps) {
         subtitle={data.destination?.architectureDesignText?.subtitle}
         title={data.destination?.architectureDesignText?.title}
         description={data.destination?.architectureDesignText?.description}
-        showKnowMore={false}
+        buttonText={data.destination?.architectureDesignText?.buttonText}
         id=''
       />
       <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>

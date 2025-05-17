@@ -21,7 +21,7 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
         subtitle={data.roomsAndSuite?.spacesToBreatheText?.subtitle}
         title={data.roomsAndSuite?.spacesToBreatheText?.title}
         description={data.roomsAndSuite?.spacesToBreatheText?.description}
-        showKnowMore={false}
+        buttonText={data.roomsAndSuite?.spacesToBreatheText?.buttonText}
         id=''
       />
       <div className='mt-2 mb-7.5 block text-center sm:mt-3 sm:mb-10 lg:hidden'>

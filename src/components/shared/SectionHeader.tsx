@@ -2,14 +2,14 @@ import { ComponentSharedSectionText } from '@/gql/graphql';
 import { MoreIcon } from '../icons/moreIcon';
 
 type SectionHeaderProps = ComponentSharedSectionText & {
-  showKnowMore?: boolean;
+  buttonText?: string | null;
 };
 
 const SectionHeader = ({
   subtitle,
   title,
   description,
-  showKnowMore = true,
+  buttonText,
 }: SectionHeaderProps) => {
   return (
     <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
@@ -25,15 +25,15 @@ const SectionHeader = ({
       </div>
 
       <p
-        className={`text-[14px]/[26px] sm:text-[16px]/[32px] ${showKnowMore ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
+        className={`text-[14px]/[26px] sm:text-[16px]/[32px] ${buttonText ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
       >
         {description}
       </p>
-      {showKnowMore && (
+      {buttonText && (
         <div className='flex justify-center'>
           <button className='flex cursor-pointer items-center'>
             <span className='gray-800 px-2.5 text-[13px]/[15px] font-semibold text-gray-800 sm:text-[16px]/[18px]'>
-              Know more
+              {buttonText}
             </span>
             <MoreIcon className='h-3 w-3 sm:h-[16px] sm:w-[17px]' />
           </button>
