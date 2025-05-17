@@ -8,6 +8,7 @@ import { MeetingsAndEventQuery } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { MEETINGS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
+import SectionGrid from '@/components/home/sectionGrid';
 
 export default async function MeetingsEvents({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -51,6 +52,10 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
           </div>
         ))}
 
+      <SectionGrid
+        sectionGridSlider={data.meetingsAndEvent?.sectionGridSlider ?? []}
+      />
+
       <div className='h-12.5' />
 
       <SectionHeader
@@ -62,8 +67,8 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
 
       <div className='mx-auto max-w-5xl px-5 pb-12.5 sm:pb-15 md:px-10 lg:pb-20 2xl:px-15'>
         <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
-          <Input placeholder='First Name' />
-          <Input placeholder='Last Name' />
+          <Input placeholder='Name' />
+          <Input placeholder='Surname' />
           <Input placeholder='Phone' />
           <Input placeholder='Email' />
           <Select

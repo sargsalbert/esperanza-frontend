@@ -436,6 +436,21 @@ export const MEETINGS_QUERY = gql`
           size
         }
       }
+      sectionGridSlider {
+        id
+        title
+        description
+        image {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+        }
+      }
       contactUsText {
         subtitle
         title

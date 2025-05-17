@@ -46,12 +46,13 @@ export default function GiftForm() {
       <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
         <Input placeholder='Name (recipient)' />
         <Input placeholder='Surname (recipient)' />
+        <Input placeholder='Phone (buyer)' />
         <Input placeholder='Email (buyer)' />
-        <Input placeholder='Amount (minimum 100 Eur)' />
+        <Input placeholder='Amount (minimum 150 Eur)' />
 
         <Select
           name='voucherType'
-          placeholder='Voucher type'
+          placeholder='Delivery'
           options={options}
           value={formData.voucherType}
           onChange={handleChange}
