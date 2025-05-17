@@ -1,3 +1,5 @@
+'use client';
+
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 const StrapiRichTextRenderer = ({ content }) => {

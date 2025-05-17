@@ -573,6 +573,7 @@ export const GIFTCARD_QUERY = gql`
         title
         description
       }
+      formBottomNote
       seo {
         metaTitle
         metaDescription
