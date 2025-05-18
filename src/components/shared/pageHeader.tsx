@@ -16,11 +16,11 @@ const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
       <div className='relative flex h-full w-full overflow-hidden'>
         <Image
           src={imgUrl}
-          alt={title || 'Page header image'}
+          alt={title || ''}
           fill
           priority
           className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
         />
         <div className='relative flex h-full w-full items-center justify-center bg-[linear-gradient(0deg,_#000000_0%,_rgba(255,255,255,0)_100%)]'>
           <h1 className='p-5 text-center text-[26px] font-semibold text-gray-50 uppercase sm:px-7.5 sm:text-[32px] md:text-[38px] lg:px-15 xl:text-[44px] 2xl:text-[50px]'>
