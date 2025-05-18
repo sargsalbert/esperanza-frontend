@@ -1,28 +1,25 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
 interface PageHeaderProps {
   imgUrl?: string;
   title?: string | null;
 }
 
-const PageHeader = ({ imgUrl, title }: PageHeaderProps) => {
+const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   return (
     <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full md:h-[calc(100vh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100vh-123px)]'>
       <div className='relative flex h-full w-full overflow-hidden'>
         <Image
-          src={imgUrl || ''}
-          alt='Rooms & Suites'
+          src={imgUrl}
+          alt={title || 'Page header image'}
           fill
-          className={`transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
+          priority
+          className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
           onLoadingComplete={() => setIsLoaded(true)}
         />
         <div className='relative flex h-full w-full items-center justify-center bg-[linear-gradient(0deg,_#000000_0%,_rgba(255,255,255,0)_100%)]'>
