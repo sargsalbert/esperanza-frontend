@@ -94,6 +94,7 @@ const ImageWithCard = ({
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           uiType={uiType}
+          isLast={isLast}
           id={''}
           images={[]}
         />

@@ -6,9 +6,9 @@ type ImageGridTreeProps = {
 };
 
 const imageStyles = [
-  'col-span-1 row-span-2 aspect-[3/4] h-full',
-  'col-span-1 aspect-[3/2]',
-  'col-span-1 aspect-[3/2]',
+  'col-span-1 row-span-2 w-full h-full',
+  'col-span-1 aspect-[845/884] lg:aspect-[3/2]',
+  'col-span-1 aspect-[845/884] lg:aspect-[3/2]',
 ];
 
 const ImageGridTree = ({ images }: ImageGridTreeProps) => {

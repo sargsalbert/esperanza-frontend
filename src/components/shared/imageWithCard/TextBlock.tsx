@@ -8,6 +8,7 @@ type TextBlockProps = ComponentSharedTabbedSliderBlock & {
   activeTab: number;
   setActiveTab: Dispatch<SetStateAction<number>>;
   uiType?: string;
+  isLast?: boolean;
 };
 
 const TextBlock = ({
@@ -19,12 +20,13 @@ const TextBlock = ({
   setActiveTab,
   uiType,
   actionButton,
+  isLast,
 }: TextBlockProps) => {
   return (
     <div
       className={`z-10 flex shrink-0 flex-col ${
         uiType === 'collapse'
-          ? 'mx-7.5 w-full px-7.5 pb-7.5 after:absolute after:bottom-0 after:left-1/2 after:block after:h-[2px] after:w-[calc(100%-40px)] after:translate-x-[-50%] after:bg-gray-200 after:content-[""] sm:px-10 sm:pb-10 after:sm:w-[calc(100%-60px)] after:md:w-[calc(100%-80px)] lg:w-[50%] after:lg:content-none xl:w-[45%] 2xl:w-[40%]'
+          ? `${isLast ? 'after:!h-0' : ''} mx-7.5 w-full px-7.5 pb-7.5 after:absolute after:bottom-0 after:left-1/2 after:block after:h-[2px] after:w-[calc(100%-40px)] after:translate-x-[-50%] after:bg-gray-200 after:content-[""] sm:px-10 sm:pb-10 after:sm:w-[calc(100%-60px)] after:md:w-[calc(100%-80px)] lg:w-[50%] after:lg:content-none xl:w-[45%] 2xl:w-[40%]`
           : 'w-[calc(100%-40px)] md:w-[calc(100%-60px)] lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
       } justify-between self-center bg-gray-100 px-2.5 pt-4 pb-5 shadow-xs md:p-6 lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
         imageFirst
