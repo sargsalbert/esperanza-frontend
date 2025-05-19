@@ -1,7 +1,5 @@
-'use client';
-
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 interface PageHeaderProps {
   imgUrl?: string;
@@ -9,8 +7,6 @@ interface PageHeaderProps {
 }
 
 const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   return (
     <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full md:h-[calc(100vh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100vh-123px)]'>
       <div className='relative flex h-full w-full overflow-hidden'>
@@ -19,9 +15,7 @@ const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
           alt={title || ''}
           fill
           priority
-          // className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
           className='object-cover'
-          onLoad={() => setIsLoaded(true)}
         />
         <div className='relative flex h-full w-full items-center justify-center bg-[linear-gradient(0deg,_#000000_0%,_rgba(255,255,255,0)_100%)]'>
           {title && (
