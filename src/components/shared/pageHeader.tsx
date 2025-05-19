@@ -19,7 +19,8 @@ const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
           alt={title || ''}
           fill
           priority
-          className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
+          // className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
+          className='object-cover'
           onLoad={() => setIsLoaded(true)}
         />
         <div className='relative flex h-full w-full items-center justify-center bg-[linear-gradient(0deg,_#000000_0%,_rgba(255,255,255,0)_100%)]'>

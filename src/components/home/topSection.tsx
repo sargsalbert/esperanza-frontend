@@ -17,7 +17,8 @@ const TopSection = ({ url, title }: TopSectionProps) => {
         alt={title || ''}
         fill
         priority
-        className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
+        // className={`object-cover transition-transform duration-[6500ms] ${isLoaded ? 'scale-106' : 'scale-100'}`}
+        className='object-cover'
         onLoad={() => setIsLoaded(true)}
       />
       <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[72px] lg:pb-[155px]'>
