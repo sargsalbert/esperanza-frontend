@@ -2,8 +2,12 @@
 import { SideMenu } from './SideMenu';
 import { useEffect, useState } from 'react';
 import LanguageSelector from './LanguageSelector';
-import Link from 'next/link';
-import { LogoIcon } from '../icons/logoIcon';
+// import Link from 'next/link';
+// import { LogoIcon } from '../icons/logoIcon';
+import Hamburger from './Hamburger';
+import Hamburger2 from './Hamburger2';
+import Hamburger3 from './Hamburger3';
+import Hamburger4 from './Hamburger4';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,6 +81,10 @@ const Header = () => {
                 }`}
               />
             </button>
+            <Hamburger isOpen={isMenuOpen} />
+            <Hamburger2 isOpen={isMenuOpen} />
+            <Hamburger3 isOpen={isMenuOpen} />
+            <Hamburger4 isOpen={isMenuOpen} />
             <div
               className={`${
                 isMenuOpen ? 'inline-block' : 'hidden lg:inline-block'
@@ -91,11 +99,11 @@ const Header = () => {
               isMenuOpen ? 'hidden lg:inline-block' : ''
             }`}
           >
-            <Link href='/'>
+            {/* <Link href='/'>
               <LogoIcon
                 className={`transition-all duration-300 ${isScrolled ? 'h-[41px] w-[104px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
               />
-            </Link>
+            </Link> */}
           </div>
           <div className='hidden items-center lg:flex'>
             <button className='min-h-9 cursor-pointer rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:min-h-10.5 md:min-w-38 md:text-base 2xl:min-h-11 2xl:min-w-48 2xl:text-lg'>
