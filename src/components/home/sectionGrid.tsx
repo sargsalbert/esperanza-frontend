@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { SlideRightIcon } from '../icons/slideRightIcon';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
 import { ComponentSharedSectionGridSlider } from '@/gql/graphql';
+import FadeInOnView from '../shared/FadeInOnView';
 
 type SectionGridProps = {
   sectionGridSlider?: (ComponentSharedSectionGridSlider | null)[] | null;
@@ -67,62 +68,64 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
   }, []);
 
   return (
-    <div className='mb-12.5 sm:mb-15 lg:mb-20'>
-      <div
-        className='relative overflow-hidden lg:mx-10 2xl:mx-15'
-        ref={emblaRef}
-      >
-        <div className='flex'>
-          {sectionGridSlider?.map((item, index) => (
-            <div
-              key={index}
-              className='mr-[12px] flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]'
-            >
+    <FadeInOnView>
+      <div className='mb-12.5 sm:mb-15 lg:mb-20'>
+        <div
+          className='relative overflow-hidden lg:mx-10 2xl:mx-15'
+          ref={emblaRef}
+        >
+          <div className='flex'>
+            {sectionGridSlider?.map((item, index) => (
               <div
-                ref={index === 0 ? imageWrapperRef : null}
-                className='relative aspect-5/4 w-full overflow-hidden sm:aspect-4/2 lg:aspect-5/4'
+                key={index}
+                className='mr-[12px] flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]'
               >
-                <Image
-                  src={item?.image?.url || ''}
-                  alt='A beautiful view'
-                  layout='fill'
-                  objectFit='cover'
-                />
-              </div>
-              <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-7 lg:text-left xl:p-8'>
-                <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
-                  {item?.title}
-                </h2>
+                <div
+                  ref={index === 0 ? imageWrapperRef : null}
+                  className='relative aspect-5/4 w-full overflow-hidden sm:aspect-4/2 lg:aspect-5/4'
+                >
+                  <Image
+                    src={item?.image?.url || ''}
+                    alt='A beautiful view'
+                    layout='fill'
+                    objectFit='cover'
+                  />
+                </div>
+                <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-7 lg:text-left xl:p-8'>
+                  <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
+                    {item?.title}
+                  </h2>
 
-                <div className='text-[14px]/[28px] md:text-[16px]/[32px]'>
-                  {item?.description}
+                  <div className='text-[14px]/[28px] md:text-[16px]/[32px]'>
+                    {item?.description}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div
-          style={{ top: imageHeight ? `${imageHeight / 2}px` : '28%' }}
-          className='absolute z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'
-        >
-          <button
-            className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
-            onClick={scrollPrev}
-            aria-label='Previous slide'
+          <div
+            style={{ top: imageHeight ? `${imageHeight / 2}px` : '28%' }}
+            className='absolute z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'
           >
-            <SlideLeftIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
-          </button>
-          <button
-            className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
-            onClick={scrollNext}
-            aria-label='Next slide'
-          >
-            <SlideRightIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
-          </button>
+            <button
+              className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
+              onClick={scrollPrev}
+              aria-label='Previous slide'
+            >
+              <SlideLeftIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+            </button>
+            <button
+              className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
+              onClick={scrollNext}
+              aria-label='Next slide'
+            >
+              <SlideRightIcon className='text-gray-50 lg:h-[16px] lg:w-[8px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </FadeInOnView>
   );
 };
 

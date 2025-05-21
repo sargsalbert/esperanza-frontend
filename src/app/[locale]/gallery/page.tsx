@@ -4,6 +4,7 @@ import { fetchData } from '@/lib/apolloClient';
 import { GALLERY_QUERY } from '@/lib/graphql/queries';
 import Image from 'next/image';
 import { LocalePageProps } from '../destination/page';
+import FadeInOnView from '@/components/shared/FadeInOnView';
 
 export default async function Gallery({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -18,7 +19,7 @@ export default async function Gallery({ params }: LocalePageProps) {
       />
 
       <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
-        <div className='mb-1.5 grid grid-cols-10 gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-4 sm:gap-2 lg:mb-3 lg:gap-3'>
+        <FadeInOnView className='mb-1.5 grid grid-cols-10 gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-4 sm:gap-2 lg:mb-3 lg:gap-3'>
           <div className='relative col-span-10 h-[198px] sm:col-span-1 sm:h-[259px] lg:h-[370px]'>
             <Image
               src='/resort-999.jpg'
@@ -64,8 +65,8 @@ export default async function Gallery({ params }: LocalePageProps) {
               className=''
             />
           </div>
-        </div>
-        <div className='mb-1.5 grid grid-cols-[60%_40%] gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-10 sm:gap-2 lg:mb-3 lg:gap-3'>
+        </FadeInOnView>
+        <FadeInOnView className='mb-1.5 grid grid-cols-[60%_40%] gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-10 sm:gap-2 lg:mb-3 lg:gap-3'>
           <div className='relative col-span-1 h-[131px] sm:col-span-6 sm:h-[413.7px] lg:h-[591px]'>
             <Image
               src='/resort-5.1.jpg'
@@ -102,7 +103,7 @@ export default async function Gallery({ params }: LocalePageProps) {
               className=''
             />
           </div>
-        </div>
+        </FadeInOnView>
       </div>
     </>
   );

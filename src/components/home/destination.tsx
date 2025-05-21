@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { UploadFile } from '@/gql/graphql';
+import FadeInOnView from '../shared/FadeInOnView';
 
 type ImageGridTreeProps = {
   images: UploadFile[];
@@ -19,7 +20,7 @@ const ImageGridTree = ({ images }: ImageGridTreeProps) => {
         if (!imageUrl) return null;
 
         return (
-          <div
+          <FadeInOnView
             key={image.documentId || index}
             className={`relative w-full ${style}`}
           >
@@ -30,7 +31,7 @@ const ImageGridTree = ({ images }: ImageGridTreeProps) => {
               className='object-cover'
               sizes='(max-width: 768px) 100vw, 50vw'
             />
-          </div>
+          </FadeInOnView>
         );
       })}
     </div>

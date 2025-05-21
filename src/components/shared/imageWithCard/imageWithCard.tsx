@@ -6,6 +6,7 @@ import SlideButtons from './SlideButtons';
 import TextBlock from './TextBlock';
 import BlockImage from './BlockImage';
 import { ComponentSharedTabbedSliderBlock } from '@/gql/graphql';
+import FadeInOnView from '../FadeInOnView';
 
 type ImageWithCardProps = ComponentSharedTabbedSliderBlock & {
   imageFirst?: boolean;
@@ -68,7 +69,7 @@ const ImageWithCard = ({
   //   return <div className='p-4 text-center'>No images to display</div>;
   // }
   return (
-    <>
+    <FadeInOnView>
       {uiType === 'collapse' && (
         <div
           onClick={handleCollapse}
@@ -140,7 +141,7 @@ const ImageWithCard = ({
           ))}
         </div>
       </div>
-    </>
+    </FadeInOnView>
   );
 };
 

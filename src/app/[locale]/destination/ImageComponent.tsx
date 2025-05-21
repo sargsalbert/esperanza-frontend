@@ -1,5 +1,6 @@
 'use client';
 
+import FadeInOnView from '@/components/shared/FadeInOnView';
 import Image from 'next/image';
 
 type ImageGridProps = {
@@ -19,16 +20,14 @@ export default function ImageGrid({ url, index }: ImageGridProps) {
   const style = imageStyles[styleIndex];
 
   return (
-    <>
-      <div className={`relative w-full ${style}`}>
-        <Image
-          src={url}
-          alt={`Resort ${index + 1}`}
-          fill
-          objectFit='cover'
-          className=''
-        />
-      </div>
-    </>
+    <FadeInOnView className={`relative w-full ${style}`}>
+      <Image
+        src={url}
+        alt={`Resort ${index + 1}`}
+        fill
+        objectFit='cover'
+        className=''
+      />
+    </FadeInOnView>
   );
 }

@@ -5,6 +5,7 @@ import { fetchData } from '@/lib/apolloClient';
 import { DESTINATION_QUERY } from '@/lib/graphql/queries';
 import ImageGrid from './ImageComponent';
 import LocationMap from '@/components/shared/LocationMap';
+import FadeInOnView from '@/components/shared/FadeInOnView';
 
 export const revalidate = 60;
 
@@ -30,17 +31,21 @@ export default async function Destination({ params }: LocalePageProps) {
         buttonText={data.destination?.beforeMapText?.buttonText}
         id=''
       />
-      <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
-        <div className='aspect-3/2 w-full lg:aspect-16/9'>
-          <LocationMap />
+      <FadeInOnView>
+        <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
+          <div className='aspect-3/2 w-full lg:aspect-16/9'>
+            <LocationMap />
+          </div>
         </div>
-      </div>
+      </FadeInOnView>
       {data.destination?.afterMapText && (
-        <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>
-          <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
-            {data.destination.afterMapText}
-          </p>
-        </div>
+        <FadeInOnView>
+          <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>
+            <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
+              {data.destination.afterMapText}
+            </p>
+          </div>
+        </FadeInOnView>
       )}
       <SectionHeader
         subtitle={data.destination?.architectureDesignText?.subtitle}
