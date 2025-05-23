@@ -25,6 +25,8 @@ export default async function GiftCards({ params }: LocalePageProps) {
         title={data.giftCard?.quietLuxuryText?.title}
         description={data.giftCard?.quietLuxuryText?.description}
         buttonText={data.giftCard?.quietLuxuryText?.buttonText}
+        buttonUrl={data.giftCard?.quietLuxuryText?.buttonUrl}
+        newTab={data.giftCard?.quietLuxuryText?.newTab}
         id=''
       />
       <FadeInOnView>

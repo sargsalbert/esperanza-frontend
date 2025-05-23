@@ -24,6 +24,8 @@ export default async function Experiences({ params }: LocalePageProps) {
         title={data.experience?.exploreEsperanzaText?.title}
         description={data.experience?.exploreEsperanzaText?.description}
         buttonText={data.experience?.exploreEsperanzaText?.buttonText}
+        buttonUrl={data.experience?.exploreEsperanzaText?.buttonUrl}
+        newTab={data.experience?.exploreEsperanzaText?.newTab}
         id=''
       />
       {data.experience?.tabbedSliderBlock?.length &&

@@ -1,6 +1,7 @@
 import { ComponentSharedSectionText } from '@/gql/graphql';
 import { MoreIcon } from '../icons/moreIcon';
 import FadeInOnView from './FadeInOnView';
+import LocaleLink from './LocaleLink';
 
 type SectionHeaderProps = ComponentSharedSectionText & {
   buttonText?: string | null;
@@ -11,6 +12,8 @@ const SectionHeader = ({
   title,
   description,
   buttonText,
+  buttonUrl,
+  newTab,
 }: SectionHeaderProps) => {
   return (
     <FadeInOnView>
@@ -33,12 +36,17 @@ const SectionHeader = ({
         </p>
         {buttonText && (
           <div className='flex justify-center'>
-            <button className='flex cursor-pointer items-center'>
+            <LocaleLink
+              href={buttonUrl || ''}
+              target={!!newTab}
+              className='flex cursor-pointer items-center'
+            >
               <span className='gray-800 px-2.5 text-[13px]/[15px] font-semibold text-gray-800 sm:text-[16px]/[18px]'>
                 {buttonText}
               </span>
+
               <MoreIcon className='h-3 w-3 sm:h-[16px] sm:w-[17px]' />
-            </button>
+            </LocaleLink>
           </div>
         )}
       </div>

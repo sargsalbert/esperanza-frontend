@@ -69,26 +69,26 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                 ? 'relative opacity-100'
                 : 'pointer-events-none absolute opacity-0'
             } ${
-              tab?.useJsonContent ? 'flex h-full flex-col justify-center' : ''
+              tab?.useSeparateFields
+                ? 'flex h-full flex-col justify-center'
+                : ''
             }`}
           >
-            {tab?.useJsonContent ? (
-              <div className='my-7 lg:my-0'>
-                {(tab.contentJson as { label: string; value: string }[]).map(
-                  ({ label, value }, i) => (
-                    <div
-                      key={i}
-                      className='flex items-center border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
-                    >
-                      <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
-                        {label}
-                      </span>
-                      <span className='text-[14px] font-semibold break-all text-gray-900 sm:text-[15px] md:text-base md:break-words'>
-                        {value}
-                      </span>
-                    </div>
-                  ),
-                )}
+            {tab?.useSeparateFields && tab?.useTextFieldsInstead ? (
+              <div className='my-7'>
+                {tab.useTextFieldsInstead.map((field, i) => (
+                  <div
+                    key={i}
+                    className='flex items-center border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
+                  >
+                    <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
+                      {field?.firstTextField}
+                    </span>
+                    <span className='text-[14px] font-semibold break-all text-gray-900 sm:text-[15px] md:text-base md:break-words'>
+                      {field?.secondTextField}
+                    </span>
+                  </div>
+                ))}
               </div>
             ) : (
               <StrapiRichTextRenderer content={tab?.tabContent} />

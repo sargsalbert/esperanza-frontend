@@ -23,6 +23,8 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
         title={data.roomsAndSuite?.spacesToBreatheText?.title}
         description={data.roomsAndSuite?.spacesToBreatheText?.description}
         buttonText={data.roomsAndSuite?.spacesToBreatheText?.buttonText}
+        buttonUrl={data.roomsAndSuite?.spacesToBreatheText?.buttonUrl}
+        newTab={data.roomsAndSuite?.spacesToBreatheText?.newTab}
         id=''
       />
       <FadeInOnView>

@@ -30,6 +30,8 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
         title={data.meetingsAndEvent?.timelessMomentstext?.title}
         description={data.meetingsAndEvent?.timelessMomentstext?.description}
         buttonText={data.meetingsAndEvent?.timelessMomentstext?.buttonText}
+        buttonUrl={data.meetingsAndEvent?.timelessMomentstext?.buttonUrl}
+        newTab={data.meetingsAndEvent?.timelessMomentstext?.newTab}
         id=''
       />
 

@@ -28,6 +28,8 @@ export default async function Home({ params }: LocalePageProps) {
         title={data.home?.destinationText?.title}
         description={data.home?.destinationText?.description}
         buttonText={data.home?.destinationText?.buttonText}
+        buttonUrl={data.home?.destinationText?.buttonUrl}
+        newTab={data.home?.destinationText?.newTab}
         id=''
       />
 
@@ -49,6 +51,8 @@ export default async function Home({ params }: LocalePageProps) {
               title={d?.sectionText?.title}
               description={d?.sectionText?.description}
               buttonText={d?.sectionText?.buttonText}
+              buttonUrl={d?.sectionText?.buttonUrl}
+              newTab={d?.sectionText?.newTab}
               id=''
             />
             <ImageWithOverlayCard
@@ -63,6 +67,8 @@ export default async function Home({ params }: LocalePageProps) {
         title={data.home?.wellnessText?.title}
         description={data.home?.wellnessText?.description}
         buttonText={data?.home?.wellnessText?.buttonText}
+        buttonUrl={data.home?.wellnessText?.buttonUrl}
+        newTab={data.home?.wellnessText?.newTab}
         id=''
       />
 
@@ -76,6 +82,8 @@ export default async function Home({ params }: LocalePageProps) {
               title={d?.sectionText?.title}
               description={d?.sectionText?.description}
               buttonText={d?.sectionText?.buttonText}
+              buttonUrl={d?.sectionText?.buttonUrl}
+              newTab={d?.sectionText?.newTab}
               id=''
             />
             <ImageWithOverlayCard
@@ -90,6 +98,8 @@ export default async function Home({ params }: LocalePageProps) {
         title={data.home?.experiencesText?.title}
         description={data.home?.experiencesText?.description}
         buttonText={data.home?.experiencesText?.buttonText}
+        buttonUrl={data.home?.experiencesText?.buttonUrl}
+        newTab={data.home?.experiencesText?.newTab}
         id=''
       />
       <SectionGrid sectionGridSlider={data.home?.experiencesGridSlider ?? []} />

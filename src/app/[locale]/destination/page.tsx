@@ -29,6 +29,8 @@ export default async function Destination({ params }: LocalePageProps) {
         title={data.destination?.beforeMapText?.title}
         description={data.destination?.beforeMapText?.description}
         buttonText={data.destination?.beforeMapText?.buttonText}
+        buttonUrl={data.destination?.beforeMapText?.buttonUrl}
+        newTab={data.destination?.beforeMapText?.newTab}
         id=''
       />
       <FadeInOnView>
@@ -52,6 +54,8 @@ export default async function Destination({ params }: LocalePageProps) {
         title={data.destination?.architectureDesignText?.title}
         description={data.destination?.architectureDesignText?.description}
         buttonText={data.destination?.architectureDesignText?.buttonText}
+        buttonUrl={data.destination?.architectureDesignText?.buttonUrl}
+        newTab={data.destination?.architectureDesignText?.newTab}
         id=''
       />
       <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>

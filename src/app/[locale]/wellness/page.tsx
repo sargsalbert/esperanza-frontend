@@ -25,6 +25,8 @@ export default async function Wellness({ params }: LocalePageProps) {
         title={data.wellness?.ritualRenewalText?.title}
         description={data.wellness?.ritualRenewalText?.description}
         buttonText={data.wellness?.ritualRenewalText?.buttonText}
+        buttonUrl={data.wellness?.ritualRenewalText?.buttonUrl}
+        newTab={data.wellness?.ritualRenewalText?.newTab}
         id=''
       />
 
@@ -43,6 +45,8 @@ export default async function Wellness({ params }: LocalePageProps) {
         title={data.wellness?.facilitiesText?.title}
         description={data.wellness?.facilitiesText?.description}
         buttonText={data.wellness?.facilitiesText?.buttonText}
+        buttonUrl={data.wellness?.facilitiesText?.buttonUrl}
+        newTab={data.wellness?.facilitiesText?.newTab}
         id=''
       />
 

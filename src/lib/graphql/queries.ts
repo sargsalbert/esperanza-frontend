@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const GLOBAL_QUERY = gql`
+  query Global($locale: I18NLocaleCode) {
+    global(locale: $locale) {
+      bookButton {
+        buttonText
+        buttonUrl
+        newTab
+      }
+    }
+  }
+`;
+
 export const HOME_QUERY = gql`
   query Home($locale: I18NLocaleCode) {
     home(locale: $locale) {
@@ -15,6 +27,8 @@ export const HOME_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       destinationImages {
         multipleImages {
@@ -28,6 +42,8 @@ export const HOME_QUERY = gql`
           title
           description
           buttonText
+          buttonUrl
+          newTab
         }
         textImageSliderBlock {
           id
@@ -50,6 +66,8 @@ export const HOME_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       wellnessGridSlider {
         id
@@ -72,6 +90,8 @@ export const HOME_QUERY = gql`
           title
           description
           buttonText
+          buttonUrl
+          newTab
         }
         textImageSliderBlock {
           id
@@ -94,6 +114,8 @@ export const HOME_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       experiencesGridSlider {
         id
@@ -129,6 +151,8 @@ export const DESTINATION_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       afterMapText
       architectureDesignText {
@@ -136,6 +160,8 @@ export const DESTINATION_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       architectureDesignImages {
         multipleImages {
@@ -172,6 +198,8 @@ export const ROOMS_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       tabbedSliderBlock {
         title
@@ -179,14 +207,18 @@ export const ROOMS_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         infoLineText
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -226,6 +258,8 @@ export const VILLA_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       tabbedSliderBlock {
         title
@@ -233,14 +267,18 @@ export const VILLA_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         infoLineText
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -280,6 +318,8 @@ export const WELLNESS_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       ritualRenewalImages {
         multipleImages {
@@ -298,6 +338,8 @@ export const WELLNESS_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       sectionGridSlider {
         id
@@ -320,14 +362,18 @@ export const WELLNESS_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         infoLineText
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -368,6 +414,8 @@ export const DINING_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       tabbedSliderBlock {
         title
@@ -375,13 +423,17 @@ export const DINING_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -422,6 +474,8 @@ export const MEETINGS_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       tabbedSliderBlock {
         title
@@ -429,14 +483,18 @@ export const MEETINGS_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         infoLineText
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -469,6 +527,8 @@ export const MEETINGS_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       seo {
         metaTitle
@@ -497,6 +557,8 @@ export const EXPERIENCE_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       tabbedSliderBlock {
         title
@@ -504,14 +566,18 @@ export const EXPERIENCE_QUERY = gql`
           id
           label
           tabContent
-          contentJson
-          useJsonContent
+          useSeparateFields
+          useTextFieldsInstead {
+            firstTextField
+            secondTextField
+          }
         }
         infoLineText
         actionButton {
           id
-          buttonLink
+          buttonUrl
           buttonText
+          newTab
         }
         images {
           alternativeText
@@ -588,6 +654,8 @@ export const GIFTCARD_QUERY = gql`
         title
         description
         buttonText
+        buttonUrl
+        newTab
       }
       formBottomNote
       seo {
