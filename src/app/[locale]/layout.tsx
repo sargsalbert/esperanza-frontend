@@ -27,7 +27,6 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
   const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
 
   return (
