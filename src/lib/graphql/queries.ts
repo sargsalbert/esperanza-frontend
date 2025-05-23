@@ -209,6 +209,7 @@ export const ROOMS_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }
@@ -269,6 +270,7 @@ export const VILLA_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }
@@ -364,6 +366,7 @@ export const WELLNESS_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }
@@ -425,6 +428,7 @@ export const DINING_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }
@@ -485,6 +489,7 @@ export const MEETINGS_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }
@@ -568,6 +573,7 @@ export const EXPERIENCE_QUERY = gql`
           tabContent
           useSeparateFields
           useTextFieldsInstead {
+            id
             firstTextField
             secondTextField
           }

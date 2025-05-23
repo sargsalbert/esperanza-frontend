@@ -76,9 +76,9 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
           >
             {tab?.useSeparateFields && tab?.useTextFieldsInstead ? (
               <div className='my-7'>
-                {tab.useTextFieldsInstead.map((field, i) => (
+                {tab.useTextFieldsInstead.map((field) => (
                   <div
-                    key={i}
+                    key={field?.id}
                     className='flex items-center border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
                   >
                     <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
