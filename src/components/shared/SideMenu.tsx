@@ -41,7 +41,7 @@ export function SideMenu({
   }, [menuData]);
 
   const pathname = usePathname();
-  const stripLocale = (path: string) => path.replace(/^\/[a-z]{2}(\/|$)/, '/');
+  const stripLocale = (path: string) => path.replace(/^\/[a-z-]+(\/|$)/i, '/');
 
   const isActive = useCallback(
     (path: string) => stripLocale(pathname) === path,
