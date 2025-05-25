@@ -2,7 +2,7 @@
 
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-const StrapiRichTextRenderer = ({ content, textCenter }) => {
+const StrapiRichTextRenderer = ({ content, textCenter = false }) => {
   if (!content) {
     return;
   }

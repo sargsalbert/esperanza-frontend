@@ -2,7 +2,6 @@
 import { SideMenu } from './SideMenu';
 import { useEffect, useState } from 'react';
 import LanguageSelector from './LanguageSelector';
-import Link from 'next/link';
 import { LogoIcon } from '../icons/logoIcon';
 import Hamburger from './Hamburger';
 import LocaleLink from './LocaleLink';
@@ -78,11 +77,11 @@ const Header = ({ global }: HeaderProps) => {
               isMenuOpen ? 'hidden lg:inline-block' : ''
             }`}
           >
-            <Link href='/'>
+            <LocaleLink href='/'>
               <LogoIcon
                 className={`transition-all duration-300 ${isScrolled ? 'h-[41px] w-[104px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
               />
-            </Link>
+            </LocaleLink>
           </div>
           <div className='hidden items-center lg:flex'>
             <LocaleLink
