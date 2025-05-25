@@ -30,7 +30,7 @@ export default async function GiftCards({ params }: LocalePageProps) {
         id=''
       />
       <FadeInOnView>
-        <GiftForm />
+        <GiftForm data={data} />
 
         {data.giftCard?.formBottomNote && (
           <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>

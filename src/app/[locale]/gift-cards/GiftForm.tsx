@@ -3,6 +3,7 @@
 import Input from '@/components/shared/Input';
 import Select from '@/components/shared/Select';
 import TextArea from '@/components/shared/TextArea';
+import { GiftCardQuery } from '@/gql/graphql';
 import { useState } from 'react';
 
 interface FormData {
@@ -19,7 +20,11 @@ interface CustomChangeEvent {
   preventDefault: () => void;
 }
 
-export default function GiftForm() {
+type GiftFormProps = {
+  data: GiftCardQuery;
+};
+
+export default function GiftForm({ data }: GiftFormProps) {
   const options = [
     { value: 'Print', label: 'Print' },
     { value: 'Online', label: 'Online' },
@@ -44,21 +49,21 @@ export default function GiftForm() {
   return (
     <div className='mx-auto max-w-5xl px-5 pb-12.5 sm:pb-15 md:px-10 lg:pb-20 2xl:px-15'>
       <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
-        <Input placeholder='Name (recipient)' />
-        <Input placeholder='Surname (recipient)' />
-        <Input placeholder='Phone (buyer)' />
-        <Input placeholder='Email (buyer)' />
-        <Input placeholder='Amount (minimum 150 Eur)' />
+        <Input placeholder={data.giftCard?.formName} />
+        <Input placeholder={data.giftCard?.formSurname} />
+        <Input placeholder={data.giftCard?.formPhone} />
+        <Input placeholder={data.giftCard?.formEmail} />
+        <Input placeholder={data.giftCard?.formAmount} />
 
         <Select
           name='voucherType'
-          placeholder='Delivery'
+          placeholder={data.giftCard?.formDelivery}
           options={options}
           value={formData.voucherType}
           onChange={handleChange}
         />
         {formData.voucherType === 'Online' && (
-          <TextArea placeholder='Message ' />
+          <TextArea placeholder={data.giftCard?.formPhone} />
         )}
       </div>
       <div className='flex justify-center lg:justify-end'>
@@ -66,7 +71,7 @@ export default function GiftForm() {
           // onClick={primaryButton.onClick}
           className={`h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 md:h-10.5 lg:min-w-38 lg:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg`}
         >
-          Purchase
+          {data.giftCard?.formButtonText}
         </button>
       </div>
     </div>

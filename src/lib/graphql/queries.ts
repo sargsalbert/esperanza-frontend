@@ -543,6 +543,16 @@ export const MEETINGS_QUERY = gql`
         buttonUrl
         newTab
       }
+
+      formName
+      formSurname
+      formPhone
+      formEmail
+      formDates
+      formNumberGuests
+      formMessage
+      formButtonText
+
       seo {
         metaTitle
         metaDescription
@@ -672,6 +682,17 @@ export const GIFTCARD_QUERY = gql`
         newTab
       }
       formBottomNote
+
+      formName
+      formSurname
+      formPhone
+      formEmail
+      formAmount
+      formDelivery
+      formDeliveryOption1
+      formDeliveryOption2
+      formButtonText
+
       seo {
         metaTitle
         metaDescription

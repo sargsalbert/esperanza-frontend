@@ -1,5 +1,5 @@
 interface InputProps {
-  placeholder?: string;
+  placeholder?: string | null;
   type?: string;
 }
 
@@ -19,7 +19,7 @@ const Input = ({ placeholder, type = 'text' }: InputProps) => {
         // name='date'
         // value={form.date}
         // onChange={handleChange}
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
         className='placeholder-font-medium min-h-10 w-full border-b-2 border-gray-200 py-2.5 text-sm font-medium placeholder-gray-300 transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3'
       />
     </div>

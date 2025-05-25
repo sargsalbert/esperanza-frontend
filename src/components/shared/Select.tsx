@@ -20,7 +20,7 @@ interface CustomChangeEvent {
 
 interface SelectProps {
   options?: Option[];
-  placeholder?: string;
+  placeholder?: string | null;
   value?: string;
   name: string;
   onChange?: (e: CustomChangeEvent) => void;
