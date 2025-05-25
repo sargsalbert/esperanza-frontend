@@ -243,6 +243,12 @@ export const ROOMS_QUERY = gql`
           size
         }
       }
+      bookButtonShowMobile {
+        id
+        buttonText
+        buttonUrl
+        newTab
+      }
       seo {
         metaTitle
         metaDescription

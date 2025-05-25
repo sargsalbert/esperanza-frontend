@@ -6,6 +6,7 @@ import { fetchData } from '@/lib/apolloClient';
 import { ROOMS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import FadeInOnView from '@/components/shared/FadeInOnView';
+import LocaleLink from '@/components/shared/LocaleLink';
 
 export default async function RoomsSuites({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -29,9 +30,17 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
       />
       <FadeInOnView>
         <div className='mt-2 mb-7.5 block text-center sm:mt-3 sm:mb-10 lg:hidden'>
-          <button className='h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-medium text-gray-50 md:h-10.5 md:min-w-38'>
-            Book
-          </button>
+          <LocaleLink
+            href={data.roomsAndSuite?.bookButtonShowMobile?.buttonUrl || ''}
+            target={
+              data.roomsAndSuite?.bookButtonShowMobile?.newTab
+                ? '_blank'
+                : undefined
+            }
+            className='h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-medium text-gray-50 md:h-10.5 md:min-w-38'
+          >
+            {data.roomsAndSuite?.bookButtonShowMobile?.buttonText}
+          </LocaleLink>
         </div>
       </FadeInOnView>
 
