@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { EmaiIcon } from '../icons/emaiIcon';
@@ -7,6 +6,7 @@ import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
 import { MenuArrowIcon } from '../icons/menuArrowIcon';
 import { GlobalQuery } from '@/gql/graphql';
+import LocaleLink from './LocaleLink';
 
 interface SideMenuProps {
   isOpen: boolean;
@@ -86,7 +86,7 @@ export function SideMenu({
 
                 return (
                   <li key={href}>
-                    <Link
+                    <LocaleLink
                       href={href}
                       onClick={onClose}
                       onMouseEnter={() => setHoveredItem(href)}
@@ -101,7 +101,7 @@ export function SideMenu({
                           className={`h-2 w-1 transition-colors duration-300 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px] ${iconColor}`}
                         />
                       </span>
-                    </Link>
+                    </LocaleLink>
                   </li>
                 );
               })}

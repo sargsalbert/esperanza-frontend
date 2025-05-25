@@ -38,7 +38,7 @@ const SectionHeader = ({
           <div className='flex justify-center'>
             <LocaleLink
               href={buttonUrl || ''}
-              target={!!newTab}
+              target={!!newTab ? '_blank' : undefined}
               className='flex cursor-pointer items-center'
             >
               <span className='gray-800 px-2.5 text-[13px]/[15px] font-semibold text-gray-800 sm:text-[16px]/[18px]'>

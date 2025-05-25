@@ -1,21 +1,16 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
-type Props = {
+type AnchorProps = React.ComponentProps<'a'>;
+
+interface LocaleLinkProps extends AnchorProps {
   href: string;
-  children: React.ReactNode;
-  className?: string;
-  target?: boolean;
-};
+}
 
-export default function LocaleLink({
-  href,
-  children,
-  className,
-  target,
-}: Props) {
+const LocaleLink: React.FC<LocaleLinkProps> = ({ href, children, ...rest }) => {
   const pathname = usePathname();
   const isExternal = href.startsWith('http://') || href.startsWith('https://');
 
@@ -23,28 +18,22 @@ export default function LocaleLink({
     return (
       <a
         href={href}
-        className={className}
-        target={target ? '_blank' : '_self'}
-        rel='noopener noreferrer'
+        rel={rest.target === '_blank' ? 'noopener noreferrer' : undefined}
+        {...rest}
       >
         {children}
       </a>
     );
   }
 
-  // Get current locale from the URL
-  const currentLocale = pathname.split('/')[1]; // Assumes format like /en/about
-
-  // Build localized href
+  const currentLocale = pathname.split('/')[1];
   const fullHref = `/${currentLocale}${href.startsWith('/') ? href : `/${href}`}`;
 
   return (
-    <Link
-      href={fullHref}
-      className={className}
-      target={target ? '_blank' : '_self'}
-    >
+    <Link href={fullHref} locale={false} {...rest}>
       {children}
     </Link>
   );
-}
+};
+
+export default LocaleLink;
