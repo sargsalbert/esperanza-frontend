@@ -117,7 +117,7 @@ export function SideMenu({
         </div>
         <div className='mt-auto mb-[9%] flex px-5 md:px-7.5 lg:hidden lg:px-10 2xl:px-15'>
           <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
-            Book
+            {menuData?.bookButton?.buttonText}
           </button>
         </div>
 
