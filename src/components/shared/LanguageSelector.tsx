@@ -1,31 +1,19 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
 
-interface LanguageSelectorProps {
-  initialLanguage?: 'EN' | 'Lao';
-  onLanguageChange?: (language: 'EN' | 'Lao') => void;
-}
-
-const LanguageSelector = ({
-  initialLanguage = 'EN',
-}: LanguageSelectorProps) => {
+const LanguageSelector = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [activeLanguage, setActiveLanguage] = useState<'EN' | 'Lao'>(
-    initialLanguage,
-  );
+  const currentLocale = pathname.split('/')[1];
+  const activeLanguage = currentLocale === 'lao' ? 'Lao' : 'EN';
 
   const handleLanguageChange = (language: 'EN' | 'Lao') => {
-    setActiveLanguage(language);
-
-    const locale = language.toLowerCase(); // 'en' or 'lt'
+    const locale = language === 'EN' ? 'en' : 'lao';
     const segments = pathname.split('/');
-    segments[1] = locale; // replace the locale segment
+    segments[1] = locale; // replace locale segment
     const newPath = segments.join('/');
-
     router.push(newPath);
   };
 
