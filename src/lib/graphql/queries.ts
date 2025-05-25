@@ -140,6 +140,9 @@ export const HOME_QUERY = gql`
           size
         }
       }
+      bookingWidget {
+        buttonCheckAvailabilityText
+      }
     }
   }
 `;

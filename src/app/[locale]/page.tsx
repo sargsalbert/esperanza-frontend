@@ -21,7 +21,7 @@ export default async function Home({ params }: LocalePageProps) {
           url={data.home?.heroSection?.heroImage?.url}
           title={data.home?.heroSection?.heroText}
         />
-        <BookingWidget />
+        <BookingWidget data={data.home?.bookingWidget} />
       </div>
       <SectionHeader
         subtitle={data.home?.destinationText?.subtitle}

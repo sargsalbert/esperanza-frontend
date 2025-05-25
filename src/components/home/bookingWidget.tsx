@@ -1,4 +1,10 @@
-const BookingWidget = () => {
+import { ComponentSharedBookingWidgetInput } from '@/gql/graphql';
+
+type BookingWidgetProps = {
+  data?: ComponentSharedBookingWidgetInput | null;
+};
+
+const BookingWidget = ({ data }: BookingWidgetProps) => {
   return (
     <div className='absolute right-0 bottom-0 left-0 z-2 mx-auto block max-w-[1480px] translate-y-1/2 transform overflow-hidden px-5 md:px-7.5 lg:px-10 2xl:px-15'>
       <div className='h-[78px] bg-gray-100 shadow-xs lg:h-auto'>
@@ -47,7 +53,7 @@ const BookingWidget = () => {
           {/* Check Availability */}
           <div className='hidden items-center justify-center p-5 lg:flex'>
             <button className='w-60 cursor-pointer rounded-[30px] bg-gray-800 px-3 py-2 text-sm font-semibold text-gray-50 md:text-base lg:min-h-11 lg:text-nowrap 2xl:min-h-12.5 2xl:text-lg'>
-              Check Availability
+              {data?.buttonCheckAvailabilityText}
             </button>
           </div>
         </div>
