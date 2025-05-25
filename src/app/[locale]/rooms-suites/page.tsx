@@ -37,7 +37,7 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
                 ? '_blank'
                 : undefined
             }
-            className='h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-medium text-gray-50 md:h-10.5 md:min-w-38'
+            className='inline-flex h-9 min-w-63 cursor-pointer items-center justify-center rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-medium text-gray-50 md:h-10.5 md:min-w-38'
           >
             {data.roomsAndSuite?.bookButtonShowMobile?.buttonText}
           </LocaleLink>
