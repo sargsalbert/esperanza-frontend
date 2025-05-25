@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
@@ -33,6 +33,13 @@ export function SideMenu({
   isScrolled,
   menuData,
 }: SideMenuProps) {
+  const localizedMenuItems = useMemo(() => {
+    return menuItems.map((item, index) => ({
+      ...item,
+      label: menuData?.menuLinks?.[index]?.label || item.label,
+    }));
+  }, [menuData]);
+
   const pathname = usePathname();
   const stripLocale = (path: string) => path.replace(/^\/[a-z]{2}(\/|$)/, '/');
 
@@ -63,7 +70,7 @@ export function SideMenu({
         <div className='px-5 py-6 md:px-7.5 md:py-7.5 lg:px-10 2xl:px-15'>
           <nav>
             <ul className='space-y-[4%]'>
-              {menuItems.map(({ href, label }) => {
+              {localizedMenuItems.map(({ href, label }) => {
                 const isHovered = hoveredItem === href;
                 const isAnyHovering = hoveredItem !== null;
 

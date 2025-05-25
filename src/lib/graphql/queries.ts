@@ -13,6 +13,9 @@ export const GLOBAL_QUERY = gql`
         buttonUrl
         newTab
       }
+      menuLinks {
+        label
+      }
     }
   }
 `;
