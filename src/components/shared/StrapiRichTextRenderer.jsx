@@ -2,7 +2,7 @@
 
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-const StrapiRichTextRenderer = ({ content }) => {
+const StrapiRichTextRenderer = ({ content, textCenter }) => {
   if (!content) {
     return;
   }
@@ -13,7 +13,9 @@ const StrapiRichTextRenderer = ({ content }) => {
       blocks={{
         // You can use the default components to set class names...
         paragraph: ({ children }) => (
-          <p className='text-center text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:text-left lg:leading-8 xl:text-base'>
+          <p
+            className={`text-center text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:leading-8 xl:text-base ${textCenter ? 'lg:text-center' : 'lg:text-left'} `}
+          >
             {children}
           </p>
         ),
