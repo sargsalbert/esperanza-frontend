@@ -6,11 +6,13 @@ import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
 import { MenuArrowIcon } from '../icons/menuArrowIcon';
+import { GlobalQuery } from '@/gql/graphql';
 
 interface SideMenuProps {
   isOpen: boolean;
   onClose: () => void;
   isScrolled: boolean;
+  menuData: GlobalQuery['global'];
 }
 
 const menuItems = [
@@ -25,9 +27,13 @@ const menuItems = [
   { href: '/gift-cards', label: 'Gift Cards' },
 ];
 
-export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
+export function SideMenu({
+  isOpen,
+  onClose,
+  isScrolled,
+  menuData,
+}: SideMenuProps) {
   const pathname = usePathname();
-
   const stripLocale = (path: string) => path.replace(/^\/[a-z]{2}(\/|$)/, '/');
 
   const isActive = useCallback(
@@ -109,16 +115,29 @@ export function SideMenu({ isOpen, onClose, isScrolled }: SideMenuProps) {
         </div>
 
         <div className='bg-gray-200 px-5 pt-7.5 pb-4 md:px-7.5 lg:px-10 2xl:px-15'>
-          <div className='mb-[6%] flex items-center space-x-5 md:space-x-6.5'>
-            <PhoneIcon />
+          <div className='mb-[3%] flex items-center space-x-5 md:space-x-6.5'>
+            <a href={`tel:${menuData?.menuFooterPhone}`}>
+              <PhoneIcon />
+            </a>
+
             <div className='h-5 w-px bg-[#9A9A9A]'></div>
-            <EmaiIcon />
+            <a href={`mailto:${menuData?.menuFooterEmail}`}>
+              <EmaiIcon />
+            </a>
             <div className='h-5 w-px bg-[#9A9A9A]'></div>
-            <MapIcon />
+            <a
+              href={menuData?.menuFooterLocation || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <MapIcon />
+            </a>
           </div>
-          <p className='text-center text-xs text-gray-700 md:text-sm'>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-          </p>
+          {menuData?.menuFooterSmallText && (
+            <p className='mt-[6%] text-center text-xs text-gray-700 md:text-sm'>
+              {menuData.menuFooterSmallText}
+            </p>
+          )}
         </div>
       </div>
     </>

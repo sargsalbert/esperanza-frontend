@@ -1,6 +1,5 @@
 import BookingWidget from '@/components/home/bookingWidget';
 import SectionHeader from '@/components/shared/SectionHeader';
-import Destination from '@/components/home/destination';
 import { HOME_QUERY } from '@/lib/graphql/queries';
 import { fetchData } from '@/lib/apolloClient';
 import { HomeQuery, UploadFile } from '@/gql/graphql';
@@ -8,6 +7,7 @@ import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
 import TopSection from '@/components/home/topSection';
+import ImageGridTree from '@/components/home/imageGridTree';
 
 export default async function Home({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -34,7 +34,7 @@ export default async function Home({ params }: LocalePageProps) {
       />
 
       {data.home?.destinationImages && (
-        <Destination
+        <ImageGridTree
           images={
             data.home?.destinationImages?.multipleImages?.filter(
               (img): img is UploadFile => img !== null,

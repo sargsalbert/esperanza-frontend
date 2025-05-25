@@ -6,9 +6,13 @@ import Link from 'next/link';
 import { LogoIcon } from '../icons/logoIcon';
 import Hamburger from './Hamburger';
 import LocaleLink from './LocaleLink';
-import { GlobalInput } from '@/gql/graphql';
+import { GlobalQuery } from '@/gql/graphql';
 
-const Header = (d: GlobalInput) => {
+type HeaderProps = {
+  global: GlobalQuery['global'];
+};
+
+const Header = ({ global }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -82,11 +86,11 @@ const Header = (d: GlobalInput) => {
           </div>
           <div className='hidden items-center lg:flex'>
             <LocaleLink
-              href={d.bookButton?.buttonUrl || ''}
-              target={!!d.bookButton?.newTab}
+              href={global?.bookButton?.buttonUrl || ''}
+              target={!!global?.bookButton?.newTab}
               className='flex min-h-9 cursor-pointer items-center justify-center rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:min-h-10.5 md:min-w-38 md:text-base 2xl:min-h-11 2xl:min-w-48 2xl:text-lg'
             >
-              {d.bookButton?.buttonText}
+              {global?.bookButton?.buttonText}
             </LocaleLink>
           </div>
         </div>
@@ -95,6 +99,7 @@ const Header = (d: GlobalInput) => {
         isOpen={isMenuOpen}
         onClose={toggleMenu}
         isScrolled={isScrolled}
+        menuData={global}
       />
     </>
   );

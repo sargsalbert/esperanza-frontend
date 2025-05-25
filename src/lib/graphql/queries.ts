@@ -3,6 +3,11 @@ import { gql } from '@apollo/client';
 export const GLOBAL_QUERY = gql`
   query Global($locale: I18NLocaleCode) {
     global(locale: $locale) {
+      menuFooterEmail
+      menuFooterLocation
+      menuFooterPhone
+      menuFooterPhone
+      menuFooterSmallText
       bookButton {
         buttonText
         buttonUrl

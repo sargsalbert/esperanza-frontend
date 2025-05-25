@@ -5,6 +5,12 @@ import { DiningQuery } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { DINING_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'dsfsdfsd',
+  description: 'TST Gzzzzzzz',
+};
 
 export default async function Villas({ params }: LocalePageProps) {
   const { locale } = await params;

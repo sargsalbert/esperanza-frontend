@@ -5,8 +5,8 @@ import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { fetchData } from '@/lib/apolloClient';
 import { UploadFile, WellnessQuery } from '@/gql/graphql';
 import { WELLNESS_QUERY } from '@/lib/graphql/queries';
-import ImageGridTree from '@/components/shared/imageGrids/ImageGridTree';
 import { LocalePageProps } from '../destination/page';
+import ImageGridTree from '@/components/home/imageGridTree';
 
 export default async function Wellness({ params }: LocalePageProps) {
   const { locale } = await params;

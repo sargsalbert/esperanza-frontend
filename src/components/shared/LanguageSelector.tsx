@@ -1,25 +1,32 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface LanguageSelectorProps {
-  initialLanguage?: 'EN' | 'LT';
-  onLanguageChange?: (language: 'EN' | 'LT') => void;
+  initialLanguage?: 'EN' | 'Lao';
+  onLanguageChange?: (language: 'EN' | 'Lao') => void;
 }
 
 const LanguageSelector = ({
   initialLanguage = 'EN',
-  onLanguageChange,
 }: LanguageSelectorProps) => {
-  const [activeLanguage, setActiveLanguage] = useState<'EN' | 'LT'>(
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [activeLanguage, setActiveLanguage] = useState<'EN' | 'Lao'>(
     initialLanguage,
   );
 
-  const handleLanguageChange = (language: 'EN' | 'LT') => {
+  const handleLanguageChange = (language: 'EN' | 'Lao') => {
     setActiveLanguage(language);
-    if (onLanguageChange) {
-      onLanguageChange(language);
-    }
+
+    const locale = language.toLowerCase(); // 'en' or 'lt'
+    const segments = pathname.split('/');
+    segments[1] = locale; // replace the locale segment
+    const newPath = segments.join('/');
+
+    router.push(newPath);
   };
 
   return (
@@ -39,10 +46,10 @@ const LanguageSelector = ({
       <li
         onClick={(e) => {
           e.preventDefault();
-          handleLanguageChange('LT');
+          handleLanguageChange('Lao');
         }}
         className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
-          activeLanguage === 'LT' ? 'text-gray-800' : 'text-gray-600'
+          activeLanguage === 'Lao' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
         <span>LT</span>
