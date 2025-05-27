@@ -30,7 +30,7 @@ const LocaleLink: React.FC<LocaleLinkProps> = ({ href, children, ...rest }) => {
   const fullHref = `/${currentLocale}${href.startsWith('/') ? href : `/${href}`}`;
 
   return (
-    <Link href={fullHref} locale={false} {...rest}>
+    <Link href={fullHref} {...rest}>
       {children}
     </Link>
   );
