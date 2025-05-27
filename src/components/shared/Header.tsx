@@ -33,20 +33,32 @@ const Header = ({ global }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrolled = window.scrollY > 60;
-      setIsScrolled((prev) => {
-        if (prev !== scrolled) {
-          return scrolled;
-        }
-        return prev;
-      });
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+
+          setIsScrolled((prev) => {
+            if (!prev && scrollY > 70) return true; // became scrolled
+            if (prev && scrollY < 60) return false; // returned to top
+            return prev; // no change
+          });
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
-    handleScroll();
-
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll(); // run once on mount
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (

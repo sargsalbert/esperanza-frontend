@@ -1,6 +1,3 @@
-'use client';
-
-import { useViewportHeight } from '@/hooks/useViewportHeight';
 import Image from 'next/image';
 
 type TopSectionProps = {
@@ -9,15 +6,8 @@ type TopSectionProps = {
 };
 
 const TopSection = ({ url, title }: TopSectionProps) => {
-  useViewportHeight();
-
   return (
-    <div
-      className='relative flex w-full items-end overflow-hidden'
-      style={{
-        height: 'calc(var(--vh, 1vh) * 100 - 143px)',
-      }}
-    >
+    <div className='relative flex w-full items-end overflow-hidden'>
       <Image
         src={url || ''}
         alt={title || ''}
