@@ -1,6 +1,5 @@
 'use client';
 
-import { useViewportHeight } from '@/hooks/useViewportHeight';
 import TopSection from './topSection';
 import BookingWidget from './bookingWidget';
 import {
@@ -14,8 +13,6 @@ type TopBoxProps = {
 };
 
 export default function TopBox({ heroSection, bookingWidget }: TopBoxProps) {
-  useViewportHeight();
-
   return (
     <div
       // style={{
