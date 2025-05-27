@@ -16,7 +16,7 @@ export default async function Home({ params }: LocalePageProps) {
 
   return (
     <>
-      <div className='relative mb-17.5 flex min-h-[calc(100dvh-143px)] w-full md:mb-30 md:h-[calc(100vh-110px-39px-30px)] lg:mb-39 lg:h-[calc(100vh-110px-75px-40px)] 2xl:h-[calc(100vh-123px-75px-60px)]'>
+      <div className='relative mb-17.5 flex h-[calc(100dvh-143px)] w-full md:mb-30 md:h-[calc(100vh-110px-39px-30px)] lg:mb-39 lg:h-[calc(100vh-110px-75px-40px)] 2xl:h-[calc(100vh-123px-75px-60px)]'>
         <TopSection
           url={data.home?.heroSection?.heroImage?.url}
           title={data.home?.heroSection?.heroText}
