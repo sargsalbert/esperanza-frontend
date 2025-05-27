@@ -24,9 +24,16 @@ export const HOME_QUERY = gql`
   query Home($locale: I18NLocaleCode) {
     home(locale: $locale) {
       heroSection {
+        id
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
         }
         heroText
       }
@@ -42,6 +49,12 @@ export const HOME_QUERY = gql`
         multipleImages {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
         }
       }
       headerTextWithSliderBlock {
@@ -424,7 +437,6 @@ export const DINING_QUERY = gql`
       heroSection {
         heroImage {
           alternativeText
-          url
           url
         }
         heroText

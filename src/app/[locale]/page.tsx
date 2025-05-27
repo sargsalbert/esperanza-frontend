@@ -1,4 +1,3 @@
-import BookingWidget from '@/components/home/bookingWidget';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { HOME_QUERY } from '@/lib/graphql/queries';
 import { fetchData } from '@/lib/apolloClient';
@@ -6,8 +5,8 @@ import { HomeQuery, UploadFile } from '@/gql/graphql';
 import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
-import TopSection from '@/components/home/topSection';
 import ImageGridTree from '@/components/home/imageGridTree';
+import TopBox from '@/components/home/topBox';
 
 export default async function Home({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -16,18 +15,10 @@ export default async function Home({ params }: LocalePageProps) {
 
   return (
     <>
-      <div
-        style={{
-          minHeight: 'calc(100dvh - 143px)', // Use dynamic viewport height on modern browsers
-        }}
-        className='relative mb-17.5 flex h-[calc(100dvh-143px)] w-full md:mb-30 md:h-[calc(100dvh-179px)] lg:mb-39 lg:h-[calc(100dvh-225px)] 2xl:h-[calc(100dvh-238px)]'
-      >
-        <TopSection
-          url={data.home?.heroSection?.heroImage?.url}
-          title={data.home?.heroSection?.heroText}
-        />
-        <BookingWidget data={data.home?.bookingWidget} />
-      </div>
+      <TopBox
+        heroSection={data.home?.heroSection}
+        bookingWidget={data.home?.bookingWidget}
+      />
       <SectionHeader
         subtitle={data.home?.destinationText?.subtitle}
         title={data.home?.destinationText?.title}
