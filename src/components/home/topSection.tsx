@@ -7,13 +7,21 @@ type TopSectionProps = {
 
 const TopSection = ({ url, title }: TopSectionProps) => {
   return (
-    <div className='relative flex w-full items-end overflow-hidden'>
+    <div
+      className='relative flex w-full items-end overflow-hidden'
+      style={{
+        height: 'calc(var(--vh, 1vh) * 100 - 143px)',
+      }}
+    >
       <Image
         src={url || ''}
         alt={title || ''}
         fill
         priority
         className='object-cover'
+        style={{
+          maxHeight: 'calc(var(--vh, 1vh) * 100 - 143px)',
+        }}
       />
       <div className='relative z-1 flex h-[40%] w-full items-end justify-center bg-gradient-to-t from-black via-black/70 to-transparent pb-[72px] lg:pb-[155px]'>
         {title && (
