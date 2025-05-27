@@ -7,7 +7,7 @@ type TopSectionProps = {
 
 const TopSection = ({ url, title }: TopSectionProps) => {
   return (
-    <div className='relative flex h-full w-full items-end overflow-hidden'>
+    <div className='relative flex w-full items-end overflow-hidden'>
       <Image
         src={url || ''}
         alt={title || ''}
