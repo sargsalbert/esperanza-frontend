@@ -8,7 +8,7 @@ interface PageHeaderProps {
 
 const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
   return (
-    <div className='relative mb-7.5 flex h-[calc(100vh-84px)] w-full md:h-[calc(100vh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100vh-123px)]'>
+    <div className='relative mb-7.5 flex h-[calc(100dvh-84px)] w-full md:h-[calc(100dvh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100dvh-123px)]'>
       <div className='relative flex h-full w-full overflow-hidden'>
         <Image
           src={imgUrl}
