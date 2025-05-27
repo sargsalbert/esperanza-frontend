@@ -19,7 +19,7 @@ export default function TopBox({ heroSection, bookingWidget }: TopBoxProps) {
   return (
     <div
       style={{
-        minHeight: 'calc(var(--vh, 1vh) * 100 - 143px)',
+        maxHeight: 'calc(var(--vh, 1vh) * 100 - 143px)',
       }}
       className='relative mb-17.5 flex w-full md:mb-30 md:h-[calc(100dvh-179px)] lg:mb-39 lg:h-[calc(100dvh-225px)] 2xl:h-[calc(100dvh-238px)]'
     >
