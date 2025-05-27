@@ -16,7 +16,12 @@ export default async function Home({ params }: LocalePageProps) {
 
   return (
     <>
-      <div className='relative mb-17.5 flex h-[calc(100dvh-143px)] w-full md:mb-30 md:h-[calc(100dvh-179px)] lg:mb-39 lg:h-[calc(100dvh-225px)] 2xl:h-[calc(100dvh-238px)]'>
+      <div
+        style={{
+          minHeight: 'calc(100dvh - 143px)', // Use dynamic viewport height on modern browsers
+        }}
+        className='relative mb-17.5 flex h-[calc(100dvh-143px)] w-full md:mb-30 md:h-[calc(100dvh-179px)] lg:mb-39 lg:h-[calc(100dvh-225px)] 2xl:h-[calc(100dvh-238px)]'
+      >
         <TopSection
           url={data.home?.heroSection?.heroImage?.url}
           title={data.home?.heroSection?.heroText}
