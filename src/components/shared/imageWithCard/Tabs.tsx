@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import StrapiRichTextRenderer from '../StrapiRichTextRenderer';
 import { ComponentSharedTabItem, Maybe } from '@/gql/graphql';
 
@@ -35,21 +35,23 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
   return (
     <>
       {/* Tab buttons */}
-      <div className='mx-auto mb-3 flex w-full justify-around lg:mx-0 lg:mb-4 lg:w-auto lg:justify-start xl:mb-5'>
+      <div className='mx-auto mb-3 flex w-full max-w-[75%] lg:mx-0 lg:mb-4 lg:w-auto lg:max-w-none lg:justify-start xl:mb-5'>
         {tabs?.map((tab, idx) => (
-          <div key={idx} className='flex w-[50%] items-center lg:w-auto'>
-            <button
-              className={`w-full cursor-pointer py-[2.5%] text-[16px] font-semibold transition-colors xl:text-[17px] ${
-                idx === activeTab ? 'text-gray-900' : 'text-gray-700'
-              }`}
-              onClick={() => setActiveTab(idx)}
-            >
-              {tab?.label}
-            </button>
+          <React.Fragment key={idx}>
+            <div className='flex-1 lg:flex-none'>
+              <button
+                className={`w-full cursor-pointer py-[2px] text-center text-[15px] font-semibold transition-colors lg:text-[16px] xl:text-[17px] ${
+                  idx === activeTab ? 'text-gray-900' : 'text-gray-700'
+                }`}
+                onClick={() => setActiveTab(idx)}
+              >
+                {tab?.label}
+              </button>
+            </div>
             {idx < tabs.length - 1 && (
-              <div className='h-3.5 w-0.5 shrink-0 bg-yellow-500 sm:mx-4.5' />
+              <div className='mx-[5%] flex h-3.5 w-0.5 shrink-0 self-center bg-yellow-500 lg:mx-4.5' />
             )}
-          </div>
+          </React.Fragment>
         ))}
       </div>
 
