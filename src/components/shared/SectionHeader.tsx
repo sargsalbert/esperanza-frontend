@@ -24,7 +24,7 @@ const SectionHeader = ({
           </p>
         )}
         <div className='flex justify-center'>
-          <h2 className='mb-3 inline-flex min-w-[70%] justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase md:px-10 lg:mb-4 lg:min-w-[440px] lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[28px] 2xl:px-15'>
+          <h2 className='mb-3 inline-flex min-w-[75%] justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase md:px-10 lg:mb-4 lg:min-w-[440px] lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[28px] 2xl:px-15'>
             {title}
           </h2>
         </div>
