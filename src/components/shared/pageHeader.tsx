@@ -1,3 +1,6 @@
+'use client';
+
+import { useViewportHeight } from '@/hooks/useViewportHeight';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -7,8 +10,10 @@ interface PageHeaderProps {
 }
 
 const PageHeader: FC<PageHeaderProps> = ({ imgUrl = '', title = '' }) => {
+  useViewportHeight();
+
   return (
-    <div className='relative mb-7.5 flex h-[calc(100dvh-84px)] w-full md:h-[calc(100dvh-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(100dvh-123px)]'>
+    <div className='relative mb-7.5 flex h-[calc(var(--vh,1vh)*100-84px)] w-full md:h-[calc(var(--vh,1vh)*100-110px)] lg:mb-10 xl:mb-15 2xl:h-[calc(var(--vh,1vh)*100-123px)]'>
       <div className='relative flex h-full w-full overflow-hidden'>
         <Image
           src={imgUrl}
