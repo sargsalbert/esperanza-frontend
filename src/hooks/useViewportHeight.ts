@@ -14,11 +14,12 @@ export const useViewportHeight = () => {
     // Set once on load
     setViewportHeight();
 
-    // Update on orientation change (or resize, depending on your needs)
-    window.addEventListener('resize', setViewportHeight);
+    // Only update on orientation change
+    const mediaQuery = window.matchMedia('(orientation: portrait)');
+    mediaQuery.addEventListener('change', setViewportHeight);
 
     return () => {
-      window.removeEventListener('resize', setViewportHeight);
+      mediaQuery.removeEventListener('change', setViewportHeight);
     };
   }, []);
 };
