@@ -123,7 +123,7 @@ const ImageWithOverlayCard = ({
                   }`}
                 >
                   <div className='lg:min-h-[12rem]'>
-                    <h2 className='mb-3 inline-flex min-w-full justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[60%] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
+                    <h2 className='mb-3 inline-flex min-w-[300px] justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:pl-0 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
                       {feature?.title}
                     </h2>
 

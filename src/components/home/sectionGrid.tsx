@@ -92,10 +92,11 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
                   />
                 </div>
                 <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-7 lg:text-left xl:p-8'>
-                  <h2 className='mb-3 justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:border-b-3 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
-                    {item?.title}
-                  </h2>
-
+                  <div>
+                    <h2 className='mb-3 inline-flex min-w-[300px] justify-center border-b-2 border-yellow-500 px-5 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:flex lg:min-w-auto lg:justify-start lg:border-b-3 lg:px-0 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pb-5 xl:text-[24px] 2xl:text-[28px]'>
+                      {item?.title}
+                    </h2>
+                  </div>
                   <div className='text-[14px]/[28px] md:text-[16px]/[32px]'>
                     {item?.description}
                   </div>
