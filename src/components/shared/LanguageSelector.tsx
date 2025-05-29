@@ -24,7 +24,7 @@ const LanguageSelector = () => {
           e.preventDefault();
           handleLanguageChange('EN');
         }}
-        className={`inline-block min-w-[30px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
+        className={`inline-block min-w-[24px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'EN' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
@@ -37,7 +37,7 @@ const LanguageSelector = () => {
           e.preventDefault();
           handleLanguageChange('Lao');
         }}
-        className={`inline-block min-w-[30px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
+        className={`inline-block min-w-[24px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'Lao' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >

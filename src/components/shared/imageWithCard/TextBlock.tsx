@@ -38,7 +38,7 @@ const TextBlock = ({
         <div
           className={`text-center lg:text-left ${uiType === 'collapse' ? 'hidden lg:block' : 'block'}`}
         >
-          <h2 className='mb-3 inline-flex min-w-[75%] justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
+          <h2 className='mb-3 flex min-w-auto justify-center border-b-2 border-yellow-500 pb-3 text-[20px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
             {title}
           </h2>
         </div>
@@ -50,9 +50,11 @@ const TextBlock = ({
       </div>
 
       <div className='flex flex-col items-center justify-between lg:flex-row'>
-        <p className='mb-6 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
-          {infoLineText}
-        </p>
+        {infoLineText && (
+          <p className='mb-6 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
+            {infoLineText}
+          </p>
+        )}
 
         {/* {actionButton?.length &&
           actionButton.length > 0 &&
