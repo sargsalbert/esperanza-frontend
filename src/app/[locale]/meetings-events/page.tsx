@@ -59,8 +59,6 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
         sectionGridSlider={data.meetingsAndEvent?.sectionGridSlider ?? []}
       />
 
-      <div className='h-12.5' />
-
       <SectionHeader
         title={data.meetingsAndEvent?.contactUsText?.title}
         description={data.meetingsAndEvent?.contactUsText?.description}

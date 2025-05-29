@@ -33,7 +33,7 @@ export default async function GiftCards({ params }: LocalePageProps) {
         <GiftForm data={data} />
 
         {data.giftCard?.formBottomNote && (
-          <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>
+          <div className='mx-auto mb-12.5 max-w-5xl px-5 sm:mb-15 md:px-10 lg:mb-20 2xl:px-15'>
             <StrapiRichTextRenderer
               content={data.giftCard?.formBottomNote}
               textCenter={true}
