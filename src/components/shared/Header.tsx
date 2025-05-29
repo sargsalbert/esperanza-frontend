@@ -83,20 +83,12 @@ const Header = ({ global }: HeaderProps) => {
             >
               <Hamburger isOpen={isMenuOpen} />
             </button>
-            <div
-              className={`${
-                isMenuOpen ? 'inline-block' : 'hidden lg:inline-block'
-              }`}
-            >
+            <div className='hidden lg:inline-block'>
               <LanguageSelector />
             </div>
           </div>
 
-          <div
-            className={`absolute left-1/2 -translate-x-1/2 transform ${
-              isMenuOpen ? 'hidden lg:inline-block' : ''
-            }`}
-          >
+          <div className='absolute left-1/2 -translate-x-1/2 transform lg:inline-block'>
             <LocaleLink href='/'>
               <LogoIcon
                 className={`transition-all duration-300 ${isScrolled ? 'h-[41px] w-[104px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
@@ -111,6 +103,9 @@ const Header = ({ global }: HeaderProps) => {
             >
               {global?.bookButton?.buttonText}
             </LocaleLink>
+          </div>
+          <div className='inline-block lg:hidden'>
+            <LanguageSelector />
           </div>
         </div>
       </header>
