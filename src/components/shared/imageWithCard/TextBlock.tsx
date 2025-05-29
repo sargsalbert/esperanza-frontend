@@ -34,7 +34,7 @@ const TextBlock = ({
           : 'lg:my-15 lg:-mr-30 lg:ml-10 2xl:my-22.5 2xl:-mr-45 2xl:ml-15'
       }`}
     >
-      <div className='relative mb-6 flex flex-col justify-center xl:mb-8'>
+      <div className='relative mb-4 flex flex-col justify-center xl:mb-8'>
         <div
           className={`text-center lg:text-left ${uiType === 'collapse' ? 'hidden lg:block' : 'block'}`}
         >
@@ -50,7 +50,7 @@ const TextBlock = ({
       </div>
 
       <div className='flex flex-col items-center justify-between lg:flex-row'>
-        <p className='mb-6 text-[14px] font-medium text-gray-900 sm:text-[15px] lg:mb-0 xl:text-base'>
+        <p className='mb-6 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
           {infoLineText}
         </p>
 

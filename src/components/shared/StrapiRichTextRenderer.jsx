@@ -44,7 +44,7 @@ const StrapiRichTextRenderer = ({ content, textCenter = false }) => {
           const className =
             format === 'ordered'
               ? 'list-decimal pl-6 mb-4'
-              : 'grid list-disc gap-y-[.7em] pl-5 text-[14px] sm:text-[15px] md:grid-cols-2 md:gap-x-8 xl:gap-x-12 xl:text-base';
+              : 'grid leading-[2em] list-disc pl-5 text-[14px] sm:text-[15px] md:grid-cols-2 xl:text-base lg:leading-8';
           return <Tag className={className}>{children}</Tag>;
         },
         //   listItem: ({ children }) => <li className="mb-1">{children}</li>,

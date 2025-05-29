@@ -35,7 +35,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
   return (
     <>
       {/* Tab buttons */}
-      <div className='mx-auto mb-3 flex w-full max-w-[75%] lg:mx-0 lg:mb-4 lg:w-auto lg:max-w-none lg:justify-start xl:mb-5'>
+      <div className='mx-auto mb-[8px] flex w-full max-w-[75%] lg:mx-0 lg:mb-4 lg:w-auto lg:max-w-none lg:justify-start xl:mb-5'>
         {tabs?.map((tab, idx) => (
           <React.Fragment key={idx}>
             <div className='flex-1 lg:flex-none'>
