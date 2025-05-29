@@ -18,31 +18,32 @@ const LanguageSelector = () => {
   };
 
   return (
-    <ul className='flex items-center'>
-      <li
+    <div className='flex items-center'>
+      <div
         onClick={(e) => {
           e.preventDefault();
           handleLanguageChange('EN');
         }}
-        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
+        className={`inline-block min-w-[30px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'EN' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
-        <span>EN</span>
-        <span className='mr-[14px] ml-[12px] inline-flex h-3.5 w-0.5 bg-yellow-500' />
-      </li>
-      <li
+        EN
+      </div>
+      {/* Centered divider between the two language options */}
+      <span className='mx-[10px] inline-block h-3.5 w-0.5 bg-yellow-500' />
+      <div
         onClick={(e) => {
           e.preventDefault();
           handleLanguageChange('Lao');
         }}
-        className={`inline-flex cursor-pointer items-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
+        className={`inline-block min-w-[30px] cursor-pointer items-center text-center text-sm font-semibold transition-colors md:text-base 2xl:text-lg ${
           activeLanguage === 'Lao' ? 'text-gray-800' : 'text-gray-600'
         }`}
       >
-        <span>LT</span>
-      </li>
-    </ul>
+        LT
+      </div>
+    </div>
   );
 };
 
