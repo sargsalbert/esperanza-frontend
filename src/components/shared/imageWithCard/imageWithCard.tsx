@@ -99,7 +99,7 @@ const ImageWithCard = ({
           id={''}
           images={[]}
         />
-        <div className='relative z-20 mx-auto -mt-[76px] block max-w-[calc(100%-40px)] md:-mt-[84px] lg:hidden'>
+        <div className='relative z-20 mx-auto -mt-[73px] block max-w-[calc(100%-40px)] md:-mt-[81px] lg:hidden'>
           <div className='mb-3.5 flex justify-center'>
             {images?.map((_, index) => (
               <button

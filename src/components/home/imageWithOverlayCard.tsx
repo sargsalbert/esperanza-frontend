@@ -153,7 +153,7 @@ const ImageWithOverlayCard = ({
           </div>
         </div>
         <div
-          className={`relative z-20 mx-auto -mt-[76px] block max-w-[calc(100%-40px)] md:-mt-[84px] lg:hidden`}
+          className={`relative z-20 mx-auto -mt-[73px] block max-w-[calc(100%-40px)] md:-mt-[81px] lg:hidden`}
         >
           <div className='mb-3.5 flex justify-center'>
             {features?.map((_, index) => (
