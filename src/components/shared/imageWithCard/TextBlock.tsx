@@ -49,15 +49,20 @@ const TextBlock = ({
         />
       </div>
 
-      <div className='flex flex-col items-center justify-between lg:flex-row'>
+      <div
+        className={`flex items-center ${infoLineText ? 'flex-col lg:flex-row' : 'flex-row space-x-[14px] lg:space-x-[36px]'} ${
+          actionButton?.length === 1 && infoLineText
+            ? 'w-full justify-center lg:justify-between'
+            : 'w-auto justify-center lg:justify-end'
+        }`}
+      >
         {infoLineText && (
           <p className='mb-6 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
             {infoLineText}
           </p>
         )}
 
-        {/* {actionButton?.length &&
-          actionButton.length > 0 &&
+        {Array.isArray(actionButton) &&
           actionButton.map((button, index) => (
             <Actions
               key={index}
@@ -65,26 +70,7 @@ const TextBlock = ({
               single={actionButton.length === 1}
               index={index}
             />
-          ))} */}
-
-        {Array.isArray(actionButton) && actionButton.length > 0 && (
-          <div
-            className={`flex shrink-0 space-x-[14px] lg:space-x-[36px] ${
-              actionButton.length === 1
-                ? 'w-auto justify-center lg:justify-end'
-                : 'w-[100%] justify-center lg:justify-between'
-            }`}
-          >
-            {actionButton.map((button, index) => (
-              <Actions
-                key={index}
-                button={button}
-                single={actionButton.length === 1}
-                index={index}
-              />
-            ))}
-          </div>
-        )}
+          ))}
       </div>
     </div>
   );
