@@ -16,6 +16,23 @@ export const GLOBAL_QUERY = gql`
       menuLinks {
         label
       }
+      siteFooterSocial {
+        icon {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+        }
+        linkUrl
+      }
+      siteFooterFormPlaceholder
+      siteFooterFormButtonText
+      siteFooterBottomText
+      siteFooterBottomTextUnderline
     }
   }
 `;

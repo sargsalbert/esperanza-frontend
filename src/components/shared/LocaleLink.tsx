@@ -12,7 +12,11 @@ interface LocaleLinkProps extends AnchorProps {
 
 const LocaleLink: React.FC<LocaleLinkProps> = ({ href, children, ...rest }) => {
   const pathname = usePathname();
-  const isExternal = href.startsWith('http://') || href.startsWith('https://');
+  const isExternal =
+    href.startsWith('http://') ||
+    href.startsWith('https://') ||
+    href.startsWith('tel:') ||
+    href.startsWith('mailto:');
 
   if (isExternal) {
     return (

@@ -34,7 +34,7 @@ export default async function RootLayout({
       <body className={`${montserrat.className} antialiased`}>
         <Header global={data.global} />
         {children}
-        <Footer />
+        <Footer global={data.global} />
       </body>
     </html>
   );

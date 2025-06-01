@@ -1,13 +1,16 @@
 'use client';
-import Link from 'next/link';
-import { FacebookIcon } from '../icons/facebookIcon';
-import { InstagramIcon } from '../icons/instagramIcon';
-import { LinkedinIcon } from '../icons/linkedinIcon';
 import LanguageSelector from './LanguageSelector';
 import { MemberHotelsIcon } from '../icons/memberHotelsIcon';
 import { ScrollTopIcon } from '../icons/scrollTopIcon';
+import { GlobalQuery } from '@/gql/graphql';
+import LocaleLink from './LocaleLink';
+import Image from 'next/image';
 
-export function Footer() {
+type FooterProps = {
+  global: GlobalQuery['global'];
+};
+
+export function Footer({ global }: FooterProps) {
   return (
     <footer>
       <div className='bg-gray-100'>
@@ -16,19 +19,25 @@ export function Footer() {
             <MemberHotelsIcon className='h-[40px] w-[157px] md:h-[51px] md:w-[202px] 2xl:h-[64px] 2xl:w-[253px]' />
           </div>
           <div className='mb-7.5 flex justify-center gap-7.5 md:gap-10'>
-            <Link
-              href='https://www.facebook.com/esperanzaresortspa'
-              aria-label='Facebook'
-              target='_blank'
-            >
-              <FacebookIcon className='h-[24.8px] w-[24.8px] md:h-6.5 md:w-6.5 2xl:h-7.5 2xl:w-7.5' />
-            </Link>
-            <Link href='#' aria-label='Instagram'>
-              <InstagramIcon className='h-[24.8px] w-[24.8px] md:h-6.5 md:w-6.5 2xl:h-7.5 2xl:w-7.5' />
-            </Link>
-            <Link href='#' aria-label='LinkedIn'>
-              <LinkedinIcon className='h-[24.8px] w-[24.8px] md:h-6.5 md:w-6.5 2xl:h-7.5 2xl:w-7.5' />
-            </Link>
+            {Array.isArray(global?.siteFooterSocial) &&
+              global.siteFooterSocial.map((item, i) => (
+                <LocaleLink
+                  key={i}
+                  href={item?.linkUrl || ''}
+                  aria-label={item?.icon?.alternativeText || ''}
+                  target='_blank'
+                  className='relative h-[24.8px] w-[24.8px] md:h-6.5 md:w-6.5 2xl:h-7.5 2xl:w-7.5'
+                >
+                  {item?.icon?.url && (
+                    <Image
+                      src={item.icon.url}
+                      alt={item.icon?.alternativeText || ''}
+                      fill
+                      className='object-contain'
+                    />
+                  )}
+                </LocaleLink>
+              ))}
           </div>
           <div className='mb-7.5 flex justify-center'>
             <LanguageSelector />
@@ -43,7 +52,7 @@ export function Footer() {
               <form className='flex h-11 md:h-12.5 2xl:h-15'>
                 <input
                   type='email'
-                  placeholder='Email'
+                  placeholder={global?.siteFooterFormPlaceholder || ''}
                   className='w-full rounded-full bg-gray-200 px-4.5 py-1 text-sm text-gray-800 placeholder-gray-300 placeholder:text-sm focus:outline-none md:px-6 md:text-base md:placeholder:text-base'
                   required
                 />
@@ -51,7 +60,7 @@ export function Footer() {
                   type='submit'
                   className='absolute right-[4px] h-9 w-28 cursor-pointer self-center rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:right-[4px] md:h-10.5 md:w-38 md:text-base 2xl:right-[5px] 2xl:h-12.5 2xl:w-60 2xl:text-lg'
                 >
-                  Sign up
+                  {global?.siteFooterFormButtonText}
                 </button>
               </form>
             </div>
@@ -68,9 +77,9 @@ export function Footer() {
       <div className='bg-gray-200'>
         <div className='p-4 md:p-4.5 2xl:p-5'>
           <p className='text-center text-xs font-medium text-gray-900 md:text-sm 2xl:text-base'>
-            © {new Date().getFullYear()} Inc. All rights reserved.
+            © {new Date().getFullYear()} {global?.siteFooterBottomText}
             <span className='ml-1 inline-flex underline'>
-              ESPERANZA LAKE RESORT
+              {global?.siteFooterBottomTextUnderline}
             </span>
           </p>
         </div>

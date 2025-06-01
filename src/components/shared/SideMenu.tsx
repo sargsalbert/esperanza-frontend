@@ -116,9 +116,13 @@ export function SideMenu({
           </nav>
         </div>
         <div className='mt-auto mb-[9%] flex px-5 md:px-7.5 lg:hidden lg:px-10 2xl:px-15'>
-          <button className='min-h-9 w-full cursor-pointer rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'>
+          <LocaleLink
+            href={menuData?.bookButton?.buttonUrl || ''}
+            target={menuData?.bookButton?.newTab ? '_blank' : undefined}
+            className='flex min-h-9 w-full cursor-pointer items-center justify-center rounded-[20px] bg-gray-800 px-4 py-1.5 text-sm font-medium text-gray-50'
+          >
             {menuData?.bookButton?.buttonText}
-          </button>
+          </LocaleLink>
         </div>
 
         <div className='bg-gray-200 px-5 pt-7.5 pb-4 md:px-7.5 lg:px-10 2xl:px-15'>
