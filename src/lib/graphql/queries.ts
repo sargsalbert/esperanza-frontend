@@ -682,13 +682,28 @@ export const EXPERIENCE_QUERY = gql`
 export const GALLERY_QUERY = gql`
   query Gallery($locale: I18NLocaleCode) {
     gallery(locale: $locale) {
-      heroSection {
-        heroImage {
+      sectionText {
+        subtitle
+        title
+        description
+        buttonText
+        buttonUrl
+        newTab
+      }
+
+      galleryImages {
+        multipleImages {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
         }
-        heroText
       }
+
       seo {
         metaTitle
         metaDescription
