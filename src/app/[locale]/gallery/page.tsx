@@ -1,10 +1,9 @@
-import { GalleryQuery } from '@/gql/graphql';
+import { GalleryQuery, UploadFile } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { GALLERY_QUERY } from '@/lib/graphql/queries';
-import Image from 'next/image';
 import { LocalePageProps } from '../destination/page';
-import FadeInOnView from '@/components/shared/FadeInOnView';
 import SectionHeader from '@/components/shared/SectionHeader';
+import { DynamicGallery } from './DynamicGallery';
 
 export default async function Gallery({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -26,7 +25,15 @@ export default async function Gallery({ params }: LocalePageProps) {
         />
       </div>
 
-      <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
+      <DynamicGallery
+        images={
+          data.gallery?.galleryImages?.multipleImages?.filter(
+            (img): img is UploadFile => img !== null,
+          ) ?? []
+        }
+      />
+
+      {/* <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
         <FadeInOnView className='mb-1.5 grid grid-cols-10 gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-4 sm:gap-2 lg:mb-3 lg:gap-3'>
           <div className='relative col-span-10 h-[198px] sm:col-span-1 sm:h-[259px] lg:h-[370px]'>
             <Image
@@ -112,7 +119,7 @@ export default async function Gallery({ params }: LocalePageProps) {
             />
           </div>
         </FadeInOnView>
-      </div>
+      </div> */}
     </>
   );
 }

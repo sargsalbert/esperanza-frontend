@@ -168,12 +168,6 @@ export type ComponentSharedMultipleImagesMultipleImages_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type ComponentSharedMultipleImagesFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSharedMultipleImagesFiltersInput>>>;
-  not?: InputMaybe<ComponentSharedMultipleImagesFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentSharedMultipleImagesFiltersInput>>>;
-};
-
 export type ComponentSharedMultipleImagesInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
   multipleImages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
@@ -673,7 +667,7 @@ export type Gallery = {
   __typename?: 'Gallery';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   documentId: Scalars['ID']['output'];
-  galleryImages?: Maybe<Array<Maybe<ComponentSharedMultipleImages>>>;
+  galleryImages?: Maybe<ComponentSharedMultipleImages>;
   locale?: Maybe<Scalars['String']['output']>;
   localizations: Array<Maybe<Gallery>>;
   localizations_connection?: Maybe<GalleryRelationResponseCollection>;
@@ -683,15 +677,8 @@ export type Gallery = {
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
-
-export type GalleryGalleryImagesArgs = {
-  filters?: InputMaybe<ComponentSharedMultipleImagesFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type GalleryInput = {
-  galleryImages?: InputMaybe<Array<InputMaybe<ComponentSharedMultipleImagesInput>>>;
+  galleryImages?: InputMaybe<ComponentSharedMultipleImagesInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   sectionText?: InputMaybe<ComponentSharedSectionTextInput>;
   seo?: InputMaybe<ComponentSharedSeoInput>;
@@ -2183,7 +2170,7 @@ export type GalleryQueryVariables = Exact<{
 }>;
 
 
-export type GalleryQuery = { __typename?: 'Query', gallery?: { __typename?: 'Gallery', sectionText?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, galleryImages?: Array<{ __typename?: 'ComponentSharedMultipleImages', multipleImages: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null> } | null> | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null };
+export type GalleryQuery = { __typename?: 'Query', gallery?: { __typename?: 'Gallery', sectionText?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, galleryImages?: { __typename?: 'ComponentSharedMultipleImages', multipleImages: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null> } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null };
 
 export type GiftCardQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;

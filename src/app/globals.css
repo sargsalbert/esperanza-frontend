@@ -39,3 +39,14 @@ body {
 
   --shadow-xs: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
+
+.rc-image {
+  height: 100%;
+  width: 100%;
+}
+.rc-image-preview-progress {
+  display: none !important;
+}
+.rc-image-preview-img-wrapper {
+  transition: opacity 0.3s ease-in-out;
+}

@@ -11,7 +11,7 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
         height='3'
         rx='1.5'
         transform='rotate(45 2.12305 0.83252)'
-        fill='#362E25'
+        fill='currentColor'
       />
       <rect
         y='22.0457'
@@ -19,7 +19,7 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
         height='3'
         rx='1.5'
         transform='rotate(-45 0 22.0457)'
-        fill='#362E25'
+        fill='currentColor'
       />
     </Icon>
   );
