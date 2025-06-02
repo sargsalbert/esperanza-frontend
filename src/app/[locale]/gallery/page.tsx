@@ -9,7 +9,6 @@ export default async function Gallery({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<GalleryQuery>(GALLERY_QUERY, { locale });
-  console.log(data);
 
   return (
     <>
