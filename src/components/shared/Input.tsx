@@ -2,7 +2,7 @@ import { useField } from 'formik';
 
 interface InputProps {
   name: string;
-  placeholder?: string;
+  placeholder?: string | null;
   type?: string;
   className?: string;
   onlyClassName?: boolean;
@@ -26,7 +26,7 @@ const Input = ({
         {...field}
         id={name}
         type={type}
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
         className={onlyClassName ? className : `${defaultClass} ${className}`}
       />
       {meta.touched && meta.error && (

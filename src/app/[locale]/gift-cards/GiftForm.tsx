@@ -49,11 +49,11 @@ export default function GiftForm({ data }: GiftFormProps) {
   return (
     <div className='mx-auto max-w-5xl px-5 pb-12.5 sm:pb-15 md:px-10 lg:pb-20 2xl:px-15'>
       <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
-        <Input placeholder={data.giftCard?.formName} />
-        <Input placeholder={data.giftCard?.formSurname} />
-        <Input placeholder={data.giftCard?.formPhone} />
-        <Input placeholder={data.giftCard?.formEmail} />
-        <Input placeholder={data.giftCard?.formAmount} />
+        <Input placeholder={data.giftCard?.formName} name='formName' />
+        <Input placeholder={data.giftCard?.formSurname} name='' />
+        <Input placeholder={data.giftCard?.formPhone} name='' />
+        <Input placeholder={data.giftCard?.formEmail} name='' />
+        <Input placeholder={data.giftCard?.formAmount} name='' />
 
         <Select
           name='voucherType'
@@ -63,7 +63,7 @@ export default function GiftForm({ data }: GiftFormProps) {
           onChange={handleChange}
         />
         {formData.voucherType === 'Online' && (
-          <TextArea placeholder={data.giftCard?.formPhone} />
+          <TextArea placeholder={data.giftCard?.formPhone} name='' />
         )}
       </div>
       <div className='flex justify-center lg:justify-end'>

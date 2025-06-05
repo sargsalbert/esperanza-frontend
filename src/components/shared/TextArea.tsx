@@ -4,7 +4,7 @@ import { useField } from 'formik';
 
 interface TextAreaProps {
   name: string;
-  placeholder?: string;
+  placeholder?: string | null;
   maxLength?: number;
 }
 
@@ -49,7 +49,7 @@ const TextArea = ({
         onChange={handleChange}
         onBlur={() => setTouched(true)}
         value={value}
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
         maxLength={maxLength}
         rows={1}
         className={`min-h-10 w-full resize-none border-b-2 py-2.5 text-sm font-medium placeholder-gray-300 transition outline-none sm:text-base lg:min-h-12.5 lg:border-b-3 ${
