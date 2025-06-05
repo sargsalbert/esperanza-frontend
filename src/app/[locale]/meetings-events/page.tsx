@@ -51,7 +51,6 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
             />
           </div>
         ))}
-
       <SectionGrid
         sectionGridSlider={data.meetingsAndEvent?.sectionGridSlider ?? []}
       />
