@@ -5,7 +5,6 @@ import Image from 'next/image';
 // import FadeInOnView from '@/components/shared/FadeInOnView';
 import { UploadFile } from '@/gql/graphql';
 
-import 'rc-image/assets/index.css';
 import { ImageViewer } from './ImageViewer';
 
 type DynamicGalleryProps = {
