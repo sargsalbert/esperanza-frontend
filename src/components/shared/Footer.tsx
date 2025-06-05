@@ -5,6 +5,7 @@ import { ScrollTopIcon } from '../icons/scrollTopIcon';
 import { GlobalQuery } from '@/gql/graphql';
 import LocaleLink from './LocaleLink';
 import Image from 'next/image';
+import SubscribeForm from './SubscribeForm';
 
 type FooterProps = {
   global: GlobalQuery['global'];
@@ -48,22 +49,13 @@ export function Footer({ global }: FooterProps) {
             <p>Paunguriai, Trakai, Lithuania 21282</p>
           </div>
           <div className='relative flex items-center justify-center'>
-            <div className='relative w-full max-w-[822px]'>
-              <form className='flex h-11 md:h-12.5 2xl:h-15'>
-                <input
-                  type='email'
-                  placeholder={global?.siteFooterFormPlaceholder || ''}
-                  className='w-full rounded-full bg-gray-200 px-4.5 py-1 text-sm text-gray-800 placeholder-gray-300 placeholder:text-sm focus:outline-none md:px-6 md:text-base md:placeholder:text-base'
-                  required
-                />
-                <button
-                  type='submit'
-                  className='absolute right-[4px] h-9 w-28 cursor-pointer self-center rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:right-[4px] md:h-10.5 md:w-38 md:text-base 2xl:right-[5px] 2xl:h-12.5 2xl:w-60 2xl:text-lg'
-                >
-                  {global?.siteFooterFormButtonText}
-                </button>
-              </form>
-            </div>
+            <SubscribeForm
+              siteFooterFormPlaceholder={global?.siteFooterFormPlaceholder}
+              siteFooterFormButtonText={global?.siteFooterFormButtonText}
+              siteFooterFormSuccessMessage={
+                global?.siteFooterFormSuccessMessage
+              }
+            />
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className='ml-4 flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-gray-800 md:h-10.5 md:w-10.5 xl:absolute xl:right-20 2xl:h-12.5 2xl:w-12.5'

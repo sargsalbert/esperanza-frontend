@@ -14,6 +14,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  Date: { input: any; output: any; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
   /** A string used to identify an i18n locale */
@@ -79,6 +81,24 @@ export type ComponentSharedBookingWidget = {
 
 export type ComponentSharedBookingWidgetInput = {
   buttonCheckAvailabilityText?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentSharedFormDate = {
+  __typename?: 'ComponentSharedFormDate';
+  formDates?: Maybe<Scalars['Date']['output']>;
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentSharedFormDateFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedFormDateFiltersInput>>>;
+  formDates?: InputMaybe<DateFilterInput>;
+  not?: InputMaybe<ComponentSharedFormDateFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedFormDateFiltersInput>>>;
+};
+
+export type ComponentSharedFormDateInput = {
+  formDates?: InputMaybe<Scalars['Date']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
@@ -484,6 +504,87 @@ export type ComponentTabblocksTwoColumnTabItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type ContactUsForm = {
+  __typename?: 'ContactUsForm';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  formDatesItem?: Maybe<Array<Maybe<ComponentSharedFormDate>>>;
+  formEmail?: Maybe<Scalars['String']['output']>;
+  formMessage?: Maybe<Scalars['String']['output']>;
+  formNumberGuests?: Maybe<Scalars['Int']['output']>;
+  formPhone?: Maybe<Scalars['String']['output']>;
+  formSurname?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type ContactUsFormFormDatesItemArgs = {
+  filters?: InputMaybe<ComponentSharedFormDateFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContactUsFormEntityResponseCollection = {
+  __typename?: 'ContactUsFormEntityResponseCollection';
+  nodes: Array<ContactUsForm>;
+  pageInfo: Pagination;
+};
+
+export type ContactUsFormFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ContactUsFormFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  formDatesItem?: InputMaybe<ComponentSharedFormDateFiltersInput>;
+  formEmail?: InputMaybe<StringFilterInput>;
+  formMessage?: InputMaybe<StringFilterInput>;
+  formNumberGuests?: InputMaybe<IntFilterInput>;
+  formPhone?: InputMaybe<StringFilterInput>;
+  formSurname?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ContactUsFormFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ContactUsFormFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ContactUsFormInput = {
+  formDatesItem?: InputMaybe<Array<InputMaybe<ComponentSharedFormDateInput>>>;
+  formEmail?: InputMaybe<Scalars['String']['input']>;
+  formMessage?: InputMaybe<Scalars['String']['input']>;
+  formNumberGuests?: InputMaybe<Scalars['Int']['input']>;
+  formPhone?: InputMaybe<Scalars['String']['input']>;
+  formSurname?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DateFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  contains?: InputMaybe<Scalars['Date']['input']>;
+  containsi?: InputMaybe<Scalars['Date']['input']>;
+  endsWith?: InputMaybe<Scalars['Date']['input']>;
+  eq?: InputMaybe<Scalars['Date']['input']>;
+  eqi?: InputMaybe<Scalars['Date']['input']>;
+  gt?: InputMaybe<Scalars['Date']['input']>;
+  gte?: InputMaybe<Scalars['Date']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  lt?: InputMaybe<Scalars['Date']['input']>;
+  lte?: InputMaybe<Scalars['Date']['input']>;
+  ne?: InputMaybe<Scalars['Date']['input']>;
+  nei?: InputMaybe<Scalars['Date']['input']>;
+  not?: InputMaybe<DateFilterInput>;
+  notContains?: InputMaybe<Scalars['Date']['input']>;
+  notContainsi?: InputMaybe<Scalars['Date']['input']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  notNull?: InputMaybe<Scalars['Boolean']['input']>;
+  null?: InputMaybe<Scalars['Boolean']['input']>;
+  or?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  startsWith?: InputMaybe<Scalars['Date']['input']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -588,6 +689,37 @@ export type DiningRelationResponseCollection = {
   nodes: Array<Dining>;
 };
 
+export type EmailSubscriber = {
+  __typename?: 'EmailSubscriber';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type EmailSubscriberEntityResponseCollection = {
+  __typename?: 'EmailSubscriberEntityResponseCollection';
+  nodes: Array<EmailSubscriber>;
+  pageInfo: Pagination;
+};
+
+export type EmailSubscriberFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<EmailSubscriberFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<EmailSubscriberFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<EmailSubscriberFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type EmailSubscriberInput = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
 export type Experience = {
   __typename?: 'Experience';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -689,7 +821,7 @@ export type GalleryRelationResponseCollection = {
   nodes: Array<Gallery>;
 };
 
-export type GenericMorph = ComponentSharedActionButton | ComponentSharedBookingWidget | ComponentSharedHeaderTextWithSliderBlock | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedMenuLinks | ComponentSharedMultipleImages | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSectionGridSlider | ComponentSharedSectionText | ComponentSharedSeo | ComponentSharedSimpleText | ComponentSharedSiteFooterSocial | ComponentSharedSlider | ComponentSharedTabItem | ComponentSharedTabbedSliderBlock | ComponentSharedTextImageSliderBlock | ComponentSharedUseTextFieldsInstead | ComponentTabblocksBulletTab | ComponentTabblocksItems | ComponentTabblocksTwoColumnTab | Destination | Dining | Experience | Gallery | GiftCard | Global | Home | I18NLocale | MeetingsAndEvent | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | RoomsAndSuite | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Villa | Wellness;
+export type GenericMorph = ComponentSharedActionButton | ComponentSharedBookingWidget | ComponentSharedFormDate | ComponentSharedHeaderTextWithSliderBlock | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedMenuLinks | ComponentSharedMultipleImages | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSectionGridSlider | ComponentSharedSectionText | ComponentSharedSeo | ComponentSharedSimpleText | ComponentSharedSiteFooterSocial | ComponentSharedSlider | ComponentSharedTabItem | ComponentSharedTabbedSliderBlock | ComponentSharedTextImageSliderBlock | ComponentSharedUseTextFieldsInstead | ComponentTabblocksBulletTab | ComponentTabblocksItems | ComponentTabblocksTwoColumnTab | ContactUsForm | Destination | Dining | EmailSubscriber | Experience | Gallery | GiftCard | Global | Home | I18NLocale | MeetingsAndEvent | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | RoomsAndSuite | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Villa | Wellness;
 
 export type GiftCard = {
   __typename?: 'GiftCard';
@@ -758,6 +890,7 @@ export type Global = {
   siteFooterBottomTextUnderline?: Maybe<Scalars['String']['output']>;
   siteFooterFormButtonText?: Maybe<Scalars['String']['output']>;
   siteFooterFormPlaceholder?: Maybe<Scalars['String']['output']>;
+  siteFooterFormSuccessMessage?: Maybe<Scalars['String']['output']>;
   siteFooterSocial?: Maybe<Array<Maybe<ComponentSharedSiteFooterSocial>>>;
   siteName: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -792,6 +925,7 @@ export type GlobalInput = {
   siteFooterBottomTextUnderline?: InputMaybe<Scalars['String']['input']>;
   siteFooterFormButtonText?: InputMaybe<Scalars['String']['input']>;
   siteFooterFormPlaceholder?: InputMaybe<Scalars['String']['input']>;
+  siteFooterFormSuccessMessage?: InputMaybe<Scalars['String']['input']>;
   siteFooterSocial?: InputMaybe<Array<InputMaybe<ComponentSharedSiteFooterSocialInput>>>;
   siteName?: InputMaybe<Scalars['String']['input']>;
 };
@@ -984,6 +1118,7 @@ export type MeetingsAndEvent = {
   formName?: Maybe<Scalars['String']['output']>;
   formNumberGuests?: Maybe<Scalars['String']['output']>;
   formPhone?: Maybe<Scalars['String']['output']>;
+  formSuccessText?: Maybe<Scalars['String']['output']>;
   formSurname?: Maybe<Scalars['String']['output']>;
   heroSection?: Maybe<ComponentSharedHeroSection>;
   locale?: Maybe<Scalars['String']['output']>;
@@ -1020,6 +1155,7 @@ export type MeetingsAndEventInput = {
   formName?: InputMaybe<Scalars['String']['input']>;
   formNumberGuests?: InputMaybe<Scalars['String']['input']>;
   formPhone?: InputMaybe<Scalars['String']['input']>;
+  formSuccessText?: InputMaybe<Scalars['String']['input']>;
   formSurname?: InputMaybe<Scalars['String']['input']>;
   heroSection?: InputMaybe<ComponentSharedHeroSectionInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1038,14 +1174,18 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createContactUsForm?: Maybe<ContactUsForm>;
+  createEmailSubscriber?: Maybe<EmailSubscriber>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteContactUsForm?: Maybe<DeleteMutationResponse>;
   deleteDestination?: Maybe<DeleteMutationResponse>;
   deleteDining?: Maybe<DeleteMutationResponse>;
+  deleteEmailSubscriber?: Maybe<DeleteMutationResponse>;
   deleteExperience?: Maybe<DeleteMutationResponse>;
   deleteGallery?: Maybe<DeleteMutationResponse>;
   deleteGiftCard?: Maybe<DeleteMutationResponse>;
@@ -1071,8 +1211,10 @@ export type Mutation = {
   register: UsersPermissionsLoginPayload;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateContactUsForm?: Maybe<ContactUsForm>;
   updateDestination?: Maybe<Destination>;
   updateDining?: Maybe<Dining>;
+  updateEmailSubscriber?: Maybe<EmailSubscriber>;
   updateExperience?: Maybe<Experience>;
   updateGallery?: Maybe<Gallery>;
   updateGiftCard?: Maybe<GiftCard>;
@@ -1099,6 +1241,18 @@ export type MutationChangePasswordArgs = {
 };
 
 
+export type MutationCreateContactUsFormArgs = {
+  data: ContactUsFormInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationCreateEmailSubscriberArgs = {
+  data: EmailSubscriberInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
 export type MutationCreateReviewWorkflowsWorkflowArgs = {
   data: ReviewWorkflowsWorkflowInput;
   status?: InputMaybe<PublicationStatus>;
@@ -1121,6 +1275,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
+export type MutationDeleteContactUsFormArgs = {
+  documentId: Scalars['ID']['input'];
+};
+
+
 export type MutationDeleteDestinationArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
@@ -1128,6 +1287,11 @@ export type MutationDeleteDestinationArgs = {
 
 export type MutationDeleteDiningArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteEmailSubscriberArgs = {
+  documentId: Scalars['ID']['input'];
 };
 
 
@@ -1228,6 +1392,13 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateContactUsFormArgs = {
+  data: ContactUsFormInput;
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
 export type MutationUpdateDestinationArgs = {
   data: DestinationInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
@@ -1238,6 +1409,13 @@ export type MutationUpdateDestinationArgs = {
 export type MutationUpdateDiningArgs = {
   data: DiningInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationUpdateEmailSubscriberArgs = {
+  data: EmailSubscriberInput;
+  documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -1358,8 +1536,14 @@ export enum PublicationStatus {
 
 export type Query = {
   __typename?: 'Query';
+  contactUsForm?: Maybe<ContactUsForm>;
+  contactUsForms: Array<Maybe<ContactUsForm>>;
+  contactUsForms_connection?: Maybe<ContactUsFormEntityResponseCollection>;
   destination?: Maybe<Destination>;
   dining?: Maybe<Dining>;
+  emailSubscriber?: Maybe<EmailSubscriber>;
+  emailSubscribers: Array<Maybe<EmailSubscriber>>;
+  emailSubscribers_connection?: Maybe<EmailSubscriberEntityResponseCollection>;
   experience?: Maybe<Experience>;
   gallery?: Maybe<Gallery>;
   giftCard?: Maybe<GiftCard>;
@@ -1391,6 +1575,28 @@ export type Query = {
 };
 
 
+export type QueryContactUsFormArgs = {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryContactUsFormsArgs = {
+  filters?: InputMaybe<ContactUsFormFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryContactUsForms_ConnectionArgs = {
+  filters?: InputMaybe<ContactUsFormFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
 export type QueryDestinationArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   status?: InputMaybe<PublicationStatus>;
@@ -1399,6 +1605,28 @@ export type QueryDestinationArgs = {
 
 export type QueryDiningArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryEmailSubscriberArgs = {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryEmailSubscribersArgs = {
+  filters?: InputMaybe<EmailSubscriberFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryEmailSubscribers_ConnectionArgs = {
+  filters?: InputMaybe<EmailSubscriberFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -2107,7 +2335,7 @@ export type GlobalQueryVariables = Exact<{
 }>;
 
 
-export type GlobalQuery = { __typename?: 'Query', global?: { __typename?: 'Global', menuFooterEmail?: string | null, menuFooterLocation?: string | null, menuFooterPhone?: string | null, menuFooterSmallText?: string | null, siteFooterFormPlaceholder?: string | null, siteFooterFormButtonText?: string | null, siteFooterBottomText?: string | null, siteFooterBottomTextUnderline?: string | null, bookButton?: { __typename?: 'ComponentSharedActionButton', buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, menuLinks?: Array<{ __typename?: 'ComponentSharedMenuLinks', label?: string | null } | null> | null, siteFooterSocial?: Array<{ __typename?: 'ComponentSharedSiteFooterSocial', linkUrl?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null } | null> | null } | null };
+export type GlobalQuery = { __typename?: 'Query', global?: { __typename?: 'Global', menuFooterEmail?: string | null, menuFooterLocation?: string | null, menuFooterPhone?: string | null, menuFooterSmallText?: string | null, siteFooterFormPlaceholder?: string | null, siteFooterFormButtonText?: string | null, siteFooterBottomText?: string | null, siteFooterBottomTextUnderline?: string | null, siteFooterFormSuccessMessage?: string | null, bookButton?: { __typename?: 'ComponentSharedActionButton', buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, menuLinks?: Array<{ __typename?: 'ComponentSharedMenuLinks', label?: string | null } | null> | null, siteFooterSocial?: Array<{ __typename?: 'ComponentSharedSiteFooterSocial', linkUrl?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null } | null> | null } | null };
 
 export type HomeQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
@@ -2156,7 +2384,7 @@ export type MeetingsAndEventQueryVariables = Exact<{
 }>;
 
 
-export type MeetingsAndEventQuery = { __typename?: 'Query', meetingsAndEvent?: { __typename?: 'MeetingsAndEvent', formName?: string | null, formSurname?: string | null, formPhone?: string | null, formEmail?: string | null, formDates?: string | null, formNumberGuests?: string | null, formMessage?: string | null, formButtonText?: string | null, heroSection?: { __typename?: 'ComponentSharedHeroSection', heroText?: string | null, heroImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, timelessMomentstext?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, tabbedSliderBlock?: Array<{ __typename?: 'ComponentSharedTabbedSliderBlock', title?: string | null, infoLineText?: string | null, tabItem?: Array<{ __typename?: 'ComponentSharedTabItem', id: string, label?: string | null, tabContent?: any | null, useSeparateFields?: boolean | null, useTextFieldsInstead?: Array<{ __typename?: 'ComponentSharedUseTextFieldsInstead', id: string, firstTextField?: string | null, secondTextField?: string | null } | null> | null } | null> | null, actionButton?: Array<{ __typename?: 'ComponentSharedActionButton', id: string, buttonUrl?: string | null, buttonText?: string | null, newTab?: boolean | null } | null> | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null> } | null> | null, sectionGridSlider?: Array<{ __typename?: 'ComponentSharedSectionGridSlider', id: string, title?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null } | null> | null, contactUsText?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null };
+export type MeetingsAndEventQuery = { __typename?: 'Query', meetingsAndEvent?: { __typename?: 'MeetingsAndEvent', formName?: string | null, formSurname?: string | null, formPhone?: string | null, formEmail?: string | null, formDates?: string | null, formNumberGuests?: string | null, formMessage?: string | null, formButtonText?: string | null, formSuccessText?: string | null, heroSection?: { __typename?: 'ComponentSharedHeroSection', heroText?: string | null, heroImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, timelessMomentstext?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, tabbedSliderBlock?: Array<{ __typename?: 'ComponentSharedTabbedSliderBlock', title?: string | null, infoLineText?: string | null, tabItem?: Array<{ __typename?: 'ComponentSharedTabItem', id: string, label?: string | null, tabContent?: any | null, useSeparateFields?: boolean | null, useTextFieldsInstead?: Array<{ __typename?: 'ComponentSharedUseTextFieldsInstead', id: string, firstTextField?: string | null, secondTextField?: string | null } | null> | null } | null> | null, actionButton?: Array<{ __typename?: 'ComponentSharedActionButton', id: string, buttonUrl?: string | null, buttonText?: string | null, newTab?: boolean | null } | null> | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null> } | null> | null, sectionGridSlider?: Array<{ __typename?: 'ComponentSharedSectionGridSlider', id: string, title?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, documentId: string, hash: string, mime: string, name: string, provider: string, size: number } | null } | null> | null, contactUsText?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null };
 
 export type ExperienceQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
@@ -2180,14 +2408,14 @@ export type GiftCardQueryVariables = Exact<{
 export type GiftCardQuery = { __typename?: 'Query', giftCard?: { __typename?: 'GiftCard', formBottomNote?: any | null, formName?: string | null, formSurname?: string | null, formPhone?: string | null, formEmail?: string | null, formAmount?: string | null, formDelivery?: string | null, formDeliveryOption1?: string | null, formDeliveryOption2?: string | null, formButtonText?: string | null, heroSection?: { __typename?: 'ComponentSharedHeroSection', heroText?: string | null, heroImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, quietLuxuryText?: { __typename?: 'ComponentSharedSectionText', subtitle?: string | null, title?: string | null, description?: string | null, buttonText?: string | null, buttonUrl?: string | null, newTab?: boolean | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null };
 
 
-export const GlobalDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Global"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"global"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"menuFooterEmail"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterLocation"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterPhone"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterPhone"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterSmallText"}},{"kind":"Field","name":{"kind":"Name","value":"bookButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"menuLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterSocial"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkUrl"}}]}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterFormPlaceholder"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterFormButtonText"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterBottomText"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterBottomTextUnderline"}}]}}]}}]} as unknown as DocumentNode<GlobalQuery, GlobalQueryVariables>;
+export const GlobalDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Global"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"global"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"menuFooterEmail"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterLocation"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterPhone"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterPhone"}},{"kind":"Field","name":{"kind":"Name","value":"menuFooterSmallText"}},{"kind":"Field","name":{"kind":"Name","value":"bookButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"menuLinks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}}]}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterSocial"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}},{"kind":"Field","name":{"kind":"Name","value":"linkUrl"}}]}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterFormPlaceholder"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterFormButtonText"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterBottomText"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterBottomTextUnderline"}},{"kind":"Field","name":{"kind":"Name","value":"siteFooterFormSuccessMessage"}}]}}]}}]} as unknown as DocumentNode<GlobalQuery, GlobalQueryVariables>;
 export const HomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Home"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"home"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"destinationText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"destinationImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"multipleImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"headerTextWithSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sectionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"textImageSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"wellnessText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"wellnessGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"HeaderTextWithSliderBlockTwo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sectionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"textImageSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"experiencesText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"experiencesGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bookingWidget"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"buttonCheckAvailabilityText"}}]}}]}}]}}]} as unknown as DocumentNode<HomeQuery, HomeQueryVariables>;
 export const DestinationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Destination"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"destination"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"beforeMapText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"afterMapText"}},{"kind":"Field","name":{"kind":"Name","value":"architectureDesignText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"architectureDesignImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"multipleImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"Seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<DestinationQuery, DestinationQueryVariables>;
 export const RoomsAndSuiteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RoomsAndSuite"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"roomsAndSuite"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"spacesToBreatheText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bookButtonShowMobile"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<RoomsAndSuiteQuery, RoomsAndSuiteQueryVariables>;
 export const VillaDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Villa"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"villa"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"privateHeavensText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<VillaQuery, VillaQueryVariables>;
 export const WellnessDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Wellness"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"wellness"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ritualRenewalText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ritualRenewalImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"multipleImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"facilitiesText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sectionGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<WellnessQuery, WellnessQueryVariables>;
 export const DiningDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Dining"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"dining"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"beyondTableText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<DiningQuery, DiningQueryVariables>;
-export const MeetingsAndEventDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MeetingsAndEvent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"meetingsAndEvent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"timelessMomentstext"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"sectionGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"contactUsText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"formName"}},{"kind":"Field","name":{"kind":"Name","value":"formSurname"}},{"kind":"Field","name":{"kind":"Name","value":"formPhone"}},{"kind":"Field","name":{"kind":"Name","value":"formEmail"}},{"kind":"Field","name":{"kind":"Name","value":"formDates"}},{"kind":"Field","name":{"kind":"Name","value":"formNumberGuests"}},{"kind":"Field","name":{"kind":"Name","value":"formMessage"}},{"kind":"Field","name":{"kind":"Name","value":"formButtonText"}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MeetingsAndEventQuery, MeetingsAndEventQueryVariables>;
+export const MeetingsAndEventDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MeetingsAndEvent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"meetingsAndEvent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"timelessMomentstext"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"sectionGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"contactUsText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"formName"}},{"kind":"Field","name":{"kind":"Name","value":"formSurname"}},{"kind":"Field","name":{"kind":"Name","value":"formPhone"}},{"kind":"Field","name":{"kind":"Name","value":"formEmail"}},{"kind":"Field","name":{"kind":"Name","value":"formDates"}},{"kind":"Field","name":{"kind":"Name","value":"formNumberGuests"}},{"kind":"Field","name":{"kind":"Name","value":"formMessage"}},{"kind":"Field","name":{"kind":"Name","value":"formButtonText"}},{"kind":"Field","name":{"kind":"Name","value":"formSuccessText"}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<MeetingsAndEventQuery, MeetingsAndEventQueryVariables>;
 export const ExperienceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Experience"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"experience"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"exploreEsperanzaText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tabbedSliderBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"tabItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"tabContent"}},{"kind":"Field","name":{"kind":"Name","value":"useSeparateFields"}},{"kind":"Field","name":{"kind":"Name","value":"useTextFieldsInstead"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstTextField"}},{"kind":"Field","name":{"kind":"Name","value":"secondTextField"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"infoLineText"}},{"kind":"Field","name":{"kind":"Name","value":"actionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"images"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"sectionGridSlider"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ExperienceQuery, ExperienceQueryVariables>;
 export const GalleryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Gallery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"gallery"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sectionText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"galleryImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"multipleImages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"provider"}},{"kind":"Field","name":{"kind":"Name","value":"size"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GalleryQuery, GalleryQueryVariables>;
 export const GiftCardDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GiftCard"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"giftCard"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"quietLuxuryText"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"subtitle"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttonText"}},{"kind":"Field","name":{"kind":"Name","value":"buttonUrl"}},{"kind":"Field","name":{"kind":"Name","value":"newTab"}}]}},{"kind":"Field","name":{"kind":"Name","value":"formBottomNote"}},{"kind":"Field","name":{"kind":"Name","value":"formName"}},{"kind":"Field","name":{"kind":"Name","value":"formSurname"}},{"kind":"Field","name":{"kind":"Name","value":"formPhone"}},{"kind":"Field","name":{"kind":"Name","value":"formEmail"}},{"kind":"Field","name":{"kind":"Name","value":"formAmount"}},{"kind":"Field","name":{"kind":"Name","value":"formDelivery"}},{"kind":"Field","name":{"kind":"Name","value":"formDeliveryOption1"}},{"kind":"Field","name":{"kind":"Name","value":"formDeliveryOption2"}},{"kind":"Field","name":{"kind":"Name","value":"formButtonText"}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metaTitle"}},{"kind":"Field","name":{"kind":"Name","value":"metaDescription"}},{"kind":"Field","name":{"kind":"Name","value":"shareImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GiftCardQuery, GiftCardQueryVariables>;

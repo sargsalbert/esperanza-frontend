@@ -33,6 +33,7 @@ export const GLOBAL_QUERY = gql`
       siteFooterFormButtonText
       siteFooterBottomText
       siteFooterBottomTextUnderline
+      siteFooterFormSuccessMessage
     }
   }
 `;
@@ -590,7 +591,7 @@ export const MEETINGS_QUERY = gql`
       formNumberGuests
       formMessage
       formButtonText
-
+      formSuccessText
       seo {
         metaTitle
         metaDescription
