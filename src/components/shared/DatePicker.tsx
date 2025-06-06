@@ -83,10 +83,13 @@ export const DatePicker: React.FC<Props> = ({ name, placeholder }) => {
               root: `${defaultClassNames.root} bg-gray-100 p-2`,
               today: `${defaultClassNames.root} border-gray-800 border-1`,
               selected: `${defaultClassNames.root} bg-gray-800 text-white`,
-              chevron: `${defaultClassNames.chevron} fill-gray-800`,
-              caption_label: `${defaultClassNames.caption_label} font-semibold`,
+              chevron: `${defaultClassNames.chevron} fill-[#A5A5A5]`,
+              caption_label: `${defaultClassNames.caption_label} font-semibold text-[13px] sm:text-base`,
               disabled: `${defaultClassNames.disabled} bg-[#DFDDDD]`,
               button_previous: `${defaultClassNames.button_previous} z-10`,
+              day: `${defaultClassNames.day} text-[13px] sm:text-base`,
+
+              month_caption: `${defaultClassNames.month_caption} mb-2`,
             }}
           />
         </div>
