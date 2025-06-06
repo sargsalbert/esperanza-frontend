@@ -32,7 +32,7 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
     formPhone: Yup.string().required('Required'),
     formEmail: Yup.string().email('Invalid email').required('Required'),
     formDates: Yup.array()
-      .min(1, 'Please select at least one date')
+      .min(1, 'Please select at least minimum one date')
       .required('Required'),
     formNumberGuests: Yup.number()
       .min(1, 'At least 1 guest')
