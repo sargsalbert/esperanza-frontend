@@ -29,11 +29,11 @@ export default async function GiftCards({ params }: LocalePageProps) {
         newTab={data.giftCard?.quietLuxuryText?.newTab}
         id=''
       />
-      <FadeInOnView>
+      <FadeInOnView className='mb-12.5 sm:mb-15 lg:mb-20'>
         <GiftForm data={data} />
 
         {data.giftCard?.formBottomNote && (
-          <div className='mx-auto mb-12.5 max-w-5xl px-5 sm:mb-15 md:px-10 lg:mb-20 2xl:px-15'>
+          <div className='mx-auto mt-5 max-w-5xl px-5 sm:mt-7.5 md:px-10 lg:mt-10 2xl:px-15'>
             <StrapiRichTextRenderer
               content={data.giftCard?.formBottomNote}
               textCenter={true}
