@@ -88,8 +88,9 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
             }}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
+            validateOnMount={true}
           >
-            {({ isSubmitting, isValid }) => (
+            {({ isSubmitting }) => (
               <Form>
                 <div className='mt-2.5 mb-10 sm:mt-5 sm:mb-12.5'>
                   <Input
@@ -128,7 +129,7 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
                 <div className='flex justify-center lg:justify-end'>
                   <button
                     type='submit'
-                    disabled={isSubmitting || !isValid}
+                    disabled={isSubmitting}
                     className={`h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 md:h-10.5 lg:min-w-38 lg:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg`}
                   >
                     {isSubmitting
