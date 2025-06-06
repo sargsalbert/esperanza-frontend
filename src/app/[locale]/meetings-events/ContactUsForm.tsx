@@ -55,8 +55,8 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
       );
       if (response.ok) {
         console.log('Message sent successfully!');
+        setIsSubmitted(true);
         resetForm();
-        setTimeout(() => setIsSubmitted(true), 1000);
       } else {
         const errorData = await response.json();
         console.error(errorData);
