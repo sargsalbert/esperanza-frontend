@@ -7,6 +7,11 @@ import GiftForm from './GiftForm';
 import { LocalePageProps } from '../destination/page';
 import StrapiRichTextRenderer from '@/components/shared/StrapiRichTextRenderer';
 import FadeInOnView from '@/components/shared/FadeInOnView';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function GiftCards({ params }: LocalePageProps) {
   const { locale } = await params;

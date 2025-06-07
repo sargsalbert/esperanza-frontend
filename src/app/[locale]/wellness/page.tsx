@@ -7,6 +7,11 @@ import { UploadFile, WellnessQuery } from '@/gql/graphql';
 import { WELLNESS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function Wellness({ params }: LocalePageProps) {
   const { locale } = await params;

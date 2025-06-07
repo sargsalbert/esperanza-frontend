@@ -6,6 +6,11 @@ import { ExperienceQuery } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { EXPERIENCE_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function Experiences({ params }: LocalePageProps) {
   const { locale } = await params;

@@ -6,6 +6,11 @@ import { DESTINATION_QUERY } from '@/lib/graphql/queries';
 import ImageGrid from './ImageComponent';
 import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export const revalidate = 60;
 

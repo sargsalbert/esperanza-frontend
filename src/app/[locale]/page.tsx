@@ -7,6 +7,11 @@ import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
+import { i18n } from '../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function Home({ params }: LocalePageProps) {
   const { locale } = await params;

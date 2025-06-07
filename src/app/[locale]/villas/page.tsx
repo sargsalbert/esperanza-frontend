@@ -5,6 +5,11 @@ import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { LocalePageProps } from '../destination/page';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function VillaPage({ params }: LocalePageProps) {
   const { locale } = await params;

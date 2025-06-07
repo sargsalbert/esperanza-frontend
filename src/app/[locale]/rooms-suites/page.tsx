@@ -7,6 +7,11 @@ import { ROOMS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import LocaleLink from '@/components/shared/LocaleLink';
+import { i18n } from '../../../../i18n-config';
+
+export function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
 
 export default async function RoomsSuites({ params }: LocalePageProps) {
   const { locale } = await params;
