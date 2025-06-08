@@ -62,7 +62,7 @@ const SubscribeForm = ({
       {({ isSubmitting }) => (
         <>
           {submitted ? (
-            <div className='ml-13 w-full text-center text-[16px] font-semibold text-yellow-500 uppercase md:ml-14.5 2xl:ml-16.5'>
+            <div className='w-full text-center text-[16px] font-semibold text-yellow-500 uppercase'>
               {siteFooterFormSuccessMessage}
             </div>
           ) : (
