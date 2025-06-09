@@ -23,7 +23,6 @@ export default async function Villas({ params }: LocalePageProps) {
         imgUrl={data.dining?.heroSection?.heroImage?.url}
         title={data.dining?.heroSection?.heroText}
       />
-
       <SectionHeader
         subtitle={data.dining?.beyondTableText?.subtitle}
         title={data.dining?.beyondTableText?.title}
