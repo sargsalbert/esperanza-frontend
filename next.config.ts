@@ -3,6 +3,14 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
+
+  redirects: async () => [
+    {
+      source: '/',
+      destination: '/en',
+      permanent: true,
+    },
+  ],
   /* config options here */
   images: {
     // remotePatterns: [
