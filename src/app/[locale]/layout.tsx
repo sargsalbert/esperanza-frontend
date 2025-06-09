@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import Header from '@/components/shared/Header';
+import { Footer } from '@/components/shared/Footer';
 import '../globals.css';
+import { fetchData } from '@/lib/apolloClient';
+import { GLOBAL_QUERY } from '@/lib/graphql/queries';
+import { GlobalQuery } from '@/gql/graphql';
 import { i18n } from '../../../i18n-config';
 
 const montserrat = Montserrat({
@@ -27,10 +32,15 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
 
   return (
     <html lang={locale}>
-      <body className={`${montserrat.className} antialiased`}>{children}</body>
+      <body className={`${montserrat.className} antialiased`}>
+        <Header global={data.global} />
+        {children}
+        <Footer global={data.global} />
+      </body>
     </html>
   );
 }
