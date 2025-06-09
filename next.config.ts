@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
     domains: [
       'localhost:3000',
       'esperanza-media-storage.fra1.digitaloceanspaces.com',
+      'esperanza-media.fra1.digitaloceanspaces.com',
     ], // or your production Strapi domain like 'cms.mywebsite.com'
   },
 };
