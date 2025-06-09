@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'esperanza-media.fra1.digitaloceanspaces.com',
       },
     ],
