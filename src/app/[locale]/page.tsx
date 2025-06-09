@@ -1,13 +1,17 @@
-import SectionHeader from '@/components/shared/SectionHeader';
+// import SectionHeader from '@/components/shared/SectionHeader';
 import { HOME_QUERY } from '@/lib/graphql/queries';
 import { fetchData } from '@/lib/apolloClient';
-import { HomeQuery, UploadFile } from '@/gql/graphql';
-import SectionGrid from '@/components/home/sectionGrid';
-import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
-import { LocalePageProps } from './destination/page';
-import ImageGridTree from '@/components/home/imageGridTree';
+import { HomeQuery } from '@/gql/graphql';
+// import SectionGrid from '@/components/home/sectionGrid';
+// import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
+// import { LocalePageProps } from './destination/page';
+// import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
 import { i18n } from '../../../i18n-config';
+
+export type LocalePageProps = {
+  params: Promise<{ locale: string }>;
+};
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
@@ -24,7 +28,7 @@ export default async function Home({ params }: LocalePageProps) {
         heroSection={data.home?.heroSection}
         bookingWidget={data.home?.bookingWidget}
       />
-      <SectionHeader
+      {/* <SectionHeader
         subtitle={data.home?.destinationText?.subtitle}
         title={data.home?.destinationText?.title}
         description={data.home?.destinationText?.description}
@@ -42,9 +46,9 @@ export default async function Home({ params }: LocalePageProps) {
             ) ?? []
           }
         />
-      )}
+      )} */}
 
-      {data.home?.headerTextWithSliderBlock?.length &&
+      {/* {data.home?.headerTextWithSliderBlock?.length &&
         data.home.headerTextWithSliderBlock.map((d, index) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <SectionHeader
@@ -103,7 +107,7 @@ export default async function Home({ params }: LocalePageProps) {
         newTab={data.home?.experiencesText?.newTab}
         id=''
       />
-      <SectionGrid sectionGridSlider={data.home?.experiencesGridSlider ?? []} />
+      <SectionGrid sectionGridSlider={data.home?.experiencesGridSlider ?? []} /> */}
 
       <div className='h-12.5' />
     </>
