@@ -18,8 +18,12 @@ const nextConfig: NextConfig = {
     //     hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
     //   },
     // ],
-    unoptimized: true,
-
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'esperanza-media.fra1.digitaloceanspaces.com',
+      },
+    ],
     domains: [
       'localhost:3000',
       'esperanza-media-storage.fra1.digitaloceanspaces.com',
