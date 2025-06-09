@@ -1,12 +1,14 @@
 import type { NextConfig } from 'next';
 
+const isVercel = process.env.VERCEL === '1'; // Vercel sets this automatically
+
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
 
   /* config options here */
   images: {
-    // unoptimized: true,
+    unoptimized: !isVercel,
 
     remotePatterns: [
       {
