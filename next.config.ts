@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
     //     hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
     //   },
     // ],
+    unoptimized: true,
 
     domains: [
       'localhost:3000',
