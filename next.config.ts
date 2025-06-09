@@ -6,18 +6,8 @@ const nextConfig: NextConfig = {
 
   /* config options here */
   images: {
-    // remotePatterns: [
-    //   {
-    //     protocol: 'http',
-    //     hostname: 'localhost',
-    //     port: '1337',
-    //     pathname: '/uploads/**',
-    //   },
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
-    //   },
-    // ],
+    unoptimized: true,
+
     remotePatterns: [
       {
         protocol: 'https',
