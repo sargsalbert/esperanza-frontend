@@ -29,6 +29,12 @@ export const GLOBAL_QUERY = gql`
         }
         linkUrl
       }
+      siteFooterContactLinks {
+        id
+        buttonUrl
+        buttonText
+        newTab
+      }
       siteFooterFormPlaceholder
       siteFooterFormButtonText
       siteFooterBottomText

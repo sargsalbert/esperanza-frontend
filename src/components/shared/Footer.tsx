@@ -44,9 +44,18 @@ export function Footer({ global }: FooterProps) {
             <LanguageSelector />
           </div>
           <div className='mb-7.5 space-y-5 text-center text-[13px] font-medium text-gray-800 md:mb-10 md:space-y-7.5 md:text-base 2xl:mb-12.5 2xl:text-lg'>
-            <p>+370 698 78378</p>
-            <p>info@esperanzaresort.lt</p>
-            <p>Paunguriai, Trakai, Lithuania 21282</p>
+            {Array.isArray(global?.siteFooterContactLinks) &&
+              global?.siteFooterContactLinks.map((button, index) => (
+                <div key={index}>
+                  <LocaleLink
+                    href={button?.buttonUrl || ''}
+                    target={button?.newTab ? '_blank' : undefined}
+                    className=''
+                  >
+                    {button?.buttonText}
+                  </LocaleLink>
+                </div>
+              ))}
           </div>
           <div className='relative flex items-center justify-center'>
             <SubscribeForm
