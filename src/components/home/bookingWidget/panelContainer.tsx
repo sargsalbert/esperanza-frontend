@@ -40,7 +40,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
     // Scroll to the panel when it mounts
     panelRef.current?.scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
+      block: 'start',
     });
 
     return () => {
