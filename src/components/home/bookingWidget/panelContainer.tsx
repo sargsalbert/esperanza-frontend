@@ -36,6 +36,13 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
+    // Scroll to the panel when it mounts
+    panelRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
