@@ -5,21 +5,6 @@ import Select from '@/components/shared/Select';
 import TextArea from '@/components/shared/TextArea';
 import { GiftCardQuery } from '@/gql/graphql';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
-
-interface FormData {
-  voucherType: string;
-}
-
-// Define event type for onChange
-interface CustomChangeEvent {
-  target: {
-    name: string;
-    value: string;
-    type: string;
-  };
-  preventDefault: () => void;
-}
 
 type GiftFormProps = {
   data: GiftCardQuery;
@@ -30,22 +15,6 @@ export default function GiftForm({ data }: GiftFormProps) {
     { value: 'Print', label: 'Print' },
     { value: 'Online', label: 'Online' },
   ];
-
-  const [formData, setFormData] = useState<FormData>({
-    voucherType: '',
-  });
-
-  // Handle form input changes
-  const handleChange = (
-    e: CustomChangeEvent | React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    // console.log(`${name} changed to: ${value}`);
-  };
 
   const handleSubmit = () => {
     console.log('submit');
@@ -61,11 +30,12 @@ export default function GiftForm({ data }: GiftFormProps) {
             formPhone: '',
             formEmail: '',
             formAmount: '',
+            voucherType: '',
           }}
           // validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting, isValid }) => (
+          {({ values, isSubmitting, isValid }) => (
             <Form>
               <Input placeholder={data.giftCard?.formName} name='formName' />
               <Input
@@ -83,11 +53,13 @@ export default function GiftForm({ data }: GiftFormProps) {
                 name='voucherType'
                 placeholder={data.giftCard?.formDelivery}
                 options={options}
-                value={formData.voucherType}
-                onChange={handleChange}
               />
-              {formData.voucherType === 'Online' && (
-                <TextArea placeholder={data.giftCard?.formPhone} name='' />
+
+              {values.voucherType === 'Online' && (
+                <TextArea
+                  placeholder={data.giftCard?.formDeliveryOption2}
+                  name='formMessage'
+                />
               )}
 
               <div className='flex justify-center lg:justify-end'>

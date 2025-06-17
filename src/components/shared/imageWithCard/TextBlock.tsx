@@ -26,7 +26,7 @@ const TextBlock = ({
     <div
       className={`z-10 flex shrink-0 flex-col justify-between self-center bg-gray-100 px-2.5 pt-4 pb-[30px] shadow-xs md:p-6 md:pb-[30px] lg:self-stretch lg:p-7 xl:p-8 2xl:self-center ${
         uiType === 'collapse'
-          ? `${isLast ? 'after:!h-0' : ''} mx-7.5 w-full px-7.5 pb-7.5 after:absolute after:bottom-0 after:left-1/2 after:block after:h-[2px] after:w-[calc(100%-40px)] after:translate-x-[-50%] after:bg-gray-200 after:content-[""] sm:px-10 sm:pb-10 after:sm:w-[calc(100%-60px)] after:md:w-[calc(100%-80px)] lg:w-[50%] after:lg:content-none xl:w-[45%] 2xl:w-[40%]`
+          ? `${isLast ? 'after:!h-0' : ''} mx-7.5 w-full px-7.5 pt-[18px] pb-[37px] after:absolute after:bottom-0 after:left-1/2 after:block after:h-[2px] after:w-[calc(100%-40px)] after:translate-x-[-50%] after:bg-gray-200 after:content-[""] sm:px-10 sm:pb-10 after:sm:w-[calc(100%-60px)] after:md:w-[calc(100%-80px)] lg:w-[50%] after:lg:content-none xl:w-[45%] 2xl:w-[40%]`
           : 'w-[calc(100%-40px)] md:w-[calc(100%-60px)] lg:w-[50%] xl:w-[45%] 2xl:w-[40%]'
       } ${
         imageFirst
@@ -57,7 +57,7 @@ const TextBlock = ({
         }`}
       >
         {infoLineText && (
-          <p className='mb-6 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
+          <p className='mb-5.5 text-[14px] leading-[2em] font-medium text-gray-900 sm:text-[15px] lg:mb-0 lg:leading-[1em] xl:text-base'>
             {infoLineText}
           </p>
         )}

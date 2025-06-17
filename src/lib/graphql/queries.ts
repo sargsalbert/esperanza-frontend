@@ -260,6 +260,7 @@ export const ROOMS_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         infoLineText
@@ -327,6 +328,7 @@ export const VILLA_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         infoLineText
@@ -423,6 +425,7 @@ export const WELLNESS_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         infoLineText
@@ -484,6 +487,7 @@ export const DINING_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         actionButton {
@@ -545,6 +549,7 @@ export const MEETINGS_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         infoLineText
@@ -639,6 +644,7 @@ export const EXPERIENCE_QUERY = gql`
             id
             firstTextField
             secondTextField
+            specialTextField
           }
         }
         infoLineText

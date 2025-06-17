@@ -81,13 +81,19 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                 {tab.useTextFieldsInstead.map((field) => (
                   <div
                     key={field?.id}
-                    className='flex items-center border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
+                    className='flex border-b-2 border-b-yellow-500 py-3.5 text-left last:border-b-0'
                   >
-                    <span className='w-30 shrink-0 text-xs font-medium text-gray-700 md:w-40 md:text-sm'>
+                    <span className='w-30 shrink-0 text-[13px] font-medium text-gray-700 md:w-40 md:text-[15px]'>
                       {field?.firstTextField}
                     </span>
-                    <span className='text-[14px] font-semibold break-all text-gray-900 sm:text-[15px] md:text-base md:break-words'>
+                    <span className='text-[13px] font-semibold break-all text-gray-900 md:text-[15px] md:break-words'>
                       {field?.secondTextField}
+                      {field?.specialTextField && (
+                        <>
+                          <br></br>
+                          <div className='mt-1.5'>{field.specialTextField}</div>
+                        </>
+                      )}
                     </span>
                   </div>
                 ))}

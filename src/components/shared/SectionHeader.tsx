@@ -19,7 +19,7 @@ const SectionHeader = ({
     <FadeInOnView>
       <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
         {subtitle && (
-          <p className='mb-7.5 text-[13px] text-gray-900 italic sm:text-base lg:mb-10 xl:mb-15'>
+          <p className='mx-auto mb-7.5 max-w-[75%] text-[13px] text-gray-900 italic sm:text-base lg:mb-10 xl:mb-15'>
             {subtitle}
           </p>
         )}

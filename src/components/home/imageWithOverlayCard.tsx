@@ -1,6 +1,12 @@
 'use client';
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
 import { SlideRightIcon } from '../icons/slideRightIcon';
@@ -34,6 +40,29 @@ const ImageWithOverlayCard = ({
   // Handle touch start position
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
+
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [minHeight, setMinHeight] = useState(0);
+
+  const updateHeights = () => {
+    const heights = containerRefs.current.map((ref) => ref?.offsetHeight || 0);
+    const max = Math.max(...heights);
+    setMinHeight(max);
+  };
+
+  useLayoutEffect(() => {
+    updateHeights();
+  }, [features]);
+
+  useEffect(() => {
+    window.addEventListener('resize', updateHeights);
+    window.addEventListener('orientationchange', updateHeights);
+
+    return () => {
+      window.removeEventListener('resize', updateHeights);
+      window.removeEventListener('orientationchange', updateHeights);
+    };
+  }, []);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -115,6 +144,10 @@ const ImageWithOverlayCard = ({
             <div className='block text-center lg:text-left'>
               {features.map((feature, index) => (
                 <div
+                  ref={(el) => {
+                    containerRefs.current[index] = el;
+                  }}
+                  style={{ minHeight: minHeight ? `${minHeight}px` : 'auto' }}
                   key={index}
                   className={`flex flex-col justify-start transition-opacity duration-500 ease-in-out ${
                     index === currentIndex

@@ -6,8 +6,8 @@ import Input from '@/components/shared/Input';
 import TextArea from '@/components/shared/TextArea';
 import { MeetingsAndEventQuery } from '@/gql/graphql';
 import { Form, Formik, FormikHelpers } from 'formik';
-import { DatePicker } from '@/components/shared/DatePicker';
 import { useState } from 'react';
+import { DatePickerContactUs } from '@/components/shared/DatePickerContactUs';
 
 type ContactUsFormProps = {
   data: MeetingsAndEventQuery;
@@ -110,7 +110,7 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
                     placeholder={data.meetingsAndEvent?.formEmail || ''}
                   />
 
-                  <DatePicker
+                  <DatePickerContactUs
                     name='formDates'
                     placeholder={data.meetingsAndEvent?.formDates || ''}
                   />

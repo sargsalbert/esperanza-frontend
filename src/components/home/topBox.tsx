@@ -1,7 +1,7 @@
 'use client';
 
 import TopSection from './topSection';
-import BookingWidget from './bookingWidget';
+import BookingWidget from './bookingWidget/bookingWidget';
 import {
   ComponentSharedBookingWidgetInput,
   ComponentSharedHeroSection,

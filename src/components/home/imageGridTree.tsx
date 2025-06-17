@@ -12,7 +12,7 @@ const ImageGridTree = ({ images }: ImageGridTreeProps) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 2xl:px-15'>
+    <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>
       {images.map((image, index) => {
         const style = imageStyles[index % imageStyles.length];
         const imageUrl = image.url;

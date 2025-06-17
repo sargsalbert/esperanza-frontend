@@ -3,24 +3,32 @@ import { Icon } from '../shared/Icon';
 
 export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <Icon viewBox='0 0 24 25' height='24px' width='24px' {...props}>
-      <rect
-        x='2.12305'
-        y='0.83252'
-        width='30'
-        height='3'
-        rx='1.5'
-        transform='rotate(45 2.12305 0.83252)'
-        fill='currentColor'
-      />
-      <rect
-        y='22.0457'
-        width='30'
-        height='3'
-        rx='1.5'
-        transform='rotate(-45 0 22.0457)'
-        fill='currentColor'
-      />
+    <Icon viewBox='0 0 13 13' height='13px' width='13px' {...props}>
+      <svg
+        width='13'
+        height='13'
+        viewBox='0 0 13 13'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <rect
+          x='1.18213'
+          y='0.00012207'
+          width='16.7134'
+          height='1.67134'
+          rx='0.835669'
+          transform='rotate(45 1.18213 0.00012207)'
+          fill='currentColor'
+        />
+        <rect
+          y='11.8181'
+          width='16.7134'
+          height='1.67134'
+          rx='0.835669'
+          transform='rotate(-45 0 11.8181)'
+          fill='currentColor'
+        />
+      </svg>
     </Icon>
   );
 }

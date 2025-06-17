@@ -19,7 +19,7 @@ const Thumbnail = ({ src, index, currentIndex, emblaApi }: ThumbnailProps) => {
       aria-label={`Go to slide ${index + 1}`}
     >
       <Image
-        src={`${src}` || '/placeholder.svg'}
+        src={`${src}` || ''}
         alt={`Thumbnail ${index + 1}`}
         fill
         className='object-cover'
