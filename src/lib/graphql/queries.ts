@@ -178,7 +178,25 @@ export const HOME_QUERY = gql`
         }
       }
       bookingWidget {
+        adults
         buttonCheckAvailabilityText
+        buttonNextText
+        buttonPreviousText
+        buttonSearchText
+        children
+        dates
+        id
+        noAvailability
+        roomsGuests
+        selectedDates
+      }
+      seo {
+        metaTitle
+        metaDescription
+        shareImage {
+          alternativeText
+          url
+        }
       }
     }
   }

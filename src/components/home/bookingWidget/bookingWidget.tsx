@@ -19,7 +19,6 @@ export interface ContactFormValues {
   formDates: DateRange | undefined;
   adults: number;
   children: number;
-  // rooms: number;
 }
 
 const BookingWidget = ({ data }: BookingWidgetProps) => {
@@ -28,7 +27,6 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
   const [openPanel, setOpenPanel] = useState<'dates' | 'guests' | null>(null);
 
   const handleRedirect = (values: ContactFormValues) => {
-    console.log(values, 'v');
     window.open(buildRedirectUrl(values), '_blank');
     setOpenPanel(null);
   };
@@ -57,7 +55,7 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
               <Form className='grid grid-cols-1 lg:min-h-[150px] lg:grid-cols-3'>
                 <div className='relative flex flex-col px-5 py-3 lg:justify-center lg:p-5 after:lg:absolute after:lg:top-1/2 after:lg:right-0 after:lg:h-[80%] after:lg:-translate-y-1/2 after:lg:border-r-2 after:lg:border-gray-700 after:lg:content-[""]'>
                   <BookingSelectorGroup
-                    label='Dates'
+                    label={data?.dates || ''}
                     openPanel={openPanel}
                     setOpenPanel={setOpenPanel}
                     value={formatRange(values.formDates)}
@@ -68,10 +66,10 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                 <div className='lg:relative lg:flex lg:justify-center lg:p-5 after:lg:absolute after:lg:top-1/2 after:lg:right-0 after:lg:h-[80%] after:lg:-translate-y-1/2 after:lg:border-r-2 after:lg:border-gray-700 after:lg:content-[""]'>
                   <div className='hidden lg:flex lg:flex-col lg:justify-center'>
                     <BookingSelectorGroup
-                      label='Rooms & Guests'
+                      label={data?.roomsGuests || ''}
                       openPanel={openPanel}
                       setOpenPanel={setOpenPanel}
-                      value={`${values.adults} Adult, ${values.children} Children`}
+                      value={`${values.adults} ${data?.adults}, ${values.children} ${data?.children}`}
                       panel='guests'
                     />
                   </div>
@@ -85,10 +83,11 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                       onFinish={() => {
                         handleRedirect(values);
                       }}
+                      data={data}
                     >
                       <div className='mb-20 grid gap-y-6 pt-1'>
                         <GuestCounter
-                          label='Adults'
+                          label={data?.adults || ''}
                           name='adults'
                           value={values.adults}
                           onChange={(name, value) =>
@@ -98,7 +97,7 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                           max={19}
                         />
                         <GuestCounter
-                          label='Children'
+                          label={data?.children || ''}
                           name='children'
                           value={values.children}
                           onChange={(name, value) =>
@@ -130,6 +129,7 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                     onNext={() => {
                       setOpenPanel('guests');
                     }}
+                    data={data}
                   >
                     <DatePicker
                       name='formDates'
@@ -138,6 +138,8 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                       onClose={() => setOpenPanel(null)}
                       footer
                       numberOfMonths={isMobile ? 1 : 2}
+                      textSelectedDates={data?.selectedDates}
+                      textNoAvailability={data?.noAvailability}
                     />
                   </PanelContainer>
                 )}

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { CloseIcon } from '../../icons/closeIcon';
 import { MoreIcon } from '../../icons/moreIcon';
+import { ComponentSharedBookingWidgetInput } from '@/gql/graphql';
 
 type PanelContainerProps = {
   onClose: () => void;
@@ -11,6 +12,7 @@ type PanelContainerProps = {
   onNext?: () => void;
   onPrevious?: () => void;
   onFinish?: () => void;
+  data?: ComponentSharedBookingWidgetInput | null;
 };
 
 export const PanelContainer: React.FC<PanelContainerProps> = ({
@@ -20,6 +22,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   onNext,
   onPrevious,
   onFinish,
+  data,
 }) => {
   const isFirst = step === 1;
 
@@ -73,7 +76,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
             className='flex cursor-pointer items-center px-1 text-sm font-semibold text-gray-800 lg:text-base'
           >
             <MoreIcon className='w-[14px] rotate-180' />
-            <span className='ml-2.5'>Previous</span>
+            <span className='ml-2.5'>{data?.buttonPreviousText}</span>
           </button>
         ) : (
           <div />
@@ -84,7 +87,9 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
           onClick={onFinish ? onFinish : onNext}
           className='flex cursor-pointer items-center px-1 text-sm font-semibold text-gray-800 lg:text-base'
         >
-          <span className='mr-2.5'>{onFinish ? 'Search' : 'Next'}</span>
+          <span className='mr-2.5'>
+            {onFinish ? data?.buttonSearchText : data?.buttonNextText}
+          </span>
           <MoreIcon className='w-[14px]' />
         </button>
       </div>

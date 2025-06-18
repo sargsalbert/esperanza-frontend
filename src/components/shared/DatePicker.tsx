@@ -14,6 +14,8 @@ type Props = {
   footer?: boolean;
   numberOfMonths?: number;
   withLabel?: boolean;
+  textSelectedDates?: string | null;
+  textNoAvailability?: string | null;
 };
 
 export const formatRange = (range: DateRange): React.ReactNode => {
@@ -54,6 +56,8 @@ export const DatePicker: React.FC<Props> = ({
   isOpen,
   footer,
   numberOfMonths,
+  textSelectedDates,
+  textNoAvailability,
 }) => {
   const defaultClassNames = getDefaultClassNames();
   const [field, meta] = useField(name);
@@ -104,14 +108,22 @@ export const DatePicker: React.FC<Props> = ({
             footer={
               footer && (
                 <div className='mt-6 flex'>
-                  <div className='mr-6 flex items-center lg:mr-10'>
-                    <span className='mr-2.5 inline-block h-[12px] w-[12px] bg-gray-800' />
-                    <span className='text-sm font-normal'>Selected Dates</span>
-                  </div>
-                  <div className='flex items-center'>
-                    <NoAvailabilityIcon className='mr-2.5 h-[12px] w-[12px] text-gray-800' />
-                    <span className='text-sm font-normal'>No availability</span>
-                  </div>
+                  {!!textSelectedDates && (
+                    <div className='mr-6 flex items-center lg:mr-10'>
+                      <span className='mr-2.5 inline-block h-[12px] w-[12px] bg-gray-800' />
+                      <span className='text-sm font-normal'>
+                        {textSelectedDates}
+                      </span>
+                    </div>
+                  )}
+                  {!!textNoAvailability && (
+                    <div className='flex items-center'>
+                      <NoAvailabilityIcon className='mr-2.5 h-[12px] w-[12px] text-gray-800' />
+                      <span className='text-sm font-normal'>
+                        {textNoAvailability}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )
             }
