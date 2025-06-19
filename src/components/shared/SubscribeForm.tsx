@@ -78,7 +78,7 @@ const SubscribeForm = ({
               <button
                 type='submit'
                 disabled={isSubmitting}
-                className='absolute right-[4px] h-9 w-28 cursor-pointer self-center rounded-full bg-gray-800 px-2 py-1 text-sm font-medium text-gray-50 md:right-[4px] md:h-10.5 md:w-38 md:text-base 2xl:right-[5px] 2xl:h-12.5 2xl:w-60 2xl:text-lg'
+                className='absolute right-[4px] h-9 min-w-28 cursor-pointer self-center rounded-full bg-gray-800 px-4 py-1 text-sm font-medium text-gray-50 md:right-[4px] md:h-10.5 md:min-w-38 md:text-base 2xl:right-[5px] 2xl:h-12.5 2xl:min-w-60 2xl:text-lg'
               >
                 {isSubmitting
                   ? 'Sending...'
