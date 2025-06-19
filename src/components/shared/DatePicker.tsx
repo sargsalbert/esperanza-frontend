@@ -79,7 +79,36 @@ export const DatePicker: React.FC<Props> = ({
   const calendarLocale = localeMap[currentLanguage];
 
   const handleSelect = useCallback(
-    (dates: unknown) => {
+    (dates: unknown, selectedDay: Date) => {
+      if (mode === 'range') {
+        const currentRange = selectedDates as DateRange | undefined;
+        
+        // If no dates selected yet, or if we have a complete range, start fresh with check-in date
+        if (!currentRange?.from || (currentRange.from && currentRange.to)) {
+          const newRange = { from: selectedDay, to: undefined };
+          setFieldValue(name, newRange, true);
+          setFieldTouched(name, true, true);
+          return;
+        }
+        
+        // If we have a check-in date but no check-out date
+        if (currentRange.from && !currentRange.to) {
+          // If selected day is before check-in date, make it the new check-in date
+          if (selectedDay < currentRange.from) {
+            const newRange = { from: selectedDay, to: undefined };
+            setFieldValue(name, newRange, true);
+            setFieldTouched(name, true, true);
+          } else {
+            // Selected day is after check-in date, make it the check-out date
+            const newRange = { from: currentRange.from, to: selectedDay };
+            setFieldValue(name, newRange, true);
+            setFieldTouched(name, true, true);
+          }
+          return;
+        }
+      }
+      
+      // Handle other modes (single, multiple) with original logic
       const selected =
         dates ||
         (mode === 'multiple'
@@ -90,7 +119,7 @@ export const DatePicker: React.FC<Props> = ({
       setFieldValue(name, selected, true);
       setFieldTouched(name, true, true);
     },
-    [name, setFieldValue, setFieldTouched, mode],
+    [name, setFieldValue, setFieldTouched, mode, selectedDates],
   );
 
   let formattedDate: string | ReactNode = '';
