@@ -10,9 +10,11 @@ import { PanelContainer } from './panelContainer';
 import BookingSelectorGroup from './bookingSelectorGroup';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { buildRedirectUrl } from './synxisParameters';
+import { Locale } from '../../../../i18n-config';
 
 type BookingWidgetProps = {
   data?: ComponentSharedBookingWidgetInput | null;
+  locale: Locale
 };
 
 export interface ContactFormValues {
@@ -21,7 +23,7 @@ export interface ContactFormValues {
   children: number;
 }
 
-const BookingWidget = ({ data }: BookingWidgetProps) => {
+const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
   const isMobile = useIsMobile();
 
   const [openPanel, setOpenPanel] = useState<'dates' | 'guests' | null>(null);
@@ -58,7 +60,7 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                     label={data?.dates || ''}
                     openPanel={openPanel}
                     setOpenPanel={setOpenPanel}
-                    value={formatRange(values.formDates)}
+                    value={formatRange(values.formDates, locale)}
                     panel='dates'
                   />
                 </div>
@@ -140,6 +142,7 @@ const BookingWidget = ({ data }: BookingWidgetProps) => {
                       numberOfMonths={isMobile ? 1 : 2}
                       textSelectedDates={data?.selectedDates}
                       textNoAvailability={data?.noAvailability}
+                      currentLanguage={locale}
                     />
                   </PanelContainer>
                 )}

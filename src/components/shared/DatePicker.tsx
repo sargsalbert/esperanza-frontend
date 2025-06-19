@@ -1,8 +1,15 @@
 import React, { useRef, useCallback, ReactNode } from 'react';
 import { useField, useFormikContext } from 'formik';
-import { DateRange, DayPicker, getDefaultClassNames } from 'react-day-picker';
+import { DateRange, DayPicker, getDefaultClassNames, Locale } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { NoAvailabilityIcon } from '../icons/noAvailabilityIcon';
+import { enUS, lt } from "react-day-picker/locale";
+import { Locale as AppLocale } from '../../../i18n-config';
+
+export const localeMap: Record<AppLocale, Locale> = {
+  en: enUS,
+  lt: lt,
+};
 
 type Props = {
   name: string;
@@ -16,17 +23,19 @@ type Props = {
   withLabel?: boolean;
   textSelectedDates?: string | null;
   textNoAvailability?: string | null;
+  currentLanguage: AppLocale;
 };
 
-export const formatRange = (range: DateRange): React.ReactNode => {
+export const formatRange = (range: DateRange, locale?: AppLocale): React.ReactNode => {
+
   if (!range.from) return '';
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'short',
     month: 'short',
     day: '2-digit',
   };
-  const fromStr = range.from.toLocaleDateString('en-US', options);
-  const toStr = range.to ? range.to.toLocaleDateString('en-US', options) : '';
+  const fromStr = range.from.toLocaleDateString(locale, options);
+  const toStr = range.to ? range.to.toLocaleDateString(locale, options) : '';
   return toStr ? (
     <span className='flex items-center gap-2.5'>
       {fromStr}
@@ -58,6 +67,7 @@ export const DatePicker: React.FC<Props> = ({
   numberOfMonths,
   textSelectedDates,
   textNoAvailability,
+  currentLanguage
 }) => {
   const defaultClassNames = getDefaultClassNames();
   const [field, meta] = useField(name);
@@ -65,6 +75,8 @@ export const DatePicker: React.FC<Props> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   const selectedDates = field.value;
+
+  const calendarLocale = localeMap[currentLanguage];
 
   const handleSelect = useCallback(
     (dates: unknown) => {
@@ -85,7 +97,7 @@ export const DatePicker: React.FC<Props> = ({
   if (mode === 'multiple' && Array.isArray(selectedDates)) {
     formattedDate = selectedDates.map(formatDate).join(', ');
   } else if (mode === 'range' && selectedDates && selectedDates.from) {
-    formattedDate = formatRange(selectedDates);
+    formattedDate = formatRange(selectedDates,);
   } else if (mode === 'single' && selectedDates instanceof Date) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formattedDate = formatDate(selectedDates);
@@ -103,6 +115,7 @@ export const DatePicker: React.FC<Props> = ({
             ISOWeek
             selected={selectedDates}
             onSelect={handleSelect}
+            locale={calendarLocale}
             numberOfMonths={numberOfMonths || 1}
             disabled={{ before: new Date() }}
             footer={

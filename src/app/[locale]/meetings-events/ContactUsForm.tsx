@@ -8,9 +8,11 @@ import { MeetingsAndEventQuery } from '@/gql/graphql';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { DatePickerContactUs } from '@/components/shared/DatePickerContactUs';
+import { Locale } from '../../../../i18n-config';
 
 type ContactUsFormProps = {
   data: MeetingsAndEventQuery;
+  locale: Locale;
 };
 
 interface ContactFormValues {
@@ -23,7 +25,7 @@ interface ContactFormValues {
   formMessage: string;
 }
 
-export default function ContactUsForm({ data }: ContactUsFormProps) {
+export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validationSchema = Yup.object({
@@ -113,6 +115,7 @@ export default function ContactUsForm({ data }: ContactUsFormProps) {
                   <DatePickerContactUs
                     name='formDates'
                     placeholder={data.meetingsAndEvent?.formDates || ''}
+                    currentLanguage={locale}
                   />
 
                   <Input

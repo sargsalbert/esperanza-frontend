@@ -3,19 +3,24 @@ import { useField, useFormikContext } from 'formik';
 import { DayPicker, getDefaultClassNames } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { SelectArrowIcon } from '../icons/selectArrowIcon';
+import { localeMap } from './DatePicker';
+import { Locale as AppLocale } from '../../../i18n-config';
 
 type Props = {
   name: string;
   placeholder?: string;
+  currentLanguage: AppLocale;
 };
 
-export const DatePickerContactUs: React.FC<Props> = ({ name, placeholder }) => {
+export const DatePickerContactUs: React.FC<Props> = ({ name, placeholder, currentLanguage }) => {
   const defaultClassNames = getDefaultClassNames();
 
   const [field, meta] = useField(name);
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const calendarLocale = localeMap[currentLanguage];
 
   const selectedDates: Date[] = field.value || [];
 
@@ -79,6 +84,7 @@ export const DatePickerContactUs: React.FC<Props> = ({ name, placeholder }) => {
             selected={selectedDates}
             onSelect={handleSelect}
             disabled={{ before: new Date() }}
+            locale={calendarLocale}
             classNames={{
               root: `${defaultClassNames.root} bg-gray-100 p-2`,
               today: `${defaultClassNames.root} border-gray-800 border-1`,

@@ -7,13 +7,15 @@ import {
   ComponentSharedHeroSection,
 } from '@/gql/graphql';
 import { useViewportHeight } from '@/hooks/useViewportHeight';
+import { Locale } from '../../../i18n-config';
 
 type TopBoxProps = {
   heroSection?: ComponentSharedHeroSection | null;
   bookingWidget?: ComponentSharedBookingWidgetInput | null;
+  locale: Locale;
 };
 
-export default function TopBox({ heroSection, bookingWidget }: TopBoxProps) {
+export default function TopBox({ heroSection, bookingWidget, locale }: TopBoxProps) {
   useViewportHeight();
   return (
     <div className='relative mb-17.5 flex h-[calc(var(--vh,1vh)*100-143px)] w-full md:mb-30 md:h-[calc(var(--vh,1vh)*100-179px)] lg:mb-39 lg:h-[calc(var(--vh,1vh)*100-225px)] 2xl:h-[calc(var(--vh,1vh)*100-238px)]'>
@@ -21,7 +23,7 @@ export default function TopBox({ heroSection, bookingWidget }: TopBoxProps) {
         url={heroSection?.heroImage?.url}
         title={heroSection?.heroText}
       />
-      <BookingWidget data={bookingWidget} />
+      <BookingWidget data={bookingWidget} locale={locale} />
     </div>
   );
 }

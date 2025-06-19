@@ -7,7 +7,7 @@ import { MEETINGS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import SectionGrid from '@/components/home/sectionGrid';
 import ContactUsForm from './ContactUsForm';
-import { i18n } from '../../../../i18n-config';
+import { i18n, Locale } from '../../../../i18n-config';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
@@ -66,7 +66,7 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
         buttonText={data.meetingsAndEvent?.contactUsText?.buttonText}
         id=''
       />
-      <ContactUsForm data={data} />
+      <ContactUsForm data={data} locale={locale as Locale} />
 
       <div className='h-12.5' />
     </>

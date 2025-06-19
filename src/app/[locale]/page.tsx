@@ -7,7 +7,7 @@ import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
-import { i18n } from '../../../i18n-config';
+import { i18n, Locale } from '../../../i18n-config';
 
 export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
@@ -23,6 +23,7 @@ export default async function Home({ params }: LocalePageProps) {
       <TopBox
         heroSection={data.home?.heroSection}
         bookingWidget={data.home?.bookingWidget}
+        locale={locale as Locale}
       />
       <SectionHeader
         subtitle={data.home?.destinationText?.subtitle}
