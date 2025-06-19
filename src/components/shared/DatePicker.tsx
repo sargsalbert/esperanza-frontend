@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, ReactNode } from 'react';
+import React, { useRef, useCallback, ReactNode, useState } from 'react';
 import { useField, useFormikContext } from 'formik';
 import { DateRange, DayPicker, getDefaultClassNames, Locale } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
@@ -74,6 +74,8 @@ export const DatePicker: React.FC<Props> = ({
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const ref = useRef<HTMLDivElement>(null);
 
+  const [hoveredDay, setHoveredDay] = useState<Date | undefined>(undefined);
+
   const selectedDates = field.value;
 
   const calendarLocale = localeMap[currentLanguage];
@@ -134,6 +136,17 @@ export const DatePicker: React.FC<Props> = ({
 
   const showError = meta.touched && meta.error;
 
+  const previewRange: DateRange | undefined =
+  mode === 'range' &&
+  selectedDates?.from &&
+  !selectedDates?.to &&
+  hoveredDay instanceof Date
+    ? {
+        from: selectedDates.from < hoveredDay ? selectedDates.from : hoveredDay,
+        to: selectedDates.from > hoveredDay ? selectedDates.from : hoveredDay,
+      }
+    : undefined;
+
   return (
     <div ref={ref} className='relative'>
       {isOpen && (
@@ -147,6 +160,15 @@ export const DatePicker: React.FC<Props> = ({
             locale={calendarLocale}
             numberOfMonths={numberOfMonths || 1}
             disabled={{ before: new Date() }}
+            onDayMouseEnter={(day) => setHoveredDay(day)}
+            onDayMouseLeave={() => setHoveredDay(undefined)}
+            modifiers={{
+              hoverRange: previewRange,
+            }}
+            modifiersClassNames={{
+              hoverRange: 'bg-gray-600', // or any class you like for preview
+            }}
+
             footer={
               footer && (
                 <div className='mt-6 flex'>
