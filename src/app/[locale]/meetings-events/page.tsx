@@ -7,10 +7,20 @@ import { MEETINGS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import SectionGrid from '@/components/home/sectionGrid';
 import ContactUsForm from './ContactUsForm';
-import { i18n, Locale } from '../../../../i18n-config';
+import { Locale } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<MeetingsAndEventQuery>(
+    MEETINGS_QUERY,
+    params,
+    (data) => ({
+      title: data.meetingsAndEvent?.seo?.metaTitle,
+      description: data.meetingsAndEvent?.seo?.metaDescription,
+      image: data.meetingsAndEvent?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function MeetingsEvents({ params }: LocalePageProps) {

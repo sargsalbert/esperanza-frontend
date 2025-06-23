@@ -7,10 +7,20 @@ import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
-import { i18n, Locale } from '../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { Locale } from '../../../i18n-config';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<HomeQuery>(
+    HOME_QUERY,
+    params,
+    (data) => ({
+      title: data.home?.seo?.metaTitle,
+      description: data.home?.seo?.metaDescription,
+      image: data.home?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function Home({ params }: LocalePageProps) {

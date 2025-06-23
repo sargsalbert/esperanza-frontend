@@ -5,10 +5,18 @@ import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { LocalePageProps } from '../destination/page';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<VillaQuery>(
+    VILLA_QUERY,
+    params,
+    (data) => ({
+      title: data.villa?.seo?.metaTitle,
+      description: data.villa?.seo?.metaDescription,
+      image: data.villa?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function VillaPage({ params }: LocalePageProps) {

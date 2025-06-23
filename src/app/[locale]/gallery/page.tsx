@@ -4,10 +4,18 @@ import { GALLERY_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { DynamicGallery } from './DynamicGallery';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<GalleryQuery>(
+    GALLERY_QUERY,
+    params,
+    (data) => ({
+      title: data.gallery?.seo?.metaTitle,
+      description: data.gallery?.seo?.metaDescription,
+      image: data.gallery?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function Gallery({ params }: LocalePageProps) {

@@ -7,10 +7,19 @@ import { UploadFile, WellnessQuery } from '@/gql/graphql';
 import { WELLNESS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<WellnessQuery>(
+    WELLNESS_QUERY,
+    params,
+    (data) => ({
+      title: data.wellness?.seo?.metaTitle,
+      description: data.wellness?.seo?.metaDescription,
+      image: data.wellness?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function Wellness({ params }: LocalePageProps) {

@@ -7,10 +7,18 @@ import { ROOMS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import LocaleLink from '@/components/shared/LocaleLink';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<RoomsAndSuiteQuery>(
+    ROOMS_QUERY,
+    params,
+    (data) => ({
+      title: data.roomsAndSuite?.seo?.metaTitle,
+      description: data.roomsAndSuite?.seo?.metaDescription,
+      image: data.roomsAndSuite?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function RoomsSuites({ params }: LocalePageProps) {

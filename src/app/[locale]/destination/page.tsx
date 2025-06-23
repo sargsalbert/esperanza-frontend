@@ -6,17 +6,24 @@ import { DESTINATION_QUERY } from '@/lib/graphql/queries';
 import ImageGrid from './ImageComponent';
 import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
-}
-
-export const revalidate = 60;
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<DestinationQuery>(
+    DESTINATION_QUERY,
+    params,
+    (data) => ({
+      title: data.destination?.Seo?.metaTitle,
+      description: data.destination?.Seo?.metaDescription,
+      image: data.destination?.Seo?.shareImage?.url, 
+    })
+  );
+}
 
 export default async function Destination({ params }: LocalePageProps) {
   const { locale } = await params;

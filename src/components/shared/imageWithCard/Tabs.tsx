@@ -90,7 +90,6 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                       {field?.secondTextField}
                       {field?.specialTextField && (
                         <>
-                          <br></br>
                           <div className='mt-1.5'>{field.specialTextField}</div>
                         </>
                       )}

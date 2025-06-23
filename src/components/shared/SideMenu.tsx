@@ -56,7 +56,7 @@ export function SideMenu({
     <>
       {isOpen && (
         <div
-          className='fixed inset-0 z-20 bg-[rgba(83,83,83,0.5)] backdrop-blur-[1px]'
+          className='fixed inset-0 z-40 bg-[rgba(83,83,83,0.5)] backdrop-blur-[1px]'
           onClick={onClose}
         />
       )}

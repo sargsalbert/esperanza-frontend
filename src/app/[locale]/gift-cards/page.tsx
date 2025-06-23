@@ -7,10 +7,18 @@ import GiftForm from './GiftForm';
 import { LocalePageProps } from '../destination/page';
 import StrapiRichTextRenderer from '@/components/shared/StrapiRichTextRenderer';
 import FadeInOnView from '@/components/shared/FadeInOnView';
-import { i18n } from '../../../../i18n-config';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }));
+export async function generateMetadata({ params }: LocalePageProps) {
+  return generateSeoMetadata<GiftCardQuery>(
+    GIFTCARD_QUERY,
+    params,
+    (data) => ({
+      title: data.giftCard?.seo?.metaTitle,
+      description: data.giftCard?.seo?.metaDescription,
+      image: data.giftCard?.seo?.shareImage?.url, 
+    })
+  );
 }
 
 export default async function GiftCards({ params }: LocalePageProps) {
