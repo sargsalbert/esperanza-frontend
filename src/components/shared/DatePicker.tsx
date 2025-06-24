@@ -1,10 +1,12 @@
-import React, { useRef, useCallback, ReactNode, useState } from 'react';
+import React, { useRef, useCallback, ReactNode, useState, useEffect } from 'react';
 import { useField, useFormikContext } from 'formik';
 import { DateRange, DayPicker, getDefaultClassNames, Locale } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { NoAvailabilityIcon } from '../icons/noAvailabilityIcon';
 import { enUS, lt } from "react-day-picker/locale";
 import { Locale as AppLocale } from '../../../i18n-config';
+import { SelectArrowIcon } from '../icons/selectArrowIcon';
+import { CloseIcon } from '../icons/closeIcon';
 
 export const localeMap: Record<AppLocale, Locale> = {
   en: enUS,
@@ -24,6 +26,7 @@ type Props = {
   textSelectedDates?: string | null;
   textNoAvailability?: string | null;
   currentLanguage: AppLocale;
+  showInput?: boolean;
 };
 
 export const formatRange = (range: DateRange, locale?: AppLocale): React.ReactNode => {
@@ -67,7 +70,9 @@ export const DatePicker: React.FC<Props> = ({
   numberOfMonths,
   textSelectedDates,
   textNoAvailability,
-  currentLanguage
+  currentLanguage,
+  showInput,
+  placeholder
 }) => {
   const defaultClassNames = getDefaultClassNames();
   const [field, meta] = useField(name);
@@ -84,7 +89,7 @@ export const DatePicker: React.FC<Props> = ({
     (dates: unknown, selectedDay: Date) => {
       if (mode === 'range') {
         const currentRange = selectedDates as DateRange | undefined;
-        
+
         // If no dates selected yet, or if we have a complete range, start fresh with check-in date
         if (!currentRange?.from || (currentRange.from && currentRange.to)) {
           const newRange = { from: selectedDay, to: undefined };
@@ -92,7 +97,7 @@ export const DatePicker: React.FC<Props> = ({
           setFieldTouched(name, true, true);
           return;
         }
-        
+
         // If we have a check-in date but no check-out date
         if (currentRange.from && !currentRange.to) {
           // If selected day is before check-in date, make it the new check-in date
@@ -109,7 +114,7 @@ export const DatePicker: React.FC<Props> = ({
           return;
         }
       }
-      
+
       // Handle other modes (single, multiple) with original logic
       const selected =
         dates ||
@@ -137,20 +142,80 @@ export const DatePicker: React.FC<Props> = ({
   const showError = meta.touched && meta.error;
 
   const previewRange: DateRange | undefined =
-  mode === 'range' &&
-  selectedDates?.from &&
-  !selectedDates?.to &&
-  hoveredDay instanceof Date
-    ? {
+    mode === 'range' &&
+      selectedDates?.from &&
+      !selectedDates?.to &&
+      hoveredDay instanceof Date
+      ? {
         from: selectedDates.from < hoveredDay ? selectedDates.from : hoveredDay,
         to: selectedDates.from > hoveredDay ? selectedDates.from : hoveredDay,
       }
-    : undefined;
+      : undefined;
+
+  // input + toggle logic
+
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen((prev) => !prev);
+    setFieldTouched(name, true, true);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+        setFieldTouched(name, true, true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [setFieldTouched, name]);
+
+  const finalIsOpen = typeof isOpen === 'boolean' ? isOpen : open;
+
+  const inputFormattedDate =
+    mode === 'multiple' && Array.isArray(selectedDates)
+      ? selectedDates.map((d) => formatDate(d)).join(', ')
+      : mode === 'single' && selectedDates instanceof Date
+        ? formatDate(selectedDates)
+        : mode === 'range' && selectedDates?.from
+          ? formatRange(selectedDates, currentLanguage)
+          : '';
+
+  // End input + toggle logic
+
 
   return (
     <div ref={ref} className='relative'>
-      {isOpen && (
-        <div>
+      {showInput && (
+        <div className="relative mb-5 sm:mb-7.5 lg:mb-10">
+          <div
+            onClick={handleToggle}
+            className="min-h-10 w-full cursor-pointer border-b-2 border-gray-200 py-2.5 text-sm font-medium  transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3"
+          >
+            {inputFormattedDate as string || <span className='text-gray-300'>{placeholder}</span>}
+          </div>
+          <SelectArrowIcon
+            className={`absolute top-1/2 right-2 h-[6px] w-[12px] flex-shrink-0 -translate-y-1/2 transform text-gray-300 transition-transform duration-300 sm:h-[7px] sm:w-[14px] ${open ? 'rotate-180' : ''
+              }`}
+          />
+        </div>
+      )}
+      {finalIsOpen && (
+        <div className={showInput ? 'absolute top-full left-0 z-30 w-full md:w-auto bg-gray-100 p-5 shadow-xs' : ''}>
+          {showInput &&
+            <div className='mb-5 flex justify-end'>
+              <button
+                type='button'
+                onClick={handleToggle}
+                className='flex cursor-pointer items-center justify-center p-1 text-sm font-medium text-gray-800'
+              >
+                <CloseIcon className='h-3 w-3 lg:h-4 lg:w-4' />
+              </button>
+            </div>
+          }
           <DayPicker
             mode={mode}
             navLayout='around'
@@ -218,9 +283,8 @@ export const DatePicker: React.FC<Props> = ({
         </div>
       )}
 
-      {showError && (
-        <div className='mt-1 text-sm text-red-500'>{meta.error}</div>
-      )}
+      {showError && <div className="mt-1 text-sm text-red-500">{meta.error}</div>}
+
     </div>
   );
 };

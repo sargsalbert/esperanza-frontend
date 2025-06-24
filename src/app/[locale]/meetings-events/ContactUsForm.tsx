@@ -7,8 +7,8 @@ import TextArea from '@/components/shared/TextArea';
 import { MeetingsAndEventQuery } from '@/gql/graphql';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
-import { DatePickerContactUs } from '@/components/shared/DatePickerContactUs';
 import { Locale } from '../../../../i18n-config';
+import { DatePicker } from '@/components/shared/DatePicker';
 
 type ContactUsFormProps = {
   data: MeetingsAndEventQuery;
@@ -20,7 +20,10 @@ interface ContactFormValues {
   formSurname: string;
   formPhone: string;
   formEmail: string;
-  formDates: string;
+  formDates: {
+    from?: Date | null;
+    to?: Date | null;
+  };
   formNumberGuests: string;
   formMessage: string;
 }
@@ -33,9 +36,10 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
     formSurname: Yup.string().required('Required'),
     formPhone: Yup.string().required('Required'),
     formEmail: Yup.string().email('Invalid email').required('Required'),
-    formDates: Yup.array()
-      .min(1, 'Please select at least minimum one date')
-      .required('Required'),
+    formDates: Yup.object({
+      from: Yup.date().nullable().notRequired(),
+      to: Yup.date().nullable().notRequired()
+    }),
     formNumberGuests: Yup.number()
       .min(1, 'At least 1 guest')
       .required('Required'),
@@ -84,7 +88,7 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
               formSurname: '',
               formPhone: '',
               formEmail: '',
-              formDates: '',
+              formDates: {},
               formNumberGuests: '',
               formMessage: '',
             }}
@@ -111,13 +115,13 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                     name='formEmail'
                     placeholder={data.meetingsAndEvent?.formEmail || ''}
                   />
-
-                  <DatePickerContactUs
+                  <DatePicker
                     name='formDates'
                     placeholder={data.meetingsAndEvent?.formDates || ''}
                     currentLanguage={locale}
+                    mode="range"
+                    showInput
                   />
-
                   <Input
                     name='formNumberGuests'
                     placeholder={data.meetingsAndEvent?.formNumberGuests || ''}
