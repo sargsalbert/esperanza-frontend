@@ -9,6 +9,7 @@ import StrapiRichTextRenderer from '@/components/shared/StrapiRichTextRenderer';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../../i18n-config';
+import { Suspense } from 'react';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<GiftCardQuery>(
@@ -44,7 +45,10 @@ export default async function GiftCards({ params }: LocalePageProps) {
         id=''
       />
       <FadeInOnView className='mb-12.5 sm:mb-15 lg:mb-20'>
-        <GiftForm data={data} locale={locale as Locale} />
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <GiftForm data={data} locale={locale as Locale} />
+        </Suspense>
 
         {data.giftCard?.formBottomNote && (
           <div className='mx-auto mt-5 max-w-5xl px-5 sm:mt-7.5 md:px-10 lg:mt-10 2xl:px-15'>
