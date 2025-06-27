@@ -125,6 +125,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
             }}
             validationSchema={validationSchema}
             onSubmit={handlePurchase}
+            validateOnMount={true}
           >
             {({ values, isSubmitting, isValid }) => (
               <Form>
