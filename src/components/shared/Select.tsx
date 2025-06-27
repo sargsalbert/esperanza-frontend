@@ -68,7 +68,7 @@ const Select = ({
     >
       {/* Trigger */}
       <div
-        className={`min-h-10 w-full border-b-2 ${meta.touched && meta.error ? 'border-red-500' : 'border-gray-200'} flex cursor-pointer items-center justify-between py-2.5 text-sm font-medium transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3 ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
+        className={`min-h-10 w-full border-b-2 border-gray-200 flex cursor-pointer items-center justify-between py-2.5 text-sm font-medium transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3 ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={toggleDropdown}
         tabIndex={disabled ? -1 : 0}
         onKeyDown={(e: React.KeyboardEvent) => {
@@ -111,7 +111,7 @@ const Select = ({
 
       {/* Error */}
       {meta.touched && meta.error && (
-        <p className='mt-1 text-xs text-red-500'>{meta.error}</p>
+        <p className='mt-1 text-sm text-red-500'>{meta.error}</p>
       )}
 
       {/* Hidden input to satisfy native form requirements */}

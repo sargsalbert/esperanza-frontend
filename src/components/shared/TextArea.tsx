@@ -68,7 +68,7 @@ const TextArea = ({
         <span>{maxLength}</span>
       </div>
       {showError && (
-        <div className='mt-1 text-sm text-red-600'>{meta.error}</div>
+        <div className='mt-1 text-sm text-red-500'>{meta.error}</div>
       )}
     </div>
   );
