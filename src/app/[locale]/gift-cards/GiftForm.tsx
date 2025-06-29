@@ -127,7 +127,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
             onSubmit={handlePurchase}
             validateOnMount={true}
           >
-            {({ values, isSubmitting }) => (
+            {({ values, isSubmitting, isValid }) => (
               <Form>
                 <Input placeholder={data.giftCard?.formName} name='formName' />
                 <Input
