@@ -22,7 +22,7 @@ const FadeInOnView: React.FC<FadeInOnViewProps> = ({
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`relative z-1 transform transition-all duration-800 ease-in-out ${
+      className={`transform transition-all duration-800 ease-in-out ${
         inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       } ${className}`}
     >
