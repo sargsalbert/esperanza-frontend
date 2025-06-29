@@ -1,14 +1,15 @@
 'use client';
 
 import FadeInOnView from '@/components/shared/FadeInOnView';
-import Image from 'next/image';
+import StrapiImage from '@/components/shared/StrapiImage';
+import { UploadFile } from '@/gql/graphql';
 
 type ImageGridProps = {
-  url: string;
+  imageData?: UploadFile | null;
   index: number;
 };
 
-export default function ImageGrid({ url, index }: ImageGridProps) {
+export default function ImageGrid({ imageData, index }: ImageGridProps) {
   const imageStyles = [
     'col-span-1 aspect-[3/2]',
     'col-span-1 row-span-2 aspect-[3/4]  h-full',
@@ -21,13 +22,7 @@ export default function ImageGrid({ url, index }: ImageGridProps) {
 
   return (
     <FadeInOnView className={`relative w-full ${style}`}>
-      <Image
-        src={url}
-        alt={`Resort ${index + 1}`}
-        fill
-        objectFit='cover'
-        className=''
-      />
+      {imageData && <StrapiImage image={imageData} />}
     </FadeInOnView>
   );
 }

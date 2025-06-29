@@ -27,7 +27,7 @@ export default async function VillaPage({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.villa?.heroSection?.heroImage?.url}
+        heroImage={data.villa?.heroSection?.heroImage}
         title={data.villa?.heroSection?.heroText}
       />
 

@@ -1,14 +1,20 @@
+import { UploadFile } from '@/gql/graphql';
 import { EmblaCarouselType } from 'embla-carousel';
-import Image from 'next/image';
+import StrapiImage from '../StrapiImage';
 
 interface ThumbnailProps {
-  src: string;
+  image?: UploadFile | null;
   index: number;
   currentIndex: number;
   emblaApi: EmblaCarouselType | undefined;
 }
 
-const Thumbnail = ({ src, index, currentIndex, emblaApi }: ThumbnailProps) => {
+const Thumbnail = ({
+  image,
+  index,
+  currentIndex,
+  emblaApi,
+}: ThumbnailProps) => {
   return (
     <button
       key={index}
@@ -18,12 +24,7 @@ const Thumbnail = ({ src, index, currentIndex, emblaApi }: ThumbnailProps) => {
       onClick={() => emblaApi?.scrollTo(index)}
       aria-label={`Go to slide ${index + 1}`}
     >
-      <Image
-        src={`${src}` || ''}
-        alt={`Thumbnail ${index + 1}`}
-        fill
-        className='object-cover'
-      />
+      {image && <StrapiImage image={image} />}
     </button>
   );
 };

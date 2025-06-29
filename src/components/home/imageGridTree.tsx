@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { UploadFile } from '@/gql/graphql';
 import FadeInOnView from '../shared/FadeInOnView';
+import StrapiImage from '../shared/StrapiImage';
 
 type ImageGridTreeProps = {
   images: UploadFile[];
@@ -15,22 +15,15 @@ const ImageGridTree = ({ images }: ImageGridTreeProps) => {
     <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>
       {images.map((image, index) => {
         const style = imageStyles[index % imageStyles.length];
-        const imageUrl = image.url;
 
-        if (!imageUrl) return null;
+        if (!image) return null;
 
         return (
           <FadeInOnView
             key={image.documentId || index}
             className={`relative w-full ${style}`}
           >
-            <Image
-              src={imageUrl}
-              alt={image.alternativeText || 'Resort image'}
-              fill
-              className='object-cover'
-              sizes='(max-width: 768px) 100vw, 50vw'
-            />
+            <StrapiImage image={image} />
           </FadeInOnView>
         );
       })}

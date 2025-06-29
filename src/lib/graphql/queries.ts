@@ -26,6 +26,7 @@ export const GLOBAL_QUERY = gql`
           name
           provider
           size
+          formats
         }
         linkUrl
       }
@@ -58,6 +59,7 @@ export const HOME_QUERY = gql`
           name
           provider
           size
+          formats
         }
         heroText
       }
@@ -79,6 +81,7 @@ export const HOME_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       headerTextWithSliderBlock {
@@ -103,6 +106,7 @@ export const HOME_QUERY = gql`
             name
             provider
             size
+            formats
           }
         }
       }
@@ -127,6 +131,7 @@ export const HOME_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       HeaderTextWithSliderBlockTwo {
@@ -151,6 +156,7 @@ export const HOME_QUERY = gql`
             name
             provider
             size
+            formats
           }
         }
       }
@@ -175,6 +181,7 @@ export const HOME_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       bookingWidget {
@@ -196,6 +203,13 @@ export const HOME_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -209,6 +223,13 @@ export const DESTINATION_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -234,6 +255,12 @@ export const DESTINATION_QUERY = gql`
           alternativeText
           url
           documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
       Seo {
@@ -243,6 +270,13 @@ export const DESTINATION_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -256,6 +290,13 @@ export const ROOMS_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -297,6 +338,7 @@ export const ROOMS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       bookButtonShowMobile {
@@ -311,6 +353,13 @@ export const ROOMS_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -324,6 +373,13 @@ export const VILLA_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -365,6 +421,7 @@ export const VILLA_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       seo {
@@ -373,6 +430,13 @@ export const VILLA_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -386,6 +450,13 @@ export const WELLNESS_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -407,6 +478,7 @@ export const WELLNESS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       facilitiesText {
@@ -430,6 +502,7 @@ export const WELLNESS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       tabbedSliderBlock {
@@ -462,6 +535,7 @@ export const WELLNESS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       seo {
@@ -470,6 +544,13 @@ export const WELLNESS_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -483,6 +564,13 @@ export const DINING_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -519,11 +607,11 @@ export const DINING_QUERY = gql`
           url
           documentId
           hash
-          hash
           mime
           name
           provider
           size
+          formats
         }
       }
       seo {
@@ -532,6 +620,13 @@ export const DINING_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -545,6 +640,13 @@ export const MEETINGS_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -586,6 +688,7 @@ export const MEETINGS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       sectionGridSlider {
@@ -601,6 +704,7 @@ export const MEETINGS_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       contactUsText {
@@ -627,6 +731,13 @@ export const MEETINGS_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -640,6 +751,13 @@ export const EXPERIENCE_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -681,6 +799,7 @@ export const EXPERIENCE_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       sectionGridSlider {
@@ -696,6 +815,7 @@ export const EXPERIENCE_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
       seo {
@@ -704,6 +824,13 @@ export const EXPERIENCE_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -732,6 +859,7 @@ export const GALLERY_QUERY = gql`
           name
           provider
           size
+          formats
         }
       }
 
@@ -741,6 +869,13 @@ export const GALLERY_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }
@@ -754,6 +889,13 @@ export const GIFTCARD_QUERY = gql`
         heroImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
         heroText
       }
@@ -783,6 +925,13 @@ export const GIFTCARD_QUERY = gql`
         shareImage {
           alternativeText
           url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
         }
       }
     }

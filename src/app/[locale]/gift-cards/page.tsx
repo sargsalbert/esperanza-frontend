@@ -31,7 +31,7 @@ export default async function GiftCards({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.giftCard?.heroSection?.heroImage?.url}
+        heroImage={data.giftCard?.heroSection?.heroImage}
         title={data.giftCard?.heroSection?.heroText}
       />
 

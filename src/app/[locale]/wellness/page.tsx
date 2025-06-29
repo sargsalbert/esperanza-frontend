@@ -30,7 +30,7 @@ export default async function Wellness({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.wellness?.heroSection?.heroImage?.url}
+        heroImage={data.wellness?.heroSection?.heroImage}
         title={data.wellness?.heroSection?.heroText}
       />
 

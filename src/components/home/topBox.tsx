@@ -15,12 +15,16 @@ type TopBoxProps = {
   locale: Locale;
 };
 
-export default function TopBox({ heroSection, bookingWidget, locale }: TopBoxProps) {
+export default function TopBox({
+  heroSection,
+  bookingWidget,
+  locale,
+}: TopBoxProps) {
   useViewportHeight();
   return (
     <div className='relative mb-17.5 flex h-[calc(var(--vh,1vh)*100-143px)] w-full md:mb-30 md:h-[calc(var(--vh,1vh)*100-179px)] lg:mb-39 lg:h-[calc(var(--vh,1vh)*100-225px)] 2xl:h-[calc(var(--vh,1vh)*100-238px)]'>
       <TopSection
-        url={heroSection?.heroImage?.url}
+        heroImage={heroSection?.heroImage}
         title={heroSection?.heroText}
       />
       <BookingWidget data={bookingWidget} locale={locale} />

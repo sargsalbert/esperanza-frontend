@@ -28,7 +28,7 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.roomsAndSuite?.heroSection?.heroImage?.url || ''}
+        heroImage={data.roomsAndSuite?.heroSection?.heroImage}
         title={data.roomsAndSuite?.heroSection?.heroText}
       />
 

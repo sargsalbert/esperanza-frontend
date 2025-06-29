@@ -33,7 +33,7 @@ export default async function Destination({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.destination?.heroSection?.heroImage?.url}
+        heroImage={data.destination?.heroSection?.heroImage}
         title={data.destination?.heroSection?.heroText}
       />
       <SectionHeader
@@ -74,9 +74,9 @@ export default async function Destination({ params }: LocalePageProps) {
         {data.destination?.architectureDesignImages?.multipleImages?.length
           ? data.destination.architectureDesignImages.multipleImages.map(
               (d, index) => {
-                if (!d) return null; // Skip null entries
+                if (!d) return null;
                 return (
-                  <ImageGrid key={d.documentId} index={index} url={d.url} />
+                  <ImageGrid key={d.documentId} index={index} imageData={d} />
                 );
               },
             )

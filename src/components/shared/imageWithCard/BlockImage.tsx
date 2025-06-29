@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { Maybe, UploadFile } from '@/gql/graphql';
+import StrapiImage from '../StrapiImage';
 
 interface BlockImageProps {
   emblaRef: EmblaViewportRefType;
@@ -19,12 +19,7 @@ const BlockImage = ({ emblaRef, images }: BlockImageProps) => {
             key={index}
             className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-4/2 lg:aspect-5/3'
           >
-            <Image
-              src={image?.url || ''}
-              alt={`image`}
-              fill
-              className='object-cover'
-            />
+            {image && <StrapiImage image={image} />}
           </div>
         ))}
       </div>

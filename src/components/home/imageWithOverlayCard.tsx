@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import {
   useCallback,
   useEffect,
@@ -12,6 +11,7 @@ import { SlideLeftIcon } from '../icons/slideLeftIcon';
 import { SlideRightIcon } from '../icons/slideRightIcon';
 import { ComponentSharedTextImageSliderBlock } from '@/gql/graphql';
 import FadeInOnView from '../shared/FadeInOnView';
+import StrapiImage from '../shared/StrapiImage';
 
 export interface RoomFeature {
   id: number;
@@ -109,15 +109,12 @@ const ImageWithOverlayCard = ({
     // Only trigger if horizontal swipe is greater than vertical swipe (to avoid scrolling conflicts)
     if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 30) {
       if (xDiff > 0) {
-        // Swiped left, go next
         scrollNext();
       } else {
-        // Swiped right, go previous
         scrollPrev();
       }
     }
 
-    // Reset touch positions
     setTouchStartX(0);
     setTouchStartY(0);
   };
@@ -211,12 +208,7 @@ const ImageWithOverlayCard = ({
                 key={i}
                 className='relative aspect-4/3 w-full min-w-0 flex-[0_0_100%] sm:aspect-4/2 lg:aspect-5/3'
               >
-                <Image
-                  src={feature?.image?.url || '/placeholder.svg'}
-                  alt={`image`}
-                  fill
-                  className='object-cover'
-                />
+                {feature?.image && <StrapiImage image={feature.image} />}
               </div>
             ))}
           </div>

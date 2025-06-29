@@ -1,11 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-// import FadeInOnView from '@/components/shared/FadeInOnView';
 import { UploadFile } from '@/gql/graphql';
-
 import { ImageViewer } from './ImageViewer';
+import StrapiImage from '@/components/shared/StrapiImage';
 
 type DynamicGalleryProps = {
   images: UploadFile[];
@@ -44,7 +42,6 @@ export const DynamicGallery = ({ images }: DynamicGalleryProps) => {
 
   return (
     <div className='mx-auto mb-12.5 px-5 sm:mb-15 sm:px-7.5 lg:mb-32.5 lg:px-15'>
-      {/* First 5 images */}
       {images.length > 0 && (
         <div className='mb-1.5 grid grid-cols-10 gap-1.5 overflow-hidden sm:mb-2 sm:grid-cols-4 sm:gap-2 lg:mb-3 lg:gap-3'>
           {images.slice(0, 5).map((img, index) => (
@@ -53,13 +50,7 @@ export const DynamicGallery = ({ images }: DynamicGalleryProps) => {
               className={`relative ${layoutSlotsFirst9[index]}`}
               onClick={() => openViewer(index)}
             >
-              <Image
-                src={img.url}
-                alt={img.alternativeText || img.name}
-                layout='fill'
-                objectFit='cover'
-                className='cursor-pointer'
-              />
+              <StrapiImage image={img} className='cursor-pointer' />
             </div>
           ))}
         </div>
@@ -74,13 +65,7 @@ export const DynamicGallery = ({ images }: DynamicGalleryProps) => {
               className={`relative ${layoutSlotsFirst9[index + 5]}`}
               onClick={() => openViewer(index + 5)}
             >
-              <Image
-                src={img.url}
-                alt={img.alternativeText || img.name}
-                layout='fill'
-                objectFit='cover'
-                className='cursor-pointer'
-              />
+              <StrapiImage image={img} className='cursor-pointer' />
             </div>
           ))}
         </div>
@@ -105,13 +90,7 @@ export const DynamicGallery = ({ images }: DynamicGalleryProps) => {
                       className={`relative ${repeatLayoutSlots[i % repeatLayoutSlots.length]}`}
                       onClick={() => openViewer(start + i)}
                     >
-                      <Image
-                        src={img.url}
-                        alt={img.alternativeText || img.name}
-                        className='cursor-pointer'
-                        layout='fill'
-                        objectFit='cover'
-                      />
+                      <StrapiImage image={img} className='cursor-pointer' />
                     </div>
                   ))}
                 </div>

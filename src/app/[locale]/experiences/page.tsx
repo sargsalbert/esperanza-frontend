@@ -28,7 +28,7 @@ export default async function Experiences({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.experience?.heroSection?.heroImage?.url}
+        heroImage={data.experience?.heroSection?.heroImage}
         title={data.experience?.heroSection?.heroText}
       />
 

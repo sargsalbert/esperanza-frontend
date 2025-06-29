@@ -133,7 +133,7 @@ const ImageWithCard = ({
           {images?.map((image, index) => (
             <Thumbnail
               key={index}
-              src={image?.url || ''}
+              image={image}
               index={index}
               currentIndex={currentIndex}
               emblaApi={emblaApi}

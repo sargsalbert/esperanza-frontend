@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { CloseIcon } from '@/components/icons/closeIcon';
 import { SlideLeftIcon } from '@/components/icons/slideLeftIcon';
 import { UploadFile } from '@/gql/graphql';
 import React, { useEffect } from 'react';
 import { SlideRightIcon } from '@/components/icons/slideRightIcon';
+import StrapiImage from '@/components/shared/StrapiImage';
 
 type ImageViewerProps = {
   images: UploadFile[];
@@ -56,14 +56,12 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
       </div>
 
       <div className='relative flex h-full max-h-[90%] w-full max-w-[90%] items-center justify-center'>
-        <Image
-          src={images[currentIndex].url}
-          alt={
-            images[currentIndex].alternativeText || images[currentIndex].name
-          }
-          layout='fill'
-          objectFit='contain'
-        />
+        {images[currentIndex] && (
+          <StrapiImage
+            image={images[currentIndex]}
+            className='!object-contain'
+          />
+        )}
       </div>
     </div>
   );

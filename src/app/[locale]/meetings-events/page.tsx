@@ -33,7 +33,7 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
   return (
     <>
       <PageHeader
-        imgUrl={data.meetingsAndEvent?.heroSection?.heroImage?.url}
+        heroImage={data.meetingsAndEvent?.heroSection?.heroImage}
         title={data.meetingsAndEvent?.heroSection?.heroText}
       />
 

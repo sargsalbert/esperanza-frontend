@@ -1,11 +1,11 @@
 'use client';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { SlideRightIcon } from '../icons/slideRightIcon';
 import { SlideLeftIcon } from '../icons/slideLeftIcon';
 import { ComponentSharedSectionGridSlider } from '@/gql/graphql';
 import FadeInOnView from '../shared/FadeInOnView';
+import StrapiImage from '../shared/StrapiImage';
 
 type SectionGridProps = {
   sectionGridSlider?: (ComponentSharedSectionGridSlider | null)[] | null;
@@ -84,12 +84,7 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
                   ref={index === 0 ? imageWrapperRef : null}
                   className='relative aspect-5/4 w-full overflow-hidden sm:aspect-4/2 lg:aspect-5/4'
                 >
-                  <Image
-                    src={item?.image?.url || ''}
-                    alt='A beautiful view'
-                    layout='fill'
-                    objectFit='cover'
-                  />
+                  {item?.image && <StrapiImage image={item.image} />}
                 </div>
                 <div className='flex h-full flex-1 flex-col bg-gray-100 px-2.5 py-5 text-center md:p-6 lg:p-4 lg:text-left xl:p-6'>
                   <div>
