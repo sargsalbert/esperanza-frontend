@@ -1,9 +1,20 @@
-import React, { useRef, useCallback, ReactNode, useState, useEffect } from 'react';
+import React, {
+  useRef,
+  useCallback,
+  ReactNode,
+  useState,
+  useEffect,
+} from 'react';
 import { useField, useFormikContext } from 'formik';
-import { DateRange, DayPicker, getDefaultClassNames, Locale } from 'react-day-picker';
+import {
+  DateRange,
+  DayPicker,
+  getDefaultClassNames,
+  Locale,
+} from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { NoAvailabilityIcon } from '../icons/noAvailabilityIcon';
-import { enUS, lt } from "react-day-picker/locale";
+import { enUS, lt } from 'react-day-picker/locale';
 import { Locale as AppLocale } from '../../../i18n-config';
 import { SelectArrowIcon } from '../icons/selectArrowIcon';
 import { CloseIcon } from '../icons/closeIcon';
@@ -29,8 +40,10 @@ type Props = {
   showInput?: boolean;
 };
 
-export const formatRange = (range: DateRange, locale?: AppLocale): React.ReactNode => {
-
+export const formatRange = (
+  range: DateRange,
+  locale?: AppLocale,
+): React.ReactNode => {
   if (!range.from) return '';
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'short',
@@ -40,7 +53,7 @@ export const formatRange = (range: DateRange, locale?: AppLocale): React.ReactNo
   const fromStr = range.from.toLocaleDateString(locale, options);
   const toStr = range.to ? range.to.toLocaleDateString(locale, options) : '';
   return toStr ? (
-    <span className='flex items-center gap-2.5'>
+    <span className='flex items-center gap-2.5 text-nowrap lg:gap-1 xl:gap-2.5'>
       {fromStr}
       <svg
         width='12'
@@ -72,7 +85,7 @@ export const DatePicker: React.FC<Props> = ({
   textNoAvailability,
   currentLanguage,
   showInput,
-  placeholder
+  placeholder,
 }) => {
   const defaultClassNames = getDefaultClassNames();
   const [field, meta] = useField(name);
@@ -133,7 +146,7 @@ export const DatePicker: React.FC<Props> = ({
   if (mode === 'multiple' && Array.isArray(selectedDates)) {
     formattedDate = selectedDates.map(formatDate).join(', ');
   } else if (mode === 'range' && selectedDates && selectedDates.from) {
-    formattedDate = formatRange(selectedDates,);
+    formattedDate = formatRange(selectedDates);
   } else if (mode === 'single' && selectedDates instanceof Date) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formattedDate = formatDate(selectedDates);
@@ -143,13 +156,14 @@ export const DatePicker: React.FC<Props> = ({
 
   const previewRange: DateRange | undefined =
     mode === 'range' &&
-      selectedDates?.from &&
-      !selectedDates?.to &&
-      hoveredDay instanceof Date
+    selectedDates?.from &&
+    !selectedDates?.to &&
+    hoveredDay instanceof Date
       ? {
-        from: selectedDates.from < hoveredDay ? selectedDates.from : hoveredDay,
-        to: selectedDates.from > hoveredDay ? selectedDates.from : hoveredDay,
-      }
+          from:
+            selectedDates.from < hoveredDay ? selectedDates.from : hoveredDay,
+          to: selectedDates.from > hoveredDay ? selectedDates.from : hoveredDay,
+        }
       : undefined;
 
   // input + toggle logic
@@ -186,26 +200,34 @@ export const DatePicker: React.FC<Props> = ({
 
   // End input + toggle logic
 
-
   return (
     <div ref={ref} className='relative'>
       {showInput && (
-        <div className="relative mb-5 sm:mb-7.5 lg:mb-10">
+        <div className='relative mb-5 sm:mb-7.5 lg:mb-10'>
           <div
             onClick={handleToggle}
-            className="min-h-10 w-full cursor-pointer border-b-2 border-gray-200 py-2.5 text-sm font-medium  transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3"
+            className='min-h-10 w-full cursor-pointer border-b-2 border-gray-200 py-2.5 text-sm font-medium transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3'
           >
-            {inputFormattedDate as string || <span className='text-gray-300'>{placeholder}</span>}
+            {(inputFormattedDate as string) || (
+              <span className='text-gray-300'>{placeholder}</span>
+            )}
           </div>
           <SelectArrowIcon
-            className={`absolute top-1/2 right-2 h-[6px] w-[12px] flex-shrink-0 -translate-y-1/2 transform text-gray-300 transition-transform duration-300 sm:h-[7px] sm:w-[14px] ${open ? 'rotate-180' : ''
-              }`}
+            className={`absolute top-1/2 right-2 h-[6px] w-[12px] flex-shrink-0 -translate-y-1/2 transform text-gray-300 transition-transform duration-300 sm:h-[7px] sm:w-[14px] ${
+              open ? 'rotate-180' : ''
+            }`}
           />
         </div>
       )}
       {finalIsOpen && (
-        <div className={showInput ? 'absolute top-full left-0 z-30 w-full md:w-auto bg-gray-100 p-5 shadow-xs' : ''}>
-          {showInput &&
+        <div
+          className={
+            showInput
+              ? 'absolute top-full left-0 z-30 w-full bg-gray-100 p-5 shadow-xs md:w-auto'
+              : ''
+          }
+        >
+          {showInput && (
             <div className='mb-5 flex justify-end'>
               <button
                 type='button'
@@ -215,7 +237,7 @@ export const DatePicker: React.FC<Props> = ({
                 <CloseIcon className='h-3 w-3 lg:h-4 lg:w-4' />
               </button>
             </div>
-          }
+          )}
           <DayPicker
             mode={mode}
             navLayout='around'
@@ -233,7 +255,6 @@ export const DatePicker: React.FC<Props> = ({
             modifiersClassNames={{
               hoverRange: 'bg-gray-600', // or any class you like for preview
             }}
-
             footer={
               footer && (
                 <div className='mt-6 flex'>
@@ -283,8 +304,9 @@ export const DatePicker: React.FC<Props> = ({
         </div>
       )}
 
-      {showError && <div className="mt-1 text-sm text-red-500">{meta.error}</div>}
-
+      {showError && (
+        <div className='mt-1 text-sm text-red-500'>{meta.error}</div>
+      )}
     </div>
   );
 };

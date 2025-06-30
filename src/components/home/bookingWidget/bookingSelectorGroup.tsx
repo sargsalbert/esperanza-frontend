@@ -30,7 +30,9 @@ const BookingSelectorGroup = ({
         className='relative flex cursor-pointer justify-between sm:justify-start lg:justify-center'
         onClick={() => setOpenPanel(isOpen ? null : panel)}
       >
-        <div className='mr-5 font-medium transition'>{value}</div>
+        <div className='mr-5 font-medium transition lg:mr-2.5 xl:mr-5'>
+          {value}
+        </div>
 
         <SelectArrowIcon
           className={`mr-1 h-[5px] w-[10px] flex-shrink-0 transform self-center text-gray-900 transition-transform duration-300 sm:h-[6px] sm:w-[12px] ${
