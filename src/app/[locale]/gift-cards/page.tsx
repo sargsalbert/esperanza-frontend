@@ -12,15 +12,11 @@ import { Locale } from '../../../../i18n-config';
 import { Suspense } from 'react';
 
 export async function generateMetadata({ params }: LocalePageProps) {
-  return generateSeoMetadata<GiftCardQuery>(
-    GIFTCARD_QUERY,
-    params,
-    (data) => ({
-      title: data.giftCard?.seo?.metaTitle,
-      description: data.giftCard?.seo?.metaDescription,
-      image: data.giftCard?.seo?.shareImage?.url, 
-    })
-  );
+  return generateSeoMetadata<GiftCardQuery>(GIFTCARD_QUERY, params, (data) => ({
+    title: data.giftCard?.seo?.metaTitle,
+    description: data.giftCard?.seo?.metaDescription,
+    image: data.giftCard?.seo?.shareImage?.url,
+  }));
 }
 
 export default async function GiftCards({ params }: LocalePageProps) {
@@ -45,13 +41,12 @@ export default async function GiftCards({ params }: LocalePageProps) {
         id=''
       />
       <FadeInOnView className='mb-12.5 sm:mb-15 lg:mb-20'>
-
         <Suspense fallback={<div>Loading...</div>}>
           <GiftForm data={data} locale={locale as Locale} />
         </Suspense>
 
         {data.giftCard?.formBottomNote && (
-          <div className='mx-auto mt-5 max-w-5xl px-5 sm:mt-7.5 md:px-10 lg:mt-10 2xl:px-15'>
+          <div className='mt-5 px-5 sm:mt-7.5 md:px-7.5 lg:mt-10 lg:px-[22%]'>
             <StrapiRichTextRenderer
               content={data.giftCard?.formBottomNote}
               textCenter={true}
