@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { i18n, type Locale } from '../../i18n-config';
+import { LogoIcon } from '@/components/icons/logoIcon';
 
 export default function RootRedirect() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function RootRedirect() {
   return (
     <div className='flex min-h-screen items-center justify-center'>
       <div className='text-center'>
-        <p>Redirecting...</p>
+        <LogoIcon className='h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]' />
       </div>
     </div>
   );
