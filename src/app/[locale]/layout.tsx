@@ -6,7 +6,8 @@ import '../globals.css';
 import { fetchData } from '@/lib/apolloClient';
 import { GLOBAL_QUERY } from '@/lib/graphql/queries';
 import { GlobalQuery } from '@/gql/graphql';
-import { i18n } from '../../../i18n-config';
+import { i18n, Locale } from '../../../i18n-config';
+import { notFound } from 'next/navigation';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -24,7 +25,23 @@ export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+// Client component to set the lang attribute
+function LocaleProvider({
+  children,
+  locale,
+}: {
+  children: React.ReactNode;
+  locale: string;
+}) {
+  // Set the lang attribute on the html element
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = locale;
+  }
+
+  return <>{children}</>;
+}
+
+export default async function LocaleLayout({
   children,
   params,
 }: {
@@ -32,15 +49,38 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
 
-  return (
-    <html lang={locale}>
-      <body className={`${montserrat.className} antialiased`}>
-        <Header global={data.global} />
-        {children}
-        <Footer global={data.global} />
-      </body>
-    </html>
-  );
+  // Validate locale
+  if (!i18n.locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  try {
+    const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
+
+    return (
+      <LocaleProvider locale={locale}>
+        <div
+          className={`${montserrat.className} flex min-h-screen flex-col antialiased`}
+        >
+          <Header global={data.global} />
+          <main className='flex-1'>{children}</main>
+          <Footer global={data.global} />
+        </div>
+      </LocaleProvider>
+    );
+  } catch (error) {
+    console.error('Error fetching global data:', error);
+
+    // Fallback layout without data
+    return (
+      <LocaleProvider locale={locale}>
+        <div
+          className={`${montserrat.className} flex min-h-screen flex-col antialiased`}
+        >
+          <main className='flex-1'>{children}</main>
+        </div>
+      </LocaleProvider>
+    );
+  }
 }
