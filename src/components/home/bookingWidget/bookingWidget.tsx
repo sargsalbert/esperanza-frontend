@@ -14,7 +14,7 @@ import { Locale } from '../../../../i18n-config';
 
 type BookingWidgetProps = {
   data?: ComponentSharedBookingWidgetInput | null;
-  locale: Locale
+  locale: Locale;
 };
 
 export interface ContactFormValues {
@@ -35,7 +35,7 @@ const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
 
   return (
     <>
-      <div className='absolute right-0 bottom-0 left-0 z-30 mx-auto block max-w-[1480px] translate-y-1/2 transform px-5 md:px-7.5 lg:px-10 2xl:px-15'>
+      <div className='absolute right-0 bottom-0 left-0 z-30 mx-auto block translate-y-1/2 transform px-5 md:px-7.5 lg:px-[14.5%]'>
         <div className='relative bg-gray-100 shadow-xs'>
           <Formik
             initialValues={{

@@ -8,7 +8,6 @@ import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
@@ -20,8 +19,8 @@ export async function generateMetadata({ params }: LocalePageProps) {
     (data) => ({
       title: data.destination?.Seo?.metaTitle,
       description: data.destination?.Seo?.metaDescription,
-      image: data.destination?.Seo?.shareImage?.url, 
-    })
+      image: data.destination?.Seo?.shareImage?.url,
+    }),
   );
 }
 
@@ -46,7 +45,7 @@ export default async function Destination({ params }: LocalePageProps) {
         id=''
       />
       <FadeInOnView>
-        <div className='mx-auto max-w-[1480px] overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
+        <div className='overflow-hidden px-5 pb-5 sm:pb-7.5 md:px-7.5 lg:px-[14.5%]'>
           <div className='aspect-3/2 w-full lg:aspect-16/9'>
             <LocationMap />
           </div>
@@ -54,7 +53,7 @@ export default async function Destination({ params }: LocalePageProps) {
       </FadeInOnView>
       {data.destination?.afterMapText && (
         <FadeInOnView>
-          <div className='mx-auto mb-12.5 max-w-[1160px] px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-10 2xl:px-15'>
+          <div className='mb-12.5 px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-[22%]'>
             <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
               {data.destination.afterMapText}
             </p>

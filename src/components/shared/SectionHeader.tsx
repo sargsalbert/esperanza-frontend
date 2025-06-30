@@ -17,7 +17,7 @@ const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <FadeInOnView>
-      <div className='mx-auto max-w-[1160px] overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-7.5 lg:px-10 2xl:px-15'>
+      <div className='overflow-hidden px-5 pb-5 text-center sm:pb-7.5 md:px-7.5 lg:px-[22%]'>
         {subtitle && (
           <p className='mx-auto mb-7.5 max-w-[75%] text-[13px] text-gray-900 italic sm:text-base lg:mb-10 xl:mb-15'>
             {subtitle}
@@ -30,7 +30,7 @@ const SectionHeader = ({
         </div>
 
         <p
-          className={`text-[14px]/[26px] sm:text-[16px]/[32px] ${buttonText ? 'pb-3.5 sm:pb-7.5' : 'pb-0'}`}
+          className={`text-[14px]/[26px] sm:text-[16px]/[32px] ${buttonText ? 'pb-3.5 sm:pb-6.5' : 'pb-0'}`}
         >
           {description}
         </p>
