@@ -74,7 +74,7 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
           className='relative overflow-hidden lg:mx-10 2xl:mx-15'
           ref={emblaRef}
         >
-          <div className='flex'>
+          <div className='flex items-stretch'>
             {sectionGridSlider?.map((item, index) => (
               <div
                 key={index}
