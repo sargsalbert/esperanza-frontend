@@ -69,7 +69,7 @@ export default async function Destination({ params }: LocalePageProps) {
         newTab={data.destination?.architectureDesignText?.newTab}
         id=''
       />
-      <div className='mx-auto mb-12.5 grid max-w-[1480px] grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-10 2xl:px-15'>
+      <div className='mb-12.5 grid grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-[14.5%]'>
         {data.destination?.architectureDesignImages?.multipleImages?.length
           ? data.destination.architectureDesignImages.multipleImages.map(
               (d, index) => {
