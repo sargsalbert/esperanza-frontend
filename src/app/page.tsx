@@ -9,7 +9,6 @@ export default function RootRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    // Get browser language with fallback
     const browserLang =
       typeof navigator !== 'undefined'
         ? navigator.language
@@ -17,19 +16,16 @@ export default function RootRedirect() {
 
     const langCode = browserLang.split('-')[0];
 
-    // Type-safe check: is langCode a valid Locale?
-    const isValidLocale = (locale: string): locale is Locale => {
-      return i18n.locales.includes(locale as Locale);
-    };
-
-    const preferredLocale: Locale = isValidLocale(langCode)
-      ? langCode
+    const preferredLocale: Locale = i18n.locales.includes(langCode as Locale)
+      ? (langCode as Locale)
       : i18n.defaultLocale;
 
-    router.replace(`/${preferredLocale}`);
+    // Redirect only if not already on locale route
+    if (!window.location.pathname.startsWith(`/${preferredLocale}`)) {
+      router.replace(`/${preferredLocale}`);
+    }
   }, [router]);
 
-  // Show loading state instead of null
   return (
     <div className='flex min-h-screen items-center justify-center'>
       <div className='text-center'>
