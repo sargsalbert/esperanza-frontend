@@ -38,7 +38,7 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
     formEmail: Yup.string().email('Invalid email').required('Required'),
     formDates: Yup.object({
       from: Yup.date().nullable().notRequired(),
-      to: Yup.date().nullable().notRequired()
+      to: Yup.date().nullable().notRequired(),
     }),
     formNumberGuests: Yup.number()
       .min(1, 'At least 1 guest')
@@ -81,7 +81,7 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
           {data.meetingsAndEvent?.formSuccessText}
         </div>
       ) : (
-        <div className='mx-auto max-w-5xl px-5 pb-12.5 sm:pb-15 md:px-10 lg:pb-20 2xl:px-15'>
+        <div className='px-5 pb-12.5 sm:pb-15 md:px-7.5 lg:px-[25%] lg:pb-20'>
           <Formik
             initialValues={{
               name: '',
@@ -119,7 +119,7 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                     name='formDates'
                     placeholder={data.meetingsAndEvent?.formDates || ''}
                     currentLanguage={locale}
-                    mode="range"
+                    mode='range'
                     showInput
                   />
                   <Input

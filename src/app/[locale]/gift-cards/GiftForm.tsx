@@ -116,7 +116,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   };
 
   return (
-    <div ref={formRef} className='mx-auto max-w-5xl px-5 md:px-10 2xl:px-15'>
+    <div ref={formRef} className='px-5 md:px-7.5 lg:px-[25%]'>
       <div className='mt-2.5 sm:mt-5'>
         {success && sessionData ? (
           <div className='w-full text-center text-[20px] font-semibold text-yellow-500 lg:text-[28px]'>
