@@ -27,9 +27,21 @@ export default function RootRedirect() {
   }, [router]);
 
   return (
-    <div className='flex min-h-screen items-center justify-center'>
-      <div className='text-center'>
-        <LogoIcon className='h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]' />
+    <div
+      style={{
+        display: 'flex',
+        minHeight: '100vh',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div style={{ textAlign: 'center' }}>
+        <LogoIcon
+          style={{
+            height: '71px',
+            width: '179px',
+          }}
+        />
       </div>
     </div>
   );
