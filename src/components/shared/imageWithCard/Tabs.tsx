@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import StrapiRichTextRenderer from '../StrapiRichTextRenderer';
 import { ComponentSharedTabItem, Maybe } from '@/gql/graphql';
+import LocaleLink from '../LocaleLink';
 
 interface TabsProps {
   tabs: Maybe<ComponentSharedTabItem>[];
@@ -87,7 +88,18 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                       {field?.firstTextField}
                     </span>
                     <span className='text-[13px] font-semibold break-all text-gray-900 md:text-[15px] md:break-words'>
-                      {field?.secondTextField}
+                      {field?.secondTextField?.startsWith('tel:') ||
+                      field?.secondTextField?.startsWith('mailto:') ? (
+                        <LocaleLink href={field?.secondTextField?.trim()}>
+                          {field?.secondTextField?.replace(
+                            /^tel:|^mailto:/,
+                            '',
+                          )}
+                        </LocaleLink>
+                      ) : (
+                        field?.secondTextField
+                      )}
+
                       {field?.specialTextField && (
                         <>
                           <div className='mt-1.5'>{field.specialTextField}</div>
