@@ -90,7 +90,13 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                     <span className='text-[13px] font-semibold break-all text-gray-900 md:text-[15px] md:break-words'>
                       {field?.secondTextField?.startsWith('tel:') ||
                       field?.secondTextField?.startsWith('mailto:') ? (
-                        <LocaleLink href={field?.secondTextField?.trim()}>
+                        <LocaleLink
+                          href={
+                            field?.secondTextField
+                              ?.trim()
+                              ?.replace(/\s+/g, '') || ''
+                          }
+                        >
                           {field?.secondTextField?.replace(
                             /^tel:|^mailto:/,
                             '',
