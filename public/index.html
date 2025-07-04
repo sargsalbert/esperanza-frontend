@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      const lang = navigator.language?.split('-')[0];
+      const supported = ['en', 'lt'];
+      const redirectLang = supported.includes(lang) ? lang : 'en';
+      window.location.replace(`/${redirectLang}`);
+    </script>
+    <noscript><meta http-equiv="refresh" content="0;url=/en" /></noscript>
+  </head>
+  <body></body>
+</html>s

@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
+import NoscriptRedirect from './NoscriptRedirect';
 
 export default function RootLayout({
   children,
@@ -7,8 +8,13 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
-      <GoogleAnalytics gaId='G-03C4F1ETL4' />
+      <head>
+        <NoscriptRedirect />
+      </head>
+      <body suppressHydrationWarning>
+        {children}
+        <GoogleAnalytics gaId='G-03C4F1ETL4' />
+      </body>
     </html>
   );
 }

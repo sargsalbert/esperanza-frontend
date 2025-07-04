@@ -1,48 +1,31 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { i18n, type Locale } from '../../i18n-config';
-import { LogoIcon } from '@/components/icons/logoIcon';
 
 export default function RootRedirect() {
-  const router = useRouter();
-
   useEffect(() => {
-    const browserLang =
-      typeof navigator !== 'undefined'
-        ? navigator.language
-        : i18n.defaultLocale;
+    if (typeof window === 'undefined' || !navigator.language) return;
 
+    const browserLang = navigator.language;
     const langCode = browserLang.split('-')[0];
 
     const preferredLocale: Locale = i18n.locales.includes(langCode as Locale)
       ? (langCode as Locale)
       : i18n.defaultLocale;
 
-    // Redirect only if not already on locale route
-    if (!window.location.pathname.startsWith(`/${preferredLocale}`)) {
-      router.replace(`/${preferredLocale}`);
-    }
-  }, [router]);
+    const currentPath = window.location.pathname;
 
-  return (
-    <div
-      style={{
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div style={{ textAlign: 'center' }}>
-        <LogoIcon
-          style={{
-            height: '71px',
-            width: '179px',
-          }}
-        />
-      </div>
-    </div>
-  );
+    // Only redirect if not already on a locale path
+    const isAlreadyRedirected = i18n.locales.some((loc) =>
+      currentPath.startsWith(`/${loc}`),
+    );
+
+    if (!isAlreadyRedirected) {
+      window.location.replace(`/${preferredLocale}`);
+    }
+  }, []);
+
+  // Optional: Spinner or logo while redirecting
+  return null;
 }
