@@ -112,10 +112,8 @@ const ImageWithOverlayCard = ({
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  ref={refCallback(index)}
                   style={{
                     minHeight: minHeight ? `${minHeight}px` : undefined,
-                    visibility: minHeight ? 'visible' : 'hidden',
                   }}
                   className={`flex flex-col justify-start transition-opacity duration-500 ease-in-out ${
                     index === currentIndex
@@ -123,7 +121,7 @@ const ImageWithOverlayCard = ({
                       : 'pointer-events-none absolute top-0 left-0 w-full opacity-0'
                   }`}
                 >
-                  <div className='lg:min-h-[12rem]'>
+                  <div className='lg:min-h-[12rem]' ref={refCallback(index)}>
                     <h2 className='mb-3 flex min-w-auto justify-center border-b-2 border-yellow-500 pb-3 text-[18px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
                       {feature?.title}
                     </h2>
