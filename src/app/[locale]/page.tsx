@@ -10,17 +10,12 @@ import TopBox from '@/components/home/topBox';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../i18n-config';
 
-
 export async function generateMetadata({ params }: LocalePageProps) {
-  return generateSeoMetadata<HomeQuery>(
-    HOME_QUERY,
-    params,
-    (data) => ({
-      title: data.home?.seo?.metaTitle,
-      description: data.home?.seo?.metaDescription,
-      image: data.home?.seo?.shareImage?.url, 
-    })
-  );
+  return generateSeoMetadata<HomeQuery>(HOME_QUERY, params, (data) => ({
+    title: data.home?.seo?.metaTitle,
+    description: data.home?.seo?.metaDescription,
+    image: data.home?.seo?.shareImage?.url,
+  }));
 }
 
 export default async function Home({ params }: LocalePageProps) {
