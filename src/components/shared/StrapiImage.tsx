@@ -20,7 +20,7 @@ const getImageSrcSet = (
     small ? `${small.url} ${small.width}w` : null,
     medium ? `${medium.url} ${medium.width}w` : null,
     large ? `${large.url} ${large.width}w` : null,
-    `${originalUrl} 1537w`,
+    `${originalUrl} 2560w`,
   ]
     .filter(Boolean)
     .join(', ');
