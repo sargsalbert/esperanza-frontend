@@ -1,9 +1,15 @@
-name: Manual Redeploy
+name: Rebuild on Strapi Content Change
 
-on: [workflow_dispatch]
+on:
+  repository_dispatch:
+    types: [strapi-content-updated]
 
 jobs:
-  redeploy:
+  rebuild:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Redeploying frontend..."
+      - name: Trigger redeploy on DigitalOcean
+        run: |
+          curl -X POST "https://api.digitalocean.com/v2/apps/09e996b8-62fc-4581-81ca-952507195263/deployments" \
+          -H "Authorization: Bearer dop_v1_5250ffc4a53abb67b39617cc3a0193cf25990e7a1082411b2c3d2bd620f191e3" \
+          -H "Content-Type: application/json"
