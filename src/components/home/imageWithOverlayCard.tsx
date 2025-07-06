@@ -90,7 +90,7 @@ const ImageWithOverlayCard = ({
   };
 
   if (!features || features.length === 0) {
-    return <div className='p-4 text-center'>No images to display</div>;
+    return;
   }
 
   return (
