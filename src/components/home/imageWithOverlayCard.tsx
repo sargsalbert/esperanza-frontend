@@ -132,24 +132,27 @@ const ImageWithOverlayCard = ({
                   </div>
                 </div>
               ))}
-              {features.length > 1 && (
-                <div className='relative z-20 mt-auto -mb-[12px] hidden justify-end pt-4 lg:flex lg:gap-3 xl:gap-4 2xl:gap-5'>
-                  <button
-                    className='inline-flex cursor-pointer p-2.5'
-                    aria-label='Previous slide'
-                    onClick={scrollPrev}
-                  >
-                    <SlideLeftIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
-                  </button>
-                  <button
-                    className='inline-flex cursor-pointer p-2.5'
-                    onClick={scrollNext}
-                    aria-label='Next slide'
-                  >
-                    <SlideRightIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
-                  </button>
-                </div>
-              )}
+
+              <div className='relative z-20 mt-auto -mb-[12px] hidden justify-end pt-4 lg:flex lg:gap-3 xl:gap-4 2xl:gap-5'>
+                {features.length > 1 && (
+                  <>
+                    <button
+                      className='inline-flex cursor-pointer p-2.5'
+                      aria-label='Previous slide'
+                      onClick={scrollPrev}
+                    >
+                      <SlideLeftIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+                    </button>
+                    <button
+                      className='inline-flex cursor-pointer p-2.5'
+                      onClick={scrollNext}
+                      aria-label='Next slide'
+                    >
+                      <SlideRightIcon className='text-gray-800 lg:h-[16px] lg:w-[10px] xl:h-[18px] xl:w-[10px] 2xl:h-[22px] 2xl:w-[11px]' />
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
