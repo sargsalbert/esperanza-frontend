@@ -22,7 +22,7 @@ const menuItems = [
   { href: '/wellness', label: 'Wellness' },
   { href: '/dining', label: 'Dining' },
   { href: '/meetings-events', label: 'Meetings & Events' },
-  { href: '/experiences', label: 'Experiences' },
+  // { href: '/experiences', label: 'Experiences' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/gift-cards', label: 'Gift Cards' },
 ];
