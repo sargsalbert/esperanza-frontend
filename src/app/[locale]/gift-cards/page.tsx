@@ -26,10 +26,12 @@ export default async function GiftCards({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.giftCard?.heroSection?.heroImage}
-        title={data.giftCard?.heroSection?.heroText}
-      />
+      {!data.giftCard?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.giftCard?.heroSection?.heroImage}
+          title={data.giftCard?.heroSection?.heroText}
+        />
+      )}
       {!data.giftCard?.quietLuxuryText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.giftCard?.quietLuxuryText?.subtitle}

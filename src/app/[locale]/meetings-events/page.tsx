@@ -31,10 +31,12 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.meetingsAndEvent?.heroSection?.heroImage}
-        title={data.meetingsAndEvent?.heroSection?.heroText}
-      />
+      {!data.meetingsAndEvent?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.meetingsAndEvent?.heroSection?.heroImage}
+          title={data.meetingsAndEvent?.heroSection?.heroText}
+        />
+      )}
       {!data.meetingsAndEvent?.timelessMomentstext?.hideThisBlock && (
         <SectionHeader
           subtitle={data.meetingsAndEvent?.timelessMomentstext?.subtitle}

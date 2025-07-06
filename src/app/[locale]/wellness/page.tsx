@@ -24,10 +24,13 @@ export default async function Wellness({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.wellness?.heroSection?.heroImage}
-        title={data.wellness?.heroSection?.heroText}
-      />
+      {!data.wellness?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.wellness?.heroSection?.heroImage}
+          title={data.wellness?.heroSection?.heroText}
+        />
+      )}
+
       {!data.wellness?.ritualRenewalText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.wellness?.ritualRenewalText?.subtitle}

@@ -22,10 +22,12 @@ export default async function VillaPage({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.villa?.heroSection?.heroImage}
-        title={data.villa?.heroSection?.heroText}
-      />
+      {!data.villa?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.villa?.heroSection?.heroImage}
+          title={data.villa?.heroSection?.heroText}
+        />
+      )}
       {!data.villa?.privateHeavensText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.villa?.privateHeavensText?.subtitle}

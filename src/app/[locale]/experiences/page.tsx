@@ -27,10 +27,12 @@ export default async function Experiences({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.experience?.heroSection?.heroImage}
-        title={data.experience?.heroSection?.heroText}
-      />
+      {!data.experience?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.experience?.heroSection?.heroImage}
+          title={data.experience?.heroSection?.heroText}
+        />
+      )}
       {!data.experience?.exploreEsperanzaText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.experience?.exploreEsperanzaText?.subtitle}

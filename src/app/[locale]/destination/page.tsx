@@ -31,10 +31,12 @@ export default async function Destination({ params }: LocalePageProps) {
 
   return (
     <>
-      <PageHeader
-        heroImage={data.destination?.heroSection?.heroImage}
-        title={data.destination?.heroSection?.heroText}
-      />
+      {!data.destination?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.destination?.heroSection?.heroImage}
+          title={data.destination?.heroSection?.heroText}
+        />
+      )}
       {!data.destination?.beforeMapText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.destination?.beforeMapText?.subtitle}

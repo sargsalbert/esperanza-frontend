@@ -27,10 +27,12 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
   const data = await fetchData<RoomsAndSuiteQuery>(ROOMS_QUERY, { locale });
   return (
     <>
-      <PageHeader
-        heroImage={data.roomsAndSuite?.heroSection?.heroImage}
-        title={data.roomsAndSuite?.heroSection?.heroText}
-      />
+      {!data.roomsAndSuite?.heroSection?.hideThisBlock && (
+        <PageHeader
+          heroImage={data.roomsAndSuite?.heroSection?.heroImage}
+          title={data.roomsAndSuite?.heroSection?.heroText}
+        />
+      )}
       {!data.roomsAndSuite?.spacesToBreatheText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.roomsAndSuite?.spacesToBreatheText?.subtitle}

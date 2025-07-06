@@ -241,6 +241,7 @@ export const DESTINATION_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       beforeMapText {
         subtitle
@@ -310,6 +311,7 @@ export const ROOMS_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       spacesToBreatheText {
         subtitle
@@ -395,6 +397,7 @@ export const VILLA_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       privateHeavensText {
         subtitle
@@ -474,6 +477,7 @@ export const WELLNESS_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       ritualRenewalText {
         subtitle
@@ -592,6 +596,7 @@ export const DINING_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       beyondTableText {
         subtitle
@@ -670,6 +675,7 @@ export const MEETINGS_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       timelessMomentstext {
         subtitle
@@ -785,6 +791,7 @@ export const EXPERIENCE_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       exploreEsperanzaText {
         subtitle
@@ -927,6 +934,7 @@ export const GIFTCARD_QUERY = gql`
           formats
         }
         heroText
+        hideThisBlock
       }
       quietLuxuryText {
         subtitle
