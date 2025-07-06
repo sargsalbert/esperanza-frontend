@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: LocalePageProps) {
     (data) => ({
       title: data.roomsAndSuite?.seo?.metaTitle,
       description: data.roomsAndSuite?.seo?.metaDescription,
-      image: data.roomsAndSuite?.seo?.shareImage?.url, 
-    })
+      image: data.roomsAndSuite?.seo?.shareImage?.url,
+    }),
   );
 }
 
@@ -31,16 +31,17 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
         heroImage={data.roomsAndSuite?.heroSection?.heroImage}
         title={data.roomsAndSuite?.heroSection?.heroText}
       />
-
-      <SectionHeader
-        subtitle={data.roomsAndSuite?.spacesToBreatheText?.subtitle}
-        title={data.roomsAndSuite?.spacesToBreatheText?.title}
-        description={data.roomsAndSuite?.spacesToBreatheText?.description}
-        buttonText={data.roomsAndSuite?.spacesToBreatheText?.buttonText}
-        buttonUrl={data.roomsAndSuite?.spacesToBreatheText?.buttonUrl}
-        newTab={data.roomsAndSuite?.spacesToBreatheText?.newTab}
-        id=''
-      />
+      {!data.roomsAndSuite?.spacesToBreatheText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.roomsAndSuite?.spacesToBreatheText?.subtitle}
+          title={data.roomsAndSuite?.spacesToBreatheText?.title}
+          description={data.roomsAndSuite?.spacesToBreatheText?.description}
+          buttonText={data.roomsAndSuite?.spacesToBreatheText?.buttonText}
+          buttonUrl={data.roomsAndSuite?.spacesToBreatheText?.buttonUrl}
+          newTab={data.roomsAndSuite?.spacesToBreatheText?.newTab}
+          id=''
+        />
+      )}
       <FadeInOnView>
         <div className='mt-2 mb-7.5 block text-center sm:mt-3 sm:mb-10 lg:hidden'>
           <LocaleLink
@@ -57,8 +58,9 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
         </div>
       </FadeInOnView>
 
-      {data.roomsAndSuite?.tabbedSliderBlock?.length &&
-        data.roomsAndSuite?.tabbedSliderBlock?.map((d, index) => (
+      {(data.roomsAndSuite?.tabbedSliderBlock ?? [])
+        .filter((d) => !d?.hideThisBlock)
+        .map((d, index, arr) => (
           <div key={index} className='lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -68,11 +70,7 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
               images={d?.images ?? []}
               imageFirst={index % 2 !== 0}
               uiType='collapse'
-              isLast={
-                index ===
-                (data.roomsAndSuite?.tabbedSliderBlock?.length &&
-                  data.roomsAndSuite?.tabbedSliderBlock?.length - 1)
-              }
+              isLast={index === arr.length - 1}
               id={''}
             />
           </div>

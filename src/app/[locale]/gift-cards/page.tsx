@@ -30,16 +30,17 @@ export default async function GiftCards({ params }: LocalePageProps) {
         heroImage={data.giftCard?.heroSection?.heroImage}
         title={data.giftCard?.heroSection?.heroText}
       />
-
-      <SectionHeader
-        subtitle={data.giftCard?.quietLuxuryText?.subtitle}
-        title={data.giftCard?.quietLuxuryText?.title}
-        description={data.giftCard?.quietLuxuryText?.description}
-        buttonText={data.giftCard?.quietLuxuryText?.buttonText}
-        buttonUrl={data.giftCard?.quietLuxuryText?.buttonUrl}
-        newTab={data.giftCard?.quietLuxuryText?.newTab}
-        id=''
-      />
+      {!data.giftCard?.quietLuxuryText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.giftCard?.quietLuxuryText?.subtitle}
+          title={data.giftCard?.quietLuxuryText?.title}
+          description={data.giftCard?.quietLuxuryText?.description}
+          buttonText={data.giftCard?.quietLuxuryText?.buttonText}
+          buttonUrl={data.giftCard?.quietLuxuryText?.buttonUrl}
+          newTab={data.giftCard?.quietLuxuryText?.newTab}
+          id=''
+        />
+      )}
       <FadeInOnView className='mb-12.5 sm:mb-15 lg:mb-20'>
         <Suspense fallback={<div>Loading...</div>}>
           <GiftForm data={data} locale={locale as Locale} />

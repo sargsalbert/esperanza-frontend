@@ -70,6 +70,7 @@ export const HOME_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       destinationImages {
         multipleImages {
@@ -92,6 +93,7 @@ export const HOME_QUERY = gql`
           buttonText
           buttonUrl
           newTab
+          hideThisBlock
         }
         textImageSliderBlock {
           id
@@ -108,6 +110,7 @@ export const HOME_QUERY = gql`
             size
             formats
           }
+          hideThisBlock
         }
       }
       wellnessText {
@@ -117,6 +120,7 @@ export const HOME_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       wellnessGridSlider {
         id
@@ -133,6 +137,7 @@ export const HOME_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       HeaderTextWithSliderBlockTwo {
         sectionText {
@@ -142,6 +147,7 @@ export const HOME_QUERY = gql`
           buttonText
           buttonUrl
           newTab
+          hideThisBlock
         }
         textImageSliderBlock {
           id
@@ -158,6 +164,7 @@ export const HOME_QUERY = gql`
             size
             formats
           }
+          hideThisBlock
         }
       }
       experiencesText {
@@ -167,6 +174,7 @@ export const HOME_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       experiencesGridSlider {
         id
@@ -183,6 +191,7 @@ export const HOME_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       bookingWidget {
         adults
@@ -240,6 +249,7 @@ export const DESTINATION_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       afterMapText
       architectureDesignText {
@@ -249,6 +259,7 @@ export const DESTINATION_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       architectureDesignImages {
         multipleImages {
@@ -307,6 +318,7 @@ export const ROOMS_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -340,6 +352,7 @@ export const ROOMS_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       bookButtonShowMobile {
         id
@@ -390,6 +403,7 @@ export const VILLA_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -423,6 +437,7 @@ export const VILLA_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       seo {
         metaTitle
@@ -467,6 +482,7 @@ export const WELLNESS_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       ritualRenewalImages {
         multipleImages {
@@ -488,6 +504,7 @@ export const WELLNESS_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       sectionGridSlider {
         id
@@ -504,6 +521,7 @@ export const WELLNESS_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -537,6 +555,7 @@ export const WELLNESS_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       seo {
         metaTitle
@@ -581,6 +600,7 @@ export const DINING_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -613,6 +633,7 @@ export const DINING_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       seo {
         metaTitle
@@ -657,6 +678,7 @@ export const MEETINGS_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -690,6 +712,7 @@ export const MEETINGS_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       sectionGridSlider {
         id
@@ -706,6 +729,7 @@ export const MEETINGS_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       contactUsText {
         subtitle
@@ -714,6 +738,7 @@ export const MEETINGS_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
 
       formName
@@ -768,6 +793,7 @@ export const EXPERIENCE_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       tabbedSliderBlock {
         title
@@ -801,6 +827,7 @@ export const EXPERIENCE_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       sectionGridSlider {
         id
@@ -817,6 +844,7 @@ export const EXPERIENCE_QUERY = gql`
           size
           formats
         }
+        hideThisBlock
       }
       seo {
         metaTitle
@@ -847,6 +875,7 @@ export const GALLERY_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
 
       galleryImages {
@@ -906,6 +935,7 @@ export const GIFTCARD_QUERY = gql`
         buttonText
         buttonUrl
         newTab
+        hideThisBlock
       }
       formBottomNote
 

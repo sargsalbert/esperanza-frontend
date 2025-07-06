@@ -7,15 +7,11 @@ import { DynamicGallery } from './DynamicGallery';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
 export async function generateMetadata({ params }: LocalePageProps) {
-  return generateSeoMetadata<GalleryQuery>(
-    GALLERY_QUERY,
-    params,
-    (data) => ({
-      title: data.gallery?.seo?.metaTitle,
-      description: data.gallery?.seo?.metaDescription,
-      image: data.gallery?.seo?.shareImage?.url, 
-    })
-  );
+  return generateSeoMetadata<GalleryQuery>(GALLERY_QUERY, params, (data) => ({
+    title: data.gallery?.seo?.metaTitle,
+    description: data.gallery?.seo?.metaDescription,
+    image: data.gallery?.seo?.shareImage?.url,
+  }));
 }
 
 export default async function Gallery({ params }: LocalePageProps) {
@@ -25,17 +21,19 @@ export default async function Gallery({ params }: LocalePageProps) {
 
   return (
     <>
-      <div className='mt-7.5 lg:mt-11 xl:mt-10.5'>
-        <SectionHeader
-          subtitle={data.gallery?.sectionText?.subtitle}
-          title={data.gallery?.sectionText?.title}
-          description={data.gallery?.sectionText?.description}
-          buttonText={data.gallery?.sectionText?.buttonText}
-          buttonUrl={data.gallery?.sectionText?.buttonUrl}
-          newTab={data.gallery?.sectionText?.newTab}
-          id=''
-        />
-      </div>
+      {!data.gallery?.sectionText?.hideThisBlock && (
+        <div className='mt-7.5 lg:mt-11 xl:mt-10.5'>
+          <SectionHeader
+            subtitle={data.gallery?.sectionText?.subtitle}
+            title={data.gallery?.sectionText?.title}
+            description={data.gallery?.sectionText?.description}
+            buttonText={data.gallery?.sectionText?.buttonText}
+            buttonUrl={data.gallery?.sectionText?.buttonUrl}
+            newTab={data.gallery?.sectionText?.newTab}
+            id=''
+          />
+        </div>
+      )}
 
       <DynamicGallery
         images={

@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: LocalePageProps) {
     (data) => ({
       title: data.experience?.seo?.metaTitle,
       description: data.experience?.seo?.metaDescription,
-      image: data.experience?.seo?.shareImage?.url, 
-    })
+      image: data.experience?.seo?.shareImage?.url,
+    }),
   );
 }
 
@@ -31,18 +31,20 @@ export default async function Experiences({ params }: LocalePageProps) {
         heroImage={data.experience?.heroSection?.heroImage}
         title={data.experience?.heroSection?.heroText}
       />
-
-      <SectionHeader
-        subtitle={data.experience?.exploreEsperanzaText?.subtitle}
-        title={data.experience?.exploreEsperanzaText?.title}
-        description={data.experience?.exploreEsperanzaText?.description}
-        buttonText={data.experience?.exploreEsperanzaText?.buttonText}
-        buttonUrl={data.experience?.exploreEsperanzaText?.buttonUrl}
-        newTab={data.experience?.exploreEsperanzaText?.newTab}
-        id=''
-      />
-      {data.experience?.tabbedSliderBlock?.length &&
-        data.experience?.tabbedSliderBlock?.map((d, index) => (
+      {!data.experience?.exploreEsperanzaText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.experience?.exploreEsperanzaText?.subtitle}
+          title={data.experience?.exploreEsperanzaText?.title}
+          description={data.experience?.exploreEsperanzaText?.description}
+          buttonText={data.experience?.exploreEsperanzaText?.buttonText}
+          buttonUrl={data.experience?.exploreEsperanzaText?.buttonUrl}
+          newTab={data.experience?.exploreEsperanzaText?.newTab}
+          id=''
+        />
+      )}
+      {(data.experience?.tabbedSliderBlock ?? [])
+        .filter((d) => !d?.hideThisBlock)
+        .map((d, index, arr) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -51,18 +53,16 @@ export default async function Experiences({ params }: LocalePageProps) {
               actionButton={d?.actionButton}
               images={d?.images ?? []}
               imageFirst={index % 2 !== 0}
-              isLast={
-                index ===
-                (data.experience?.tabbedSliderBlock?.length &&
-                  data.experience?.tabbedSliderBlock?.length - 1)
-              }
+              isLast={index === arr.length - 1}
               id={''}
             />
           </div>
         ))}
 
       <SectionGrid
-        sectionGridSlider={data.experience?.sectionGridSlider ?? []}
+        sectionGridSlider={(data.experience?.sectionGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
       />
 
       <div className='h-12.5' />

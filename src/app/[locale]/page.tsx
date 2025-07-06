@@ -30,15 +30,18 @@ export default async function Home({ params }: LocalePageProps) {
         bookingWidget={data.home?.bookingWidget}
         locale={locale as Locale}
       />
-      <SectionHeader
-        subtitle={data.home?.destinationText?.subtitle}
-        title={data.home?.destinationText?.title}
-        description={data.home?.destinationText?.description}
-        buttonText={data.home?.destinationText?.buttonText}
-        buttonUrl={data.home?.destinationText?.buttonUrl}
-        newTab={data.home?.destinationText?.newTab}
-        id=''
-      />
+
+      {!data.home?.destinationText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.home?.destinationText?.subtitle}
+          title={data.home?.destinationText?.title}
+          description={data.home?.destinationText?.description}
+          buttonText={data.home?.destinationText?.buttonText}
+          buttonUrl={data.home?.destinationText?.buttonUrl}
+          newTab={data.home?.destinationText?.newTab}
+          id=''
+        />
+      )}
 
       {data.home?.destinationImages && (
         <ImageGridTree
@@ -53,63 +56,82 @@ export default async function Home({ params }: LocalePageProps) {
       {data.home?.headerTextWithSliderBlock?.length &&
         data.home.headerTextWithSliderBlock.map((d, index) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
-            <SectionHeader
-              subtitle={d?.sectionText?.subtitle}
-              title={d?.sectionText?.title}
-              description={d?.sectionText?.description}
-              buttonText={d?.sectionText?.buttonText}
-              buttonUrl={d?.sectionText?.buttonUrl}
-              newTab={d?.sectionText?.newTab}
-              id=''
-            />
+            {!d?.sectionText?.hideThisBlock && (
+              <SectionHeader
+                subtitle={d?.sectionText?.subtitle}
+                title={d?.sectionText?.title}
+                description={d?.sectionText?.description}
+                buttonText={d?.sectionText?.buttonText}
+                buttonUrl={d?.sectionText?.buttonUrl}
+                newTab={d?.sectionText?.newTab}
+                id=''
+              />
+            )}
             <ImageWithOverlayCard
-              features={d?.textImageSliderBlock}
+              features={(d?.textImageSliderBlock ?? []).filter(
+                (item) => !item?.hideThisBlock,
+              )}
               imageFirst={index % 2 !== 0}
             />
           </div>
         ))}
+      {!data.home?.wellnessText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.home?.wellnessText?.subtitle}
+          title={data.home?.wellnessText?.title}
+          description={data.home?.wellnessText?.description}
+          buttonText={data?.home?.wellnessText?.buttonText}
+          buttonUrl={data.home?.wellnessText?.buttonUrl}
+          newTab={data.home?.wellnessText?.newTab}
+          id=''
+        />
+      )}
 
-      <SectionHeader
-        subtitle={data.home?.wellnessText?.subtitle}
-        title={data.home?.wellnessText?.title}
-        description={data.home?.wellnessText?.description}
-        buttonText={data?.home?.wellnessText?.buttonText}
-        buttonUrl={data.home?.wellnessText?.buttonUrl}
-        newTab={data.home?.wellnessText?.newTab}
-        id=''
+      <SectionGrid
+        sectionGridSlider={(data.home?.wellnessGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
       />
-
-      <SectionGrid sectionGridSlider={data.home?.wellnessGridSlider ?? []} />
 
       {data.home?.HeaderTextWithSliderBlockTwo?.length &&
         data.home.HeaderTextWithSliderBlockTwo.map((d, index) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
-            <SectionHeader
-              subtitle={d?.sectionText?.subtitle}
-              title={d?.sectionText?.title}
-              description={d?.sectionText?.description}
-              buttonText={d?.sectionText?.buttonText}
-              buttonUrl={d?.sectionText?.buttonUrl}
-              newTab={d?.sectionText?.newTab}
-              id=''
-            />
+            {!d?.sectionText?.hideThisBlock && (
+              <SectionHeader
+                subtitle={d?.sectionText?.subtitle}
+                title={d?.sectionText?.title}
+                description={d?.sectionText?.description}
+                buttonText={d?.sectionText?.buttonText}
+                buttonUrl={d?.sectionText?.buttonUrl}
+                newTab={d?.sectionText?.newTab}
+                id=''
+              />
+            )}
+
             <ImageWithOverlayCard
-              features={d?.textImageSliderBlock}
+              features={(d?.textImageSliderBlock ?? []).filter(
+                (item) => !item?.hideThisBlock,
+              )}
               imageFirst={index % 2 !== 0}
             />
           </div>
         ))}
-
-      <SectionHeader
-        subtitle={data.home?.experiencesText?.subtitle}
-        title={data.home?.experiencesText?.title}
-        description={data.home?.experiencesText?.description}
-        buttonText={data.home?.experiencesText?.buttonText}
-        buttonUrl={data.home?.experiencesText?.buttonUrl}
-        newTab={data.home?.experiencesText?.newTab}
-        id=''
+      {!data.home?.experiencesText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.home?.experiencesText?.subtitle}
+          title={data.home?.experiencesText?.title}
+          description={data.home?.experiencesText?.description}
+          buttonText={data.home?.experiencesText?.buttonText}
+          buttonUrl={data.home?.experiencesText?.buttonUrl}
+          newTab={data.home?.experiencesText?.newTab}
+          id=''
+        />
+      )}
+      <SectionGrid
+        sectionGridSlider={(data.home?.experiencesGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
       />
-      <SectionGrid sectionGridSlider={data.home?.experiencesGridSlider ?? []} />
 
       <div className='h-12.5' />
     </>

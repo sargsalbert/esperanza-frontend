@@ -9,17 +9,12 @@ import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
-
 export async function generateMetadata({ params }: LocalePageProps) {
-  return generateSeoMetadata<WellnessQuery>(
-    WELLNESS_QUERY,
-    params,
-    (data) => ({
-      title: data.wellness?.seo?.metaTitle,
-      description: data.wellness?.seo?.metaDescription,
-      image: data.wellness?.seo?.shareImage?.url, 
-    })
-  );
+  return generateSeoMetadata<WellnessQuery>(WELLNESS_QUERY, params, (data) => ({
+    title: data.wellness?.seo?.metaTitle,
+    description: data.wellness?.seo?.metaDescription,
+    image: data.wellness?.seo?.shareImage?.url,
+  }));
 }
 
 export default async function Wellness({ params }: LocalePageProps) {
@@ -33,16 +28,17 @@ export default async function Wellness({ params }: LocalePageProps) {
         heroImage={data.wellness?.heroSection?.heroImage}
         title={data.wellness?.heroSection?.heroText}
       />
-
-      <SectionHeader
-        subtitle={data.wellness?.ritualRenewalText?.subtitle}
-        title={data.wellness?.ritualRenewalText?.title}
-        description={data.wellness?.ritualRenewalText?.description}
-        buttonText={data.wellness?.ritualRenewalText?.buttonText}
-        buttonUrl={data.wellness?.ritualRenewalText?.buttonUrl}
-        newTab={data.wellness?.ritualRenewalText?.newTab}
-        id=''
-      />
+      {!data.wellness?.ritualRenewalText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.wellness?.ritualRenewalText?.subtitle}
+          title={data.wellness?.ritualRenewalText?.title}
+          description={data.wellness?.ritualRenewalText?.description}
+          buttonText={data.wellness?.ritualRenewalText?.buttonText}
+          buttonUrl={data.wellness?.ritualRenewalText?.buttonUrl}
+          newTab={data.wellness?.ritualRenewalText?.newTab}
+          id=''
+        />
+      )}
 
       {data.wellness?.ritualRenewalImages && (
         <ImageGridTree
@@ -53,21 +49,26 @@ export default async function Wellness({ params }: LocalePageProps) {
           }
         />
       )}
-
-      <SectionHeader
-        subtitle={data.wellness?.facilitiesText?.subtitle}
-        title={data.wellness?.facilitiesText?.title}
-        description={data.wellness?.facilitiesText?.description}
-        buttonText={data.wellness?.facilitiesText?.buttonText}
-        buttonUrl={data.wellness?.facilitiesText?.buttonUrl}
-        newTab={data.wellness?.facilitiesText?.newTab}
-        id=''
+      {!data.wellness?.facilitiesText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.wellness?.facilitiesText?.subtitle}
+          title={data.wellness?.facilitiesText?.title}
+          description={data.wellness?.facilitiesText?.description}
+          buttonText={data.wellness?.facilitiesText?.buttonText}
+          buttonUrl={data.wellness?.facilitiesText?.buttonUrl}
+          newTab={data.wellness?.facilitiesText?.newTab}
+          id=''
+        />
+      )}
+      <SectionGrid
+        sectionGridSlider={(data.wellness?.sectionGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
       />
 
-      <SectionGrid sectionGridSlider={data.wellness?.sectionGridSlider ?? []} />
-
-      {data.wellness?.tabbedSliderBlock?.length &&
-        data.wellness?.tabbedSliderBlock?.map((d, index) => (
+      {(data.wellness?.tabbedSliderBlock ?? [])
+        .filter((d) => !d?.hideThisBlock)
+        .map((d, index, arr) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -76,11 +77,7 @@ export default async function Wellness({ params }: LocalePageProps) {
               actionButton={d?.actionButton}
               images={d?.images ?? []}
               imageFirst={index % 2 !== 0}
-              isLast={
-                index ===
-                (data.wellness?.tabbedSliderBlock?.length &&
-                  data.wellness?.tabbedSliderBlock?.length - 1)
-              }
+              isLast={index === arr.length - 1}
               id={''}
             />
           </div>
