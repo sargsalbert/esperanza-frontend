@@ -5,7 +5,7 @@ import SectionHeader from '@/components/shared/SectionHeader';
 import { ExperienceQuery } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { EXPERIENCE_QUERY } from '@/lib/graphql/queries';
-import { LocalePageProps } from '../destination/page';
+import { LocalePageProps } from '../app/[locale]/destination/page';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
 export async function generateMetadata({ params }: LocalePageProps) {
