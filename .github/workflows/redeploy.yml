@@ -13,3 +13,4 @@ jobs:
           curl -X POST "https://api.digitalocean.com/v2/apps/09e996b8-62fc-4581-81ca-952507195263/deployments" \
           -H "Authorization: Bearer ${{ secrets.DIGITALOCEAN_API_TOKEN }}" \
           -H "Content-Type: application/json"
+          -d '{"force_build": true}'
