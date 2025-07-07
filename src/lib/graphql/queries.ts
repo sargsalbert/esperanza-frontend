@@ -39,8 +39,35 @@ export const GLOBAL_QUERY = gql`
       siteFooterFormPlaceholder
       siteFooterFormButtonText
       siteFooterBottomText
-      siteFooterBottomTextUnderline
+      siteFooterBottomTextLink {
+        id
+        buttonUrl
+        buttonText
+        newTab
+      }
       siteFooterFormSuccessMessage
+      siteLogoHeader {
+        alternativeText
+        url
+        documentId
+        hash
+        mime
+        name
+        provider
+        size
+        formats
+      }
+      siteLogoFooter {
+        alternativeText
+        url
+        documentId
+        hash
+        mime
+        name
+        provider
+        size
+        formats
+      }
     }
   }
 `;

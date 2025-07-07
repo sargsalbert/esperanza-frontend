@@ -1,11 +1,11 @@
 'use client';
 import LanguageSelector from './LanguageSelector';
-import { MemberHotelsIcon } from '../icons/memberHotelsIcon';
 import { ScrollTopIcon } from '../icons/scrollTopIcon';
 import { GlobalQuery } from '@/gql/graphql';
 import LocaleLink from './LocaleLink';
 import Image from 'next/image';
 import SubscribeForm from './SubscribeForm';
+import StrapiImage from './StrapiImage';
 
 type FooterProps = {
   global: GlobalQuery['global'];
@@ -16,9 +16,16 @@ export function Footer({ global }: FooterProps) {
     <footer>
       <div className='bg-gray-100'>
         <div className='w-full px-5 py-7.5 md:py-10 2xl:py-12.5'>
-          <div className='mb-7.5 flex justify-center text-center text-gray-800 md:mb-10 2xl:mb-12.5'>
-            <MemberHotelsIcon className='h-[40px] w-[157px] md:h-[51px] md:w-[202px] 2xl:h-[64px] 2xl:w-[253px]' />
-          </div>
+          {global?.siteLogoFooter && (
+            <div className='mb-7.5 flex justify-center text-center text-gray-800 md:mb-10 2xl:mb-12.5'>
+              <div className='h-[40px] w-[157px] md:h-[51px] md:w-[202px] 2xl:h-[64px] 2xl:w-[253px]'>
+                <StrapiImage
+                  image={global.siteLogoFooter}
+                  className='!object-contain'
+                />
+              </div>
+            </div>
+          )}
           <div className='mb-7.5 flex justify-center gap-7.5 md:gap-10'>
             {Array.isArray(global?.siteFooterSocial) &&
               global.siteFooterSocial.map((item, i) => (
@@ -79,9 +86,19 @@ export function Footer({ global }: FooterProps) {
         <div className='p-4 md:p-4.5 2xl:p-5'>
           <p className='text-center text-xs font-medium text-gray-900 md:text-sm 2xl:text-base'>
             © {new Date().getFullYear()} {global?.siteFooterBottomText}
-            <span className='ml-1 inline-flex underline'>
-              {global?.siteFooterBottomTextUnderline}
-            </span>
+            {global?.siteFooterBottomTextLink?.buttonText && (
+              <LocaleLink
+                href={global?.siteFooterBottomTextLink?.buttonUrl || ''}
+                target={
+                  global?.siteFooterBottomTextLink?.newTab
+                    ? '_blank'
+                    : undefined
+                }
+                className='ml-1 inline-flex underline'
+              >
+                {global.siteFooterBottomTextLink.buttonText}
+              </LocaleLink>
+            )}
           </p>
         </div>
       </div>

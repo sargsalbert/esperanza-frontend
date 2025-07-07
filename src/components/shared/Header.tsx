@@ -2,10 +2,10 @@
 import { SideMenu } from './SideMenu';
 import { useEffect, useState } from 'react';
 import LanguageSelector from './LanguageSelector';
-import { LogoIcon } from '../icons/logoIcon';
 import Hamburger from './Hamburger';
 import LocaleLink from './LocaleLink';
 import { GlobalQuery } from '@/gql/graphql';
+import StrapiImage from './StrapiImage';
 
 type HeaderProps = {
   global: GlobalQuery['global'];
@@ -93,11 +93,18 @@ const Header = ({ global }: HeaderProps) => {
           </div>
 
           <div className='absolute left-1/2 -translate-x-1/2 transform lg:inline-block'>
-            <LocaleLink href='/' onClick={onLogo}>
-              <LogoIcon
-                className={`transition-all duration-300 ${isScrolled ? 'h-[41px] w-[104px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
-              />
-            </LocaleLink>
+            {global?.siteLogoHeader && (
+              <LocaleLink href='/' onClick={onLogo}>
+                <div
+                  className={`transition-all duration-300 ${isScrolled ? 'h-[41px] w-[104px] md:h-[63px] md:w-[159px] 2xl:h-[63px] 2xl:w-[159px]' : 'h-[52px] w-[131px] md:h-[71px] md:w-[179px] 2xl:h-[79px] 2xl:w-[199px]'} `}
+                >
+                  <StrapiImage
+                    image={global?.siteLogoHeader}
+                    className='!object-contain'
+                  />
+                </div>
+              </LocaleLink>
+            )}
           </div>
           <div className='hidden items-center lg:flex'>
             <LocaleLink
