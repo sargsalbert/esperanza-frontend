@@ -174,7 +174,8 @@ export const DatePicker: React.FC<Props> = ({
     setFieldTouched(name, true, true);
   };
 
-  const resetDate = () => {
+  const resetDate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setFieldValue(name, {}, false);
     setFieldTouched(name, false);
   };
