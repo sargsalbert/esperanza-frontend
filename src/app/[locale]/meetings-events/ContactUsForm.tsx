@@ -9,6 +9,7 @@ import { Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { Locale } from '../../../../i18n-config';
 import { DatePicker } from '@/components/shared/DatePicker';
+import { format } from 'date-fns';
 
 type ContactUsFormProps = {
   data: MeetingsAndEventQuery;
@@ -51,12 +52,24 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
     { resetForm }: FormikHelpers<ContactFormValues>,
   ) => {
     try {
+      const formattedValues = {
+        ...values,
+        formDates: {
+          from: values.formDates?.from
+            ? format(values.formDates.from, 'yyyy-MM-dd')
+            : null,
+          to: values.formDates?.to
+            ? format(values.formDates.to, 'yyyy-MM-dd')
+            : null,
+        },
+      };
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/contact-us-forms`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: values }),
+          body: JSON.stringify({ data: formattedValues }),
         },
       );
       if (response.ok) {

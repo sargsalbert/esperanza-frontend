@@ -175,7 +175,8 @@ export const DatePicker: React.FC<Props> = ({
   };
 
   const resetDate = () => {
-    setFieldValue(name, {}, true);
+    setFieldValue(name, {}, false);
+    setFieldTouched(name, false);
   };
 
   const finalIsOpen = typeof isOpen === 'boolean' ? isOpen : open;
