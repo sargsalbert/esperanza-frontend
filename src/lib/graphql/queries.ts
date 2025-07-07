@@ -756,6 +756,8 @@ export const MEETINGS_QUERY = gql`
       formMessage
       formButtonText
       formSuccessText
+      formCalendarResetButtonText
+      formCalendarDoneButtonText
       seo {
         metaTitle
         metaDescription

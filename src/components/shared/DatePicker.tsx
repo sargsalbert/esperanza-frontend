@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useCallback,
-  ReactNode,
-  useState,
-  useEffect,
-} from 'react';
+import React, { useRef, useCallback, ReactNode, useState } from 'react';
 import { useField, useFormikContext } from 'formik';
 import {
   DateRange,
@@ -38,6 +32,10 @@ type Props = {
   textNoAvailability?: string | null;
   currentLanguage: AppLocale;
   showInput?: boolean;
+  textData?: {
+    resetButtonText?: string | null;
+    doneButtonText?: string | null;
+  };
 };
 
 export const formatRange = (
@@ -86,6 +84,7 @@ export const DatePicker: React.FC<Props> = ({
   currentLanguage,
   showInput,
   placeholder,
+  textData,
 }) => {
   const defaultClassNames = getDefaultClassNames();
   const [field, meta] = useField(name);
@@ -175,17 +174,9 @@ export const DatePicker: React.FC<Props> = ({
     setFieldTouched(name, true, true);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setOpen(false);
-        setFieldTouched(name, true, true);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [setFieldTouched, name]);
+  const resetDate = () => {
+    setFieldValue(name, {}, true);
+  };
 
   const finalIsOpen = typeof isOpen === 'boolean' ? isOpen : open;
 
@@ -223,18 +214,18 @@ export const DatePicker: React.FC<Props> = ({
         <div
           className={
             showInput
-              ? 'absolute top-full left-0 z-30 w-full bg-gray-100 p-5 shadow-xs md:w-auto'
+              ? 'absolute top-full left-0 z-30 w-full bg-gray-100 p-5 shadow-xs 2xl:w-auto'
               : ''
           }
         >
           {showInput && (
-            <div className='mb-5 flex justify-end'>
+            <div className='mb-3 flex justify-end'>
               <button
                 type='button'
                 onClick={handleToggle}
                 className='flex cursor-pointer items-center justify-center p-1 text-sm font-medium text-gray-800'
               >
-                <CloseIcon className='h-3 w-3 lg:h-4 lg:w-4' />
+                <CloseIcon className='h-3 w-3' />
               </button>
             </div>
           )}
@@ -253,11 +244,11 @@ export const DatePicker: React.FC<Props> = ({
               hoverRange: previewRange,
             }}
             modifiersClassNames={{
-              hoverRange: 'bg-gray-600', // or any class you like for preview
+              hoverRange: 'bg-gray-600',
             }}
             footer={
               footer && (
-                <div className='mt-6 flex'>
+                <div className={showInput ? 'mt-3.5 flex' : 'mt-6 flex'}>
                   {!!textSelectedDates && (
                     <div className='mr-6 flex items-center lg:mr-10'>
                       <span className='mr-2.5 inline-block h-[12px] w-[12px] bg-gray-800' />
@@ -272,6 +263,22 @@ export const DatePicker: React.FC<Props> = ({
                       <span className='text-sm font-normal'>
                         {textNoAvailability}
                       </span>
+                    </div>
+                  )}
+                  {showInput && (
+                    <div className='flex w-full items-center justify-between'>
+                      <button
+                        onClick={resetDate}
+                        className='inline-flex cursor-pointer border-gray-800 py-1 text-sm font-semibold'
+                      >
+                        {textData?.resetButtonText || 'Reset'}
+                      </button>
+                      <button
+                        onClick={handleToggle}
+                        className='inline-flex min-w-[126px] cursor-pointer items-center justify-center rounded-full border-2 border-gray-800 bg-transparent px-5 py-1.5 text-center text-sm font-semibold text-gray-800'
+                      >
+                        {textData?.doneButtonText || 'Done'}
+                      </button>
                     </div>
                   )}
                 </div>
@@ -303,7 +310,6 @@ export const DatePicker: React.FC<Props> = ({
           />
         </div>
       )}
-
       {showError && (
         <div className='mt-1 text-sm text-red-500'>{meta.error}</div>
       )}

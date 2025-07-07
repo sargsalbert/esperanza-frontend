@@ -121,6 +121,13 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                     currentLanguage={locale}
                     mode='range'
                     showInput
+                    footer
+                    textData={{
+                      resetButtonText:
+                        data.meetingsAndEvent?.formCalendarResetButtonText,
+                      doneButtonText:
+                        data.meetingsAndEvent?.formCalendarDoneButtonText,
+                    }}
                   />
                   <Input
                     name='formNumberGuests'
