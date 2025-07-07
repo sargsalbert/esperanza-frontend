@@ -73,7 +73,7 @@ export const HOME_QUERY = gql`
         hideThisBlock
       }
       destinationImages {
-        multipleImages {
+        multipleImages(pagination: { limit: 40 }) {
           alternativeText
           url
           documentId
@@ -85,7 +85,7 @@ export const HOME_QUERY = gql`
           formats
         }
       }
-      headerTextWithSliderBlock {
+      headerTextWithSliderBlock(pagination: { limit: 30 }) {
         sectionText {
           subtitle
           title
@@ -122,7 +122,7 @@ export const HOME_QUERY = gql`
         newTab
         hideThisBlock
       }
-      wellnessGridSlider {
+      wellnessGridSlider(pagination: { limit: 30 }) {
         id
         title
         description
@@ -139,7 +139,7 @@ export const HOME_QUERY = gql`
         }
         hideThisBlock
       }
-      HeaderTextWithSliderBlockTwo {
+      HeaderTextWithSliderBlockTwo(pagination: { limit: 30 }) {
         sectionText {
           subtitle
           title
@@ -176,7 +176,7 @@ export const HOME_QUERY = gql`
         newTab
         hideThisBlock
       }
-      experiencesGridSlider {
+      experiencesGridSlider(pagination: { limit: 30 }) {
         id
         title
         description
@@ -263,7 +263,7 @@ export const DESTINATION_QUERY = gql`
         hideThisBlock
       }
       architectureDesignImages {
-        multipleImages {
+        multipleImages(pagination: { limit: 40 }) {
           alternativeText
           url
           documentId
@@ -322,7 +322,7 @@ export const ROOMS_QUERY = gql`
         newTab
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -408,7 +408,7 @@ export const VILLA_QUERY = gql`
         newTab
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -489,7 +489,7 @@ export const WELLNESS_QUERY = gql`
         hideThisBlock
       }
       ritualRenewalImages {
-        multipleImages {
+        multipleImages(pagination: { limit: 40 }) {
           alternativeText
           url
           documentId
@@ -510,7 +510,7 @@ export const WELLNESS_QUERY = gql`
         newTab
         hideThisBlock
       }
-      sectionGridSlider {
+      sectionGridSlider(pagination: { limit: 30 }) {
         id
         title
         description
@@ -527,7 +527,7 @@ export const WELLNESS_QUERY = gql`
         }
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -607,7 +607,7 @@ export const DINING_QUERY = gql`
         newTab
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -686,7 +686,7 @@ export const MEETINGS_QUERY = gql`
         newTab
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -720,7 +720,7 @@ export const MEETINGS_QUERY = gql`
         }
         hideThisBlock
       }
-      sectionGridSlider {
+      sectionGridSlider(pagination: { limit: 30 }) {
         id
         title
         description
@@ -802,7 +802,7 @@ export const EXPERIENCE_QUERY = gql`
         newTab
         hideThisBlock
       }
-      tabbedSliderBlock {
+      tabbedSliderBlock(pagination: { limit: 30 }) {
         title
         tabItem {
           id
@@ -836,7 +836,7 @@ export const EXPERIENCE_QUERY = gql`
         }
         hideThisBlock
       }
-      sectionGridSlider {
+      sectionGridSlider(pagination: { limit: 30 }) {
         id
         title
         description
@@ -886,7 +886,7 @@ export const GALLERY_QUERY = gql`
       }
 
       galleryImages {
-        multipleImages {
+        multipleImages(pagination: { limit: 40 }) {
           alternativeText
           url
           documentId
