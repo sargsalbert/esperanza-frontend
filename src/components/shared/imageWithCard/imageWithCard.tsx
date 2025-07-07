@@ -130,15 +130,19 @@ const ImageWithCard = ({
               : 'lg:w-[calc(50%-40px)] xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)]'
           } `}
         >
-          {images?.map((image, index) => (
-            <Thumbnail
-              key={index}
-              image={image}
-              index={index}
-              currentIndex={currentIndex}
-              emblaApi={emblaApi}
-            />
-          ))}
+          {(imageFirst ? [...images].reverse() : images)?.map((image, i) => {
+            const index = imageFirst && images ? images.length - 1 - i : i;
+
+            return (
+              <Thumbnail
+                key={index}
+                image={image}
+                index={index}
+                currentIndex={currentIndex}
+                emblaApi={emblaApi}
+              />
+            );
+          })}
         </div>
       </div>
     </FadeInOnView>
