@@ -282,6 +282,21 @@ export const DESTINATION_QUERY = gql`
         hideThisBlock
       }
       afterMapText
+
+      locationImages {
+        multipleImages(pagination: { limit: 40 }) {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
+        }
+      }
+
       architectureDesignText {
         subtitle
         title

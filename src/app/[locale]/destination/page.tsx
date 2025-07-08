@@ -1,6 +1,6 @@
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { DestinationQuery } from '@/gql/graphql';
+import { DestinationQuery, UploadFile } from '@/gql/graphql';
 import { fetchData } from '@/lib/apolloClient';
 import { DESTINATION_QUERY } from '@/lib/graphql/queries';
 import ImageGrid from './ImageComponent';
@@ -8,6 +8,7 @@ import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
+import ImageGridTree from '@/components/home/imageGridTree';
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
@@ -60,13 +61,25 @@ export default async function Destination({ params }: LocalePageProps) {
       </FadeInOnView>
       {data.destination?.afterMapText && (
         <FadeInOnView>
-          <div className='mb-12.5 px-5 sm:mb-15 md:px-7.5 lg:mb-20 lg:px-[22%]'>
+          <div className='mb-5 px-5 sm:mb-7.5 md:px-7.5 lg:px-[22%]'>
             <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
               {data.destination.afterMapText}
             </p>
           </div>
         </FadeInOnView>
       )}
+
+      <div className='mb-12.5 grid grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-[14.5%]'>
+        {data.destination?.locationImages?.multipleImages?.length
+          ? data.destination.locationImages.multipleImages.map((d, index) => {
+              if (!d) return null;
+              return (
+                <ImageGrid key={d.documentId} index={index} imageData={d} />
+              );
+            })
+          : null}
+      </div>
+
       {!data.destination?.architectureDesignText?.hideThisBlock && (
         <SectionHeader
           subtitle={data.destination?.architectureDesignText?.subtitle}
@@ -78,18 +91,15 @@ export default async function Destination({ params }: LocalePageProps) {
           id=''
         />
       )}
-      <div className='mb-12.5 grid grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-[14.5%]'>
-        {data.destination?.architectureDesignImages?.multipleImages?.length
-          ? data.destination.architectureDesignImages.multipleImages.map(
-              (d, index) => {
-                if (!d) return null;
-                return (
-                  <ImageGrid key={d.documentId} index={index} imageData={d} />
-                );
-              },
-            )
-          : null}
-      </div>
+      {data.destination?.architectureDesignImages && (
+        <ImageGridTree
+          images={
+            data.destination?.architectureDesignImages?.multipleImages?.filter(
+              (img): img is UploadFile => img !== null,
+            ) ?? []
+          }
+        />
+      )}
     </>
   );
 }
