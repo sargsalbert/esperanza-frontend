@@ -8,6 +8,7 @@ import { WELLNESS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<WellnessQuery>(WELLNESS_QUERY, params, (data) => ({
@@ -21,6 +22,8 @@ export default async function Wellness({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<WellnessQuery>(WELLNESS_QUERY, { locale });
+
+  if (!data.wellness) return notFound();
 
   return (
     <>

@@ -9,6 +9,7 @@ import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../i18n-config';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<HomeQuery>(HOME_QUERY, params, (data) => ({
@@ -22,6 +23,8 @@ export default async function Home({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<HomeQuery>(HOME_QUERY, { locale });
+
+  if (!data.home) return notFound();
 
   return (
     <>

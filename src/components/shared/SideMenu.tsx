@@ -15,18 +15,6 @@ interface SideMenuProps {
   menuData: GlobalQuery['global'];
 }
 
-const menuItems = [
-  { href: '/destination', label: 'Destination' },
-  { href: '/rooms-suites', label: 'Rooms & Suites' },
-  { href: '/villas', label: 'Villas' },
-  { href: '/wellness', label: 'Wellness' },
-  { href: '/dining', label: 'Dining' },
-  { href: '/meetings-events', label: 'Meetings & Events' },
-  { href: '/experiences', label: 'Experiences' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/gift-cards', label: 'Gift Cards' },
-];
-
 export function SideMenu({
   isOpen,
   onClose,
@@ -34,10 +22,11 @@ export function SideMenu({
   menuData,
 }: SideMenuProps) {
   const localizedMenuItems = useMemo(() => {
-    return menuItems.map((item, index) => ({
-      ...item,
-      label: menuData?.menuLinks?.[index]?.label || item.label,
-    }));
+    return (
+      menuData?.menuLinks?.filter(
+        (item): item is NonNullable<typeof item> => !!item?.showInMenu,
+      ) || []
+    );
   }, [menuData]);
 
   const pathname = usePathname();
@@ -72,48 +61,48 @@ export function SideMenu({
         <div className='px-5 py-6 md:px-7.5 md:py-7.5 lg:px-10 2xl:px-15'>
           <nav>
             <ul className='space-y-[4%]'>
-              {localizedMenuItems.map(({ href, label }) => {
-                const isHovered = hoveredItem === href;
-                const isAnyHovering = hoveredItem !== null;
+              {localizedMenuItems.length > 0 &&
+                localizedMenuItems.map(({ slug, menuLabel }) => {
+                  const isHovered = hoveredItem === slug;
+                  const isAnyHovering = hoveredItem !== null;
 
-                // Set class logic
-                const linkClass = isHovered
-                  ? 'text-gray-900 font-medium'
-                  : isAnyHovering
-                    ? 'text-gray-600'
-                    : isActive(href)
-                      ? 'text-gray-900 font-medium'
-                      : 'text-gray-700';
+                  const linkClass = isHovered
+                    ? 'text-gray-900 font-medium'
+                    : isAnyHovering
+                      ? 'text-gray-600'
+                      : isActive(slug)
+                        ? 'text-gray-900 font-medium'
+                        : 'text-gray-700';
 
-                const iconColor = isHovered
-                  ? 'text-gray-900'
-                  : isAnyHovering
-                    ? 'text-gray-600'
-                    : isActive(href)
-                      ? 'text-gray-900'
-                      : 'text-gray-700';
+                  const iconColor = isHovered
+                    ? 'text-gray-900'
+                    : isAnyHovering
+                      ? 'text-gray-600'
+                      : isActive(slug)
+                        ? 'text-gray-900'
+                        : 'text-gray-700';
 
-                return (
-                  <li key={href}>
-                    <LocaleLink
-                      href={href}
-                      onClick={onClose}
-                      onMouseEnter={() => setHoveredItem(href)}
-                      onMouseLeave={() => setHoveredItem(null)}
-                      className={`inline-flex py-1 text-base transition-colors duration-300 sm:text-lg lg:text-xl 2xl:text-2xl ${linkClass}`}
-                    >
-                      <span>{label}</span>
-                      <span
-                        className={`ml-5.5 self-center md:ml-7.5 lg:ml-10 2xl:ml-15 ${isActive(href) ? 'inline-flex' : 'hidden'}`}
+                  return (
+                    <li key={slug}>
+                      <LocaleLink
+                        href={slug}
+                        onClick={onClose}
+                        onMouseEnter={() => setHoveredItem(slug)}
+                        onMouseLeave={() => setHoveredItem(null)}
+                        className={`inline-flex py-1 text-base transition-colors duration-300 sm:text-lg lg:text-xl 2xl:text-2xl ${linkClass}`}
                       >
-                        <MenuArrowIcon
-                          className={`h-2 w-1 transition-colors duration-300 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px] ${iconColor}`}
-                        />
-                      </span>
-                    </LocaleLink>
-                  </li>
-                );
-              })}
+                        <span>{menuLabel}</span>
+                        <span
+                          className={`ml-5.5 self-center md:ml-7.5 lg:ml-10 2xl:ml-15 ${isActive(slug) ? 'inline-flex' : 'hidden'}`}
+                        >
+                          <MenuArrowIcon
+                            className={`h-2 w-1 transition-colors duration-300 sm:h-2.5 sm:w-1.5 md:h-3.5 md:w-[7px] ${iconColor}`}
+                          />
+                        </span>
+                      </LocaleLink>
+                    </li>
+                  );
+                })}
             </ul>
           </nav>
         </div>

@@ -8,6 +8,7 @@ import { LocalePageProps } from '../destination/page';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import LocaleLink from '@/components/shared/LocaleLink';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<RoomsAndSuiteQuery>(
@@ -25,6 +26,9 @@ export default async function RoomsSuites({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<RoomsAndSuiteQuery>(ROOMS_QUERY, { locale });
+
+  if (!data.roomsAndSuite) return notFound();
+
   return (
     <>
       {!data.roomsAndSuite?.heroSection?.hideThisBlock && (

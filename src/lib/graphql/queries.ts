@@ -14,7 +14,9 @@ export const GLOBAL_QUERY = gql`
         newTab
       }
       menuLinks {
-        label
+        menuLabel
+        slug
+        showInMenu
       }
       siteFooterSocial {
         icon {

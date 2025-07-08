@@ -6,6 +6,7 @@ import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { LocalePageProps } from '../destination/page';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<VillaQuery>(VILLA_QUERY, params, (data) => ({
@@ -19,6 +20,8 @@ export default async function VillaPage({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<VillaQuery>(VILLA_QUERY, { locale });
+
+  if (!data.villa) return notFound();
 
   return (
     <>

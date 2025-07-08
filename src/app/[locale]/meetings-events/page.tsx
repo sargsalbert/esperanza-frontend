@@ -9,6 +9,7 @@ import SectionGrid from '@/components/home/sectionGrid';
 import ContactUsForm from './ContactUsForm';
 import { Locale } from '../../../../i18n-config';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<MeetingsAndEventQuery>(
@@ -28,6 +29,8 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
   const data = await fetchData<MeetingsAndEventQuery>(MEETINGS_QUERY, {
     locale,
   });
+
+  if (!data.meetingsAndEvent) return notFound();
 
   return (
     <>

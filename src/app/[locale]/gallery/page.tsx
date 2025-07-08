@@ -5,6 +5,7 @@ import { LocalePageProps } from '../destination/page';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { DynamicGallery } from './DynamicGallery';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<GalleryQuery>(GALLERY_QUERY, params, (data) => ({
@@ -18,6 +19,8 @@ export default async function Gallery({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<GalleryQuery>(GALLERY_QUERY, { locale });
+
+  if (!data.gallery) return notFound();
 
   return (
     <>

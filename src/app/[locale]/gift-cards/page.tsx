@@ -10,6 +10,7 @@ import FadeInOnView from '@/components/shared/FadeInOnView';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../../i18n-config';
 import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<GiftCardQuery>(GIFTCARD_QUERY, params, (data) => ({
@@ -23,6 +24,8 @@ export default async function GiftCards({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<GiftCardQuery>(GIFTCARD_QUERY, { locale });
+
+  if (!data.giftCard) return notFound();
 
   return (
     <>

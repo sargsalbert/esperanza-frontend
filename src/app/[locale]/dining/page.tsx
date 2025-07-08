@@ -6,6 +6,7 @@ import { fetchData } from '@/lib/apolloClient';
 import { DINING_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<DiningQuery>(DINING_QUERY, params, (data) => ({
@@ -19,6 +20,8 @@ export default async function Villas({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<DiningQuery>(DINING_QUERY, { locale });
+
+  if (!data.dining) return notFound();
 
   return (
     <>

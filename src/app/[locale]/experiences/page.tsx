@@ -7,6 +7,7 @@ import { fetchData } from '@/lib/apolloClient';
 import { EXPERIENCE_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<ExperienceQuery>(
@@ -24,6 +25,8 @@ export default async function Experiences({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<ExperienceQuery>(EXPERIENCE_QUERY, { locale });
+
+  if (!data.experience) return notFound();
 
   return (
     <>

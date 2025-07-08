@@ -7,6 +7,7 @@ import ImageGrid from './ImageComponent';
 import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { notFound } from 'next/navigation';
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
@@ -28,6 +29,8 @@ export default async function Destination({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchData<DestinationQuery>(DESTINATION_QUERY, { locale });
+
+  if (!data.destination) return notFound();
 
   return (
     <>
