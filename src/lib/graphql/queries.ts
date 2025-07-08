@@ -124,7 +124,7 @@ export const HOME_QUERY = gql`
           newTab
           hideThisBlock
         }
-        textImageSliderBlock {
+        textImageSliderBlock(pagination: { limit: 30 }) {
           id
           title
           description
@@ -178,7 +178,7 @@ export const HOME_QUERY = gql`
           newTab
           hideThisBlock
         }
-        textImageSliderBlock {
+        textImageSliderBlock(pagination: { limit: 30 }) {
           id
           title
           description
