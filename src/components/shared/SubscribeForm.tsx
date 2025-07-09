@@ -16,7 +16,10 @@ interface FormValues {
 }
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .max(70, 'Maximum 70 characters allowed')
+    .required('Required'),
 });
 
 const SubscribeForm = ({

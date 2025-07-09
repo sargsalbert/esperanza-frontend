@@ -26,13 +26,23 @@ interface GidtFormValues {
 }
 
 const validationSchema = Yup.object().shape({
-  formName: Yup.string().required('Required'),
-  formSurname: Yup.string().required('Required'),
-  formPhone: Yup.string().required('Required'),
-  formEmail: Yup.string().email('Invalid email').required('Required'),
+  formName: Yup.string()
+    .max(70, 'Maximum 70 characters allowed')
+    .required('Required'),
+  formSurname: Yup.string()
+    .max(70, 'Maximum 70 characters allowed')
+    .required('Required'),
+  formPhone: Yup.string()
+    .max(70, 'Maximum 70 characters allowed')
+    .required('Required'),
+  formEmail: Yup.string()
+    .email('Invalid email')
+    .max(70, 'Maximum 70 characters allowed')
+    .required('Required'),
   formAmount: Yup.number()
     .typeError('Amount must be a number')
     .min(150, 'Minimum amount is 150')
+    .max(99999999, 'Maximum 8 digits allowed')
     .required('Required'),
   voucherType: Yup.string().required('Required'),
 });
@@ -144,7 +154,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
                   name='formSurname'
                 />
                 <Input
-                  type='number'
+                  inputType='phone'
                   placeholder={data.giftCard?.formPhone}
                   name='formPhone'
                 />
@@ -154,6 +164,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
                 />
                 <Input
                   placeholder={data.giftCard?.formAmount}
+                  inputType='number'
                   name='formAmount'
                 />
                 <Select

@@ -33,16 +33,26 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    formSurname: Yup.string().required('Required'),
-    formPhone: Yup.string().required('Required'),
-    formEmail: Yup.string().email('Invalid email').required('Required'),
+    name: Yup.string()
+      .max(70, 'Maximum 70 characters allowed')
+      .required('Required'),
+    formSurname: Yup.string()
+      .max(70, 'Maximum 70 characters allowed')
+      .required('Required'),
+    formPhone: Yup.string()
+      .max(70, 'Maximum 70 characters allowed')
+      .required('Required'),
+    formEmail: Yup.string()
+      .max(70, 'Maximum 70 characters allowed')
+      .email('Invalid email')
+      .required('Required'),
     formDates: Yup.object({
       from: Yup.date().nullable().notRequired(),
       to: Yup.date().nullable().notRequired(),
     }),
     formNumberGuests: Yup.number()
       .min(1, 'At least 1 guest')
+      .max(99999999, 'Maximum 8 digits allowed')
       .required('Required'),
     formMessage: Yup.string(),
   });
@@ -122,6 +132,7 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                   />
                   <Input
                     name='formPhone'
+                    inputType='phone'
                     placeholder={data.meetingsAndEvent?.formPhone || ''}
                   />
                   <Input
@@ -144,8 +155,8 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                   />
                   <Input
                     name='formNumberGuests'
+                    inputType='number'
                     placeholder={data.meetingsAndEvent?.formNumberGuests || ''}
-                    type='number'
                   />
                   <TextArea
                     name='formMessage'
