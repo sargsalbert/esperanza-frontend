@@ -47,8 +47,7 @@ const StrapiImage: React.FC<StrapiImageProps> = ({ image, className = '' }) => {
     <img
       src={src}
       srcSet={srcSet}
-      // sizes='100vw'
-      sizes='(max-width: 640px) 480px, (max-width: 1024px) 768px, 100vw'
+      sizes='100vw'
       alt={alt}
       className={`h-full w-full object-cover ${className}`}
     />
