@@ -6,7 +6,7 @@ import TextArea from '@/components/shared/TextArea';
 import { GiftCardQuery } from '@/gql/graphql';
 import { Form, Formik } from 'formik';
 import { loadStripe } from '@stripe/stripe-js';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Locale } from '../../../../i18n-config';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as Yup from 'yup';
@@ -22,7 +22,8 @@ interface GidtFormValues {
   formPhone: number | string;
   formEmail: string;
   formAmount: string;
-  voucherType: string;
+  formVoucherType: string;
+  formVoucherMessage: string;
 }
 
 const validationSchema = Yup.object().shape({
@@ -44,7 +45,8 @@ const validationSchema = Yup.object().shape({
     .min(150, 'Minimum amount is 150')
     .max(99999999, 'Maximum 8 digits allowed')
     .required('Required'),
-  voucherType: Yup.string().required('Required'),
+  formVoucherType: Yup.string().required('Required'),
+  formVoucherMessage: Yup.string(),
 });
 
 export default function GiftForm({ data, locale }: GiftFormProps) {
@@ -56,23 +58,6 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   const searchParams = useSearchParams();
   const success = searchParams.get('success');
   const canceled = searchParams.get('canceled');
-
-  const session_id = searchParams.get('session_id');
-
-  const [sessionData, setSessionData] = useState<GidtFormValues>();
-
-  useEffect(() => {
-    if (success && session_id) {
-      const fetchData = async () => {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/create-checkout-session?session_id=${session_id}`,
-        );
-        const data = await res.json();
-        setSessionData(data);
-      };
-      fetchData();
-    }
-  }, [success, session_id]);
 
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -98,27 +83,31 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   }, [success, canceled, router, pathname]);
 
   const stripePromise = loadStripe(
-    'pk_test_51ReGaTQUvsZF4dcfMDZLJ6TD3ggtIh98hzN5m24vlQoQzMO3OlfmRMfkU2PBImr2VHfuai9UT9c7GDqX7blBhegd00t03DvLXw',
-  ); // public key
+    `${process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY}`,
+  );
 
   const handlePurchase = async (values: GidtFormValues) => {
+    const dataModel = {
+      name: values.formName,
+      surname: values.formSurname,
+      phone: values.formPhone,
+      email: values.formEmail,
+      amount: values.formAmount,
+      voucherType: values.formVoucherType,
+      voucherMessage: values.formVoucherMessage,
+      locale,
+    };
+
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/create-checkout-session`,
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/gift-card-form/create-checkout-session`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: values.formName,
-          surname: values.formSurname,
-          email: values.formEmail,
-          amount: values.formAmount,
-          locale,
-        }),
+        body: JSON.stringify({ data: dataModel }),
       },
     );
 
     const data = await res.json();
-
     const stripe = await stripePromise;
     if (stripe) {
       await stripe.redirectToCheckout({ sessionId: data.id });
@@ -128,7 +117,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   return (
     <div ref={formRef} className='px-5 md:px-7.5 lg:px-[25%]'>
       <div className='mt-2.5 sm:mt-5'>
-        {success && sessionData ? (
+        {success ? (
           <div className='w-full text-center text-[20px] font-semibold text-yellow-500 lg:text-[28px]'>
             Your gift card has been successfully processed.
           </div>
@@ -140,7 +129,8 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
               formPhone: '',
               formEmail: '',
               formAmount: '',
-              voucherType: '',
+              formVoucherType: '',
+              formVoucherMessage: '',
             }}
             validationSchema={validationSchema}
             onSubmit={handlePurchase}
@@ -168,14 +158,14 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
                   name='formAmount'
                 />
                 <Select
-                  name='voucherType'
+                  name='formVoucherType'
                   placeholder={data.giftCard?.formDelivery}
                   options={options}
                 />
-                {values.voucherType === 'Online' && (
+                {values.formVoucherType === 'Online' && (
                   <TextArea
+                    name='formVoucherMessage'
                     placeholder={data.giftCard?.formDeliveryOption2}
-                    name='formMessage'
                   />
                 )}
 
