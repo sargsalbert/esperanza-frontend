@@ -11,6 +11,7 @@ import BookingSelectorGroup from './bookingSelectorGroup';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { buildRedirectUrl } from './synxisParameters';
 import { Locale } from '../../../../i18n-config';
+import Select from '@/components/shared/Select';
 
 type BookingWidgetProps = {
   data?: ComponentSharedBookingWidgetInput | null;
@@ -21,6 +22,7 @@ export interface ContactFormValues {
   formDates: DateRange | undefined;
   adults: number;
   children: number;
+  childrenAge: number[];
 }
 
 const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
@@ -32,6 +34,11 @@ const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
     window.open(buildRedirectUrl(values), '_blank');
     setOpenPanel(null);
   };
+
+  const ageOptions = Array.from({ length: 18 }, (_, i) => ({
+    value: i.toString(),
+    label: i.toString(),
+  }));
 
   return (
     <>
@@ -45,6 +52,7 @@ const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
               },
               adults: 1,
               children: 0,
+              childrenAge: [],
             }}
             // validationSchema={validationSchema}
 
@@ -108,6 +116,30 @@ const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
                           min={0}
                           max={18}
                         />
+
+                        {values.children > 0 &&
+                          Array.from(
+                            { length: values.children },
+                            (_, index) => (
+                              <div
+                                key={index}
+                                className='grid grid-cols-[100px_1fr] items-center lg:grid-cols-[80px_auto] xl:grid-cols-2'
+                              >
+                                <span className='text-sm font-medium lg:text-base'>
+                                  Child {index + 1} Age
+                                </span>
+                                <div className='flex items-center gap-2'>
+                                  <Select
+                                    className='!mb-0 max-w-[100px] lg:max-w-[116px]'
+                                    name={`childrenAge[${index}]`}
+                                    placeholder='0'
+                                    options={ageOptions}
+                                    classNameSelectBox='!px-[6px] !py-[2px] lg:!p-[3px] !min-h-auto'
+                                  />
+                                </div>
+                              </div>
+                            ),
+                          )}
                       </div>
                     </PanelContainer>
                   )}

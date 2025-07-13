@@ -17,6 +17,7 @@ interface SelectProps {
   required?: boolean;
   disabled?: boolean;
   className?: string;
+  classNameSelectBox?: string;
   fullWidth?: boolean;
 }
 
@@ -27,6 +28,7 @@ const Select = ({
   required = false,
   disabled = false,
   className = '',
+  classNameSelectBox = '',
   fullWidth = true,
 }: SelectProps) => {
   const [field, meta, helpers] = useField(name);
@@ -68,7 +70,7 @@ const Select = ({
     >
       {/* Trigger */}
       <div
-        className={`min-h-10 w-full border-b-2 border-gray-200 flex cursor-pointer items-center justify-between py-2.5 text-sm font-medium transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3 ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
+        className={`${classNameSelectBox} flex min-h-10 w-full cursor-pointer items-center justify-between border-b-2 border-gray-200 py-2.5 text-sm font-medium transition outline-none focus:border-gray-300 sm:text-base lg:min-h-12.5 lg:border-b-3 ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
         onClick={toggleDropdown}
         tabIndex={disabled ? -1 : 0}
         onKeyDown={(e: React.KeyboardEvent) => {
@@ -85,7 +87,7 @@ const Select = ({
           {displayText}
         </span>
         <SelectArrowIcon
-          className={`h-[6px] w-[12px] flex-shrink-0 text-gray-300 transition-transform duration-300 sm:h-[7px] sm:w-[14px] ${isOpen ? 'rotate-180' : ''}`}
+          className={`ml-[7px] h-[6px] w-[12px] flex-shrink-0 text-gray-300 transition-transform duration-300 sm:h-[7px] sm:w-[14px] ${isOpen ? 'rotate-180' : ''}`}
         />
       </div>
 

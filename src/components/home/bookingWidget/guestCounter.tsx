@@ -29,7 +29,7 @@ const GuestCounter = ({
   };
 
   return (
-    <div className='grid grid-cols-[100px_1fr] items-center lg:grid-cols-2'>
+    <div className='grid grid-cols-[100px_1fr] items-center lg:grid-cols-[80px_auto] xl:grid-cols-2'>
       <span className='text-sm font-medium lg:text-base'>{label}</span>
       <div className='flex items-center gap-2'>
         <button

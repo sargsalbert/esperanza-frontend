@@ -31,5 +31,13 @@ export const buildRedirectUrl = (values: ContactFormValues) => {
     level: 'hotel',
   });
 
+  if (values.children > 0) {
+    const childAges = Array.from({ length: values.children }, (_, i) => {
+      return values.childrenAge?.[i] || '0';
+    }).join('|');
+
+    params.set('childages', childAges);
+  }
+
   return `${SYNXIS_BASE_URL}?${params.toString()}`;
 };
