@@ -51,8 +51,8 @@ const validationSchema = Yup.object().shape({
 
 export default function GiftForm({ data, locale }: GiftFormProps) {
   const options = [
-    { value: 'Print', label: 'Print' },
-    { value: 'Online', label: 'Online' },
+    { value: 'Print', label: data.giftCard?.formDeliveryOption1 || 'Print' },
+    { value: 'Online', label: data.giftCard?.formDeliveryOption2 || 'Online' },
   ];
 
   const searchParams = useSearchParams();
