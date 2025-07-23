@@ -11,6 +11,7 @@ export const GLOBAL_QUERY = gql`
       bookButton {
         buttonText
         buttonUrl
+        desktopUrl
         newTab
       }
       menuLinks {
@@ -35,6 +36,7 @@ export const GLOBAL_QUERY = gql`
       siteFooterContactLinks {
         id
         buttonUrl
+        desktopUrl
         buttonText
         newTab
       }
@@ -44,6 +46,7 @@ export const GLOBAL_QUERY = gql`
       siteFooterBottomTextLink {
         id
         buttonUrl
+        desktopUrl
         buttonText
         newTab
       }
@@ -384,6 +387,7 @@ export const ROOMS_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
@@ -404,6 +408,7 @@ export const ROOMS_QUERY = gql`
         id
         buttonText
         buttonUrl
+        desktopUrl
         newTab
       }
       seo {
@@ -470,6 +475,7 @@ export const VILLA_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
@@ -589,6 +595,7 @@ export const WELLNESS_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
@@ -668,6 +675,7 @@ export const DINING_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
@@ -748,6 +756,7 @@ export const MEETINGS_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
@@ -866,6 +875,7 @@ export const EXPERIENCE_QUERY = gql`
         actionButton {
           id
           buttonUrl
+          desktopUrl
           buttonText
           newTab
         }
