@@ -2,26 +2,21 @@
 
 import { useEffect, useState } from 'react';
 
-export const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(
-    typeof window !== 'undefined' ? window.innerWidth < 1024 : true,
-  );
+export const useIsMobile = (): boolean | null => {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
 
-    const handleChange = (e: MediaQueryListEvent) => {
-      setIsMobile(e.matches);
+    const updateIsMobile = () => {
+      setIsMobile(mediaQuery.matches);
     };
 
-    // Set initial value
-    setIsMobile(mediaQuery.matches);
-
-    // Listen for screen size changes
-    mediaQuery.addEventListener('change', handleChange);
+    updateIsMobile();
+    mediaQuery.addEventListener('change', updateIsMobile);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.removeEventListener('change', updateIsMobile);
     };
   }, []);
 
