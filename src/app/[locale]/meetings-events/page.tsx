@@ -78,6 +78,8 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
           title={data.meetingsAndEvent?.contactUsText?.title}
           description={data.meetingsAndEvent?.contactUsText?.description}
           buttonText={data.meetingsAndEvent?.contactUsText?.buttonText}
+          buttonUrl={data.meetingsAndEvent?.contactUsText?.buttonUrl}
+          newTab={data.meetingsAndEvent?.contactUsText?.newTab}
           id=''
         />
       )}
