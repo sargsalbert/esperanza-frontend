@@ -35,7 +35,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
     >
       <FadeInOnView className='m-5'>
         <div
-          className='relative w-full max-w-[1052px] bg-white shadow-xs'
+          className='relative w-full bg-white shadow-xs lg:w-[984px] xl:w-[1052px]'
           onClick={(e) => e.stopPropagation()}
         >
           <div className='relative p-5'>
