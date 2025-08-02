@@ -10,6 +10,7 @@ import TopBox from '@/components/home/topBox';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../i18n-config';
 import { notFound } from 'next/navigation';
+import ModalOffer from '@/components/home/modalOffer';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<HomeQuery>(HOME_QUERY, params, (data) => ({
@@ -135,6 +136,8 @@ export default async function Home({ params }: LocalePageProps) {
           (item) => !item?.hideThisBlock,
         )}
       />
+
+      <ModalOffer heroImage={data.home?.destinationImages?.multipleImages[0]} />
 
       <div className='h-12.5' />
     </>
