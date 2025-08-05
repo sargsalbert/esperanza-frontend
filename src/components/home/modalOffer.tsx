@@ -6,6 +6,7 @@ import StrapiImage from '../shared/StrapiImage';
 import { ComponentSharedModal } from '@/gql/graphql';
 import LocaleLink from '../shared/LocaleLink';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { usePathname } from 'next/navigation';
 
 type ModalProps = {
   dataModal?: ComponentSharedModal | null;
@@ -15,6 +16,8 @@ const ModalOffer = ({ dataModal }: ModalProps) => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const pathname = usePathname();
+
   useEffect(() => {
     if (!dataModal?.modalIsActive) return;
 
@@ -22,17 +25,19 @@ const ModalOffer = ({ dataModal }: ModalProps) => {
     const storage =
       storageType === 'sessionStorage' ? sessionStorage : localStorage;
 
-    const hasShown = storage.getItem('offerModalShown');
+    const key = `offerModalShown_${pathname}`;
+
+    const hasShown = storage.getItem(key);
 
     if (!hasShown) {
       const timer = setTimeout(() => {
         setIsModalOpen(true);
-        storage.setItem('offerModalShown', 'true');
+        storage.setItem(key, 'true');
       }, 3000);
 
       return () => clearTimeout(timer);
     }
-  }, [dataModal?.modalIsActive, dataModal?.modal_storage_type]);
+  }, [dataModal?.modalIsActive, dataModal?.modal_storage_type, pathname]);
 
   const button = dataModal?.modalActionButton;
 
