@@ -137,7 +137,7 @@ export default async function Home({ params }: LocalePageProps) {
         )}
       />
 
-      <ModalOffer heroImage={data.home?.destinationImages?.multipleImages[0]} />
+      <ModalOffer dataModal={data.home?.modal} />
 
       <div className='h-12.5' />
     </>

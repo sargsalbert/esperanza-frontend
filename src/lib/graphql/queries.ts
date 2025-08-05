@@ -253,6 +253,44 @@ export const HOME_QUERY = gql`
           formats
         }
       }
+
+      modal {
+        id
+        modalIsActive
+        modal_storage_type
+        modalHeaderLogo {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
+        }
+        modalImage {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
+        }
+        modalTitle
+        modalSubTitle
+        modalContent
+        modalActionButton {
+          id
+          buttonUrl
+          desktopUrl
+          buttonText
+          newTab
+        }
+      }
     }
   }
 `;

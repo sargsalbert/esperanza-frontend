@@ -2,18 +2,25 @@
 
 import React, { useEffect } from 'react';
 import { CloseIcon } from '../icons/closeIcon';
-import LogoIcon from '../../../public/logo.svg';
-import Image from 'next/image';
 import FadeInOnView from './FadeInOnView';
+import StrapiImage from './StrapiImage';
+import { UploadFile } from '@/gql/graphql';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
+  modalHeaderLogo?: UploadFile | null;
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  title,
+  modalHeaderLogo,
+  children,
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -38,9 +45,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
           className='relative w-full bg-white shadow-xs lg:w-[984px] xl:w-[1052px]'
           onClick={(e) => e.stopPropagation()}
         >
-          <div className='relative p-5'>
-            <div className='relative h-12 md:h-20'>
-              <Image src={LogoIcon} alt='' fill className='object-contain' />
+          <div className='relative flex justify-center p-5'>
+            <div className='relative w-[131px] justify-center md:w-[179px] 2xl:w-[199px]'>
+              {modalHeaderLogo && (
+                <StrapiImage
+                  image={modalHeaderLogo}
+                  className='!object-contain'
+                />
+              )}
             </div>
             <button
               onClick={onClose}
@@ -49,11 +61,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
               <CloseIcon className='h-3.5 w-3.5 lg:h-4.5 lg:w-4.5' />
             </button>
           </div>
-
-          {/* Title */}
           {title && <h2 className='mb-4 text-xl font-semibold'>{title}</h2>}
-
-          {/* Content */}
           <div>{children}</div>
         </div>
       </FadeInOnView>
