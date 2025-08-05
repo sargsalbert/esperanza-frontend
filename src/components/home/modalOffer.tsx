@@ -33,7 +33,7 @@ const ModalOffer = ({ dataModal }: ModalProps) => {
         const timer = setTimeout(() => {
           setIsModalOpen(true);
           storage.setItem(key, 'true');
-        }, 3000);
+        }, 1000);
 
         return () => clearTimeout(timer);
       }
