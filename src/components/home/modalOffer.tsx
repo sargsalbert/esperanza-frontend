@@ -21,21 +21,24 @@ const ModalOffer = ({ dataModal }: ModalProps) => {
   useEffect(() => {
     if (!dataModal?.modalIsActive) return;
 
-    const storageType = dataModal?.modal_storage_type ?? 'localStorage';
-    const storage =
-      storageType === 'sessionStorage' ? sessionStorage : localStorage;
+    try {
+      const storageType = dataModal?.modal_storage_type ?? 'localStorage';
+      const storage =
+        storageType === 'sessionStorage' ? sessionStorage : localStorage;
 
-    const key = `offerModalShown_${pathname}`;
+      const key = `offerModalShown_${pathname}`;
+      const hasShown = storage.getItem(key);
 
-    const hasShown = storage.getItem(key);
+      if (!hasShown) {
+        const timer = setTimeout(() => {
+          setIsModalOpen(true);
+          storage.setItem(key, 'true');
+        }, 3000);
 
-    if (!hasShown) {
-      const timer = setTimeout(() => {
-        setIsModalOpen(true);
-        storage.setItem(key, 'true');
-      }, 3000);
-
-      return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
+      }
+    } catch (error) {
+      console.warn('Storage access error:', error);
     }
   }, [dataModal?.modalIsActive, dataModal?.modal_storage_type, pathname]);
 
