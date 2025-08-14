@@ -225,6 +225,35 @@ export const HOME_QUERY = gql`
         }
         hideThisBlock
       }
+
+      infoSectionText {
+        subtitle
+        title
+        description
+        buttonText
+        buttonUrl
+        newTab
+        hideThisBlock
+      }
+
+      infoSectionGridSlider(pagination: { limit: 30 }) {
+        id
+        title
+        description
+        image {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
+        }
+        hideThisBlock
+      }
+
       bookingWidget {
         adults
         buttonCheckAvailabilityText

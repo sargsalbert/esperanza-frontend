@@ -137,6 +137,23 @@ export default async function Home({ params }: LocalePageProps) {
         )}
       />
 
+      {!data.home?.infoSectionText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.home?.infoSectionText?.subtitle}
+          title={data.home?.infoSectionText?.title}
+          description={data.home?.infoSectionText?.description}
+          buttonText={data.home?.infoSectionText?.buttonText}
+          buttonUrl={data.home?.infoSectionText?.buttonUrl}
+          newTab={data.home?.infoSectionText?.newTab}
+          id=''
+        />
+      )}
+      <SectionGrid
+        sectionGridSlider={(data.home?.infoSectionGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
+      />
+
       <ModalOffer dataModal={data.home?.modal} />
 
       <div className='h-12.5' />
