@@ -9,6 +9,7 @@ import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
+import ModalOffer from '@/components/home/modalOffer';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   return generateSeoMetadata<WellnessQuery>(WELLNESS_QUERY, params, (data) => ({
@@ -88,6 +89,8 @@ export default async function Wellness({ params }: LocalePageProps) {
             />
           </div>
         ))}
+
+      <ModalOffer dataModal={data.wellness?.modal} />
 
       <div className='h-12.5' />
     </>
