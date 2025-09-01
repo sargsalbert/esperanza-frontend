@@ -13,7 +13,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <GoogleAnalytics gaId='G-03C4F1ETL4' />
+        <GoogleAnalytics gaId='G-CR699031L4' />
       </body>
     </html>
   );
