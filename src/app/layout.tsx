@@ -1,5 +1,6 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import NoscriptRedirect from './NoscriptRedirect';
+import GTMWrapper from './GTMWrapper';
 
 export default function RootLayout({
   children,
@@ -10,7 +11,7 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <head>
         <NoscriptRedirect />
-        <GoogleTagManager gtmId='GTM-N85RFB29' />
+        <GTMWrapper />
       </head>
       <body suppressHydrationWarning>
         {children}
