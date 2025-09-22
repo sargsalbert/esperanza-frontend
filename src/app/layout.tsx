@@ -14,6 +14,20 @@ export default function RootLayout({
         {/* Google Tag Manager */}
         <GoogleTagManager gtmId='GTM-N85RFB29' />
 
+        {/* Google Ads (gtag.js) */}
+        <Script
+          src='https://www.googletagmanager.com/gtag/js?id=AW-17528734611'
+          strategy='afterInteractive'
+        />
+        <Script id='google-ads' strategy='afterInteractive'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17528734611');
+          `}
+        </Script>
+
         {/* Facebook Pixel init */}
         {FB_PIXEL_ID && (
           <Script
