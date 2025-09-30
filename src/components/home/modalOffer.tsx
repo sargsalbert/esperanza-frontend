@@ -77,12 +77,12 @@ const ModalOffer = ({ dataModal }: ModalProps) => {
           )}
 
           <div>
-            <h3 className='text-center text-[14px]/[26px] sm:text-[16px]/[32px] lg:text-left'>
-              <span className='mr-2.5 inline-flex text-[22px] font-semibold lg:mb-5 lg:flex lg:text-[30px]'>
+            <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px] lg:text-left'>
+              <h3 className='mr-2.5 inline-flex text-[22px] font-semibold lg:mb-5 lg:flex lg:text-[30px]'>
                 {dataModal?.modalSubTitle}
-              </span>
+              </h3>
               {dataModal?.modalContent}
-            </h3>
+            </p>
           </div>
 
           <div className='mt-[24px] flex justify-center lg:mt-10 lg:justify-end'>
