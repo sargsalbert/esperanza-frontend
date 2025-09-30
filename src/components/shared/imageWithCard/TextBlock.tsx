@@ -38,9 +38,9 @@ const TextBlock = ({
         <div
           className={`text-center lg:text-left ${uiType === 'collapse' ? 'hidden lg:block' : 'block'}`}
         >
-          <h2 className='mb-3 flex min-w-auto justify-center border-b-2 border-yellow-500 pb-3 text-[18px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
+          <h3 className='mb-3 flex min-w-auto justify-center border-b-2 border-yellow-500 pb-3 text-[18px] font-semibold text-gray-800 uppercase lg:mb-4 lg:min-w-[330px] lg:justify-start lg:border-b-3 lg:pr-5 lg:pb-4 lg:text-[22px] xl:mb-5 xl:pr-6 xl:pb-5 xl:text-[28px]'>
             {title}
-          </h2>
+          </h3>
         </div>
         <Tabs
           tabs={tabItem ?? []}
