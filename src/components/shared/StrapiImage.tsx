@@ -39,6 +39,8 @@ const getBestSrc = (
 };
 
 const StrapiImage: React.FC<StrapiImageProps> = ({ image, className = '' }) => {
+  console.log(image, 'iiiiiii');
+
   const src = getBestSrc(image.formats, image.url);
   const srcSet = getImageSrcSet(image.formats, image.url);
   const alt = image.alternativeText || '';
