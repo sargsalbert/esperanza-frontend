@@ -17,7 +17,7 @@ export function Footer({ global }: FooterProps) {
       <div className='bg-gray-100'>
         <div className='w-full px-5 py-7.5 md:py-10 2xl:py-12.5'>
           {global?.siteLogosFooter && (
-            <div className='mb-7.5 flex justify-center text-center text-gray-800 md:mb-10 2xl:mb-12.5'>
+            <div className='mb-7.5 flex flex-col items-center gap-y-5 text-gray-800 md:mb-10 2xl:mb-12.5'>
               {Array.isArray(global?.siteLogosFooter) &&
                 global.siteLogosFooter.map((item, i) => (
                   <LocaleLink
