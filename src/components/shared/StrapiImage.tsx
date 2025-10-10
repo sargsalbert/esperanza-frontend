@@ -14,7 +14,6 @@ type ImageFormat = {
   width: number;
 };
 
-// Ընտրում է լավագույն src (medium -> small -> thumbnail -> large -> original)
 const getBestSrc = (image: UploadFile): string => {
   const formatOrder: (keyof typeof image.formats)[] = [
     'medium',
@@ -35,7 +34,6 @@ const getBestSrc = (image: UploadFile): string => {
   return originalFileName ? `${MEDIA_DOMAIN}/${originalFileName}` : image.url;
 };
 
-// Ստեղծում է srcSet բոլոր formats-ի համար
 const getSrcSet = (image: UploadFile): string => {
   if (!image.formats) return `${getBestSrc(image)} 2560w`;
 

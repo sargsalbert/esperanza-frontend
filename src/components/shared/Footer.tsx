@@ -16,14 +16,25 @@ export function Footer({ global }: FooterProps) {
     <footer>
       <div className='bg-gray-100'>
         <div className='w-full px-5 py-7.5 md:py-10 2xl:py-12.5'>
-          {global?.siteLogoFooter && (
+          {global?.siteLogosFooter && (
             <div className='mb-7.5 flex justify-center text-center text-gray-800 md:mb-10 2xl:mb-12.5'>
-              <div className='h-[40px] w-[157px] md:h-[51px] md:w-[202px] 2xl:h-[64px] 2xl:w-[253px]'>
-                <StrapiImage
-                  image={global.siteLogoFooter}
-                  className='!object-contain'
-                />
-              </div>
+              {Array.isArray(global?.siteLogosFooter) &&
+                global.siteLogosFooter.map((item, i) => (
+                  <LocaleLink
+                    key={i}
+                    href={item?.linkUrl || ''}
+                    aria-label={item?.icon?.alternativeText || ''}
+                    target='_blank'
+                    className='h-[40px] w-[157px] md:h-[51px] md:w-[202px] 2xl:h-[64px] 2xl:w-[253px]'
+                  >
+                    {item?.icon && (
+                      <StrapiImage
+                        image={item?.icon}
+                        className='!object-contain'
+                      />
+                    )}
+                  </LocaleLink>
+                ))}
             </div>
           )}
           <div className='mb-7.5 flex justify-center gap-7.5 md:gap-10'>

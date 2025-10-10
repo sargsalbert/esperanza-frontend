@@ -62,16 +62,19 @@ export const GLOBAL_QUERY = gql`
         size
         formats
       }
-      siteLogoFooter {
-        alternativeText
-        url
-        documentId
-        hash
-        mime
-        name
-        provider
-        size
-        formats
+      siteLogosFooter {
+        icon {
+          alternativeText
+          url
+          documentId
+          hash
+          mime
+          name
+          provider
+          size
+          formats
+        }
+        linkUrl
       }
     }
   }
