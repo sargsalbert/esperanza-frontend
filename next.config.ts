@@ -1,21 +1,31 @@
 import type { NextConfig } from 'next';
 
-const isVercel = process.env.VERCEL === '1';
+const isVercel = process.env.VERCEL === '1'; // Vercel sets this automatically
 
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
 
+  /* config options here */
   images: {
     unoptimized: !isVercel,
+
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'media.esperanzaresort.lt',
+        hostname: 'esperanza-media-storage.fra1.digitaloceanspaces.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'esperanza-media.fra1.digitaloceanspaces.com',
+      },
     ],
-    domains: ['localhost:3000', 'media.esperanzaresort.lt'],
+    domains: [
+      'localhost:3000',
+      'esperanza-media-storage.fra1.digitaloceanspaces.com',
+      'esperanza-media.fra1.digitaloceanspaces.com',
+    ], // or your production Strapi domain like 'cms.mywebsite.com'
   },
 };
 
