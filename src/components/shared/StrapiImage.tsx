@@ -7,8 +7,7 @@ type StrapiImageProps = {
   className?: string;
 };
 
-// const MEDIA_DOMAIN = 'https://media.esperanzaresort.lt';
-const MEDIA_DOMAIN = 'https://esperanza-media.fra1.cdn.digitaloceanspaces.com';
+const MEDIA_DOMAIN = 'https://media.esperanzaresort.lt';
 
 type ImageFormat = {
   url: string;
