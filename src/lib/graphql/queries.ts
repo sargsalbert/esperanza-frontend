@@ -460,6 +460,12 @@ export const ROOMS_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
@@ -548,6 +554,12 @@ export const VILLA_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
@@ -668,6 +680,12 @@ export const WELLNESS_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
@@ -786,6 +804,12 @@ export const DINING_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
@@ -867,6 +891,12 @@ export const MEETINGS_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
@@ -986,6 +1016,12 @@ export const EXPERIENCE_QUERY = gql`
           desktopUrl
           buttonText
           newTab
+          actionButtonOptions {
+            id
+            optionText
+            optionUrl
+            newTab
+          }
         }
         images {
           alternativeText
