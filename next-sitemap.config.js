@@ -2,6 +2,6 @@
 module.exports = {
   siteUrl: 'https://esperanzaresort.lt',
   generateRobotsTxt: true,
-  changefreq: 'weekly',
+  changefreq: 'monthly',
   priority: 0.7,
 };
