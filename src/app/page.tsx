@@ -22,7 +22,7 @@ export default function RootRedirect() {
     );
 
     if (!isAlreadyRedirected) {
-      window.location.replace(`/${preferredLocale}`);
+      window.location.replace(`/${preferredLocale}/`);
     }
   }, []);
 

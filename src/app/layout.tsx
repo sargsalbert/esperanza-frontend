@@ -53,7 +53,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         {/* Redirect if JS disabled */}
         <noscript>
-          <meta httpEquiv='refresh' content='0;url=/en/' />
+          <meta httpEquiv='refresh' content='0;url=/en' />
         </noscript>
 
         {children}
