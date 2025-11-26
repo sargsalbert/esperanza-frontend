@@ -16,16 +16,16 @@ export default function RootRedirect() {
 
     const currentPath = window.location.pathname;
 
-    // Only redirect if not already on a locale path
+    // Redirect only if not already on a locale path
     const isAlreadyRedirected = i18n.locales.some((loc) =>
       currentPath.startsWith(`/${loc}`),
     );
 
     if (!isAlreadyRedirected) {
+      // Add trailing slash
       window.location.replace(`/${preferredLocale}/`);
     }
   }, []);
 
-  // Optional: Spinner or logo while redirecting
   return null;
 }

@@ -6,9 +6,13 @@
       const lang = navigator.language?.split('-')[0];
       const supported = ['en', 'lt'];
       const redirectLang = supported.includes(lang) ? lang : 'en';
+      // Redirect with trailing slash
       window.location.replace(`/${redirectLang}/`);
     </script>
-    <noscript><meta http-equiv="refresh" content="0;url=/en" /></noscript>
+    <!-- Noscript fallback with trailing slash -->
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/en/" />
+    </noscript>
   </head>
   <body></body>
-</html>s
+</html>

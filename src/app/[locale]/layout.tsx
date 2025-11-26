@@ -8,6 +8,7 @@ import { GLOBAL_QUERY } from '@/lib/graphql/queries';
 import { GlobalQuery } from '@/gql/graphql';
 import { i18n, Locale } from '../../../i18n-config';
 import { notFound } from 'next/navigation';
+import Head from 'next/head';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,7 +26,7 @@ export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ locale }));
 }
 
-// Client component to set the lang attribute
+// Client component to set lang attribute
 function LocaleProvider({
   children,
   locale,
@@ -33,11 +34,9 @@ function LocaleProvider({
   children: React.ReactNode;
   locale: string;
 }) {
-  // Set the lang attribute on the html element
   if (typeof document !== 'undefined') {
     document.documentElement.lang = locale;
   }
-
   return <>{children}</>;
 }
 
@@ -48,18 +47,23 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
+  // Await params before using
   const { locale } = await params;
 
-  // Validate locale
   if (!i18n.locales.includes(locale as Locale)) {
     notFound();
   }
+
+  const canonicalUrl = `https://esperanzaresort.lt/${locale}/`;
 
   try {
     const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
 
     return (
       <LocaleProvider locale={locale}>
+        <Head>
+          <link rel='canonical' href={canonicalUrl} />
+        </Head>
         <div
           className={`${montserrat.className} flex min-h-screen flex-col antialiased`}
         >
@@ -72,9 +76,11 @@ export default async function LocaleLayout({
   } catch (error) {
     console.error('Error fetching global data:', error);
 
-    // Fallback layout without data
     return (
       <LocaleProvider locale={locale}>
+        <Head>
+          <link rel='canonical' href={canonicalUrl} />
+        </Head>
         <div
           className={`${montserrat.className} flex min-h-screen flex-col antialiased`}
         >
