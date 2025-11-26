@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://esperanzaresort.lt
+
+# Sitemaps
+Sitemap: https://esperanzaresort.lt/sitemap.xml
