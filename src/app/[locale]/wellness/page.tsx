@@ -35,6 +35,63 @@ export default async function Wellness({ params }: LocalePageProps) {
         />
       )}
 
+      {!data.wellness?.ritualRenewalText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.wellness?.ritualRenewalText?.subtitle}
+          title={data.wellness?.ritualRenewalText?.title}
+          description={data.wellness?.ritualRenewalText?.description}
+          buttonText={data.wellness?.ritualRenewalText?.buttonText}
+          buttonUrl={data.wellness?.ritualRenewalText?.buttonUrl}
+          newTab={data.wellness?.ritualRenewalText?.newTab}
+          id=''
+        />
+      )}
+
+      {data.wellness?.ritualRenewalImages && (
+        <ImageGridTree
+          images={
+            data.wellness?.ritualRenewalImages?.multipleImages?.filter(
+              (img): img is UploadFile => img !== null,
+            ) ?? []
+          }
+        />
+      )}
+      {!data.wellness?.facilitiesText?.hideThisBlock && (
+        <SectionHeader
+          subtitle={data.wellness?.facilitiesText?.subtitle}
+          title={data.wellness?.facilitiesText?.title}
+          description={data.wellness?.facilitiesText?.description}
+          buttonText={data.wellness?.facilitiesText?.buttonText}
+          buttonUrl={data.wellness?.facilitiesText?.buttonUrl}
+          newTab={data.wellness?.facilitiesText?.newTab}
+          id=''
+        />
+      )}
+      <SectionGrid
+        sectionGridSlider={(data.wellness?.sectionGridSlider ?? []).filter(
+          (item) => !item?.hideThisBlock,
+        )}
+      />
+
+      {(data.wellness?.tabbedSliderBlock ?? [])
+        .filter((d) => !d?.hideThisBlock)
+        .map((d, index, arr) => (
+          <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
+            <ImageWithCard
+              title={d?.title}
+              tabItem={d?.tabItem}
+              infoLineText={d?.infoLineText}
+              actionButton={d?.actionButton}
+              images={d?.images ?? []}
+              imageFirst={index % 2 !== 0}
+              isLast={index === arr.length - 1}
+              id={''}
+            />
+          </div>
+        ))}
+
+      <ModalOffer dataModal={data.wellness?.modal} />
+
       <div className='h-12.5' />
     </>
   );
