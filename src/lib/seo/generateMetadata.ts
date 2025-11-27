@@ -16,16 +16,26 @@ export async function generateSeoMetadata<T>(
 ): Promise<Metadata> {
   const { locale } = await params;
   const data = await fetchData<T>(query, { locale });
-
   const { title, description, image } = extract(data);
 
-  const canonicalUrl = `https://esperanzaresort.lt/${locale}/`; // Trailing slash included
+  // Build path from current route params (slug-safe)
+  const path =
+    typeof params === 'object'
+      ? Object.values(params)
+          .filter((v) => v && v !== locale) // remove locale from path
+          .join('/')
+      : '';
+
+  const base =
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.esperanzaresort.lt';
+
+  const canonical = path ? `${base}/${locale}/${path}` : `${base}/${locale}`;
 
   return {
     title: title || 'Esperanza',
     description: description || 'Esperanza',
     alternates: {
-      canonical: canonicalUrl,
+      canonical,
     },
     openGraph: {
       title,
