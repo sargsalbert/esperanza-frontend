@@ -13,10 +13,13 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<GiftCardQuery>(GIFTCARD_QUERY, params, (data) => ({
     title: data.giftCard?.seo?.metaTitle,
     description: data.giftCard?.seo?.metaDescription,
     image: data.giftCard?.seo?.shareImage?.url,
+    canonicalUrl: `/${locale}/gift-cards/`,
   }));
 }
 

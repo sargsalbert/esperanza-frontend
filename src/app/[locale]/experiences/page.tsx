@@ -10,6 +10,8 @@ import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<ExperienceQuery>(
     EXPERIENCE_QUERY,
     params,
@@ -17,6 +19,7 @@ export async function generateMetadata({ params }: LocalePageProps) {
       title: data.experience?.seo?.metaTitle,
       description: data.experience?.seo?.metaDescription,
       image: data.experience?.seo?.shareImage?.url,
+      canonicalUrl: `/${locale}/experiences/`,
     }),
   );
 }

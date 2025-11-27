@@ -15,6 +15,8 @@ export type LocalePageProps = {
 };
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<DestinationQuery>(
     DESTINATION_QUERY,
     params,
@@ -22,6 +24,7 @@ export async function generateMetadata({ params }: LocalePageProps) {
       title: data.destination?.Seo?.metaTitle,
       description: data.destination?.Seo?.metaDescription,
       image: data.destination?.Seo?.shareImage?.url,
+      canonicalUrl: `/${locale}/destination/`,
     }),
   );
 }

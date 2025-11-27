@@ -12,10 +12,13 @@ import { notFound } from 'next/navigation';
 import ModalOffer from '@/components/home/modalOffer';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<WellnessQuery>(WELLNESS_QUERY, params, (data) => ({
     title: data.wellness?.seo?.metaTitle,
     description: data.wellness?.seo?.metaDescription,
     image: data.wellness?.seo?.shareImage?.url,
+    canonicalUrl: `/${locale}/wellness/`,
   }));
 }
 

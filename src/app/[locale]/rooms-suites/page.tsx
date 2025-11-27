@@ -11,6 +11,8 @@ import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<RoomsAndSuiteQuery>(
     ROOMS_QUERY,
     params,
@@ -18,6 +20,7 @@ export async function generateMetadata({ params }: LocalePageProps) {
       title: data.roomsAndSuite?.seo?.metaTitle,
       description: data.roomsAndSuite?.seo?.metaDescription,
       image: data.roomsAndSuite?.seo?.shareImage?.url,
+      canonicalUrl: `/${locale}/rooms-suites/`,
     }),
   );
 }

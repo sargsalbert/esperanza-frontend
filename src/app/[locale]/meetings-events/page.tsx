@@ -12,6 +12,8 @@ import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<MeetingsAndEventQuery>(
     MEETINGS_QUERY,
     params,
@@ -19,6 +21,7 @@ export async function generateMetadata({ params }: LocalePageProps) {
       title: data.meetingsAndEvent?.seo?.metaTitle,
       description: data.meetingsAndEvent?.seo?.metaDescription,
       image: data.meetingsAndEvent?.seo?.shareImage?.url,
+      canonicalUrl: `/${locale}/meetings-events/`,
     }),
   );
 }

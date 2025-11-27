@@ -9,10 +9,13 @@ import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<VillaQuery>(VILLA_QUERY, params, (data) => ({
     title: data.villa?.seo?.metaTitle,
     description: data.villa?.seo?.metaDescription,
     image: data.villa?.seo?.shareImage?.url,
+    canonicalUrl: `/${locale}/villas/`,
   }));
 }
 

@@ -10,10 +10,13 @@ import { notFound } from 'next/navigation';
 import ModalOffer from '@/components/home/modalOffer';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<DiningQuery>(DINING_QUERY, params, (data) => ({
     title: data.dining?.seo?.metaTitle,
     description: data.dining?.seo?.metaDescription,
     image: data.dining?.seo?.shareImage?.url,
+    canonicalUrl: `/${locale}/dining/`,
   }));
 }
 

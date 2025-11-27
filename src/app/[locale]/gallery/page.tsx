@@ -8,10 +8,13 @@ import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
   return generateSeoMetadata<GalleryQuery>(GALLERY_QUERY, params, (data) => ({
     title: data.gallery?.seo?.metaTitle,
     description: data.gallery?.seo?.metaDescription,
     image: data.gallery?.seo?.shareImage?.url,
+    canonicalUrl: `/${locale}/gallery/`,
   }));
 }
 
