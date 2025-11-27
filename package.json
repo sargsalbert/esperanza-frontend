@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "postbuild": "next-sitemap",
+    "build": "next build && next export",
+    "postbuild": "next-sitemap && cp _redirects out/",
     "start": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts"
