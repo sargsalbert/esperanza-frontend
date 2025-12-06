@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import Header from '@/components/shared/Header';
-import { Footer } from '@/components/shared/Footer';
+// import Header from '@/components/shared/Header';
+// import { Footer } from '@/components/shared/Footer';
 import '../globals.css';
-import { fetchData } from '@/lib/apolloClient';
-import { GLOBAL_QUERY } from '@/lib/graphql/queries';
-import { GlobalQuery } from '@/gql/graphql';
+// import { fetchData } from '@/lib/apolloClient';
+// import { GLOBAL_QUERY } from '@/lib/graphql/queries';
+// import { GlobalQuery } from '@/gql/graphql';
 import { i18n, Locale } from '../../../i18n-config';
 import { notFound } from 'next/navigation';
 
@@ -56,16 +56,16 @@ export default async function LocaleLayout({
   }
 
   try {
-    const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
+    // const data = await fetchData<GlobalQuery>(GLOBAL_QUERY, { locale });
 
     return (
       <LocaleProvider locale={locale}>
         <div
           className={`${montserrat.className} flex min-h-screen flex-col antialiased`}
         >
-          <Header global={data.global} />
+          {/* <Header global={data.global} /> */}
           <main className='flex-1'>{children}</main>
-          <Footer global={data.global} />
+          {/* <Footer global={data.global} /> */}
         </div>
       </LocaleProvider>
     );
