@@ -1,63 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
 import { UploadFile } from '@/gql/graphql';
+import React from 'react';
 
 type StrapiImageProps = {
   image: UploadFile;
   className?: string;
 };
 
-const MEDIA_DOMAIN = 'https://media.esperanzaresort.lt';
+const getImageSrcSet = (
+  formats: StrapiImageProps['image']['formats'],
+  originalUrl: string,
+): string => {
+  if (!formats) return originalUrl;
 
-type ImageFormat = {
-  url: string;
-  width: number;
+  const { thumbnail, small, medium, large } = formats;
+
+  return [
+    thumbnail ? `${thumbnail.url} ${thumbnail.width}w` : null,
+    small ? `${small.url} ${small.width}w` : null,
+    medium ? `${medium.url} ${medium.width}w` : null,
+    large ? `${large.url} ${large.width}w` : null,
+    `${originalUrl} 2560w`,
+  ]
+    .filter(Boolean)
+    .join(', ');
 };
 
-const getBestSrc = (image: UploadFile): string => {
-  const formatOrder: (keyof typeof image.formats)[] = [
-    'medium',
-    'small',
-    'thumbnail',
-    'large',
-  ];
-
-  for (const key of formatOrder) {
-    const format = image.formats?.[key] as ImageFormat | undefined;
-    if (format?.url) {
-      const fileName = format.url.split('/').pop();
-      if (fileName) return `${MEDIA_DOMAIN}/${fileName}`;
-    }
-  }
-
-  const originalFileName = image.url.split('/').pop();
-  return originalFileName ? `${MEDIA_DOMAIN}/${originalFileName}` : image.url;
-};
-
-const getSrcSet = (image: UploadFile): string => {
-  if (!image.formats) return `${getBestSrc(image)} 2560w`;
-
-  const entries: string[] = [];
-
-  for (const formatKey in image.formats) {
-    const format = image.formats?.[formatKey] as ImageFormat | undefined;
-    if (format?.url && format?.width) {
-      const fileName = format.url.split('/').pop();
-      if (fileName)
-        entries.push(`${MEDIA_DOMAIN}/${fileName} ${format.width}w`);
-    }
-  }
-
-  const originalFileName = image.url.split('/').pop();
-  if (originalFileName)
-    entries.push(`${MEDIA_DOMAIN}/${originalFileName} 2560w`);
-
-  return entries.join(', ');
+const getBestSrc = (
+  formats: StrapiImageProps['image']['formats'],
+  originalUrl: string,
+): string => {
+  return (
+    formats?.medium?.url ||
+    formats?.small?.url ||
+    formats?.thumbnail?.url ||
+    originalUrl
+  );
 };
 
 const StrapiImage: React.FC<StrapiImageProps> = ({ image, className = '' }) => {
-  const src = getBestSrc(image);
-  const srcSet = getSrcSet(image);
+  const src = getBestSrc(image.formats, image.url);
+  const srcSet = getImageSrcSet(image.formats, image.url);
   const alt = image.alternativeText || '';
 
   return (

@@ -19,8 +19,7 @@ export async function generateSeoMetadata<T>(
   const data = await fetchData<T>(query, { locale });
   const { title, description, image, canonicalUrl } = extract(data);
 
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.esperanzaresort.lt';
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://esperanzaresort.lt';
 
   const canonical = canonicalUrl
     ? `${base}${canonicalUrl}`

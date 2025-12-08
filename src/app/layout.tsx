@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { FB_PIXEL_ID } from '@/lib/fbpixel/fbpixel';
 
 export default function RootLayout({
@@ -11,8 +11,16 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
-        <GoogleTagManager gtmId='GTM-N85RFB29' />
+        {/* Google Tag Manager (HEAD script) */}
+        <Script id='gtm-head' strategy='afterInteractive'>
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PM8J9TMP');
+          `}
+        </Script>
 
         {/* Google Ads (gtag.js) */}
         <Script
@@ -28,7 +36,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Facebook Pixel init */}
+        {/* Facebook Pixel */}
         {FB_PIXEL_ID && (
           <Script
             id='facebook-pixel'
@@ -50,11 +58,17 @@ export default function RootLayout({
           />
         )}
       </head>
+
       <body suppressHydrationWarning>
-        {/* Redirect if JS disabled */}
-        <noscript>
-          <meta httpEquiv='refresh' content='0;url=/en/' />
-        </noscript>
+        {/* GTM noscript (MUST be the first element in <body>) */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `
+              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM8J9TMP"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            `,
+          }}
+        />
 
         {children}
 
