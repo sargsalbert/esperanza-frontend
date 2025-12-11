@@ -1,14 +1,14 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import LanguageSelector from './LanguageSelector';
 import { ScrollTopIcon } from '../icons/scrollTopIcon';
-import { GlobalQuery } from '@/gql/graphql';
 import LocaleLink from './LocaleLink';
 import Image from 'next/image';
 import SubscribeForm from './SubscribeForm';
 import StrapiImage from './StrapiImage';
 
 type FooterProps = {
-  global: GlobalQuery['global'];
+  global: any;
 };
 
 export function Footer({ global }: FooterProps) {
@@ -19,7 +19,7 @@ export function Footer({ global }: FooterProps) {
           {global?.siteLogosFooter && (
             <div className='mb-7.5 flex flex-col items-center gap-y-5 text-gray-800 md:mb-10 2xl:mb-12.5'>
               {Array.isArray(global?.siteLogosFooter) &&
-                global.siteLogosFooter.map((item, i) => (
+                global.siteLogosFooter.map((item: any, i: any) => (
                   <LocaleLink
                     key={i}
                     href={item?.linkUrl || ''}
@@ -39,7 +39,7 @@ export function Footer({ global }: FooterProps) {
           )}
           <div className='mb-7.5 flex justify-center gap-7.5 md:gap-10'>
             {Array.isArray(global?.siteFooterSocial) &&
-              global.siteFooterSocial.map((item, i) => (
+              global.siteFooterSocial.map((item: any, i: any) => (
                 <LocaleLink
                   key={i}
                   href={item?.linkUrl || ''}
@@ -63,7 +63,7 @@ export function Footer({ global }: FooterProps) {
           </div>
           <div className='mb-7.5 space-y-5 text-center text-[13px] font-medium text-gray-800 md:mb-10 md:space-y-7.5 md:text-base 2xl:mb-12.5 2xl:text-lg'>
             {Array.isArray(global?.siteFooterContactLinks) &&
-              global?.siteFooterContactLinks.map((button, index) => (
+              global?.siteFooterContactLinks.map((button: any, index: any) => (
                 <div key={index}>
                   <LocaleLink
                     href={button?.buttonUrl || ''}
@@ -111,6 +111,12 @@ export function Footer({ global }: FooterProps) {
               </LocaleLink>
             )}
           </p>
+
+          {global?.siteFooterBottomTextTwo && (
+            <p className='mt-2 text-center text-xs font-medium text-gray-900 md:text-sm 2xl:text-base'>
+              {global?.siteFooterBottomTextTwo}
+            </p>
+          )}
         </div>
       </div>
     </footer>
