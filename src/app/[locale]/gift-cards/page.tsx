@@ -1,51 +1,37 @@
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { GiftCardQuery } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { GIFTCARD_QUERY } from '@/lib/graphql/queries';
 import GiftForm from './GiftForm';
 import { LocalePageProps } from '../destination/page';
 import StrapiRichTextRenderer from '@/components/shared/StrapiRichTextRenderer';
 import FadeInOnView from '@/components/shared/FadeInOnView';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../../i18n-config';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<GiftCardQuery>(GIFTCARD_QUERY, params, (data) => ({
-    title: data.giftCard?.seo?.metaTitle,
-    description: data.giftCard?.seo?.metaDescription,
-    image: data.giftCard?.seo?.shareImage?.url,
-    canonicalUrl: `/${locale}/gift-cards/`,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function GiftCards({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<GiftCardQuery>(GIFTCARD_QUERY, { locale });
+  const data = await fetchStrapiData('gift-card', locale);
 
-  if (!data.giftCard) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.giftCard?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.giftCard?.heroSection?.heroImage}
-          title={data.giftCard?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
-      {!data.giftCard?.quietLuxuryText?.hideThisBlock && (
+      {!data?.quietLuxuryText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.giftCard?.quietLuxuryText?.subtitle}
-          title={data.giftCard?.quietLuxuryText?.title}
-          description={data.giftCard?.quietLuxuryText?.description}
-          buttonText={data.giftCard?.quietLuxuryText?.buttonText}
-          buttonUrl={data.giftCard?.quietLuxuryText?.buttonUrl}
-          newTab={data.giftCard?.quietLuxuryText?.newTab}
+          subtitle={data?.quietLuxuryText?.subtitle}
+          title={data?.quietLuxuryText?.title}
+          description={data?.quietLuxuryText?.description}
+          buttonText={data?.quietLuxuryText?.buttonText}
+          buttonUrl={data?.quietLuxuryText?.buttonUrl}
+          newTab={data?.quietLuxuryText?.newTab}
           id=''
         />
       )}
@@ -54,10 +40,10 @@ export default async function GiftCards({ params }: LocalePageProps) {
           <GiftForm data={data} locale={locale as Locale} />
         </Suspense>
 
-        {data.giftCard?.formBottomNote && (
+        {data?.formBottomNote && (
           <div className='mt-5 px-5 sm:mt-7.5 md:px-7.5 lg:mt-10 lg:px-[25%]'>
             <StrapiRichTextRenderer
-              content={data.giftCard?.formBottomNote}
+              content={data?.formBottomNote}
               textCenter={true}
             />
           </div>

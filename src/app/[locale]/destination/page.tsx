@@ -1,57 +1,41 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { DestinationQuery, UploadFile } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { DESTINATION_QUERY } from '@/lib/graphql/queries';
 import ImageGrid from './ImageComponent';
 import LocationMap from '@/components/shared/LocationMap';
 import FadeInOnView from '@/components/shared/FadeInOnView';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 import ImageGridTree from '@/components/home/imageGridTree';
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<DestinationQuery>(
-    DESTINATION_QUERY,
-    params,
-    (data) => ({
-      title: data.destination?.Seo?.metaTitle,
-      description: data.destination?.Seo?.metaDescription,
-      image: data.destination?.Seo?.shareImage?.url,
-      canonicalUrl: `/${locale}/destination/`,
-    }),
-  );
-}
-
 export default async function Destination({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<DestinationQuery>(DESTINATION_QUERY, { locale });
+  const data = await fetchStrapiData('destination', locale);
 
-  if (!data.destination) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.destination?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.destination?.heroSection?.heroImage}
-          title={data.destination?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
-      {!data.destination?.beforeMapText?.hideThisBlock && (
+      {!data?.beforeMapText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.destination?.beforeMapText?.subtitle}
-          title={data.destination?.beforeMapText?.title}
-          description={data.destination?.beforeMapText?.description}
-          buttonText={data.destination?.beforeMapText?.buttonText}
-          buttonUrl={data.destination?.beforeMapText?.buttonUrl}
-          newTab={data.destination?.beforeMapText?.newTab}
+          subtitle={data?.beforeMapText?.subtitle}
+          title={data?.beforeMapText?.title}
+          description={data?.beforeMapText?.description}
+          buttonText={data?.beforeMapText?.buttonText}
+          buttonUrl={data?.beforeMapText?.buttonUrl}
+          newTab={data?.beforeMapText?.newTab}
           id=''
         />
       )}
@@ -62,19 +46,19 @@ export default async function Destination({ params }: LocalePageProps) {
           </div>
         </div>
       </FadeInOnView>
-      {data.destination?.afterMapText && (
+      {data?.afterMapText && (
         <FadeInOnView>
           <div className='mb-5 px-5 sm:mb-7.5 md:px-7.5 lg:px-[22%]'>
             <p className='text-center text-[14px]/[26px] sm:text-[16px]/[32px]'>
-              {data.destination.afterMapText}
+              {data.afterMapText}
             </p>
           </div>
         </FadeInOnView>
       )}
 
       <div className='mb-12.5 grid grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-[14.5%]'>
-        {data.destination?.locationImages?.multipleImages?.length
-          ? data.destination.locationImages.multipleImages.map((d, index) => {
+        {data?.locationImages?.multipleImages?.length
+          ? data.locationImages.multipleImages.map((d: any, index: any) => {
               if (!d) return null;
               return (
                 <ImageGrid key={d.documentId} index={index} imageData={d} />
@@ -83,22 +67,22 @@ export default async function Destination({ params }: LocalePageProps) {
           : null}
       </div>
 
-      {!data.destination?.architectureDesignText?.hideThisBlock && (
+      {!data?.architectureDesignText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.destination?.architectureDesignText?.subtitle}
-          title={data.destination?.architectureDesignText?.title}
-          description={data.destination?.architectureDesignText?.description}
-          buttonText={data.destination?.architectureDesignText?.buttonText}
-          buttonUrl={data.destination?.architectureDesignText?.buttonUrl}
-          newTab={data.destination?.architectureDesignText?.newTab}
+          subtitle={data?.architectureDesignText?.subtitle}
+          title={data?.architectureDesignText?.title}
+          description={data?.architectureDesignText?.description}
+          buttonText={data?.architectureDesignText?.buttonText}
+          buttonUrl={data?.architectureDesignText?.buttonUrl}
+          newTab={data?.architectureDesignText?.newTab}
           id=''
         />
       )}
-      {data.destination?.architectureDesignImages && (
+      {data?.architectureDesignImages && (
         <ImageGridTree
           images={
-            data.destination?.architectureDesignImages?.multipleImages?.filter(
-              (img): img is UploadFile => img !== null,
+            data?.architectureDesignImages?.multipleImages?.filter(
+              (img: any) => img !== null,
             ) ?? []
           }
         />

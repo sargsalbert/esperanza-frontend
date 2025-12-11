@@ -1,84 +1,72 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
-import { fetchData } from '@/lib/apolloClient';
-import { UploadFile, WellnessQuery } from '@/gql/graphql';
-import { WELLNESS_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 import ModalOffer from '@/components/home/modalOffer';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<WellnessQuery>(WELLNESS_QUERY, params, (data) => ({
-    title: data.wellness?.seo?.metaTitle,
-    description: data.wellness?.seo?.metaDescription,
-    image: data.wellness?.seo?.shareImage?.url,
-    canonicalUrl: `/${locale}/wellness/`,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function Wellness({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<WellnessQuery>(WELLNESS_QUERY, { locale });
+  const data = await fetchStrapiData('wellness', locale);
 
-  if (!data.wellness) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.wellness?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.wellness?.heroSection?.heroImage}
-          title={data.wellness?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
 
-      {!data.wellness?.ritualRenewalText?.hideThisBlock && (
+      {!data?.ritualRenewalText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.wellness?.ritualRenewalText?.subtitle}
-          title={data.wellness?.ritualRenewalText?.title}
-          description={data.wellness?.ritualRenewalText?.description}
-          buttonText={data.wellness?.ritualRenewalText?.buttonText}
-          buttonUrl={data.wellness?.ritualRenewalText?.buttonUrl}
-          newTab={data.wellness?.ritualRenewalText?.newTab}
+          subtitle={data?.ritualRenewalText?.subtitle}
+          title={data?.ritualRenewalText?.title}
+          description={data?.ritualRenewalText?.description}
+          buttonText={data?.ritualRenewalText?.buttonText}
+          buttonUrl={data?.ritualRenewalText?.buttonUrl}
+          newTab={data?.ritualRenewalText?.newTab}
           id=''
         />
       )}
 
-      {data.wellness?.ritualRenewalImages && (
+      {data?.ritualRenewalImages && (
         <ImageGridTree
           images={
-            data.wellness?.ritualRenewalImages?.multipleImages?.filter(
-              (img): img is UploadFile => img !== null,
+            data?.ritualRenewalImages?.multipleImages?.filter(
+              (img: any) => img !== null,
             ) ?? []
           }
         />
       )}
-      {!data.wellness?.facilitiesText?.hideThisBlock && (
+      {!data?.facilitiesText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.wellness?.facilitiesText?.subtitle}
-          title={data.wellness?.facilitiesText?.title}
-          description={data.wellness?.facilitiesText?.description}
-          buttonText={data.wellness?.facilitiesText?.buttonText}
-          buttonUrl={data.wellness?.facilitiesText?.buttonUrl}
-          newTab={data.wellness?.facilitiesText?.newTab}
+          subtitle={data?.facilitiesText?.subtitle}
+          title={data?.facilitiesText?.title}
+          description={data?.facilitiesText?.description}
+          buttonText={data?.facilitiesText?.buttonText}
+          buttonUrl={data?.facilitiesText?.buttonUrl}
+          newTab={data?.facilitiesText?.newTab}
           id=''
         />
       )}
       <SectionGrid
-        sectionGridSlider={(data.wellness?.sectionGridSlider ?? []).filter(
-          (item) => !item?.hideThisBlock,
+        sectionGridSlider={(data?.sectionGridSlider ?? []).filter(
+          (item: any) => !item?.hideThisBlock,
         )}
       />
 
-      {(data.wellness?.tabbedSliderBlock ?? [])
-        .filter((d) => !d?.hideThisBlock)
-        .map((d, index, arr) => (
+      {(data?.tabbedSliderBlock ?? [])
+        .filter((d: any) => !d?.hideThisBlock)
+        .map((d: any, index: any, arr: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -93,7 +81,7 @@ export default async function Wellness({ params }: LocalePageProps) {
           </div>
         ))}
 
-      <ModalOffer dataModal={data.wellness?.modal} />
+      <ModalOffer dataModal={data?.modal} />
 
       <div className='h-12.5' />
     </>

@@ -1,53 +1,41 @@
-import { VillaQuery } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { VILLA_QUERY } from '@/lib/graphql/queries';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import { LocalePageProps } from '../destination/page';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<VillaQuery>(VILLA_QUERY, params, (data) => ({
-    title: data.villa?.seo?.metaTitle,
-    description: data.villa?.seo?.metaDescription,
-    image: data.villa?.seo?.shareImage?.url,
-    canonicalUrl: `/${locale}/villas/`,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function VillaPage({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<VillaQuery>(VILLA_QUERY, { locale });
+  const data = await fetchStrapiData('villa', locale);
 
-  if (!data.villa) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.villa?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.villa?.heroSection?.heroImage}
-          title={data.villa?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
-      {!data.villa?.privateHeavensText?.hideThisBlock && (
+      {!data?.privateHeavensText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.villa?.privateHeavensText?.subtitle}
-          title={data.villa?.privateHeavensText?.title}
-          description={data.villa?.privateHeavensText?.description}
-          buttonText={data.villa?.privateHeavensText?.buttonText}
-          buttonUrl={data.villa?.privateHeavensText?.buttonUrl}
-          newTab={data.villa?.privateHeavensText?.newTab}
+          subtitle={data?.privateHeavensText?.subtitle}
+          title={data?.privateHeavensText?.title}
+          description={data?.privateHeavensText?.description}
+          buttonText={data?.privateHeavensText?.buttonText}
+          buttonUrl={data?.privateHeavensText?.buttonUrl}
+          newTab={data?.privateHeavensText?.newTab}
           id=''
         />
       )}
-      {data.villa?.tabbedSliderBlock
-        ?.filter((item) => !item?.hideThisBlock)
-        .map((d, index, arr) => (
+      {data?.tabbedSliderBlock
+        ?.filter((item: any) => !item?.hideThisBlock)
+        .map((d: any, index: any, arr: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}

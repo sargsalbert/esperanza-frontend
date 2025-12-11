@@ -1,64 +1,55 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import SectionHeader from '@/components/shared/SectionHeader';
-import { HOME_QUERY } from '@/lib/graphql/queries';
-import { fetchData } from '@/lib/apolloClient';
-import { HomeQuery, UploadFile } from '@/gql/graphql';
 import SectionGrid from '@/components/home/sectionGrid';
 import ImageWithOverlayCard from '@/components/home/imageWithOverlayCard';
 import { LocalePageProps } from './destination/page';
 import ImageGridTree from '@/components/home/imageGridTree';
 import TopBox from '@/components/home/topBox';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { Locale } from '../../../i18n-config';
 import { notFound } from 'next/navigation';
 import ModalOffer from '@/components/home/modalOffer';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  return generateSeoMetadata<HomeQuery>(HOME_QUERY, params, (data) => ({
-    title: data.home?.seo?.metaTitle,
-    description: data.home?.seo?.metaDescription,
-    image: data.home?.seo?.shareImage?.url,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function Home({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<HomeQuery>(HOME_QUERY, { locale });
+  const data = await fetchStrapiData('home', locale);
 
-  if (!data.home) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
       <TopBox
-        heroSection={data.home?.heroSection}
-        bookingWidget={data.home?.bookingWidget}
+        heroSection={data?.heroSection}
+        bookingWidget={data?.bookingWidget}
         locale={locale as Locale}
       />
 
-      {!data.home?.destinationText?.hideThisBlock && (
+      {!data?.destinationText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.home?.destinationText?.subtitle}
-          title={data.home?.destinationText?.title}
-          description={data.home?.destinationText?.description}
-          buttonText={data.home?.destinationText?.buttonText}
-          buttonUrl={data.home?.destinationText?.buttonUrl}
-          newTab={data.home?.destinationText?.newTab}
+          subtitle={data?.destinationText?.subtitle}
+          title={data?.destinationText?.title}
+          description={data?.destinationText?.description}
+          buttonText={data?.destinationText?.buttonText}
+          buttonUrl={data?.destinationText?.buttonUrl}
+          newTab={data?.destinationText?.newTab}
           id=''
         />
       )}
 
-      {data.home?.destinationImages && (
+      {data?.destinationImages && (
         <ImageGridTree
           images={
-            data.home?.destinationImages?.multipleImages?.filter(
-              (img): img is UploadFile => img !== null,
+            data?.destinationImages?.multipleImages?.filter(
+              (img: any) => img !== null,
             ) ?? []
           }
         />
       )}
 
-      {data.home?.headerTextWithSliderBlock?.length &&
-        data.home.headerTextWithSliderBlock.map((d, index) => (
+      {data?.headerTextWithSliderBlock?.length &&
+        data.headerTextWithSliderBlock.map((d: any, index: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             {!d?.sectionText?.hideThisBlock && (
               <SectionHeader
@@ -73,32 +64,32 @@ export default async function Home({ params }: LocalePageProps) {
             )}
             <ImageWithOverlayCard
               features={(d?.textImageSliderBlock ?? []).filter(
-                (item) => !item?.hideThisBlock,
+                (item: any) => !item?.hideThisBlock,
               )}
               imageFirst={index % 2 !== 0}
             />
           </div>
         ))}
-      {!data.home?.wellnessText?.hideThisBlock && (
+      {!data?.wellnessText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.home?.wellnessText?.subtitle}
-          title={data.home?.wellnessText?.title}
-          description={data.home?.wellnessText?.description}
-          buttonText={data?.home?.wellnessText?.buttonText}
-          buttonUrl={data.home?.wellnessText?.buttonUrl}
-          newTab={data.home?.wellnessText?.newTab}
+          subtitle={data?.wellnessText?.subtitle}
+          title={data?.wellnessText?.title}
+          description={data?.wellnessText?.description}
+          buttonText={data?.wellnessText?.buttonText}
+          buttonUrl={data?.wellnessText?.buttonUrl}
+          newTab={data?.wellnessText?.newTab}
           id=''
         />
       )}
 
       <SectionGrid
-        sectionGridSlider={(data.home?.wellnessGridSlider ?? []).filter(
-          (item) => !item?.hideThisBlock,
+        sectionGridSlider={(data?.wellnessGridSlider ?? []).filter(
+          (item: any) => !item?.hideThisBlock,
         )}
       />
 
-      {data.home?.HeaderTextWithSliderBlockTwo?.length &&
-        data.home.HeaderTextWithSliderBlockTwo.map((d, index) => (
+      {data?.HeaderTextWithSliderBlockTwo?.length &&
+        data.HeaderTextWithSliderBlockTwo.map((d: any, index: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             {!d?.sectionText?.hideThisBlock && (
               <SectionHeader
@@ -114,47 +105,47 @@ export default async function Home({ params }: LocalePageProps) {
 
             <ImageWithOverlayCard
               features={(d?.textImageSliderBlock ?? []).filter(
-                (item) => !item?.hideThisBlock,
+                (item: any) => !item?.hideThisBlock,
               )}
               imageFirst={index % 2 !== 0}
             />
           </div>
         ))}
-      {!data.home?.experiencesText?.hideThisBlock && (
+      {!data?.experiencesText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.home?.experiencesText?.subtitle}
-          title={data.home?.experiencesText?.title}
-          description={data.home?.experiencesText?.description}
-          buttonText={data.home?.experiencesText?.buttonText}
-          buttonUrl={data.home?.experiencesText?.buttonUrl}
-          newTab={data.home?.experiencesText?.newTab}
+          subtitle={data?.experiencesText?.subtitle}
+          title={data?.experiencesText?.title}
+          description={data?.experiencesText?.description}
+          buttonText={data?.experiencesText?.buttonText}
+          buttonUrl={data?.experiencesText?.buttonUrl}
+          newTab={data?.experiencesText?.newTab}
           id=''
         />
       )}
       <SectionGrid
-        sectionGridSlider={(data.home?.experiencesGridSlider ?? []).filter(
-          (item) => !item?.hideThisBlock,
+        sectionGridSlider={(data?.experiencesGridSlider ?? []).filter(
+          (item: any) => !item?.hideThisBlock,
         )}
       />
 
-      {!data.home?.infoSectionText?.hideThisBlock && (
+      {!data?.infoSectionText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.home?.infoSectionText?.subtitle}
-          title={data.home?.infoSectionText?.title}
-          description={data.home?.infoSectionText?.description}
-          buttonText={data.home?.infoSectionText?.buttonText}
-          buttonUrl={data.home?.infoSectionText?.buttonUrl}
-          newTab={data.home?.infoSectionText?.newTab}
+          subtitle={data?.infoSectionText?.subtitle}
+          title={data?.infoSectionText?.title}
+          description={data?.infoSectionText?.description}
+          buttonText={data?.infoSectionText?.buttonText}
+          buttonUrl={data?.infoSectionText?.buttonUrl}
+          newTab={data?.infoSectionText?.newTab}
           id=''
         />
       )}
       <SectionGrid
-        sectionGridSlider={(data.home?.infoSectionGridSlider ?? []).filter(
-          (item) => !item?.hideThisBlock,
+        sectionGridSlider={(data?.infoSectionGridSlider ?? []).filter(
+          (item: any) => !item?.hideThisBlock,
         )}
       />
 
-      <ModalOffer dataModal={data.home?.modal} />
+      <ModalOffer dataModal={data?.modal} />
 
       <div className='h-12.5' />
     </>

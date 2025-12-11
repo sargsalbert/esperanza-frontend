@@ -1,63 +1,46 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { MeetingsAndEventQuery } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { MEETINGS_QUERY } from '@/lib/graphql/queries';
+
 import { LocalePageProps } from '../destination/page';
 import SectionGrid from '@/components/home/sectionGrid';
 import ContactUsForm from './ContactUsForm';
 import { Locale } from '../../../../i18n-config';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<MeetingsAndEventQuery>(
-    MEETINGS_QUERY,
-    params,
-    (data) => ({
-      title: data.meetingsAndEvent?.seo?.metaTitle,
-      description: data.meetingsAndEvent?.seo?.metaDescription,
-      image: data.meetingsAndEvent?.seo?.shareImage?.url,
-      canonicalUrl: `/${locale}/meetings-events/`,
-    }),
-  );
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function MeetingsEvents({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<MeetingsAndEventQuery>(MEETINGS_QUERY, {
-    locale,
-  });
+  const data = await fetchStrapiData('meetings-and-event', locale);
 
-  if (!data.meetingsAndEvent) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.meetingsAndEvent?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.meetingsAndEvent?.heroSection?.heroImage}
-          title={data.meetingsAndEvent?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
-      {!data.meetingsAndEvent?.timelessMomentstext?.hideThisBlock && (
+      {!data?.timelessMomentstext?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.meetingsAndEvent?.timelessMomentstext?.subtitle}
-          title={data.meetingsAndEvent?.timelessMomentstext?.title}
-          description={data.meetingsAndEvent?.timelessMomentstext?.description}
-          buttonText={data.meetingsAndEvent?.timelessMomentstext?.buttonText}
-          buttonUrl={data.meetingsAndEvent?.timelessMomentstext?.buttonUrl}
-          newTab={data.meetingsAndEvent?.timelessMomentstext?.newTab}
+          subtitle={data?.timelessMomentstext?.subtitle}
+          title={data?.timelessMomentstext?.title}
+          description={data?.timelessMomentstext?.description}
+          buttonText={data?.timelessMomentstext?.buttonText}
+          buttonUrl={data?.timelessMomentstext?.buttonUrl}
+          newTab={data?.timelessMomentstext?.newTab}
           id=''
         />
       )}
 
-      {(data.meetingsAndEvent?.tabbedSliderBlock ?? [])
-        .filter((d) => !d?.hideThisBlock)
-        .map((d, index, arr) => (
+      {(data?.tabbedSliderBlock ?? [])
+        .filter((d: any) => !d?.hideThisBlock)
+        .map((d: any, index: any, arr: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -72,17 +55,17 @@ export default async function MeetingsEvents({ params }: LocalePageProps) {
           </div>
         ))}
       <SectionGrid
-        sectionGridSlider={(
-          data.meetingsAndEvent?.sectionGridSlider ?? []
-        ).filter((item) => !item?.hideThisBlock)}
+        sectionGridSlider={(data?.sectionGridSlider ?? []).filter(
+          (item: any) => !item?.hideThisBlock,
+        )}
       />
-      {!data.meetingsAndEvent?.contactUsText?.hideThisBlock && (
+      {!data?.contactUsText?.hideThisBlock && (
         <SectionHeader
-          title={data.meetingsAndEvent?.contactUsText?.title}
-          description={data.meetingsAndEvent?.contactUsText?.description}
-          buttonText={data.meetingsAndEvent?.contactUsText?.buttonText}
-          buttonUrl={data.meetingsAndEvent?.contactUsText?.buttonUrl}
-          newTab={data.meetingsAndEvent?.contactUsText?.newTab}
+          title={data?.contactUsText?.title}
+          description={data?.contactUsText?.description}
+          buttonText={data?.contactUsText?.buttonText}
+          buttonUrl={data?.contactUsText?.buttonUrl}
+          newTab={data?.contactUsText?.newTab}
           id=''
         />
       )}

@@ -1,41 +1,29 @@
-import { GalleryQuery, UploadFile } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { GALLERY_QUERY } from '@/lib/graphql/queries';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { LocalePageProps } from '../destination/page';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { DynamicGallery } from './DynamicGallery';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<GalleryQuery>(GALLERY_QUERY, params, (data) => ({
-    title: data.gallery?.seo?.metaTitle,
-    description: data.gallery?.seo?.metaDescription,
-    image: data.gallery?.seo?.shareImage?.url,
-    canonicalUrl: `/${locale}/gallery/`,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function Gallery({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<GalleryQuery>(GALLERY_QUERY, { locale });
+  const data = await fetchStrapiData('gallery', locale);
 
-  if (!data.gallery) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.gallery?.sectionText?.hideThisBlock && (
+      {!data?.sectionText?.hideThisBlock && (
         <div className='mt-7.5 lg:mt-11 xl:mt-10.5'>
           <SectionHeader
-            subtitle={data.gallery?.sectionText?.subtitle}
-            title={data.gallery?.sectionText?.title}
-            description={data.gallery?.sectionText?.description}
-            buttonText={data.gallery?.sectionText?.buttonText}
-            buttonUrl={data.gallery?.sectionText?.buttonUrl}
-            newTab={data.gallery?.sectionText?.newTab}
+            subtitle={data?.sectionText?.subtitle}
+            title={data?.sectionText?.title}
+            description={data?.sectionText?.description}
+            buttonText={data?.sectionText?.buttonText}
+            buttonUrl={data?.sectionText?.buttonUrl}
+            newTab={data?.sectionText?.newTab}
             id=''
           />
         </div>
@@ -44,7 +32,7 @@ export default async function Gallery({ params }: LocalePageProps) {
       <DynamicGallery
         images={
           data.gallery?.galleryImages?.multipleImages?.filter(
-            (img): img is UploadFile => img !== null,
+            (img: any) => img !== null,
           ) ?? []
         }
       />

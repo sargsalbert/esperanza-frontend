@@ -1,55 +1,43 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import ImageWithCard from '@/components/shared/imageWithCard/imageWithCard';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { DiningQuery } from '@/gql/graphql';
-import { fetchData } from '@/lib/apolloClient';
-import { DINING_QUERY } from '@/lib/graphql/queries';
 import { LocalePageProps } from '../destination/page';
-import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import { notFound } from 'next/navigation';
 import ModalOffer from '@/components/home/modalOffer';
-
-export async function generateMetadata({ params }: LocalePageProps) {
-  const { locale } = await params;
-
-  return generateSeoMetadata<DiningQuery>(DINING_QUERY, params, (data) => ({
-    title: data.dining?.seo?.metaTitle,
-    description: data.dining?.seo?.metaDescription,
-    image: data.dining?.seo?.shareImage?.url,
-    canonicalUrl: `/${locale}/dining/`,
-  }));
-}
+import { fetchStrapiData } from '@/lib/fetchStrapiData';
 
 export default async function Villas({ params }: LocalePageProps) {
   const { locale } = await params;
 
-  const data = await fetchData<DiningQuery>(DINING_QUERY, { locale });
+  const data = await fetchStrapiData('dining', locale);
 
-  if (!data.dining) return notFound();
+  if (!data) return notFound();
 
   return (
     <>
-      {!data.dining?.heroSection?.hideThisBlock && (
+      {!data?.heroSection?.hideThisBlock && (
         <PageHeader
-          heroImage={data.dining?.heroSection?.heroImage}
-          title={data.dining?.heroSection?.heroText}
+          heroImage={data?.heroSection?.heroImage}
+          title={data?.heroSection?.heroText}
         />
       )}
-      {!data.dining?.beyondTableText?.hideThisBlock && (
+      {!data?.beyondTableText?.hideThisBlock && (
         <SectionHeader
-          subtitle={data.dining?.beyondTableText?.subtitle}
-          title={data.dining?.beyondTableText?.title}
-          description={data.dining?.beyondTableText?.description}
-          buttonText={data.dining?.beyondTableText?.buttonText}
-          buttonUrl={data.dining?.beyondTableText?.buttonUrl}
-          newTab={data.dining?.beyondTableText?.newTab}
+          subtitle={data?.beyondTableText?.subtitle}
+          title={data?.beyondTableText?.title}
+          description={data?.beyondTableText?.description}
+          buttonText={data?.beyondTableText?.buttonText}
+          buttonUrl={data?.beyondTableText?.buttonUrl}
+          newTab={data?.beyondTableText?.newTab}
           id=''
         />
       )}
 
-      {(data.dining?.tabbedSliderBlock ?? [])
-        .filter((d) => !d?.hideThisBlock)
-        .map((d, index, arr) => (
+      {(data?.tabbedSliderBlock ?? [])
+        .filter((d: any) => !d?.hideThisBlock)
+        .map((d: any, index: any, arr: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
             <ImageWithCard
               title={d?.title}
@@ -63,7 +51,7 @@ export default async function Villas({ params }: LocalePageProps) {
           </div>
         ))}
 
-      <ModalOffer dataModal={data.dining?.modal} />
+      <ModalOffer dataModal={data?.modal} />
 
       <div className='h-12.5' />
     </>
