@@ -33,7 +33,7 @@ export default async function Experiences({ params }: LocalePageProps) {
           id=''
         />
       )}
-      {(data.experience?.tabbedSliderBlock ?? [])
+      {(data?.tabbedSliderBlock ?? [])
         .filter((d: any) => !d?.hideThisBlock)
         .map((d: any, index: any, arr: any) => (
           <div key={index} className='mb-12.5 sm:mb-15 lg:mb-20'>
