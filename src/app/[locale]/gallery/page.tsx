@@ -31,7 +31,7 @@ export default async function Gallery({ params }: LocalePageProps) {
 
       <DynamicGallery
         images={
-          data.gallery?.galleryImages?.multipleImages?.filter(
+          data?.galleryImages?.multipleImages?.filter(
             (img: any) => img !== null,
           ) ?? []
         }

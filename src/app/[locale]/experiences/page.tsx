@@ -51,7 +51,7 @@ export default async function Experiences({ params }: LocalePageProps) {
         ))}
 
       <SectionGrid
-        sectionGridSlider={(data.experience?.sectionGridSlider ?? []).filter(
+        sectionGridSlider={(data?.sectionGridSlider ?? []).filter(
           (item: any) => !item?.hideThisBlock,
         )}
       />
