@@ -82,7 +82,7 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
             {sectionGridSlider?.map((item, index) => (
               <div
                 key={index}
-                className={`mr-[12px] min-h-0 ${itemsCount <= 2 ? 'ml-[12px]' : ''} flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]`}
+                className={`mr-[12px] min-h-0 ${itemsCount <= 2 && index === 0 ? 'ml-[24px]' : ''} flex-[0_0_calc(100%-48px)] lg:mr-[14px] lg:flex-[0_0_calc(((100%-28px)/3))]`}
               >
                 <div
                   ref={index === 0 ? imageWrapperRef : null}
