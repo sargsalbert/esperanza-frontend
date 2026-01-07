@@ -67,6 +67,8 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
     };
   }, []);
 
+  const itemsCount = sectionGridSlider?.length ?? 0;
+
   return (
     <FadeInOnView>
       <div className='mb-12.5 sm:mb-15 lg:mb-20'>
@@ -74,7 +76,9 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
           className='relative overflow-hidden lg:mx-10 2xl:mx-15'
           ref={emblaRef}
         >
-          <div className='flex items-stretch'>
+          <div
+            className={`flex items-stretch ${itemsCount < 3 ? 'lg:justify-center' : ''}`}
+          >
             {sectionGridSlider?.map((item, index) => (
               <div
                 key={index}
@@ -102,7 +106,7 @@ const SectionGrid = ({ sectionGridSlider }: SectionGridProps) => {
 
           <div
             style={{ top: imageHeight ? `${imageHeight / 2}px` : '28%' }}
-            className='absolute z-10 hidden w-full -translate-y-1/2 justify-between px-7.5 lg:flex'
+            className={`absolute z-10 w-full -translate-y-1/2 justify-between px-7.5 ${itemsCount <= 3 ? 'hidden' : 'hidden lg:flex'} `}
           >
             <button
               className='flex cursor-pointer items-center justify-center rounded-full bg-gray-800/40 hover:bg-gray-800/70 lg:h-[42px] lg:w-[42px] xl:h-[48px] xl:w-[48px] 2xl:h-[54px] 2xl:w-[54px]'
