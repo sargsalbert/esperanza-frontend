@@ -10,6 +10,25 @@ import ContactUsForm from './ContactUsForm';
 import { Locale } from '../../../../i18n-config';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  return generateSeoMetadata('meetings-and-event', params, (data: any) => ({
+    title: data?.seo?.metaTitle,
+    description: data?.seo?.metaDescription,
+    image: data?.seo?.shareImage?.url
+      ? {
+          url: data.seo.shareImage.url,
+          width: 1200,
+          height: 630,
+          alt: data?.seo?.metaTitle,
+        }
+      : undefined,
+    canonicalUrl: `/${locale}/meetings-events/`,
+  }));
+}
 
 export default async function MeetingsEvents({ params }: LocalePageProps) {
   const { locale } = await params;

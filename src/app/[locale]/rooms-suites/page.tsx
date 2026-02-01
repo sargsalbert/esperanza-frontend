@@ -8,6 +8,25 @@ import FadeInOnView from '@/components/shared/FadeInOnView';
 import LocaleLink from '@/components/shared/LocaleLink';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  return generateSeoMetadata('rooms-and-suite', params, (data: any) => ({
+    title: data?.seo?.metaTitle,
+    description: data?.seo?.metaDescription,
+    image: data?.seo?.shareImage?.url
+      ? {
+          url: data.seo.shareImage.url,
+          width: 1200,
+          height: 630,
+          alt: data?.seo?.metaTitle,
+        }
+      : undefined,
+    canonicalUrl: `/${locale}/rooms-suites/`,
+  }));
+}
 
 export default async function RoomsSuites({ params }: LocalePageProps) {
   const { locale } = await params;

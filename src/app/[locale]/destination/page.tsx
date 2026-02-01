@@ -8,10 +8,29 @@ import FadeInOnView from '@/components/shared/FadeInOnView';
 import { notFound } from 'next/navigation';
 import ImageGridTree from '@/components/home/imageGridTree';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  return generateSeoMetadata('destination', params, (data: any) => ({
+    title: data?.Seo?.metaTitle,
+    description: data?.Seo?.metaDescription,
+    image: data?.Seo?.shareImage?.url
+      ? {
+          url: data.Seo.shareImage.url,
+          width: 1200,
+          height: 630,
+          alt: data?.Seo?.metaTitle,
+        }
+      : undefined,
+    canonicalUrl: `/${locale}/destination/`,
+  }));
+}
 
 export default async function Destination({ params }: LocalePageProps) {
   const { locale } = await params;

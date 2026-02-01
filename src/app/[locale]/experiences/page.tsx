@@ -6,6 +6,25 @@ import SectionHeader from '@/components/shared/SectionHeader';
 import { LocalePageProps } from '../destination/page';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+
+export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
+
+  return generateSeoMetadata('experience', params, (data: any) => ({
+    title: data?.seo?.metaTitle,
+    description: data?.seo?.metaDescription,
+    image: data?.seo?.shareImage?.url
+      ? {
+          url: data.seo.shareImage.url,
+          width: 1200,
+          height: 630,
+          alt: data?.seo?.metaTitle,
+        }
+      : undefined,
+    canonicalUrl: `/${locale}/experiences/`,
+  }));
+}
 
 export default async function Experiences({ params }: LocalePageProps) {
   const { locale } = await params;
