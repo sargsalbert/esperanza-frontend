@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { mapStyles } from './map-styles';
 import Image from 'next/image';
 
+const GOOGLE_MAPS_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
 export default function LocationMap() {
   const mapRef = useRef();
   const infoWindowRef = useRef();
@@ -180,7 +182,7 @@ export default function LocationMap() {
 
     if (!window.google) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_KEY}&callback=initMap`;
       script.async = true;
       script.defer = true;
       document.head.appendChild(script);
