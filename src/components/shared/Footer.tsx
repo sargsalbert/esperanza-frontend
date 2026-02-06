@@ -6,6 +6,7 @@ import LocaleLink from './LocaleLink';
 import Image from 'next/image';
 import SubscribeForm from './SubscribeForm';
 import StrapiImage from './StrapiImage';
+import Script from 'next/script';
 
 type FooterProps = {
   global: any;
@@ -75,6 +76,15 @@ export function Footer({ global }: FooterProps) {
                 </div>
               ))}
           </div>
+
+          {/* widgets experience hotel */}
+          <div data-xp-widget-newsletter-489></div>
+          <Script
+            src='https://widgets.experience-hotel.com/front/widget/widget-newsletter/bootstrap.js?widget_id=489'
+            strategy='afterInteractive'
+          />
+          {/* end widgets experience hotel */}
+
           <div className='relative flex items-center justify-center'>
             <SubscribeForm
               siteFooterFormPlaceholder={global?.siteFooterFormPlaceholder}
