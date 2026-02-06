@@ -82,7 +82,6 @@ export function Footer({ global }: FooterProps) {
           <Script
             src='https://widgets.experience-hotel.com/front/widget/widget-newsletter/bootstrap.js?widget_id=489'
             strategy='afterInteractive'
-            crossOrigin='anonymous'
           />
           {/* end widgets experience hotel */}
 
