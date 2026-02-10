@@ -4,7 +4,7 @@ import LanguageSelector from './LanguageSelector';
 import { ScrollTopIcon } from '../icons/scrollTopIcon';
 import LocaleLink from './LocaleLink';
 import Image from 'next/image';
-import SubscribeForm from './SubscribeForm';
+// import SubscribeForm from './SubscribeForm';
 import StrapiImage from './StrapiImage';
 import Script from 'next/script';
 
@@ -85,14 +85,7 @@ export function Footer({ global }: FooterProps) {
           />
           {/* end widgets experience hotel */}
 
-          <div className='relative flex items-center justify-center'>
-            <SubscribeForm
-              siteFooterFormPlaceholder={global?.siteFooterFormPlaceholder}
-              siteFooterFormButtonText={global?.siteFooterFormButtonText}
-              siteFooterFormSuccessMessage={
-                global?.siteFooterFormSuccessMessage
-              }
-            />
+          <div className='relative flex items-center justify-end'>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className='ml-4 flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-gray-800 md:h-10.5 md:w-10.5 xl:absolute xl:right-20 2xl:h-12.5 2xl:w-12.5'
@@ -101,6 +94,16 @@ export function Footer({ global }: FooterProps) {
               <ScrollTopIcon className='h-4 w-4 md:h-4.5 md:w-4.5 2xl:w-5 2xl:md:h-5' />
             </button>
           </div>
+
+          {/* <div className='relative flex items-center justify-center'>
+            <SubscribeForm
+              siteFooterFormPlaceholder={global?.siteFooterFormPlaceholder}
+              siteFooterFormButtonText={global?.siteFooterFormButtonText}
+              siteFooterFormSuccessMessage={
+                global?.siteFooterFormSuccessMessage
+              }
+            />
+          </div> */}
         </div>
       </div>
       <div className='bg-gray-200'>
