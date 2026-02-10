@@ -72,6 +72,12 @@ export default function RootLayout({
 
         {children}
 
+        <Script
+          src='https://widgets.experience-hotel.com/front/widget/widget-newsletter/bootstrap.js?widget_id=489'
+          data-xp-widget-newsletter-489
+          strategy='afterInteractive'
+        />
+
         {/* Google Analytics */}
         <GoogleAnalytics gaId='G-CR699031L4' />
 
