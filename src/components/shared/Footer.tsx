@@ -88,7 +88,7 @@ export function Footer({ global }: FooterProps) {
           </div>
           {/* end widgets experience hotel */}
 
-          <div className='flex justify-center px-0 pt-5 md:justify-end md:pt-0 lg:px-5 2xl:px-10'>
+          <div className='flex justify-center px-0 pt-5 md:pt-10 lg:px-5 2xl:px-10'>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className='flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-gray-800 md:h-10.5 md:w-10.5 2xl:h-12.5 2xl:w-12.5'
