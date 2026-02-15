@@ -6,7 +6,7 @@ import LocaleLink from './LocaleLink';
 import Image from 'next/image';
 // import SubscribeForm from './SubscribeForm';
 import StrapiImage from './StrapiImage';
-import Script from 'next/script';
+import NewsletterWidget from './NewsletterWidget';
 
 type FooterProps = {
   global: any;
@@ -80,12 +80,7 @@ export function Footer({ global }: FooterProps) {
           {/* widgets experience hotel */}
           <div className='w-full text-center'>
             <div className='mx-auto md:max-w-lg lg:max-w-xl 2xl:max-w-2xl'>
-              <div data-xp-widget-newsletter-489 />
-              <Script
-                src='https://widgets.experience-hotel.com/front/widget/widget-newsletter/bootstrap.js?widget_id=489'
-                data-xp-widget-newsletter-489
-                strategy='afterInteractive'
-              />
+              <NewsletterWidget />
             </div>
           </div>
           {/* end widgets experience hotel */}

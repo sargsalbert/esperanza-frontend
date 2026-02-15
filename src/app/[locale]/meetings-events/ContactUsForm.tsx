@@ -29,7 +29,6 @@ interface ContactFormValues {
 }
 
 export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
-  console.log('ContactUsForm data:', data);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validationSchema = Yup.object({
