@@ -38,14 +38,6 @@ export default function NewsletterWidget() {
   }, [locale]);
 
   return (
-    <div className='w-full text-center'>
-      <div className='mx-auto md:max-w-lg lg:max-w-xl 2xl:max-w-2xl'>
-        <div
-          ref={containerRef}
-          data-xp-widget-newsletter-489
-          data-lang={locale}
-        />
-      </div>
-    </div>
+    <div ref={containerRef} data-xp-widget-newsletter-489 data-lang={locale} />
   );
 }

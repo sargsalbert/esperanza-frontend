@@ -79,7 +79,10 @@ export function Footer({ global }: FooterProps) {
 
           {/* widgets experience hotel */}
           <div className='w-full text-center'>
-            <div className='mx-auto md:max-w-lg lg:max-w-xl 2xl:max-w-2xl'>
+            <div
+              id='newsletter-widget-container'
+              className='mx-auto md:max-w-lg lg:max-w-xl 2xl:max-w-2xl'
+            >
               <NewsletterWidget />
             </div>
           </div>

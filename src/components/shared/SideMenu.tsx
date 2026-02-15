@@ -1,18 +1,18 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { usePathname } from 'next/navigation';
 import { useCallback, useMemo, useState } from 'react';
 import { EmaiIcon } from '../icons/emaiIcon';
 import { MapIcon } from '../icons/mapIcon';
 import { PhoneIcon } from '../icons/phoneIcon';
 import { MenuArrowIcon } from '../icons/menuArrowIcon';
-import { GlobalQuery } from '@/gql/graphql';
 import LocaleLink from './LocaleLink';
 
 interface SideMenuProps {
   isOpen: boolean;
   onClose: () => void;
   isScrolled: boolean;
-  menuData: GlobalQuery['global'];
+  menuData: any;
 }
 
 export function SideMenu({
@@ -24,7 +24,7 @@ export function SideMenu({
   const localizedMenuItems = useMemo(() => {
     return (
       menuData?.menuLinks?.filter(
-        (item): item is NonNullable<typeof item> => !!item?.showInMenu,
+        (item: any): item is NonNullable<typeof item> => !!item?.showInMenu,
       ) || []
     );
   }, [menuData]);
@@ -40,6 +40,10 @@ export function SideMenu({
   );
 
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  const handleNewsletterClick = () => {
+    onClose();
+  };
 
   return (
     <>
@@ -62,7 +66,7 @@ export function SideMenu({
           <nav>
             <ul className='space-y-[4%]'>
               {localizedMenuItems.length > 0 &&
-                localizedMenuItems.map(({ slug, menuLabel }) => {
+                localizedMenuItems.map(({ slug, menuLabel }: any) => {
                   const isHovered = hoveredItem === slug;
                   const isAnyHovering = hoveredItem !== null;
 
@@ -116,27 +120,39 @@ export function SideMenu({
           </LocaleLink>
         </div>
 
-        <div className='bg-gray-200 px-5 pt-7.5 pb-4 md:px-7.5 lg:px-10 2xl:px-15'>
-          <div className='mb-[3%] flex items-center space-x-5 md:space-x-6.5'>
-            <a href={`tel:${menuData?.menuFooterPhone}`}>
-              <PhoneIcon />
-            </a>
-
-            <div className='h-5 w-px bg-[#9A9A9A]'></div>
-            <a href={`mailto:${menuData?.menuFooterEmail}`}>
-              <EmaiIcon />
-            </a>
-            <div className='h-5 w-px bg-[#9A9A9A]'></div>
-            <a
-              href={menuData?.menuFooterLocation || '#'}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <MapIcon />
-            </a>
+        <div className='bg-gray-200 px-5 py-5 md:px-7.5 md:py-7.5 lg:px-10 2xl:px-15'>
+          <div className='flex justify-between'>
+            <div className='flex items-center space-x-5 md:space-x-6.5'>
+              <a href={`tel:${menuData?.menuFooterPhone}`}>
+                <PhoneIcon />
+              </a>
+              <div className='h-5 w-px bg-[#9A9A9A]'></div>
+              <a href={`mailto:${menuData?.menuFooterEmail}`}>
+                <EmaiIcon />
+              </a>
+              <div className='h-5 w-px bg-[#9A9A9A]'></div>
+              <a
+                href={menuData?.menuFooterLocation || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <MapIcon />
+              </a>
+            </div>
+            <div>
+              {menuData?.menuFooterNewsletterText && (
+                <a
+                  onClick={handleNewsletterClick}
+                  href='#newsletter-widget-container'
+                  className='inline-flex py-1 text-base text-gray-700 transition-colors duration-300 hover:font-medium hover:text-gray-900 sm:text-lg lg:text-xl 2xl:text-2xl'
+                >
+                  {menuData.menuFooterNewsletterText}
+                </a>
+              )}
+            </div>
           </div>
           {menuData?.menuFooterSmallText && (
-            <p className='mt-[6%] text-center text-xs text-gray-700 md:text-sm'>
+            <p className='mt-[2%] text-center text-xs text-gray-700 md:text-sm'>
               {menuData.menuFooterSmallText}
             </p>
           )}
