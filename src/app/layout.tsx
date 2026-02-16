@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Script from 'next/script';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { FB_PIXEL_ID } from '@/lib/fbpixel/fbpixel';
+import { GoogleTagManager } from '@next/third-parties/google';
+import { FacebookPixelEvents } from '@/components/shared/FacebookPixel';
+import { Suspense } from 'react';
+
+const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export default function RootLayout({
   children,
@@ -9,40 +13,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
-      <head>
-        {/* Google Tag Manager (HEAD script) */}
-        <Script id='gtm-head' strategy='afterInteractive'>
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PM8J9TMP');
-          `}
-        </Script>
+    <html lang='en'>
+      <body>
+        {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
 
-        {/* Google Ads (gtag.js) */}
-        <Script
-          src='https://www.googletagmanager.com/gtag/js?id=AW-17528734611'
-          strategy='afterInteractive'
-        />
-        <Script id='google-ads' strategy='afterInteractive'>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17528734611');
-          `}
-        </Script>
-
-        {/* Facebook Pixel */}
         {FB_PIXEL_ID && (
-          <Script
-            id='facebook-pixel'
-            strategy='afterInteractive'
-            dangerouslySetInnerHTML={{
-              __html: `
+          <>
+            <Script
+              id='facebook-pixel'
+              strategy='afterInteractive'
+              dangerouslySetInnerHTML={{
+                __html: `
                 !function(f,b,e,v,n,t,s)
                 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -54,28 +35,16 @@ export default function RootLayout({
                 fbq('init', '${FB_PIXEL_ID}');
                 fbq('track', 'PageView');
               `,
-            }}
-          />
+              }}
+            />
+            <Suspense fallback={null}>
+              <FacebookPixelEvents />
+            </Suspense>
+          </>
         )}
-      </head>
-
-      <body suppressHydrationWarning>
-        {/* GTM noscript (MUST be the first element in <body>) */}
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM8J9TMP"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>
-            `,
-          }}
-        />
 
         {children}
 
-        {/* Google Analytics */}
-        <GoogleAnalytics gaId='G-CR699031L4' />
-
-        {/* FB Pixel fallback */}
         {FB_PIXEL_ID && (
           <noscript>
             <img
