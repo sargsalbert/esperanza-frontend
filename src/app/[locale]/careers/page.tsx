@@ -45,7 +45,7 @@ export default async function Experiences({ params }: LocalePageProps) {
         />
       )}
 
-      {/* {!data?.headerSectionGridSlider?.hideThisBlock && (
+      {!data?.headerSectionGridSlider?.hideThisBlock && (
         <SectionHeader
           subtitle={data?.headerSectionGridSlider?.subtitle}
           title={data?.headerSectionGridSlider?.title}
@@ -57,7 +57,7 @@ export default async function Experiences({ params }: LocalePageProps) {
         />
       )}
 
-      <SectionGrid
+      {/* <SectionGrid
         sectionGridSlider={(data?.sectionGridSlider ?? []).filter(
           (item: any) => !item?.hideThisBlock,
         )}
