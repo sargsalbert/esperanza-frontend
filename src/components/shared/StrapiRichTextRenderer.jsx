@@ -14,7 +14,7 @@ const StrapiRichTextRenderer = ({ content, textCenter = false }) => {
         // You can use the default components to set class names...
         paragraph: ({ children }) => (
           <p
-            className={`text-center text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:leading-8 xl:text-base ${textCenter ? 'lg:text-center' : 'lg:text-left'} `}
+            className={` ${textCenter ? 'text-center' : 'text-left'} text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:leading-8 xl:text-base ${textCenter ? 'lg:text-center' : 'lg:text-left'} `}
           >
             {children}
           </p>

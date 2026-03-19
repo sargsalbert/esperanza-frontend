@@ -41,7 +41,7 @@ const TextArea = ({
   const showError = meta.touched && meta.error;
 
   return (
-    <div className='relative mb-7'>
+    <div className='relative mb-7.5 lg:mb-10'>
       <textarea
         {...field}
         id={name}
