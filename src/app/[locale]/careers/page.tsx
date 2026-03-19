@@ -46,15 +46,17 @@ export default async function Experiences({ params }: LocalePageProps) {
       )}
 
       {!data?.headerSectionGridSlider?.hideThisBlock && (
-        <SectionHeader
-          subtitle={data?.headerSectionGridSlider?.subtitle}
-          title={data?.headerSectionGridSlider?.title}
-          description={data?.headerSectionGridSlider?.description}
-          buttonText={data?.headerSectionGridSlider?.buttonText}
-          buttonUrl={data?.headerSectionGridSlider?.buttonUrl}
-          newTab={data?.headerSectionGridSlider?.newTab}
-          id=''
-        />
+        <div className='mb-7.5 sm:mb-12.5'>
+          <SectionHeader
+            subtitle={data?.headerSectionGridSlider?.subtitle}
+            title={data?.headerSectionGridSlider?.title}
+            description={data?.headerSectionGridSlider?.description}
+            buttonText={data?.headerSectionGridSlider?.buttonText}
+            buttonUrl={data?.headerSectionGridSlider?.buttonUrl}
+            newTab={data?.headerSectionGridSlider?.newTab}
+            id=''
+          />
+        </div>
       )}
 
       {/* <SectionGrid
