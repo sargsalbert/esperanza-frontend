@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import SectionGrid from '@/components/home/sectionGrid';
+// import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { LocalePageProps } from '../destination/page';
