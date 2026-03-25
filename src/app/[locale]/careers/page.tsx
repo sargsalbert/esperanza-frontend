@@ -1,38 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import SectionGrid from '@/components/home/sectionGrid';
 import PageHeader from '@/components/shared/pageHeader';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { LocalePageProps } from '../destination/page';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
-// import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
 import Accordion from '@/components/shared/Accordion';
 import CareersForm from './CareersForm';
 
-// export async function generateMetadata({ params }: LocalePageProps) {
-//   const { locale } = await params;
+export async function generateMetadata({ params }: LocalePageProps) {
+  const { locale } = await params;
 
-//   return generateSeoMetadata('experience', params, (data: any) => ({
-//     title: data?.seo?.metaTitle,
-//     description: data?.seo?.metaDescription,
-//     image: data?.seo?.shareImage?.url
-//       ? {
-//           url: data.seo.shareImage.url,
-//           width: 1200,
-//           height: 630,
-//           alt: data?.seo?.metaTitle,
-//         }
-//       : undefined,
-//     canonicalUrl: `/${locale}/experiences/`,
-//   }));
-// }
+  return generateSeoMetadata('career', params, (data: any) => ({
+    title: data?.seo?.metaTitle,
+    description: data?.seo?.metaDescription,
+    image: data?.seo?.shareImage?.url
+      ? {
+          url: data.seo.shareImage.url,
+          width: 1200,
+          height: 630,
+          alt: data?.seo?.metaTitle,
+        }
+      : undefined,
+    canonicalUrl: `/${locale}/careers/`,
+  }));
+}
 
-export default async function Experiences({ params }: LocalePageProps) {
+export default async function Careers({ params }: LocalePageProps) {
   const { locale } = await params;
 
   const data = await fetchStrapiData('career', locale);
 
-  // console.log(data, 'dddddddd');
+  console.log(data, 'dddddddd');
 
   if (!data) return notFound();
 
@@ -58,12 +57,6 @@ export default async function Experiences({ params }: LocalePageProps) {
           />
         </div>
       )}
-
-      {/* <SectionGrid
-        sectionGridSlider={(data?.sectionGridSlider ?? []).filter(
-          (item: any) => !item?.hideThisBlock,
-        )}
-      /> */}
 
       {!data?.headerVacanciesAccordion?.hideThisBlock && (
         <SectionHeader

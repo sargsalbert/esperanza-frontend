@@ -1,26 +1,51 @@
 import { useRef } from 'react';
 
-export default function UploadCV() {
+type Props = {
+  file: File | null;
+  setFile: (file: File | null) => void;
+};
+
+export default function UploadCV({ file, setFile }: Props) {
   const fileRef = useRef<HTMLInputElement | null>(null);
-  //   const [fileName, setFileName] = useState('');
 
   const handleClick = () => fileRef.current?.click();
 
-  //   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const file = e.target.files?.[0];
-  //     if (file) setFileName(file.name);
-  //   };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = e.target.files?.[0];
+
+    if (!selected) return;
+
+    // basic validation
+    const allowedTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    ];
+
+    if (!allowedTypes.includes(selected.type)) {
+      alert('Only PDF, DOC, DOCX allowed');
+      return;
+    }
+
+    if (selected.size > 5 * 1024 * 1024) {
+      alert('Max file size is 5MB');
+      return;
+    }
+
+    setFile(selected);
+  };
 
   return (
     <div className='flex flex-col gap-2'>
       <button
+        type='button'
         onClick={handleClick}
-        className='h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-transparent px-5 py-1 text-sm font-semibold text-gray-800 md:h-10.5 lg:min-w-38 lg:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg'
+        className='h-10 rounded-full border-2 border-gray-800 px-5 text-sm font-semibold text-gray-800'
       >
-        Upload CV
+        {file ? 'Replace CV' : 'Upload CV'}
       </button>
 
-      {/* <input
+      <input
         type='file'
         ref={fileRef}
         onChange={handleChange}
@@ -28,7 +53,18 @@ export default function UploadCV() {
         className='hidden'
       />
 
-      {fileName && <span className='text-xs text-gray-500'>{fileName}</span>} */}
+      {file && (
+        <div className='flex items-center justify-between text-xs text-gray-500'>
+          <span>{file.name}</span>
+          <button
+            type='button'
+            onClick={() => setFile(null)}
+            className='ml-2 text-red-500'
+          >
+            Remove
+          </button>
+        </div>
+      )}
     </div>
   );
 }
