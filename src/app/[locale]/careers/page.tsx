@@ -31,9 +31,12 @@ export default async function Careers({ params }: LocalePageProps) {
 
   const data = await fetchStrapiData('career', locale);
 
-  console.log(data, 'dddddddd');
-
   if (!data) return notFound();
+
+  const visibleItems =
+    data.vacanciesAccordion?.filter(
+      (item: { showOnSite: any }) => item.showOnSite,
+    ) ?? [];
 
   return (
     <>
@@ -71,7 +74,10 @@ export default async function Careers({ params }: LocalePageProps) {
       )}
 
       <div className='mb-12.5 sm:mb-15 lg:mb-20'>
-        <Accordion data={data?.vacanciesAccordion} />
+        <Accordion
+          data={data?.vacanciesAccordion}
+          noVacanciesText={data?.noVacanciesText}
+        />
       </div>
 
       {!data?.headerApplyForm?.hideThisBlock && (
@@ -86,7 +92,11 @@ export default async function Careers({ params }: LocalePageProps) {
         />
       )}
 
-      <CareersForm data={data} />
+      {visibleItems.length === 0 ? (
+        <div>{data?.noVacanciesText}</div>
+      ) : (
+        <CareersForm data={data} />
+      )}
 
       <div className='h-12.5' />
     </>

@@ -8,6 +8,8 @@ import { Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import UploadCV from '@/components/shared/UploadCV';
 import Select from '@/components/shared/Select';
+import { LoadingIcon } from '@/components/icons/Loading';
+import StrapiRichTextRenderer from '@/components/shared/StrapiRichTextRenderer';
 
 type Vacancy = {
   title: string;
@@ -20,6 +22,9 @@ type CareersFormData = {
   formEmail?: string;
   formTextareaOne?: string;
   formApplyButtonText?: string;
+  formUploadButtonText?: string;
+  formFooterText?: string;
+  formSelectPlaceholder?: string;
 };
 
 type CareersFormProps = {
@@ -59,6 +64,11 @@ export default function CareersForm({ data }: CareersFormProps) {
   ) => {
     setError(null);
 
+    if (!file) {
+      setError(`Required ${data?.formUploadButtonText || 'CV upload'}`);
+      return;
+    }
+
     const formData = new FormData();
     formData.append('data', JSON.stringify(values));
 
@@ -92,7 +102,7 @@ export default function CareersForm({ data }: CareersFormProps) {
     <FadeInOnView>
       {isSubmitted ? (
         <div className='p-5 text-center text-[30px] font-semibold text-yellow-500 uppercase'>
-          {data?.formSuccessText || 'Successfully submitted'}
+          {data?.formSuccessText || ''}
         </div>
       ) : (
         <div className='px-5 pb-12.5 sm:pb-15 md:px-7.5 lg:px-[25%] lg:pb-20'>
@@ -111,19 +121,25 @@ export default function CareersForm({ data }: CareersFormProps) {
                 <div className='mt-5 mb-10'>
                   <Select
                     name='formPosition'
-                    placeholder='Select position'
+                    placeholder={data?.formSelectPlaceholder || ''}
                     options={options}
                   />
 
                   <Input name='formName' placeholder={data?.formName || ''} />
                   <Input name='formEmail' placeholder={data?.formEmail || ''} />
                   <TextArea
+                    maxLength={500}
                     name='formTextareaOne'
                     placeholder={data?.formTextareaOne || ''}
                   />
 
                   <div className='mb-6'>
-                    <UploadCV file={file} setFile={setFile} />
+                    <UploadCV
+                      file={file}
+                      setFile={setFile}
+                      formUploadButtonText={data?.formUploadButtonText || ''}
+                      setError={setError}
+                    />
                   </div>
 
                   {error && (
@@ -135,16 +151,29 @@ export default function CareersForm({ data }: CareersFormProps) {
                   <button
                     type='submit'
                     disabled={isSubmitting}
-                    className='h-10 min-w-full rounded-full border-2 border-gray-800 bg-gray-800 px-5 text-sm font-semibold text-white disabled:opacity-50'
+                    className='h-10 min-w-full cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 text-sm font-semibold text-white disabled:opacity-50'
                   >
-                    {isSubmitting
-                      ? 'Submitting...'
-                      : data?.formApplyButtonText || 'Apply'}
+                    {isSubmitting ? (
+                      <div className='flex items-center justify-center'>
+                        <LoadingIcon className='size-5 animate-spin text-white' />
+                      </div>
+                    ) : (
+                      data?.formApplyButtonText || ''
+                    )}
                   </button>
                 </div>
               </Form>
             )}
           </Formik>
+
+          {data?.formFooterText && (
+            <div className='mt-10'>
+              <StrapiRichTextRenderer
+                content={data.formFooterText}
+                customListStyles={false}
+              />
+            </div>
+          )}
         </div>
       )}
     </FadeInOnView>

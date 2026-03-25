@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Locale } from '../../../../i18n-config';
 import { DatePicker } from '@/components/shared/DatePicker';
 import { format } from 'date-fns';
+import { LoadingIcon } from '@/components/icons/Loading';
 
 type ContactUsFormProps = {
   data: any;
@@ -161,7 +162,13 @@ export default function ContactUsForm({ data, locale }: ContactUsFormProps) {
                     disabled={isSubmitting}
                     className={`h-9 min-w-63 cursor-pointer rounded-full border-2 border-gray-800 bg-gray-800 px-5 py-1 text-sm font-semibold text-gray-50 md:h-10.5 lg:min-w-38 lg:text-base 2xl:h-12.5 2xl:min-w-60 2xl:border-3 2xl:text-lg`}
                   >
-                    {isSubmitting ? 'Submitting...' : data?.formButtonText}
+                    {isSubmitting ? (
+                      <div className='flex items-center justify-center'>
+                        <LoadingIcon className='size-5 animate-spin text-white' />
+                      </div>
+                    ) : (
+                      data?.formButtonText
+                    )}
                   </button>
                 </div>
               </Form>

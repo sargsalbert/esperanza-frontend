@@ -1,11 +1,19 @@
 import { useRef } from 'react';
+import { CloseIcon } from '../icons/closeIcon';
 
 type Props = {
   file: File | null;
   setFile: (file: File | null) => void;
+  formUploadButtonText: string;
+  setError: (file: string | null) => void;
 };
 
-export default function UploadCV({ file, setFile }: Props) {
+export default function UploadCV({
+  file,
+  setFile,
+  formUploadButtonText,
+  setError,
+}: Props) {
   const fileRef = useRef<HTMLInputElement | null>(null);
 
   const handleClick = () => fileRef.current?.click();
@@ -23,12 +31,12 @@ export default function UploadCV({ file, setFile }: Props) {
     ];
 
     if (!allowedTypes.includes(selected.type)) {
-      alert('Only PDF, DOC, DOCX allowed');
+      setError('Only PDF, DOC, DOCX allowed');
       return;
     }
 
     if (selected.size > 5 * 1024 * 1024) {
-      alert('Max file size is 5MB');
+      setError('Max file size is 5MB');
       return;
     }
 
@@ -40,9 +48,28 @@ export default function UploadCV({ file, setFile }: Props) {
       <button
         type='button'
         onClick={handleClick}
-        className='h-10 rounded-full border-2 border-gray-800 px-5 text-sm font-semibold text-gray-800'
+        className='h-10 cursor-pointer rounded-full border-2 border-gray-800 px-5 text-sm font-semibold text-gray-800'
       >
-        {file ? 'Replace CV' : 'Upload CV'}
+        {file ? (
+          <div className='relative flex items-center justify-center px-4'>
+            <span className='overflow-hidden text-ellipsis whitespace-nowrap'>
+              {file.name}{' '}
+            </span>
+            <span
+              className='absolute right-0 p-2.5'
+              onClick={(e) => {
+                e.stopPropagation();
+                setFile(null);
+                if (fileRef.current) fileRef.current.value = '';
+                setError(null);
+              }}
+            >
+              <CloseIcon className='h-3 w-3' />
+            </span>
+          </div>
+        ) : (
+          formUploadButtonText
+        )}
       </button>
 
       <input
@@ -52,19 +79,6 @@ export default function UploadCV({ file, setFile }: Props) {
         accept='.pdf,.doc,.docx'
         className='hidden'
       />
-
-      {file && (
-        <div className='flex items-center justify-between text-xs text-gray-500'>
-          <span>{file.name}</span>
-          <button
-            type='button'
-            onClick={() => setFile(null)}
-            className='ml-2 text-red-500'
-          >
-            Remove
-          </button>
-        </div>
-      )}
     </div>
   );
 }
