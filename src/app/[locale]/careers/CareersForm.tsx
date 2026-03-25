@@ -171,6 +171,7 @@ export default function CareersForm({ data }: CareersFormProps) {
               <StrapiRichTextRenderer
                 content={data.formFooterText}
                 customListStyles={false}
+                textCenter={true}
               />
             </div>
           )}
