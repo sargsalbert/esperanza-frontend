@@ -7,6 +7,7 @@ import { LocalePageProps } from '../destination/page';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import Accordion from '@/components/shared/Accordion';
 
 export async function generateMetadata({ params }: LocalePageProps) {
   const { locale } = await params;
@@ -33,6 +34,16 @@ export default async function Experiences({ params }: LocalePageProps) {
 
   if (!data) return notFound();
 
+  const filteredExploreEsperanzaAccordion =
+    data?.exploreEsperanzaAccordion?.filter(
+      (item: { showOnSite: any }) => item.showOnSite,
+    ) ?? [];
+
+  const filteredPageEndSectionAccordion =
+    data?.pageEndSectionAccordion?.filter(
+      (item: { showOnSite: any }) => item.showOnSite,
+    ) ?? [];
+
   return (
     <>
       {!data?.heroSection?.hideThisBlock && (
@@ -52,6 +63,13 @@ export default async function Experiences({ params }: LocalePageProps) {
           id=''
         />
       )}
+
+      {filteredExploreEsperanzaAccordion.length > 0 && (
+        <div className='mb-12.5 sm:mb-15 lg:mb-20'>
+          <Accordion data={filteredExploreEsperanzaAccordion} />
+        </div>
+      )}
+
       {(data?.tabbedSliderBlock ?? [])
         .filter((d: any) => !d?.hideThisBlock)
         .map((d: any, index: any, arr: any) => (
@@ -74,6 +92,12 @@ export default async function Experiences({ params }: LocalePageProps) {
           (item: any) => !item?.hideThisBlock,
         )}
       />
+
+      {filteredPageEndSectionAccordion.length > 0 && (
+        <div className='mb-12.5 sm:mb-15 lg:mb-20'>
+          <Accordion data={filteredPageEndSectionAccordion} />
+        </div>
+      )}
 
       <div className='h-12.5' />
     </>

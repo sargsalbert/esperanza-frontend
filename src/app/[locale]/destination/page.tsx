@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import ImageGridTree from '@/components/home/imageGridTree';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
 import { generateSeoMetadata } from '@/lib/seo/generateMetadata';
+import Accordion from '@/components/shared/Accordion';
 
 export type LocalePageProps = {
   params: Promise<{ locale: string }>;
@@ -38,6 +39,11 @@ export default async function Destination({ params }: LocalePageProps) {
   const data = await fetchStrapiData('destination', locale);
 
   if (!data) return notFound();
+
+  const filteredDestinationAccordion =
+    data?.destinationAccordion?.filter(
+      (item: { showOnSite: any }) => item.showOnSite,
+    ) ?? [];
 
   return (
     <>
@@ -73,6 +79,12 @@ export default async function Destination({ params }: LocalePageProps) {
             </p>
           </div>
         </FadeInOnView>
+      )}
+
+      {filteredDestinationAccordion.length > 0 && (
+        <div className='mb-12.5 sm:mb-15 lg:mb-20'>
+          <Accordion data={filteredDestinationAccordion} />
+        </div>
       )}
 
       <div className='mb-12.5 grid grid-cols-2 gap-1.5 overflow-hidden px-5 sm:mb-15 sm:gap-2 md:px-7.5 lg:mb-20 lg:gap-3 lg:px-[14.5%]'>
