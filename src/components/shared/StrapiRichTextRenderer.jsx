@@ -5,6 +5,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 const StrapiRichTextRenderer = ({
   content,
   textCenter = false,
+  textCenterDesktop = false,
   customListStyles = true,
 }) => {
   if (!content) return null;
@@ -18,7 +19,7 @@ const StrapiRichTextRenderer = ({
             className={`${
               textCenter ? 'text-center' : 'text-left'
             } text-[14px] leading-[2em] text-gray-900 sm:text-[15px] lg:leading-8 xl:text-base ${
-              textCenter ? 'lg:text-center' : 'lg:text-left'
+              textCenterDesktop ? 'lg:text-center' : 'lg:text-left'
             }`}
           >
             {children}

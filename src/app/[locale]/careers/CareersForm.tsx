@@ -172,6 +172,7 @@ export default function CareersForm({ data }: CareersFormProps) {
                 content={data.formFooterText}
                 customListStyles={false}
                 textCenter={true}
+                textCenterDesktop={true}
               />
             </div>
           )}

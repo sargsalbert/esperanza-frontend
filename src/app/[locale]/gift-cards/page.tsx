@@ -65,6 +65,7 @@ export default async function GiftCards({ params }: LocalePageProps) {
             <StrapiRichTextRenderer
               content={data?.formBottomNote}
               textCenter={true}
+              textCenterDesktop={true}
             />
           </div>
         )}

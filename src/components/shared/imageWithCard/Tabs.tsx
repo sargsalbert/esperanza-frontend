@@ -116,7 +116,10 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: TabsProps) => {
                 ))}
               </div>
             ) : (
-              <StrapiRichTextRenderer content={tab?.tabContent} />
+              <StrapiRichTextRenderer
+                content={tab?.tabContent}
+                textCenter={true}
+              />
             )}
           </div>
         ))}
