@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: 'Esperanza Lake Resort | Luxury Resort and Spa in Lithuania',
   description:
     'Discover Esperanza Lake Resort — a luxury resort and spa in Lithuania, offering wellness retreats, refined dining, and nature-inspired experiences',
+  verification: {
+    google: 'yeQBunezk-azqFFPxowFznVbSh-Zr7zE27C2JCmQntk',
+  },
 };
 
 export function generateStaticParams() {
