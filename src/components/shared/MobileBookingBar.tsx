@@ -10,7 +10,7 @@ type MobileBookingBarProps = {
 
 export function MobileBookingBar({ global }: MobileBookingBarProps) {
   return (
-    <div className='sticky bottom-0 z-40 block w-full bg-gray-100 px-5 py-2.5 md:px-7.5 lg:hidden'>
+    <div className='sticky bottom-0 z-31 block w-full bg-gray-100 px-5 py-2.5 md:px-7.5 lg:hidden'>
       <LocaleLink
         href={global?.bookButton?.buttonUrl || ''}
         target={global?.bookButton?.newTab ? '_blank' : undefined}

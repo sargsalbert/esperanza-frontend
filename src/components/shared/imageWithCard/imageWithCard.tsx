@@ -115,7 +115,7 @@ const ImageWithCard = ({
         </div>
         <BlockImage emblaRef={emblaRef} images={images} />
         <div
-          className={`absolute top-1/2 z-30 hidden -translate-y-1/2 justify-between lg:flex lg:w-[calc(50%-40px)] lg:px-10 xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)] 2xl:px-15 ${imageFirst ? 'left-0' : 'right-0'}`}
+          className={`absolute top-1/2 z-32 hidden -translate-y-1/2 justify-between lg:flex lg:w-[calc(50%-40px)] lg:px-10 xl:w-[calc(55%-40px)] 2xl:w-[calc(60%-60px)] 2xl:px-15 ${imageFirst ? 'left-0' : 'right-0'}`}
         >
           <SlideButtons scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>

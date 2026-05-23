@@ -216,7 +216,7 @@ export const DatePicker: React.FC<Props> = ({
         <div
           className={
             showInput
-              ? 'absolute top-full left-0 z-30 w-full bg-gray-100 p-5 shadow-xs 2xl:w-auto'
+              ? 'absolute top-full left-0 z-32 w-full bg-gray-100 p-5 shadow-xs 2xl:w-auto'
               : ''
           }
         >

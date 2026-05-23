@@ -54,7 +54,7 @@ export const PanelContainer: React.FC<PanelContainerProps> = ({
   return (
     <div
       ref={panelRef}
-      className='absolute top-full left-0 z-30 w-full bg-gray-100 p-5 shadow-xs'
+      className='absolute top-full left-0 z-32 w-full bg-gray-100 p-5 shadow-xs'
     >
       <div className='mb-5 flex justify-end'>
         <button
