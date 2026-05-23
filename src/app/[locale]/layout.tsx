@@ -6,6 +6,7 @@ import '../globals.css';
 import { i18n, Locale } from '../../../i18n-config';
 import { notFound } from 'next/navigation';
 import { fetchStrapiData } from '@/lib/fetchStrapiData';
+import { MobileBookingBar } from '@/components/shared/MobileBookingBar';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
           <Header global={data} />
           <main className='flex-1'>{children}</main>
           <Footer global={data} />
+          <MobileBookingBar global={data} />
         </div>
       </LocaleProvider>
     );
