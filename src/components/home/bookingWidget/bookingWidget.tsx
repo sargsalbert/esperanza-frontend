@@ -12,6 +12,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { buildRedirectUrl } from './synxisParameters';
 import { Locale } from '../../../../i18n-config';
 import Select from '@/components/shared/Select';
+import { trackConversion } from '@/lib/tracking';
 
 type BookingWidgetProps = {
   data?: ComponentSharedBookingWidgetInput | null;
@@ -31,7 +32,18 @@ const BookingWidget = ({ data, locale }: BookingWidgetProps) => {
   const [openPanel, setOpenPanel] = useState<'dates' | 'guests' | null>(null);
 
   const handleRedirect = (values: ContactFormValues) => {
-    window.open(buildRedirectUrl(values), '_blank');
+    const url = buildRedirectUrl(values);
+
+    trackConversion({
+      buttonText: data?.buttonCheckAvailabilityText || '',
+      buttonLocation: 'homepage_widget',
+      destinationUrl: url,
+    });
+
+    setTimeout(() => {
+      window.open(url, '_blank');
+    }, 250);
+
     setOpenPanel(null);
   };
 
