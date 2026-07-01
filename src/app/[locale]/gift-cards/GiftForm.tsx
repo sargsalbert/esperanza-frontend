@@ -81,7 +81,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
     if (isSuccess || isCanceled) {
       formRef.current?.scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'center',
       });
     }
   }, [isSuccess, isCanceled]);
