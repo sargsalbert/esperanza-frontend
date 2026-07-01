@@ -176,10 +176,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
                   options={options}
                 />
                 {values.formVoucherType === 'Online' && (
-                  <TextArea
-                    name='formVoucherMessage'
-                    placeholder={data?.formDeliveryOptionOnline}
-                  />
+                  <TextArea name='formVoucherMessage' placeholder='' />
                 )}
 
                 <div className='flex justify-center lg:justify-end'>
