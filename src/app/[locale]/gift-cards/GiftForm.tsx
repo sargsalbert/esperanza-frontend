@@ -22,6 +22,7 @@ type GiftCardData = {
   formButtonText?: string | null | undefined;
   heroSection?: unknown | null | undefined;
   quietLuxuryText?: unknown | null | undefined;
+  formSuccessMessage?: string;
 };
 
 type GiftFormProps = {
@@ -137,7 +138,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       <div className='mt-2.5 sm:mt-5'>
         {isSuccess ? (
           <div className='w-full text-center text-[20px] font-semibold text-yellow-500 lg:text-[28px]'>
-            Your gift card has been successfully processed.
+            {data?.formSuccessMessage}
           </div>
         ) : (
           <Formik
