@@ -48,10 +48,10 @@ const LocaleLink: React.FC<LocaleLinkProps> = ({
 
     return (
       <a
+        {...rest}
         href={externalUrl}
         rel={rest.target === '_blank' ? 'noopener noreferrer' : undefined}
         onClick={handleClick}
-        {...rest}
       >
         {children}
       </a>
