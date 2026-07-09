@@ -18,6 +18,7 @@ export const buildRedirectUrl = (values: ContactFormValues) => {
   const arrive = values.formDates?.from
     ? format(values.formDates.from, 'yyyy-MM-dd')
     : '';
+
   const depart = values.formDates?.to
     ? format(values.formDates.to, 'yyyy-MM-dd')
     : '';
@@ -37,6 +38,19 @@ export const buildRedirectUrl = (values: ContactFormValues) => {
     }).join('|');
 
     params.set('childages', childAges);
+  }
+
+  // Preserve Google Ads tracking parameters
+  if (typeof window !== 'undefined') {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    ['gclid', '_gl', 'gbraid', 'wbraid'].forEach((key) => {
+      const value = searchParams.get(key);
+
+      if (value) {
+        params.set(key, value);
+      }
+    });
   }
 
   return `${SYNXIS_BASE_URL}?${params.toString()}`;
