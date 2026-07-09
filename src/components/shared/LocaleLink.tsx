@@ -33,6 +33,8 @@ const LocaleLink: React.FC<LocaleLinkProps> = ({
     onClick?.(e);
 
     if (isBookingLink && typeof window !== 'undefined') {
+      e.preventDefault();
+
       const trackingUrl = addTrackingParams(href);
 
       trackConversion({
@@ -40,6 +42,12 @@ const LocaleLink: React.FC<LocaleLinkProps> = ({
         buttonLocation: buttonLocation || '',
         destinationUrl: trackingUrl,
       });
+
+      if (rest.target === '_blank') {
+        window.open(trackingUrl, '_blank');
+      } else {
+        window.location.href = trackingUrl;
+      }
     }
   };
 

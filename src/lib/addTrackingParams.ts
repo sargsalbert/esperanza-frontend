@@ -8,10 +8,11 @@ export const addTrackingParams = (url: string) => {
   const urlObject = new URL(url);
 
   trackingParams.forEach((key) => {
-    const value = currentParams.get(key);
+    const value = currentParams.get(key) || sessionStorage.getItem(key);
 
     if (value) {
       urlObject.searchParams.set(key, value);
+      sessionStorage.setItem(key, value);
     }
   });
 
