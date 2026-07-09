@@ -1,5 +1,6 @@
 'use client';
 
+import { addTrackingParams } from '@/lib/addTrackingParams';
 import { trackConversion } from '@/lib/tracking';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -32,18 +33,22 @@ const LocaleLink: React.FC<LocaleLinkProps> = ({
     onClick?.(e);
 
     if (isBookingLink && typeof window !== 'undefined') {
+      const trackingUrl = addTrackingParams(href);
+
       trackConversion({
         buttonText: typeof children === 'string' ? children : '',
         buttonLocation: buttonLocation || '',
-        destinationUrl: href,
+        destinationUrl: trackingUrl,
       });
     }
   };
 
   if (isExternal) {
+    const externalUrl = addTrackingParams(href);
+
     return (
       <a
-        href={href}
+        href={externalUrl}
         rel={rest.target === '_blank' ? 'noopener noreferrer' : undefined}
         onClick={handleClick}
         {...rest}

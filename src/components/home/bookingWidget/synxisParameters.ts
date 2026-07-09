@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { ContactFormValues } from './bookingWidget';
+import { addTrackingParams } from '@/lib/addTrackingParams';
 
 export const SYNXIS_BASE_URL = 'https://be.synxis.com/';
 
@@ -40,18 +41,7 @@ export const buildRedirectUrl = (values: ContactFormValues) => {
     params.set('childages', childAges);
   }
 
-  // Preserve Google Ads tracking parameters
-  if (typeof window !== 'undefined') {
-    const searchParams = new URLSearchParams(window.location.search);
+  const url = `${SYNXIS_BASE_URL}?${params.toString()}`;
 
-    ['gclid', '_gl', 'gbraid', 'wbraid'].forEach((key) => {
-      const value = searchParams.get(key);
-
-      if (value) {
-        params.set(key, value);
-      }
-    });
-  }
-
-  return `${SYNXIS_BASE_URL}?${params.toString()}`;
+  return addTrackingParams(url);
 };
