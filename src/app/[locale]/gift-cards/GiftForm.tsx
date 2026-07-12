@@ -32,10 +32,10 @@ type GiftFormProps = {
   locale: Locale;
 };
 
-interface GidtFormValues {
+interface GiftFormValues {
   formName: string;
   formSurname: string;
-  formPhone: number | string;
+  formPhone: string;
   formEmail: string;
   formAmount: string;
   formVoucherType: string;
@@ -50,7 +50,8 @@ const validationSchema = Yup.object().shape({
     .max(70, 'Maximum 70 characters allowed')
     .required('Required'),
   formPhone: Yup.string()
-    .max(70, 'Maximum 70 characters allowed')
+    .min(6, 'Phone number is too short')
+    .max(30, 'Maximum 30 characters allowed')
     .required('Required'),
   formEmail: Yup.string()
     .email('Invalid email')
@@ -59,10 +60,10 @@ const validationSchema = Yup.object().shape({
   formAmount: Yup.number()
     .typeError('Amount must be a number')
     .min(150, 'Minimum amount is 150')
-    .max(99999999, 'Maximum 8 digits allowed')
+    .max(50000, 'Maximum amount is 50,000')
     .required('Required'),
   formVoucherType: Yup.string().required('Required'),
-  formVoucherMessage: Yup.string(),
+  formVoucherMessage: Yup.string().max(500, 'Maximum 500 characters allowed'),
 });
 
 export default function GiftForm({ data, locale }: GiftFormProps) {
@@ -92,7 +93,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       setLoadingStatus(true);
 
       fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/gift-card-form/webhook?orderId=${orderId}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/gift-card-form/check-status?orderId=${orderId}`,
       )
         .then((res) => res.json())
         .then((result) => {
@@ -125,7 +126,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   const isFail = status === 'fail';
 
   const handlePurchase = async (
-    values: GidtFormValues,
+    values: GiftFormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     const dataModel = {
@@ -153,6 +154,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       const result = await res.json();
 
       if (result.success && result.url) {
+        // Saferpay Redirect
         window.location.href = result.url;
       } else {
         alert(result.error || 'Could not initiate payment session.');
