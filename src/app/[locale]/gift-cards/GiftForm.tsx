@@ -66,6 +66,16 @@ const validationSchema = Yup.object().shape({
   formVoucherMessage: Yup.string().max(500, 'Maximum 500 characters allowed'),
 });
 
+const TERMINAL_FAIL_STATUSES = [
+  'failed',
+  'amount_mismatch',
+  'capture_failed',
+  'amount_mismatch_captured',
+  'not_found',
+];
+const MAX_POLL_ATTEMPTS = 15;
+const POLL_INTERVAL_MS = 2000;
+
 export default function GiftForm({ data, locale }: GiftFormProps) {
   const options = [
     { value: 'Print', label: data?.formDeliveryOptionPrint || 'Print' },
@@ -77,49 +87,96 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
   const pathname = usePathname();
   const formRef = useRef<HTMLDivElement>(null);
 
+  const hasSubmittedRef = useRef(false);
+
   const [status, setStatus] = useState<string | null>(null);
   const [loadingStatus, setLoadingStatus] = useState<boolean>(false);
+
+  const isPollingRef = useRef(false);
 
   useEffect(() => {
     const orderId = searchParams.get('orderId');
     const hasError = searchParams.get('error');
 
+    if ((orderId || hasError) && formRef.current) {
+      requestAnimationFrame(() => {
+        formRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      });
+    }
+
     if (hasError) {
       setStatus('fail');
+      router.replace(pathname, { scroll: false });
       return;
     }
 
-    if (orderId) {
-      setLoadingStatus(true);
+    if (!orderId) return;
 
-      fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/gift-card-form/check-status?orderId=${orderId}`,
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.success && result.status === 'paid') {
-            setStatus('success');
-          } else {
-            setStatus('fail');
-          }
-        })
-        .catch((err) => {
-          console.error('Status check failed', err);
-          setStatus('fail');
-        })
-        .finally(() => {
-          setLoadingStatus(false);
+    if (isPollingRef.current) return;
+    isPollingRef.current = true;
 
-          formRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-          });
+    let cancelled = false;
+    setLoadingStatus(true);
 
-          setTimeout(() => {
-            router.replace(pathname, { scroll: false });
-          }, 1000);
-        });
-    }
+    const finalize = (finalStatus: 'success' | 'fail') => {
+      if (cancelled) return;
+      setStatus(finalStatus);
+      setLoadingStatus(false);
+      router.replace(pathname, { scroll: false });
+    };
+
+    const checkOnce = async (): Promise<string> => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/gift-card-form/check-status?orderId=${encodeURIComponent(
+          orderId,
+        )}`,
+      );
+      const result = await res.json();
+      return result?.success ? result.status : 'unknown';
+    };
+
+    const poll = async (attempt: number) => {
+      if (cancelled) return;
+
+      try {
+        const currentStatus = await checkOnce();
+
+        if (currentStatus === 'paid') {
+          finalize('success');
+          return;
+        }
+
+        if (TERMINAL_FAIL_STATUSES.includes(currentStatus)) {
+          finalize('fail');
+          return;
+        }
+
+        if (attempt + 1 >= MAX_POLL_ATTEMPTS) {
+          finalize('fail');
+          return;
+        }
+
+        setTimeout(() => poll(attempt + 1), POLL_INTERVAL_MS);
+      } catch (err) {
+        console.error('Status check failed', err);
+
+        if (attempt + 1 >= MAX_POLL_ATTEMPTS) {
+          finalize('fail');
+          return;
+        }
+
+        setTimeout(() => poll(attempt + 1), POLL_INTERVAL_MS);
+      }
+    };
+
+    poll(0);
+
+    return () => {
+      cancelled = true;
+    };
   }, [searchParams, router, pathname]);
 
   const isSuccess = status === 'success';
@@ -129,6 +186,9 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
     values: GiftFormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
+    if (hasSubmittedRef.current) return;
+    hasSubmittedRef.current = true;
+
     const dataModel = {
       name: values.formName,
       surname: values.formSurname,
@@ -159,11 +219,13 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       } else {
         alert(result.error || 'Could not initiate payment session.');
         setSubmitting(false);
+        hasSubmittedRef.current = false;
       }
     } catch (error) {
       console.error('Payment redirect error:', error);
       alert('An error occurred. Please try again.');
       setSubmitting(false);
+      hasSubmittedRef.current = false;
     }
   };
 
