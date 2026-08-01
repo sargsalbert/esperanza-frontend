@@ -99,12 +99,12 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
     const hasError = searchParams.get('error');
 
     if ((orderId || hasError) && formRef.current) {
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         formRef.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'center',
         });
-      });
+      }, 150);
     }
 
     if (hasError) {
@@ -196,8 +196,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       email: values.formEmail,
       amount: values.formAmount,
       voucherType: values.formVoucherType,
-      voucherMessage:
-        values.formVoucherType === 'Online' ? values.formVoucherMessage : '',
+      voucherMessage: values.formVoucherMessage,
       locale,
     };
 
@@ -234,7 +233,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       <div className='mt-2.5 sm:mt-5'>
         {loadingStatus && (
           <div className='w-full text-center text-[20px] font-semibold text-gray-500 lg:text-[28px]'>
-            ...
+            Loading...
           </div>
         )}
 
@@ -273,7 +272,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
             onSubmit={handlePurchase}
             validateOnMount={true}
           >
-            {({ values, isSubmitting }) => (
+            {({ isSubmitting }) => (
               <Form>
                 <Input placeholder={data?.formName} name='formName' />
                 <Input placeholder={data?.formSurname} name='formSurname' />
@@ -294,12 +293,10 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
                   options={options}
                 />
 
-                {values.formVoucherType === 'Online' && (
-                  <TextArea
-                    name='formVoucherMessage'
-                    placeholder={data?.formVoucherMessagePlaceholder || ''}
-                  />
-                )}
+                <TextArea
+                  name='formVoucherMessage'
+                  placeholder={data?.formVoucherMessagePlaceholder || ''}
+                />
 
                 <div className='flex justify-center lg:justify-end'>
                   <button
