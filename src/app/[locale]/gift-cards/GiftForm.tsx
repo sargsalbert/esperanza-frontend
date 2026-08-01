@@ -60,7 +60,7 @@ const validationSchema = Yup.object().shape({
   formAmount: Yup.number()
     .typeError('Amount must be a number')
     .min(150, 'Minimum amount is 150')
-    .max(50000, 'Maximum amount is 50,000')
+    .max(10000, 'Maximum amount is 10,000')
     .required('Required'),
   formVoucherType: Yup.string().required('Required'),
   formVoucherMessage: Yup.string().max(500, 'Maximum 500 characters allowed'),
@@ -91,6 +91,12 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
 
   const [status, setStatus] = useState<string | null>(null);
   const [loadingStatus, setLoadingStatus] = useState<boolean>(false);
+
+  const [idempotencyKey, setIdempotencyKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIdempotencyKey(crypto.randomUUID());
+  }, []);
 
   const isPollingRef = useRef(false);
 
@@ -198,6 +204,7 @@ export default function GiftForm({ data, locale }: GiftFormProps) {
       voucherType: values.formVoucherType,
       voucherMessage: values.formVoucherMessage,
       locale,
+      idempotencyKey,
     };
 
     try {
