@@ -44,18 +44,18 @@ interface GiftFormValues {
 
 const validationSchema = Yup.object().shape({
   formName: Yup.string()
-    .max(70, 'Maximum 70 characters allowed')
+    .max(35, 'Maximum 35 characters allowed')
     .required('Required'),
   formSurname: Yup.string()
-    .max(70, 'Maximum 70 characters allowed')
+    .max(35, 'Maximum 35 characters allowed')
     .required('Required'),
   formPhone: Yup.string()
     .min(6, 'Phone number is too short')
-    .max(30, 'Maximum 30 characters allowed')
+    .max(35, 'Maximum 35 characters allowed')
     .required('Required'),
   formEmail: Yup.string()
     .email('Invalid email')
-    .max(70, 'Maximum 70 characters allowed')
+    .max(35, 'Maximum 35 characters allowed')
     .required('Required'),
   formAmount: Yup.number()
     .typeError('Amount must be a number')
@@ -63,7 +63,7 @@ const validationSchema = Yup.object().shape({
     .max(10000, 'Maximum amount is 10,000')
     .required('Required'),
   formVoucherType: Yup.string().required('Required'),
-  formVoucherMessage: Yup.string().max(500, 'Maximum 500 characters allowed'),
+  formVoucherMessage: Yup.string().max(35, 'Maximum 35 characters allowed'),
 });
 
 const TERMINAL_FAIL_STATUSES = [
